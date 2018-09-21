@@ -32,11 +32,13 @@
 <!-- Else -->
 <?php 
     } else {
+    $mensagem_erro = mysqli_error($conexao);
 ?>
 
         <!-- Alerta de erro -->
         <p class="alert-danger">
-            Erro na adição da compra (<?= $valor; ?>, <?= $data; ?>, <?= $recebido; ?>, <?= $observacoes; ?>, <?= $desconto; ?>, <?= $forma_pagamento; ?>, <?= $comprador_id; ?>)!
+            Erro na adição da compra (<?= $valor; ?>, <?= $data; ?>, <?= $recebido; ?>, <?= $observacoes; ?>, <?= $desconto; ?>, <?= $forma_pagamento; ?>, <?= $comprador_id; ?>)!<br>
+            <?= $mensagem_erro; ?>
         </p>
 
 <!-- Fecha a conexão -->
