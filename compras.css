@@ -1,0 +1,25 @@
+body {
+    margin: 50px;
+}
+
+.conteudo-principal {
+    padding: 40px 15px;
+    text-align: center;
+}
+
+.caixa-adicao {
+    border: 2px solid #C2CCCA;
+    margin: 7px;
+}
+
+body {
+    background-color: aliceblue;
+}
+
+body h1 {
+    margin-bottom: 40px;
+}
+
+input {
+    margin-bottom: 10px;
+}
