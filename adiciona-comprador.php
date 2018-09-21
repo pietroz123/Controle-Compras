@@ -33,11 +33,13 @@
 <!-- Else -->
 <?php 
     } else {
+        $mensagem_erro = mysqli_error($conexao);
 ?>
 
         <!-- Alerta de erro -->
         <p class="alert-danger">
             Erro na adição do comprador (<?= $nome; ?>, <?= $cidade; ?>, <?= $estado; ?>, <?= $endereco; ?>, <?= $cep; ?>, <?= $cpf; ?>, <?= $email; ?>, <?= $telefone; ?>)!
+            <?= $mensagem_erro; ?>
         </p>
 
 <!-- Fecha a conexão -->
