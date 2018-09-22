@@ -53,15 +53,12 @@
                     <td>Telefone</td>
                     <td><input class="form-control" type="tel" name="telefone"></td>
                 </tr>
-
-                <!-- SUBMIT -->
-                <tr>
-                    <td>
-                        <button class="btn btn-primary" type="submit">Adicionar</button><br>
-                    </td>
-                </tr>
-
+        
             </table>
+                
+            <!-- SUBMIT -->
+            <button class="btn btn-primary btn-block" type="submit">Adicionar</button><br>
+        
 
         </form>
 
