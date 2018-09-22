@@ -15,6 +15,8 @@
                 <!-- Nome da loja -->
                 <div class="navbar-header">
                     <a class="navbar-brand" href="index.php">Home</a>
+                </div>
+                <div>
                     <ul class="nav navbar-nav">
                         <li><a href="formulario-compra.php">Adicionar Compra</a></li>
                         <li><a href="formulario-comprador.php">Adicionar Comprador</a></li>
