@@ -48,14 +48,9 @@
                     <td><input class="form-control" type="number" name="comprador-id"></td>
                 </tr>
 
-                <tr>
-                    <td>
-                        <button type="submit" class="btn btn-primary">Adicionar</button>
-                    </td>                
-                </tr>
-
-
             </table>
+                        
+            <button type="submit" class="btn btn-primary btn-block">Adicionar</button>
 
             <div class="caixa-adicao">
             </div>

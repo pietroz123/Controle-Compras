@@ -1,5 +1,7 @@
-<?php include("cabecalho.php"); ?>
-<?php include("conexao.php"); ?>
+<?php 
+    include("cabecalho.php");
+    include("conexao.php"); 
+?>
 
 <!-- Recebe as requisições de formulario-compra.php -->
 <?php 
