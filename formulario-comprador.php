@@ -4,58 +4,64 @@
         
         <form action="adiciona-comprador.php">
         
-            <!-- Nome -->
-            <div class="caixa-adicao">
-                <label>Nome</label>:<br>
-                    <input type="text" name="nome"><br>
-            </div>
-            
-            <!-- Cidade -->
-            <div class="caixa-adicao">
-                <label>Cidade</label>:<br>
-                    <input type="text" name="cidade"><br>
-            </div>
+            <table class="table">
 
-            <!-- Estado -->
-            <div class="caixa-adicao">
-                <label>Estado</label>:<br>
-                    <input type="text" name="estado"><br>
-            </div>
+                <!-- Nome -->
+                <tr>
+                    <td>Nome</td>
+                    <td><input class="form-control" type="text" name="nome"></td>
+                </tr>
 
-            <!-- Endereço -->
-            <div class="caixa-adicao">
-                <label>Endereço</label> (formato: Rua/Av Nome, Número):<br>
-                    <input type="text" name="endereco"><br>
-            </div>
+                <!-- Cidade -->
+                <tr>
+                    <td>Cidade</td>
+                    <td><input class="form-control" type="text" name="cidade"></td>
+                </tr>
 
-            <!-- CEP -->
-            <div class="caixa-adicao">
-                <label>CEP:</label>:<br>
-                    <input type="text" name="cep"><br>
-            </div>
+                <!-- Estado -->
+                <tr>
+                    <td>Estado</td>
+                    <td><input class="form-control" type="text" name="estado"></td>
+                </tr>
 
-            <!-- CPF -->
-            <div class="caixa-adicao">
-                <label>CPF</label>:<br>
-                    <input type="text" name="cpf"><br>
-            </div>
+                <!-- Endereço -->
+                <tr>
+                    <td>Endereço</td>
+                    <td><input class="form-control" type="text" name="endereco"></td>
+                </tr>
 
-            <!-- Email -->
-            <div class="caixa-adicao">
-                <label>E-mail:</label>:<br>
-                    <input type="email" name="email"><br>
-            </div>
+                <!-- CEP -->
+                <tr>
+                    <td>CEP</td>
+                    <td><input class="form-control" type="text" name="cep"></td>
+                </tr>
 
-            <!-- Telefone -->
-            <div class="caixa-adicao">
-                <label>Telefone</label>:<br>
-                    <input type="tel" name="telefone"><br>
-            </div>
+                <!-- CPF -->
+                <tr>
+                    <td>CPF</td>
+                    <td><input class="form-control" type="text" name="cpf"></td>
+                </tr>
 
-            <!-- SUBMIT -->
-            <div class="caixa-adicao">
-                <input type="submit" value="Adicionar"><br>
-            </div>
+                <!-- Email -->
+                <tr>
+                    <td>E-mail</td>
+                    <td><input class="form-control" type="email" name="email"></td>
+                </tr>
+
+                <!-- Telefone -->
+                <tr>
+                    <td>Telefone</td>
+                    <td><input class="form-control" type="tel" name="telefone"></td>
+                </tr>
+
+                <!-- SUBMIT -->
+                <tr>
+                    <td>
+                        <button class="btn btn-primary" type="submit">Adicionar</button><br>
+                    </td>
+                </tr>
+
+            </table>
 
         </form>
 
