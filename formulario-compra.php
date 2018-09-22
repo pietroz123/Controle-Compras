@@ -3,47 +3,61 @@
         <h1>Formulário de Adição de Compra</h1>
         
         <form action="adiciona-compra.php">
-        
-            <div class="caixa-adicao">
-                <label>Valor</label>:<br>
-                    <input type="number" name="valor" min="0" step="0.01"><br>
-            </div>
+
+            <table class="table">
             
-            <div class="caixa-adicao">
-                <label>Data</label>:<br>
-                    <input type="date" name="data"><br>            
-            </div>
+                <tr>
+                    <td>Valor</td>
+                    <td><input class="form-control" type="number" name="valor" min="0" step="0.01"></td>                
+                </tr>
+
+                <tr>
+                    <td>Data</td>
+                    <td><input class="form-control" type="date" name="data"></td>                
+                </tr>
+
+                <tr>
+                    <td>Recebido</td>
+                    <td>
+                        <input type="radio" name="recebido" value="1" checked> Sim<br>
+                        <input type="radio" name="recebido" value="0"> Não<br>
+                    </td>                
+                </tr>
+
+                <tr>
+                    <td>Observacoes</td>
+                    <td><input class="form-control" type="text" name="observacoes"></td>                
+                </tr>
+
+                <tr>
+                    <td>Desconto</td>
+                    <td><input class="form-control" type="number" name="desconto" min="0" step="0.01"></td>                
+                </tr>
+
+                <tr>
+                    <td>Forma de Pagamento ('cartao', 'boleto', 'dinheiro')</td>
+                    <td>
+                        <input type="radio" name="forma-pagamento" value="cartao" checked> Cartão<br>
+                        <input type="radio" name="forma-pagamento" value="boleto"> Boleto<br>
+                        <input type="radio" name="forma-pagamento" value="dinheiro"> Dinheiro<br>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Comprador_ID</td>
+                    <td><input class="form-control" type="number" name="comprador-id"></td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <button type="submit" class="btn btn-primary">Adicionar</button>
+                    </td>                
+                </tr>
+
+
+            </table>
 
             <div class="caixa-adicao">
-                <label>Recebido</label>:<br>
-                    <input type="radio" name="recebido" value="1" checked> Sim<br>
-                    <input type="radio" name="recebido" value="0"> Não<br>
-            </div>
-
-            <div class="caixa-adicao">
-                <label>Observacoes</label>:<br>
-                    <input type="text" name="observacoes"><br>
-            </div>
-
-            <div class="caixa-adicao">
-                <label>Desconto</label>:<br>
-                    <input type="number" name="desconto" min="0" step="0.01"><br>
-            </div>
-
-            <div class="caixa-adicao">
-                <label>Forma de Pagamento</label>: ('cartao', 'boleto', 'dinheiro')<br>
-                    <input type="radio" name="forma-pagamento" value="cartao" checked> Cartão<br>
-                    <input type="radio" name="forma-pagamento" value="boleto"> Boleto<br>
-                    <input type="radio" name="forma-pagamento" value="dinheiro"> Dinheiro<br>
-            </div>
-
-            <div class="caixa-adicao">
-                <label>Comprador_ID</label>:<br>
-                    <input type="number" name="comprador-id"><br>
-            </div>
-
-            <div class="caixa-adicao">
-                <button type="submit" class="btn btn-primary">Adicionar</button>
             </div>
 
         </form>
