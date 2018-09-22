@@ -16,16 +16,32 @@
 
 ?>
 
-<table class="table">
+<table class="table table-striped table-hover table-fixed">
+
+    <thead>
+        <tr>
+            <th scope="col">Data</th>
+            <th scope="col">Valor</th>
+            <th scope="col">Observacoes</th>
+            <th scope="col">Desconto</th>
+            <th scope="col">Forma de Pagamento</th>
+            <th scope="col">Comprador ID</th>
+        </tr>
+    </thead>
 
     <?php
         $compras = listaCompras($conexao);
         foreach ($compras as $compra) :
     ?>
 
-        <tr>
-            <td><?= $compra['Observacoes']; ?></td>
-        </tr>
+    <tr>
+        <td><?= $compra['Data']; ?></td>
+        <td><?= $compra['Valor']; ?></td>
+        <td><?= $compra['Observacoes']; ?></td>
+        <td><?= $compra['Desconto']; ?></td>            
+        <td><?= $compra['Forma_Pagamento']; ?></td>
+        <td><?= $compra['Comprador_ID']; ?></td>
+    </tr>
 
     <?php
         endforeach
