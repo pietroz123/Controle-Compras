@@ -1,4 +1,5 @@
 <?php include("cabecalho.php"); ?>
+<?php include("conexao.php"); ?>
 
 <!-- Recebe as requisições de formulario-compra.php -->
 <?php 
@@ -17,7 +18,6 @@
 <!-- Abre conexão e verifica possível erro -->
 <?php 
 
-    $conexao = mysqli_connect('localhost', 'root', '1234', 'my_controle_compras');
     $query = "insert into compradores (nome, cidade, estado, endereco, cep, cpf, email, telefone) values ('{$nome}', '{$cidade}', '{$estado}', '{$endereco}', '{$cep}', '{$cpf}', '{$email}', '{$telefone}');";
 
     if (mysqli_query($conexao, $query)) {

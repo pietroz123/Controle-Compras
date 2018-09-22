@@ -20,6 +20,7 @@
                     <ul class="nav navbar-nav">
                         <li><a href="formulario-compra.php">Adicionar Compra</a></li>
                         <li><a href="formulario-comprador.php">Adicionar Comprador</a></li>
+                        <li><a href="listar-compras.php">Compras</a></li>
                     </ul>
                 </div>
             </div>
