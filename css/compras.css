@@ -39,7 +39,9 @@ body {
 .footer {
     position: absolute;
     bottom: 0;
-    width: 100%;
+    /* Deixa o footer "infinito" */
+    right: 0px;
+    left: 0px;
     /* Set the fixed height of the footer here */
     height: 60px;
     background-color: #222;
@@ -47,7 +49,7 @@ body {
 body > .container {
     padding: 60px 15px 0;
 }
-.container .text-muted {
+.container .text-muted { /* Coloca o texto do footer no meio */
     margin: 20px 0;
 }
 .text-muted {
