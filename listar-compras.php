@@ -41,6 +41,9 @@
         <td><?= $compra['Desconto']; ?></td>            
         <td><?= $compra['Forma_Pagamento']; ?></td>
         <td><?= $compra['Comprador_ID']; ?></td>
+        <td>
+            <a href="remover-compra.php" class="text-danger">remover</a>
+        </td>
     </tr>
 
     <?php

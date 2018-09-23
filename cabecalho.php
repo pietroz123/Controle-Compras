@@ -5,6 +5,7 @@
         <meta charset="UTF-8">
         <link type="text/css" href="css/bootstrap.css"rel="stylesheet">
         <link type="text/css" href="compras.css" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
 
     <body>

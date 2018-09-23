@@ -52,9 +52,6 @@
                         
             <button type="submit" class="btn btn-primary btn-block">Adicionar</button>
 
-            <div class="caixa-adicao">
-            </div>
-
         </form>
 
 
