@@ -16,7 +16,7 @@
 
 ?>
 
-<table class="table table-striped table-hover table-fixed">
+<table class="table table-striped table-hover">
 
     <thead>
         <tr>
