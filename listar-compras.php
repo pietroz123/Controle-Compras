@@ -20,12 +20,12 @@
 
     <thead>
         <tr>
-            <th scope="col">Data</th>
-            <th scope="col">Valor</th>
-            <th scope="col">Observacoes</th>
-            <th scope="col">Desconto</th>
-            <th scope="col">Forma de Pagamento</th>
-            <th scope="col">Comprador ID</th>
+            <th>Data</th>
+            <th>Valor</th>
+            <th>Observacoes</th>
+            <th>Desconto</th>
+            <th>Forma de Pagamento</th>
+            <th>Comprador ID</th>
         </tr>
     </thead>
 

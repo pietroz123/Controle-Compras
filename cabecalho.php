@@ -3,9 +3,11 @@
     <head>
         <title>Minhas Compras</title>
         <meta charset="UTF-8">
+        <link type="text/css" href="css/reset.css" rel="stylesheet">
         <link type="text/css" href="css/bootstrap.css"rel="stylesheet">
-        <link type="text/css" href="compras.css" rel="stylesheet">
+        <link type="text/css" href="css/compras.css" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/css?family=Merriweather|Slabo+27px" rel="stylesheet">
     </head>
 
     <body>

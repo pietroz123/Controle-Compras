@@ -7,11 +7,19 @@ body {
     text-align: center;
 }
 
+.conteudo-principal p {
+    text-align: justify;
+    font-family: 'Slabo 27px', serif;
+    font-size: 25px;
+    margin-top: 20px;
+}
+
 body {
     background-color: aliceblue;
 }
 
 body h1 {
+    font-family: 'Merriweather', serif;
     margin-bottom: 40px;
 }
 
