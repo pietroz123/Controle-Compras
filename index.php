@@ -8,8 +8,8 @@
 
     <div class="redes">
         <ul class="list-inline">
-            <li><a href="https://github.com/pietroz123"><img src="img/github.svg" alt="Github" style="width:50px;height:50px"></a></li>
-            <li><a href="https://www.linkedin.com/in/pietro-zuntini-b23506140/"><img src="img/linkedin.png" alt="Linkedin" style="width:70px;height:70px"></a></li>
+            <li class="list-inline-item"><a href="https://github.com/pietroz123"><img src="img/github.svg" alt="Github" style="width:50px;height:50px"></a></li>
+            <li class="list-inline-item"><a href="https://www.linkedin.com/in/pietro-zuntini-b23506140/"><img src="img/linkedin.png" alt="Linkedin" style="width:70px;height:70px"></a></li>
         </ul>
     </div>
 
