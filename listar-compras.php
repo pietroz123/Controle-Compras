@@ -5,9 +5,9 @@
 
 <?php 
 
-    function listaCompras($conexao) {
+    function listar($conexao, $query) {
         $compras = array();
-        $resultado = mysqli_query($conexao, "select * from compras");
+        $resultado = mysqli_query($conexao, $query);
         while ($compra = mysqli_fetch_assoc($resultado)) {
             array_push($compras, $compra);
         }
@@ -30,7 +30,7 @@
     </thead>
 
     <?php
-        $compras = listaCompras($conexao);
+        $compras = listar($conexao, "select * from compras");
         foreach ($compras as $compra) :
     ?>
 
