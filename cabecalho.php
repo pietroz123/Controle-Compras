@@ -12,17 +12,17 @@
     <body>
 
         <!-- Menu de navegação: no Bootstrap é a classe navbar -->
-        <div class="navbar navbar-inverse navbar-fixed-top"> <!-- Barra de navegação inversa e fixada no topo -->
+        <div class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"> <!-- Barra de navegação inversa e fixada no topo -->
             <div class="container">
                 <!-- Nome da loja -->
                 <div class="navbar-header">
                     <a class="navbar-brand" href="index.php">Home</a>
                 </div>
-                <div>
-                    <ul class="nav navbar-nav">
-                        <li><a href="formulario-compra.php">Adicionar Compra</a></li>
-                        <li><a href="formulario-comprador.php">Adicionar Comprador</a></li>
-                        <li><a href="listar-compras.php">Compras</a></li>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link" href="formulario-compra.php">Adicionar Compra</a></li>
+                        <li class="nav-item"><a class="nav-link" href="formulario-comprador.php">Adicionar Comprador</a></li>
+                        <li class="nav-item"><a class="nav-link" href="listar-compras.php">Compras</a></li>
                     </ul>
                 </div>
             </div>
