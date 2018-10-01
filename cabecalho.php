@@ -23,6 +23,7 @@
                         <li class="nav-item"><a class="nav-link" href="formulario-compra.php">Adicionar Compra</a></li>
                         <li class="nav-item"><a class="nav-link" href="formulario-comprador.php">Adicionar Comprador</a></li>
                         <li class="nav-item"><a class="nav-link" href="listar-compras.php">Compras</a></li>
+                        <li class="nav-item"><a class="nav-link" href="buscar.php">Buscar</a></li>
                     </ul>
                 </div>
             </div>

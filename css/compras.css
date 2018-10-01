@@ -61,3 +61,8 @@ body > .container {
     padding-right: 15px;
     padding-left: 15px;
 }
+
+.box {
+    margin-top: 20px;
+    border: 5px solid lightgrey;
+}

@@ -10,6 +10,7 @@
     $palavraChave = $_GET['texto'];
     $dataInicio = $_GET['dataInicio'];
     $dataFim = $_GET['dataFim'];
+    $soma = 0;
 
 ?>
 
@@ -29,6 +30,8 @@
 <?php
     $compras = listar($conexao, "select * from compras where observacoes like '%{$palavraChave}%' and data >= '{$dataInicio}' and data <= '{$dataFim}';");
     foreach ($compras as $compra) :
+        $valor = $compra['Valor'];
+        $soma += $valor;
 ?>
 
 <tr>
@@ -47,8 +50,11 @@
     endforeach
 ?>
 
-</table>
+</table><br>
 
+<div class="box p-3 mb-2 bg-info text-white">
+    SOMA = <?= $soma; ?>
+</div>
 
 
 <?php include("rodape.php"); ?>
