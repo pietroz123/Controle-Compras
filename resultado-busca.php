@@ -28,7 +28,7 @@
 </thead>
 
 <?php
-    $compras = listar($conexao, "select * from compras where observacoes like '%{$palavraChave}%' and data >= '{$dataInicio}' and data <= '{$dataFim}';");
+    $compras = listar($conexao, "select * from compras where observacoes like '%{$palavraChave}%' and data >= '{$dataInicio}' and data <= '{$dataFim}' order by year(data), month(data), day(data);");
     foreach ($compras as $compra) :
         $valor = $compra['Valor'];
         $soma += $valor;

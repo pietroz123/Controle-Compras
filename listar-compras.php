@@ -18,7 +18,7 @@
     </thead>
 
     <?php
-        $compras = listar($conexao, "select * from compras");
+        $compras = listar($conexao, "select * from compras order by year(data), month(data), day(data);");
         foreach ($compras as $compra) :
     ?>
 

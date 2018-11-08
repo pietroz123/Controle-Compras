@@ -7,14 +7,20 @@
             <table class="table">
             
                 <tr>
-                    <td>Valor</td>
-                    <td><input class="form-control" type="number" name="valor" min="0" step="0.01"></td>                
+                    <td>Observacoes</td>
+                    <td><input class="form-control" type="text" name="observacoes"></td>                
                 </tr>
 
                 <tr>
                     <td>Data</td>
                     <td><input class="form-control" type="date" name="data"></td>                
                 </tr>
+
+                <tr>
+                    <td>Valor</td>
+                    <td><input class="form-control" type="number" name="valor" min="0" step="0.01"></td>                
+                </tr>
+
 
                 <tr>
                     <td>Recebido</td>
@@ -24,14 +30,10 @@
                     </td>                
                 </tr>
 
-                <tr>
-                    <td>Observacoes</td>
-                    <td><input class="form-control" type="text" name="observacoes"></td>                
-                </tr>
 
                 <tr>
                     <td>Desconto</td>
-                    <td><input class="form-control" type="number" name="desconto" min="0" step="0.01"></td>                
+                    <td><input class="form-control" type="number" name="desconto" min="0" step="0.01" value="0"></td>                
                 </tr>
 
                 <tr>
