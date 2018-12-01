@@ -8,3 +8,9 @@ function listar($conexao, $query) {
     }
     return $compras;
 }
+
+function remover_compra($conexao, $id) {
+    $query = "delete from compras where Id = {$id}";
+    $resultado = mysqli_query($conexao, $query);
+    return $resultado;
+}
