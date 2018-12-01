@@ -1,6 +1,7 @@
 <?php 
     include("cabecalho.php");
     include("conexao.php"); 
+    // include("compra-class.php");
 ?>
 
 <!-- Recebe as requisições de formulario-compra.php -->
@@ -14,6 +15,16 @@
     $forma_pagamento    = $_GET['forma-pagamento'];
     $comprador_id       = $_GET['comprador-id'];
 
+    $c = new Compra($valor, $data, $recebido, $observacoes, $desconto, $forma_pagamento, $comprador_id);
+
+    $conn = new Conexao();
+    $conn->open();
+    $conn->adicionar_compra($c);
+
+    // $op = new OperacoesBD();
+    // $op->adicionar_compra($conn, $c);
+    // die();
+
 ?>
 
 <!-- Abre conexão e verifica possível erro -->
@@ -23,8 +34,6 @@
 
     if (mysqli_query($conexao, $query)) {
 ?>
-
-<!-- insert into compras (valor, data, recebido, observacoes, desconto, forma_pagamento, comprador_id) values (51.40, '2018-09-13', 1, 'Kalunga', 0, 'cartao', 1); -->
 
         <!-- Alerta de sucesso -->
         <p class="alert-success">
