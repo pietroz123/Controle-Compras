@@ -9,23 +9,29 @@ class Conexao {
     var $senha = "";
     var $banco = "my_controle_compras";
 
-    private $mysqli;
+    private static $mysqli;
 
 
-
-    public function open() {
-        $this->mysqli = new mysqli($this->servidor, $this->usuario, $this->senha, $this->banco);
+    public function getConnection() {
+        $mysqli = new mysqli($this->servidor, $this->usuario, $this->senha, $this->banco);
+        return $mysqli;
     }
     public function close() {
         $this->mysqli->close();
     }
 
-    public function adicionar_compra(Compra $c) {
-        $query = "insert into compras (valor, data, recebido, observacoes, desconto, forma_pagamento, comprador_id) values ({$c->getValor()}, '{$c->getData()}', {$c->getRecebido()}, '{$c->getObservacoes()}', {$c->getDesconto()}, '{$c->getFormaPagamento()}', {$c->getCompradorID()});";
-        return mysqli_query($this->mysqli, $query);
-    }
 
 }
 
+class OperacoesBD {
+
+
+    public function adicionar_compra(mysqli $conn, Compra $c) {
+        $query = "insert into compras (valor, data, recebido, observacoes, desconto, forma_pagamento, comprador_id) values ({$c->getValor()}, '{$c->getData()}', {$c->getRecebido()}, '{$c->getObservacoes()}', {$c->getDesconto()}, '{$c->getFormaPagamento()}', {$c->getCompradorID()});";
+        return mysqli_query($conn, $query);
+    }
+
+    
+}
 
     $conexao = mysqli_connect('localhost', 'root', '', 'my_controle_compras');

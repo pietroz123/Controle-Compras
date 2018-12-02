@@ -1,7 +1,6 @@
 <?php 
     include("cabecalho.php");
-    include("conexao.php"); 
-    // include("compra-class.php");
+    include("conexao.php");
 ?>
 
 <!-- Recebe as requisições de formulario-compra.php -->
@@ -18,21 +17,17 @@
     $c = new Compra($valor, $data, $recebido, $observacoes, $desconto, $forma_pagamento, $comprador_id);
 
     $conn = new Conexao();
-    $conn->open();
-    $conn->adicionar_compra($c);
-
-    // $op = new OperacoesBD();
-    // $op->adicionar_compra($conn, $c);
-    // die();
+    $mysqli = $conn->getConnection();
+    
+    $op = new OperacoesBD();
 
 ?>
 
 <!-- Abre conexão e verifica possível erro -->
 <?php 
 
-    $query = "insert into compras (valor, data, recebido, observacoes, desconto, forma_pagamento, comprador_id) values ({$valor}, '{$data}', {$recebido}, '{$observacoes}', {$desconto}, '{$forma_pagamento}', {$comprador_id});";
+    if ($op->adicionar_compra($mysqli, $c)) {
 
-    if (mysqli_query($conexao, $query)) {
 ?>
 
         <!-- Alerta de sucesso -->
@@ -43,7 +38,7 @@
 <!-- Else -->
 <?php 
     } else {
-    $mensagem_erro = mysqli_error($conexao);
+        $mensagem_erro = mysqli_error($mysqli);
 ?>
 
         <!-- Alerta de erro -->
@@ -55,7 +50,6 @@
 <!-- Fecha a conexão -->
 <?php
     }
-    mysqli_close($conexao);
 ?>
 
 
