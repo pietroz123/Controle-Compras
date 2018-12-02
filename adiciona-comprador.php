@@ -15,14 +15,15 @@
     $email      = $_GET['email'];
     $telefone   = $_GET['telefone'];
 
+    $c = new Comprador($nome, $cidade, $estado, $endereco, $cep, $cpf, $email, $telefone);
+
 ?>
 
 <!-- Abre conexão e verifica possível erro -->
 <?php 
 
-    $query = "insert into compradores (nome, cidade, estado, endereco, cep, cpf, email, telefone) values ('{$nome}', '{$cidade}', '{$estado}', '{$endereco}', '{$cep}', '{$cpf}', '{$email}', '{$telefone}');";
+    if ($op->adicionar_comprador($mysqli, $c)) {
 
-    if (mysqli_query($conexao, $query)) {
 ?>
 
 <!-- insert into compradores (nome, cidade, estado, endereco, cep, cpf, email, telefone) values (); -->
@@ -47,7 +48,6 @@
 <!-- Fecha a conexão -->
 <?php
     }
-    mysqli_close($conexao);
 ?>
 
 

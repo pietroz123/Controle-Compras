@@ -16,17 +16,12 @@
 
     $c = new Compra($valor, $data, $recebido, $observacoes, $desconto, $forma_pagamento, $comprador_id);
 
-    $conn = new Conexao();
-    $mysqli = $conn->getConnection();
-    
-    $op = new OperacoesBD();
-
 ?>
 
 <!-- Abre conexão e verifica possível erro -->
 <?php 
 
-    if ($op->adicionar_compra($mysqli, $c)) {
+    if ($op->adicionar_compra($mysqli, $c)) {   
 
 ?>
 

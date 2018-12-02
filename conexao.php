@@ -31,7 +31,19 @@ class OperacoesBD {
         return mysqli_query($conn, $query);
     }
 
+    public function adicionar_comprador(mysqli $conn, Comprador $c) {
+        $query = "insert into compradores (nome, cidade, estado, endereco, cep, cpf, email, telefone) values ('{$c->getNome()}', '{$c->getCidade()}', '{$c->getEstado()}', '{$c->getEndereco()}', '{$c->getCEP()}', '{$c->getCPF()}', '{$c->getEmail()}', '{$c->getTelefone()}');";
+        return mysqli_query($conn, $query);
+    }
+
     
 }
+
+    // Variáveis "globais"
+    $conn = new Conexao();
+    $mysqli = $conn->getConnection();
+
+    $op = new OperacoesBD();
+
 
     $conexao = mysqli_connect('localhost', 'root', '', 'my_controle_compras');
