@@ -1,6 +1,7 @@
 <?php 
     include("cabecalho.php");
     include("conexao.php");
+    include("funcoes.php");
 ?>
 
 <form action="resultado-busca.php">
@@ -17,6 +18,23 @@
                 <tr>
                     <td>Data</td>
                     <td>De: <input class="form-control" type="date" name="dataInicio"><br>Até: <input class="form-control" type="date" name="dataFim"></td>
+                </tr>
+                <tr>
+                    <td>Comprador</td>
+                    <td>
+                        <select class="custom-select" name="comprador" id="comprador">
+                            <option class="text-muted">Selecione uma Opção</option>
+                            <option value="0">Todos</option>
+                            <?php 
+                                $compradores = listar($conexao, "SELECT * FROM compradores");
+                                foreach ($compradores as $comprador) :
+                            ?>
+                                    <option value="<?= $comprador['ID']; ?>"><?= $comprador['Nome']; ?></option>
+                            <?php
+                                endforeach;
+                            ?>
+                        </select>
+                    </td>
                 </tr>
             </table>
             <button class="btn btn-success btn-block" type="submit">Buscar</button>

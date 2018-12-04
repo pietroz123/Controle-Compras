@@ -27,12 +27,14 @@ class OperacoesBD {
 
 
     public function adicionar_compra(mysqli $conn, Compra $c) {
-        $query = "insert into compras (valor, data, recebido, observacoes, desconto, forma_pagamento, comprador_id) values ({$c->getValor()}, '{$c->getData()}', {$c->getRecebido()}, '{$c->getObservacoes()}', {$c->getDesconto()}, '{$c->getFormaPagamento()}', {$c->getCompradorID()});";
+        $query = "INSERT INTO compras (valor, data, recebido, observacoes, desconto, forma_pagamento, comprador_id) VALUES ({$c->getValor()}, '{$c->getData()}', {$c->getRecebido()}, '{$c->getObservacoes()}', {$c->getDesconto()}, '{$c->getFormaPagamento()}', {$c->getCompradorID()});";
+
         return mysqli_query($conn, $query);
     }
 
     public function adicionar_comprador(mysqli $conn, Comprador $c) {
-        $query = "insert into compradores (nome, cidade, estado, endereco, cep, cpf, email, telefone) values ('{$c->getNome()}', '{$c->getCidade()}', '{$c->getEstado()}', '{$c->getEndereco()}', '{$c->getCEP()}', '{$c->getCPF()}', '{$c->getEmail()}', '{$c->getTelefone()}');";
+        $query = "INSERT INTO compradores (nome, cidade, estado, endereco, cep, cpf, email, telefone) VALUES ('{$c->getNome()}', '{$c->getCidade()}', '{$c->getEstado()}', '{$c->getEndereco()}', '{$c->getCEP()}', '{$c->getCPF()}', '{$c->getEmail()}', '{$c->getTelefone()}');";
+        
         return mysqli_query($conn, $query);
     }
 

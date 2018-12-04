@@ -9,8 +9,19 @@ function listar($conexao, $query) {
     return $compras;
 }
 
+
+/*********************** Funções das compras ***********************/
+
 function remover_compra($conexao, $id) {
-    $query = "delete from compras where Id = {$id}";
+    $query = "DELETE FROM compras WHERE Id = {$id}";
     $resultado = mysqli_query($conexao, $query);
     return $resultado;
 }
+
+function getCompra($conexao, $id) {
+    $query = "SELECT * FROM compras WHERE Id = {$id}";
+    $resultado = mysqli_query($conexao, $query);
+    return $resultado;
+}
+
+/*********************** Funções dos compradores ***********************/

@@ -6,6 +6,12 @@
 
 <table class="table table-striped table-hover">
 
+    <style>
+        .table {
+            width: 105%;
+        }
+    </style>
+
     <thead>
         <tr>
             <th>Data</th>

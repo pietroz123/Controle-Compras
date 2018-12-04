@@ -10,6 +10,7 @@
     $palavraChave = $_GET['texto'];
     $dataInicio = $_GET['dataInicio'];
     $dataFim = $_GET['dataFim'];
+    $id_comprador = $_GET['comprador'];
     $soma = 0;
 
 ?>
@@ -28,7 +29,14 @@
 </thead>
 
 <?php
-    $compras = listar($conexao, "select * from compras where observacoes like '%{$palavraChave}%' and data >= '{$dataInicio}' and data <= '{$dataFim}' order by year(data), month(data), day(data);");
+
+    if ($id_comprador == 0) {
+        $compras = listar($conexao, "SELECT * FROM compras WHERE observacoes LIKE '%{$palavraChave}%' AND data >= '{$dataInicio}' AND data <= '{$dataFim}' ORDER BY year(data), month(data), day(data);");    
+    }
+    else {
+        $compras = listar($conexao, "SELECT * FROM compras WHERE observacoes LIKE '%{$palavraChave}%' AND data >= '{$dataInicio}' AND data <= '{$dataFim}' AND Comprador_ID = {$id_comprador} ORDER BY year(data), month(data), day(data);");
+    }
+
     foreach ($compras as $compra) :
         $valor = $compra['Valor'];
         $soma += $valor;
@@ -42,7 +50,7 @@
     <td><?= $compra['Forma_Pagamento']; ?></td>
     <td><?= $compra['Comprador_ID']; ?></td>
     <td>
-        <a href="remover-compra.php" class="text-danger">remover</a>
+        <a href="remover-compra.php?id=<?= $compra['Id'] ?>" class="text-danger">remover</a>
     </td>
 </tr>
 
