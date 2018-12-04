@@ -1,4 +1,8 @@
-<?php include("cabecalho.php"); ?>
+<?php 
+    include("cabecalho.php"); 
+    include("conexao.php");
+    include("funcoes.php");
+?>
 
         <h1>Formulário de Adição de Compra</h1>
         
@@ -36,8 +40,20 @@
                 </tr>
 
                 <tr>
-                    <td>Comprador_ID</td>
-                    <td><input class="form-control" type="number" name="comprador-id"></td>
+                    <td>Comprador</td>
+                    <td>
+                        <select class="custom-select" name="comprador-id" id="comprador-id">
+                            <option class="text-muted">Selecione uma Opção</option>
+                            <?php 
+                                $compradores = listar($conexao, "SELECT * FROM compradores");
+                                foreach ($compradores as $comprador) :
+                            ?>
+                                    <option value="<?= $comprador['ID']; ?>"><?= $comprador['Nome']; ?></option>
+                            <?php
+                                endforeach;
+                            ?>
+                        </select>
+                    </td>
                 </tr>
 
             </table>
