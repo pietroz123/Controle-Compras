@@ -19,12 +19,12 @@
             <th>Observacoes</th>
             <th>Desconto</th>
             <th>Forma de Pagamento</th>
-            <th>Comprador ID</th>
+            <th>Comprador</th>
         </tr>
     </thead>
 
     <?php
-        $compras = listar($conexao, "select * from compras order by year(data), month(data), day(data);");
+        $compras = listar($conexao, "SELECT cmp.*, cmpd.Nome AS Nome_Comprador FROM compras AS cmp JOIN compradores AS cmpd ON cmp.Comprador_ID = cmpd.ID ORDER BY year(data), month(data), day(data);");
         foreach ($compras as $compra) :
     ?>
 
@@ -34,7 +34,7 @@
         <td><?= $compra['Observacoes']; ?></td>
         <td><?= $compra['Desconto']; ?></td>            
         <td><?= $compra['Forma_Pagamento']; ?></td>
-        <td><?= $compra['Comprador_ID']; ?></td>
+        <td><?= $compra['Nome_Comprador']; ?></td>
         <td>
             <a href="remover-compra.php?id=<?= $compra['Id'] ?>" class="text-danger">remover</a>
         </td>
