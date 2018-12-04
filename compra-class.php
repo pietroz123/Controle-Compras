@@ -5,17 +5,15 @@ class Compra {
     private $id;
     private $valor;
     private $data;
-    private $recebido;
     private $observacoes;
     private $desconto;
     private $forma_pagamento;
     private $comprador_id;
 
     // Construtor
-    function __construct($valor, $data, $recebido, $observacoes, $desconto, $forma_pagamento, $comprador_id) {
+    function __construct($valor, $data, $observacoes, $desconto, $forma_pagamento, $comprador_id) {
         $this->setValor($valor);
         $this->setData($data);
-        $this->setRecebido($recebido);
         $this->setObservacoes($observacoes);
         $this->setDesconto($desconto);
         $this->setFormaPagamento($forma_pagamento);
@@ -31,9 +29,6 @@ class Compra {
     }
     public function getData() {
         return $this->data;
-    }
-    public function getRecebido() {
-        return $this->recebido;
     }
     public function getObservacoes() {
         return $this->observacoes;
@@ -57,9 +52,6 @@ class Compra {
     }
     public function setData($data) {
         $this->data = $data;
-    }
-    public function setRecebido($recebido) {
-        $this->recebido = $recebido;
     }
     public function setObservacoes($observacoes) {
         $this->observacoes = $observacoes;

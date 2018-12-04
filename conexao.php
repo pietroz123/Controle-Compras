@@ -27,7 +27,7 @@ class OperacoesBD {
 
 
     public function adicionar_compra(mysqli $conn, Compra $c) {
-        $query = "INSERT INTO compras (valor, data, recebido, observacoes, desconto, forma_pagamento, comprador_id) VALUES ({$c->getValor()}, '{$c->getData()}', {$c->getRecebido()}, '{$c->getObservacoes()}', {$c->getDesconto()}, '{$c->getFormaPagamento()}', {$c->getCompradorID()});";
+        $query = "INSERT INTO compras (valor, data, observacoes, desconto, forma_pagamento, comprador_id) VALUES ({$c->getValor()}, '{$c->getData()}', '{$c->getObservacoes()}', {$c->getDesconto()}, '{$c->getFormaPagamento()}', {$c->getCompradorID()});";
 
         return mysqli_query($conn, $query);
     }

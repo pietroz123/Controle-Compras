@@ -21,16 +21,6 @@
                     <td><input class="form-control" type="number" name="valor" min="0" step="0.01"></td>                
                 </tr>
 
-
-                <tr>
-                    <td>Recebido</td>
-                    <td>
-                        <input type="radio" name="recebido" value="1" checked> Sim<br>
-                        <input type="radio" name="recebido" value="0"> Não<br>
-                    </td>                
-                </tr>
-
-
                 <tr>
                     <td>Desconto</td>
                     <td><input class="form-control" type="number" name="desconto" min="0" step="0.01" value="0"></td>                
