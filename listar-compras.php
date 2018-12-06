@@ -36,7 +36,10 @@
         <td><?= $compra['Forma_Pagamento']; ?></td>
         <td><?= $compra['Nome_Comprador']; ?></td>
         <td>
-            <a href="remover-compra.php?id=<?= $compra['Id'] ?>" class="text-danger">remover</a>
+            <form action="remover-compra.php" method="post">
+                <input type="hidden" name="id" value="<?= $compra['Id'] ?>">
+                <button class="btn btn-danger">remover</button>
+            </form>
         </td>
     </tr>
 

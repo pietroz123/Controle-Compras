@@ -7,7 +7,7 @@
 
 <?php
 
-    $id = $_GET['id'];
+    $id = $_POST['id'];
     if (remover_compra($conexao, $id)) {
 
 ?>
