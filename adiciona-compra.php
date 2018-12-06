@@ -6,12 +6,12 @@
 <!-- Recebe as requisições de formulario-compra.php -->
 <?php 
 
-    $valor              = $_GET['valor'];
-    $data               = $_GET['data'];
-    $observacoes        = $_GET['observacoes'];
-    $desconto           = $_GET['desconto'];
-    $forma_pagamento    = $_GET['forma-pagamento'];
-    $comprador_id       = $_GET['comprador-id'];
+    $valor              = $_POST['valor'];
+    $data               = $_POST['data'];
+    $observacoes        = $_POST['observacoes'];
+    $desconto           = $_POST['desconto'];
+    $forma_pagamento    = $_POST['forma-pagamento'];
+    $comprador_id       = $_POST['comprador-id'];
 
     $c = new Compra($valor, $data, $observacoes, $desconto, $forma_pagamento, $comprador_id);
 

@@ -6,7 +6,7 @@
 
         <h1>Formulário de Adição de Compra</h1>
         
-        <form action="adiciona-compra.php">
+        <form action="adiciona-compra.php" method="post">
 
             <table class="table">
             
