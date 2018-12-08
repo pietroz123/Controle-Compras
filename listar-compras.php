@@ -14,6 +14,7 @@
 
     <thead>
         <tr>
+            <th>ID</th>
             <th>Data</th>
             <th>Valor</th>
             <th>Observacoes</th>
@@ -29,6 +30,7 @@
     ?>
 
     <tr>
+        <td><?= $compra['Id']; ?></td>
         <td><?= $compra['Data']; ?></td>
         <td><?= $compra['Valor']; ?></td>
         <td><?= $compra['Observacoes']; ?></td>
