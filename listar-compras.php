@@ -8,7 +8,8 @@
 
     <style>
         .table {
-            width: 105%;
+            width: 110%;
+            margin-left: -35px;
         }
     </style>
 
@@ -37,6 +38,9 @@
         <td><?= $compra['Desconto']; ?></td>            
         <td><?= $compra['Forma_Pagamento']; ?></td>
         <td><?= $compra['Nome_Comprador']; ?></td>
+        <td>
+            <a class="btn btn-primary" href="formulario-alterar-compra.php?id=<?= $compra['Id']; ?>">alterar</a>
+        </td>
         <td>
             <form action="remover-compra.php" method="post">
                 <input type="hidden" name="id" value="<?= $compra['Id'] ?>">

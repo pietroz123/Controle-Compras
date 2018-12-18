@@ -18,10 +18,10 @@ function remover_compra($conexao, $id) {
     return $resultado;
 }
 
-function getCompra($conexao, $id) {
+function buscar_compra($conexao, $id) {
     $query = "SELECT * FROM compras WHERE Id = {$id}";
     $resultado = mysqli_query($conexao, $query);
-    return $resultado;
+    return mysqli_fetch_assoc($resultado);
 }
 
 /*********************** Funções dos compradores ***********************/
