@@ -44,7 +44,7 @@
         <td>
             <form action="remover-compra.php" method="post">
                 <input type="hidden" name="id" value="<?= $compra['Id'] ?>">
-                <button class="btn btn-danger">remover</button>
+                <button class="btn btn-danger" onclick="return confirm('Deseja prosseguir com a remoção?');">remover</button>
             </form>
         </td>
     </tr>

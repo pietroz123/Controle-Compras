@@ -11,9 +11,11 @@
 
 ?>
 
-        <h1>Formulário de Adição de Compra</h1>
+        <h1>Formulário de Alteração de Compra</h1>
         
-        <form action="adiciona-compra.php" method="post">
+        <form action="altera-compra.php" method="post">
+
+            <input type="hidden" name="id" value="<?= $compra['Id'] ?>">
 
             <table class="table">
             
@@ -67,7 +69,7 @@
 
             </table>
                         
-            <button type="submit" class="btn btn-primary btn-block">Adicionar</button>
+            <button type="submit" class="btn btn-warning btn-block" onclick="return confirm('Deseja prosseguir com a alteração?');">Alterar</button>
 
         </form>
 
