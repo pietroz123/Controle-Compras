@@ -23,7 +23,7 @@
         <th>Valor</th>
         <th>Observacoes</th>
         <th>Desconto</th>
-        <th>Forma de Pagamento</th>
+        <th>Pagamento</th>
         <th>Comprador</th>
     </tr>
 </thead>
@@ -50,7 +50,13 @@
     <td><?= $compra['Forma_Pagamento']; ?></td>
     <td><?= $compra['Nome_Comprador']; ?></td>
     <td>
-        <a href="remover-compra.php?id=<?= $compra['Id'] ?>" class="text-danger">remover</a>
+        <a class="btn btn-primary" href="formulario-alterar-compra.php?id=<?= $compra['Id']; ?>">alterar</a>
+    </td>
+    <td>
+        <form action="remover-compra.php" method="post">
+            <input type="hidden" name="id" value="<?= $compra['Id'] ?>">
+            <button class="btn btn-danger" onclick="return confirm('Deseja prosseguir com a remoção?');">remover</button>
+        </form>
     </td>
 </tr>
 

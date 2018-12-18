@@ -20,7 +20,7 @@
             <th>Valor</th>
             <th>Observacoes</th>
             <th>Desconto</th>
-            <th>Forma de Pagamento</th>
+            <th>Pagamento</th>
             <th>Comprador</th>
         </tr>
     </thead>
