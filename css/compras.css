@@ -66,3 +66,10 @@ body > .container {
     margin-top: 20px;
     border: 5px solid lightgrey;
 }
+
+/* Icone de selecao da navbar (tres barrinhas) */
+.nav-item .icon {
+    padding: 12px 10px;
+    font-size: x-large;
+    display: none;
+}
