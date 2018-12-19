@@ -4,7 +4,7 @@
     include("funcoes.php");
 ?>
 
-<table class="table table-striped table-hover">
+<table class="table table-hover">
 
     <style>
         .table {
@@ -13,15 +13,17 @@
         }
     </style>
 
-    <thead>
+    <thead class="thead-dark">
         <tr>
-            <th>ID</th>
-            <th>Data</th>
-            <th>Valor</th>
-            <th>Observacoes</th>
-            <th>Desconto</th>
-            <th>Pagamento</th>
-            <th>Comprador</th>
+            <th scope="col">ID</th>
+            <th scope="col">Data</th>
+            <th scope="col">Valor</th>
+            <th scope="col">Observacoes</th>
+            <th scope="col">Desconto</th>
+            <th scope="col">Pagamento</th>
+            <th scope="col">Comprador</th>
+            <th scope="col"></th>
+            <th scope="col"></th>            
         </tr>
     </thead>
 
@@ -30,24 +32,26 @@
         foreach ($compras as $compra) :
     ?>
 
-    <tr>
-        <td><?= $compra['Id']; ?></td>
-        <td><?= $compra['Data']; ?></td>
-        <td><?= $compra['Valor']; ?></td>
-        <td><?= $compra['Observacoes']; ?></td>
-        <td><?= $compra['Desconto']; ?></td>            
-        <td><?= $compra['Forma_Pagamento']; ?></td>
-        <td><?= $compra['Nome_Comprador']; ?></td>
-        <td>
-            <a class="btn btn-primary" href="formulario-alterar-compra.php?id=<?= $compra['Id']; ?>">alterar</a>
-        </td>
-        <td>
-            <form action="remover-compra.php" method="post">
-                <input type="hidden" name="id" value="<?= $compra['Id'] ?>">
-                <button class="btn btn-danger" onclick="return confirm('Deseja prosseguir com a remoção?');">remover</button>
-            </form>
-        </td>
-    </tr>
+    <tbody>
+        <tr>
+            <th scope="row"><?= $compra['Id']; ?></th>
+            <td><?= $compra['Data']; ?></td>
+            <td><?= $compra['Valor']; ?></td>
+            <td><?= $compra['Observacoes']; ?></td>
+            <td><?= $compra['Desconto']; ?></td>          
+            <td><?= $compra['Forma_Pagamento']; ?></td>
+            <td><?= $compra['Nome_Comprador']; ?></td>
+            <td>
+                <a class="btn btn-primary" href="formulario-alterar-compra.php?id=<?= $compra['Id']; ?>">alterar</a>
+            </td>
+            <td>
+                <form action="remover-compra.php" method="post">
+                    <input type="hidden" name="id" value="<?= $compra['Id'] ?>">
+                    <button class="btn btn-danger" onclick="return confirm('Deseja prosseguir com a remoção?');">remover</button>
+                </form>
+            </td>
+        </tr>
+    </tbody>
 
     <?php
         endforeach
