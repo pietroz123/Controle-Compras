@@ -66,3 +66,24 @@ body > .container {
     margin-top: 20px;
     border: 5px solid lightgrey;
 }
+
+/* Configuracoes design responsivo */
+
+@media screen and (max-width: 550px) {
+    .conteudo-principal {
+        padding: 0px 0px;
+        margin-bottom: 5px;
+    }
+    body h1 {
+        font-size: 30px;
+    }
+    .conteudo-principal p {
+        font-size: 20px;
+    }
+    .redes {
+        padding-bottom: 7px;
+    }
+    .card {
+        display: inline-flex;
+    }
+}
