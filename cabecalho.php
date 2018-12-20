@@ -27,7 +27,7 @@
 
         <!-- Menu de navegação: no Bootstrap é a classe navbar -->
         <!-- https://www.youtube.com/watch?v=23bpce-5s8I -->
-        <div class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
                 
             <div class="navbar-header">
                 <a class="navbar-brand" href="index.php">Home</a>
@@ -54,7 +54,7 @@
                 </ul>
             </div>
 
-        </div>
+        </nav>
 
         <div class="container">
             <div class="conteudo-principal">

@@ -4,14 +4,7 @@
     include("funcoes.php");
 ?>
 
-<table class="table table-hover">
-
-    <style>
-        .table {
-            width: 110%;
-            margin-left: -35px;
-        }
-    </style>
+<table class="table table-hover" style="width: 110%; margin-left: -35px;">
 
     <thead class="thead-dark">
         <tr>
