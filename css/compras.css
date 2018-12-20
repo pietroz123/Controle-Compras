@@ -49,7 +49,7 @@ body {
     background-color: #222;
 }
 body > .container {
-    padding: 60px 15px 0;
+    padding: 60px 0px 0;
 }
 .container .text-muted { /* Coloca o texto do footer no meio */
     margin: 20px 0;
@@ -84,6 +84,6 @@ body > .container {
         padding-bottom: 7px;
     }
     .card {
-        display: inline-flex;
+        width: 18rem;
     }
 }
