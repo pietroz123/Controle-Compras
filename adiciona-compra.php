@@ -25,9 +25,17 @@
 ?>
 
         <!-- Alerta de sucesso -->
-        <p class="alert-success">
-            Compra (<?= $valor; ?>, <?= $data; ?>, <?= $observacoes; ?>, <?= $desconto; ?>, <?= $forma_pagamento; ?>, <?= $comprador_id; ?>) adicionada com sucesso!
-        </p>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="alert alert-success">
+                        <p>
+                            Compra (<?= $valor; ?>, <?= $data; ?>, <?= $observacoes; ?>, <?= $desconto; ?>, <?= $forma_pagamento; ?>, <?= $comprador_id; ?>) adicionada com sucesso!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 <!-- Else -->
 <?php 
@@ -36,10 +44,18 @@
 ?>
 
         <!-- Alerta de erro -->
-        <p class="alert-danger">
-            Erro na adição da compra (<?= $valor; ?>, <?= $data; ?>, <?= $observacoes; ?>, <?= $desconto; ?>, <?= $forma_pagamento; ?>, <?= $comprador_id; ?>)!<br>
-            <?= $mensagem_erro; ?>
-        </p>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="alert alert-danger">
+                        <h2 class="alert-heading">Erro na adição da compra</h2>
+                        <p>
+                            <?= $mensagem_erro; ?>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 <!-- Fecha a conexão -->
 <?php

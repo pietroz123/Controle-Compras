@@ -11,8 +11,8 @@
             <table class="table">
             
                 <tr>
-                    <td>Observacoes</td>
-                    <td><input class="form-control" type="text" name="observacoes"></td>                
+                    <td>Observações</td>
+                    <td><input class="form-control" type="text" name="observacoes"></td>
                 </tr>
 
                 <tr>
@@ -31,7 +31,7 @@
                 </tr>
 
                 <tr>
-                    <td>Forma de Pagamento ('cartao', 'boleto', 'dinheiro')</td>
+                    <td>Forma de Pagamento</td>
                     <td>
                         <input type="radio" name="forma-pagamento" value="cartao" checked> Cartão<br>
                         <input type="radio" name="forma-pagamento" value="boleto"> Boleto<br>
