@@ -72,7 +72,7 @@ body > .container {
 @media screen and (max-width: 550px) {
     .conteudo-principal {
         padding: 0px 0px;
-        margin-bottom: 5px;
+        margin-bottom: 100px;
     }
     body h1 {
         font-size: 30px;
