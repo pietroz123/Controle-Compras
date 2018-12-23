@@ -70,15 +70,19 @@ body > .container {
 /* Configuracoes design responsivo */
 
 @media screen and (max-width: 550px) {
+    body h1 {
+        font-size: 25px;
+    }
     .conteudo-principal {
         padding: 0px 0px;
         margin-bottom: 100px;
     }
-    body h1 {
-        font-size: 25px;
-    }
     .conteudo-principal p {
         font-size: 20px;
+    }
+    .conteudo-principal form {
+        width: 127%;
+        margin-left: -35px;
     }
     .redes {
         padding-bottom: 7px;
