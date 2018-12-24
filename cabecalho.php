@@ -43,7 +43,7 @@
                         <a class="nav-link" href="formulario-compra-grid.php">Adicionar Compra</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="formulario-comprador.php">Adicionar Comprador</a>
+                        <a class="nav-link" href="formulario-comprador-grid.php">Adicionar Comprador</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="listar-compras.php">Compras</a>
