@@ -40,7 +40,7 @@
             <div class="collapse navbar-collapse" id="navbarMenu">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="formulario-compra.php">Adicionar Compra</a>
+                        <a class="nav-link" href="formulario-compra-grid.php">Adicionar Compra</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="formulario-comprador.php">Adicionar Comprador</a>

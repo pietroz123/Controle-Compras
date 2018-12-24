@@ -91,3 +91,7 @@ body > .container {
         width: 18rem;
     }
 }
+
+.grid {
+    text-align: left;
+}
