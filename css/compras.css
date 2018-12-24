@@ -86,6 +86,9 @@ body > .container {
     .card {
         width: 18rem;
     }
+    .table, .btn {
+        font-size: 15px;
+    }
 }
 
 .grid {
