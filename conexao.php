@@ -49,3 +49,7 @@ class OperacoesBD {
 
 
     $conexao = mysqli_connect('localhost', 'root', '', 'my_controle_compras');
+
+    if (!$conexao) {
+        die("Falha na Conexao: " . mysqli_connect_error());
+    }

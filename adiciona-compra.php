@@ -34,7 +34,7 @@
                         </p>
                         <hr>
                         <p class="mb-0">
-                            <a href="formulario-compra.php" class="alert-link">Inserir Outra Compra</a>
+                            <a href="formulario-compra-grid.php" class="alert-link">Inserir Outra Compra</a>
                         </p>
                     </div>
                 </div>
@@ -52,7 +52,7 @@
             <div class="row">
                 <div class="col">
                     <div class="alert alert-danger">
-                        <h2 class="alert-heading">Erro na adição da compra</h2>
+                        <h2 class="alert-heading">Erro na adição da Compra</h2>
                         <p>
                             <?= $mensagem_erro; ?>
                         </p>
