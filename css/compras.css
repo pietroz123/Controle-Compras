@@ -80,10 +80,6 @@ body > .container {
     .conteudo-principal p {
         font-size: 20px;
     }
-    .conteudo-principal form {
-        width: 127%;
-        margin-left: -35px;
-    }
     .redes {
         padding-bottom: 7px;
     }
