@@ -28,9 +28,13 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <div class="alert alert-success">
+                    <div class="alert alert-success" role="alert">
                         <p>
                             Compra (<?= $valor; ?>, <?= $data; ?>, <?= $observacoes; ?>, <?= $desconto; ?>, <?= $forma_pagamento; ?>, <?= $comprador_id; ?>) adicionada com sucesso!
+                        </p>
+                        <hr>
+                        <p class="mb-0">
+                            <a href="formulario-compra.php" class="alert-link">Inserir Outra Compra</a>
                         </p>
                     </div>
                 </div>
