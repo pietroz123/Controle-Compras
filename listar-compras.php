@@ -4,6 +4,8 @@
     include("funcoes.php");
 ?>
 
+<h1>Lista de Compras</h1>
+
 <table class="table table-hover" style="width: 110%; margin-left: -35px;">
 
     <thead class="thead-dark">
