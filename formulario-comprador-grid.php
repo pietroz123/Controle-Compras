@@ -35,10 +35,10 @@
                 </div>
                 <hr>
 
-                <div class="row"><button class="btn btn-primary btn-block" type="submit">Adicionar</button></div>
             
             </div>
         
+            <div><button class="btn btn-primary btn-block" type="submit">Adicionar</button></div>
 
         </form>
 

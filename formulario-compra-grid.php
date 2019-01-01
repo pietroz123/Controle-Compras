@@ -59,8 +59,9 @@
                     </div>
                 </div>
                 <hr>
-                <div class="row"><button type="submit" class="btn btn-primary btn-block">Adicionar</button></div>
             </div>
+            
+            <div><button type="submit" class="btn btn-primary btn-block align-content-center">Adicionar</button></div>
 
         </form>
 
