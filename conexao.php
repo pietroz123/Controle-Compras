@@ -2,17 +2,32 @@
 
 include("compra-class.php");
 
+
+$config = parse_ini_file('../private_compras/config.ini');
+
+$servidor   = $config['servidor'];
+$usuario    = $config['usuario'];
+$senha      = $config['senha'];
+$banco      = $config['banco'];
+
+
 class Conexao {
 
-    var $servidor = "localhost";
-    var $usuario = "root";
-    var $senha = "";
-    var $banco = "my_controle_compras";
+    var $servidor;
+    var $usuario;
+    var $senha;
+    var $banco;
 
     private static $mysqli;
 
-
     public function getConnection() {
+
+        $config = parse_ini_file('../private_compras/config.ini');
+        $this->servidor   = $config['servidor'];
+        $this->usuario    = $config['usuario'];
+        $this->senha      = $config['senha'];
+        $this->banco      = $config['banco'];
+
         $mysqli = new mysqli($this->servidor, $this->usuario, $this->senha, $this->banco);
         return $mysqli;
     }
@@ -48,7 +63,7 @@ class OperacoesBD {
     $op = new OperacoesBD();
 
 
-    $conexao = mysqli_connect('localhost', 'root', '', 'my_controle_compras');
+    $conexao = mysqli_connect($servidor, $usuario, $senha, $banco);
 
     if (!$conexao) {
         die("Falha na Conexao: " . mysqli_connect_error());
