@@ -3,7 +3,7 @@
 include("compra-class.php");
 
 
-$config = parse_ini_file('../private_compras/config.ini');
+$config = parse_ini_file('../private/config_compras.ini');
 
 $servidor   = $config['servidor'];
 $usuario    = $config['usuario'];
@@ -22,7 +22,7 @@ class Conexao {
 
     public function getConnection() {
 
-        $config = parse_ini_file('../private_compras/config.ini');
+        $config = parse_ini_file('../private/config_compras.ini');
         $this->servidor   = $config['servidor'];
         $this->usuario    = $config['usuario'];
         $this->senha      = $config['senha'];
