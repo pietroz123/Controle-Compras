@@ -17,40 +17,40 @@
 
             <input type="hidden" name="id" value="<?= $compra['Id'] ?>">
 
-            <table class="table">
-            
-                <tr>
-                    <td>Observacoes</td>
-                    <td><input class="form-control" type="text" name="observacoes" value="<?= $compra['Observacoes'] ?>"></td>                
-                </tr>
+            <div class="grid">
 
-                <tr>
-                    <td>Data</td>
-                    <td><input class="form-control" type="date" name="data" value="<?= $compra['Data'] ?>"></td>                
-                </tr>
-
-                <tr>
-                    <td>Valor</td>
-                    <td><input class="form-control" type="number" name="valor" min="0" step="0.01" value="<?= $compra['Valor'] ?>"></td>                
-                </tr>
-
-                <tr>
-                    <td>Desconto</td>
-                    <td><input class="form-control" type="number" name="desconto" min="0" step="0.01" value="<?= $compra['Desconto'] ?>"></td>
-                </tr>
-
-                <tr>
-                    <td>Forma de Pagamento ('cartao', 'boleto', 'dinheiro')</td>
-                    <td>
+                <div class="row">
+                    <div class="col-lg-4">Observacoes</div>
+                    <div class="col-lg-8"><input class="form-control" type="text" name="observacoes" value="<?= $compra['Observacoes'] ?>"></div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-lg-4">Data</div>
+                    <div class="col-lg-8"><input class="form-control" type="date" name="data" value="<?= $compra['Data'] ?>"></div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-lg-4">Valor</div>
+                    <div class="col-lg-8"><input class="form-control" type="number" name="valor" min="0" step="0.01" value="<?= $compra['Valor'] ?>"></div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-lg-4">Desconto</div>
+                    <div class="col-lg-8"><input class="form-control" type="number" name="desconto" min="0" step="0.01" value="<?= $compra['Desconto'] ?>"></div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-lg-4">Forma de Pagamento</div>
+                    <div class="col-lg-8">
                         <input type="radio" name="forma-pagamento" value="cartao" <?php if ($compra['Forma_Pagamento'] == "cartao") echo "checked"; ?>> Cartão<br>
                         <input type="radio" name="forma-pagamento" value="boleto" <?php if ($compra['Forma_Pagamento'] == "boleto") echo "checked"; ?>> Boleto<br>
                         <input type="radio" name="forma-pagamento" value="dinheiro" <?php if ($compra['Forma_Pagamento'] == "dinheiro") echo "checked"; ?>> Dinheiro<br>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>Comprador</td>
-                    <td>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-lg-4">Comprador</div>
+                    <div class="col-lg-8">
                         <select class="custom-select" name="comprador-id" id="comprador-id">
                             <option class="text-muted">Selecione uma Opção</option>
                             <?php 
@@ -64,10 +64,12 @@
                                 endforeach;
                             ?>
                         </select>
-                    </td>
-                </tr>
+                    </div>
+                </div>
 
-            </table>
+            </div>
+
+            <hr>
                         
             <button type="submit" class="btn btn-warning btn-block" onclick="return confirm('Deseja prosseguir com a alteração?');">Alterar</button>
 
