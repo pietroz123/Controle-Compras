@@ -6,9 +6,9 @@
         
         <!-- CSSs -->
         <link type="text/css" href="css/bootstrap4.css"rel="stylesheet">
-        <link type="text/css" href="css/compras.css" rel="stylesheet">
         <link type="text/css" href="css/mdb.css" rel="stylesheet">
         <link type="text/css" href="css/datatables.css" rel="stylesheet">
+        <link type="text/css" href="css/compras.css" rel="stylesheet">
         
         <!-- Viewport -->
         <meta name="viewport" content="width=device-width, initial-scale=1">

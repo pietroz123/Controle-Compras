@@ -39,13 +39,13 @@
             <td>
                 <form action="formulario-alterar-compra.php" method="post">
                     <input type="hidden" name="id" value="<?= $compra['Id'] ?>">
-                    <button class="btn btn-primary">alterar</button>
+                    <button class="btn btn-primary" style="padding: 6px 12px; margin: unset;">alterar</button>
                 </form>
             </td>
             <td>
                 <form action="remover-compra.php" method="post">
                     <input type="hidden" name="id" value="<?= $compra['Id'] ?>">
-                    <button class="btn btn-danger" onclick="return confirm('Deseja prosseguir com a remoção?');">remover</button>
+                    <button class="btn btn-danger" onclick="return confirm('Deseja prosseguir com a remoção?');" style="padding: 6px 12px; margin: unset;">remover</button>
                 </form>
             </td>
         </tr>
