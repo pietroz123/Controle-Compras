@@ -6,19 +6,19 @@
 
 <h1>Lista de Compras</h1>
 
-<table class="table table-hover" style="width: 110%; margin-left: -35px;">
+<table class="table table-hover" id="tabela-produtos" style="width: 110%; margin-left: -35px;">
 
     <thead class="thead-dark">
         <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Data</th>
-            <th scope="col">Valor</th>
-            <th scope="col">Observacoes</th>
-            <th scope="col">Desconto</th>
-            <th scope="col">Pagamento</th>
-            <th scope="col">Comprador</th>
-            <th scope="col"></th>
-            <th scope="col"></th>            
+            <th class="th-sm">ID</th>
+            <th class="th-sm">Data</th>
+            <th class="th-sm">Valor</th>
+            <th class="th-sm">Observacoes</th>
+            <th class="th-sm">Desconto</th>
+            <th class="th-sm">Pagamento</th>
+            <th class="th-sm">Comprador</th>
+            <th class="th-sm"></th>
+            <th class="th-sm"></th>            
         </tr>
     </thead>
 
@@ -62,3 +62,10 @@ Obs: O comando a seguir lista todas as características de cada compra no format
 -->
 
 <?php include("rodape.php"); ?>
+
+<script>
+    $(document).ready(function () {
+        $('#tabela-produtos').DataTable();
+        $('.dataTables_length').addClass('bs-select');
+    });
+</script>

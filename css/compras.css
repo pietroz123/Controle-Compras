@@ -67,18 +67,6 @@ body > .container {
 .container .text-muted { /* Coloca o texto do footer no meio */
     margin: 20px 0;
 }
-.text-muted {
-    color: #9d9d9d;
-}
-.footer > .container {
-    padding-right: 15px;
-    padding-left: 15px;
-}
-
-.box {
-    margin-top: 20px;
-    border: 5px solid lightgrey;
-}
 
 
 /* ==========================================================
