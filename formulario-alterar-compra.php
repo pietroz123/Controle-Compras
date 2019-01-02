@@ -6,7 +6,7 @@
 
 <?php
 
-    $id_compra = $_GET['id'];
+    $id_compra = $_POST['id'];
     $compra = buscar_compra($conexao, $id_compra);
 
 ?>

@@ -29,7 +29,7 @@
 
     <tbody>
         <tr>
-            <th scope="row"><?= $compra['Id']; ?></th>
+            <td><?= $compra['Id']; ?></td>
             <td><?= $compra['Data']; ?></td>
             <td><?= $compra['Valor']; ?></td>
             <td><?= $compra['Observacoes']; ?></td>
@@ -37,7 +37,10 @@
             <td><?= $compra['Forma_Pagamento']; ?></td>
             <td><?= $compra['Nome_Comprador']; ?></td>
             <td>
-                <a class="btn btn-primary" href="formulario-alterar-compra.php?id=<?= $compra['Id']; ?>">alterar</a>
+                <form action="formulario-alterar-compra.php" method="post">
+                    <input type="hidden" name="id" value="<?= $compra['Id'] ?>">
+                    <button class="btn btn-primary">alterar</button>
+                </form>
             </td>
             <td>
                 <form action="remover-compra.php" method="post">
@@ -52,6 +55,20 @@
         endforeach
     ?>
 
+    <tfoot>
+        <tr>
+            <th>ID</th>
+            <th>Data</th>
+            <th>Valor</th>
+            <th>Observacoes</th>
+            <th>Desconto</th>
+            <th>Pagamento</th>
+            <th>Comprador</th>
+            <th></th>
+            <th></th>            
+        </tr>
+    </tfoot>
+
 </table>
 
 <!-- 
@@ -64,8 +81,8 @@ Obs: O comando a seguir lista todas as características de cada compra no format
 <?php include("rodape.php"); ?>
 
 <script>
-    $(document).ready(function () {
-        $('#tabela-produtos').DataTable();
-        $('.dataTables_length').addClass('bs-select');
-    });
+    // $(document).ready(function () {
+    //     $('#tabela-produtos').DataTable();
+    //     $('.dataTables_length').addClass('bs-select');
+    // });
 </script>
