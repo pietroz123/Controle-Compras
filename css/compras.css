@@ -96,63 +96,17 @@ body > .container {
     }
 }
 
-table th:nth-of-type(10) {
-    display: none;
-}
-table td:nth-of-type(10) {
+.t-detalhes {
     display: none;
 }
 
 @media only screen and (max-width: 550px) {
-    table th:nth-of-type(1) {
+    .t-id, .t-valor, .t-desconto, .t-pagamento, .t-comprador, .t-alterar, .t-remover {
         display: none;
     }
-    table th:nth-of-type(4) {
-        display: none;
-    }
-    table th:nth-of-type(5) {
-        display: none;
-    }
-    table th:nth-of-type(6) {
-        display: none;
-    }
-    table th:nth-of-type(7) {
-        display: none;
-    }
-    table th:nth-of-type(8) {
-        display: none;
-    }
-    table th:nth-of-type(9) {
-        display: none;
-    }
-    table th:nth-of-type(10) {
+    .t-detalhes {
         display: table-cell;
     }
-    table td:nth-of-type(1) {
-        display: none;
-    }
-    table td:nth-of-type(4) {
-        display: none;
-    }
-    table td:nth-of-type(5) {
-        display: none;
-    }
-    table td:nth-of-type(6) {
-        display: none;
-    }
-    table td:nth-of-type(7) {
-        display: none;
-    }
-    table td:nth-of-type(8) {
-        display: none;
-    }
-    table td:nth-of-type(9) {
-        display: none;
-    }
-    table td:nth-of-type(10) {
-        display: table-cell;
-    }
-
 }
 
 /* ==========================================================

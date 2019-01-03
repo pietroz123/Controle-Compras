@@ -11,16 +11,16 @@
 
     <thead class="thead-dark">
         <tr>
-            <th class="th-sm">ID</th>
-            <th class="th-sm">Data</th>
-            <th class="th-sm">Observacoes</th>
-            <th class="th-sm">Valor</th>
-            <th class="th-sm">Desconto</th>
-            <th class="th-sm">Pagamento</th>
-            <th class="th-sm">Comprador</th>
-            <th class="th-sm">Alterar</th>
-            <th class="th-sm">Remover</th>
-            <th class="th-sm">Detalhes</th> 
+            <th class="th-sm t-id">ID</th>
+            <th class="th-sm t-data">Data</th>
+            <th class="th-sm t-observacoes">Observacoes</th>
+            <th class="th-sm t-valor">Valor</th>
+            <th class="th-sm t-desconto">Desconto</th>
+            <th class="th-sm t-pagamento">Pagamento</th>
+            <th class="th-sm t-comprador">Comprador</th>
+            <th class="th-sm t-alterar">Alterar</th>
+            <th class="th-sm t-remover">Remover</th>
+            <th class="th-sm t-detalhes">Detalhes</th> 
         </tr>
     </thead>
 
@@ -31,26 +31,26 @@
     ?>
 
         <tr>
-            <td><?= $compra['Id']; ?></td>
-            <td><?= $compra['Data']; ?></td>
-            <td><?= $compra['Observacoes']; ?></td>
-            <td><?= $compra['Valor']; ?></td>
-            <td><?= $compra['Desconto']; ?></td>          
-            <td><?= $compra['Forma_Pagamento']; ?></td>
-            <td><?= $compra['Nome_Comprador']; ?></td>
-            <td>
+            <td class="t-id"><?= $compra['Id']; ?></td>
+            <td class="t-data"><?= $compra['Data']; ?></td>
+            <td class="t-observacoes"><?= $compra['Observacoes']; ?></td>
+            <td class="t-valor"><?= $compra['Valor']; ?></td>
+            <td class="t-desconto"><?= $compra['Desconto']; ?></td>          
+            <td class="t-pagamento"><?= $compra['Forma_Pagamento']; ?></td>
+            <td class="t-comprador"><?= $compra['Nome_Comprador']; ?></td>
+            <td class="t-alterar">
                 <form action="formulario-alterar-compra.php" method="post">
                     <input type="hidden" name="id" value="<?= $compra['Id'] ?>">
                     <button class="btn btn-primary" style="padding: 6px 12px; margin: unset;">alterar</button>
                 </form>
             </td>
-            <td>
+            <td class="t-remover">
                 <form action="remover-compra.php" method="post">
                     <input type="hidden" name="id" value="<?= $compra['Id'] ?>">
                     <button class="btn btn-danger" onclick="return confirm('Deseja prosseguir com a remoção?');" style="padding: 6px 12px; margin: unset;">remover</button>
                 </form>
             </td>
-            <td>
+            <td class="t-detalhes">
                 <button class="btn btn-info" style="padding: 6px 12px; margin: unset;" data-toggle="modal" data-target="#modal-detalhes-compra" data-id="<?= $compra['Id']; ?>" data-data="<?= $compra['Data']; ?>" data-observacoes="<?= $compra['Observacoes']; ?>" data-valor="<?= $compra['Valor']; ?>" data-desconto="<?= $compra['Desconto']; ?>" data-pagamento="<?= $compra['Forma_Pagamento']; ?>" data-comprador="<?= $compra['Nome_Comprador']; ?>">detalhes</button>
             </td>
         </tr>
@@ -63,16 +63,16 @@
 
     <tfoot>
         <tr>
-            <th>ID</th>
-            <th>Data</th>
-            <th>Observacoes</th>
-            <th>Valor</th>
-            <th>Desconto</th>
-            <th>Pagamento</th>
-            <th>Comprador</th>
-            <th>Alterar</th>
-            <th>Remover</th>
-            <th>Detalhes</th>            
+            <th class="t-id">ID</th>
+            <th class="t-data">Data</th>
+            <th class="t-observacoes">Observacoes</th>
+            <th class="t-valor">Valor</th>
+            <th class="t-desconto">Desconto</th>
+            <th class="t-pagamento">Pagamento</th>
+            <th class="t-comprador">Comprador</th>
+            <th class="t-alterar">Alterar</th>
+            <th class="t-remover">Remover</th>
+            <th class="t-detalhes">Detalhes</th>            
         </tr>
     </tfoot>
 
