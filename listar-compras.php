@@ -155,7 +155,7 @@
         $('.dataTables_length').addClass('bs-select');
     });
 
-    // Coloca as informacoes na tabela
+    // Coloca as informacoes no modal
     $('#modal-detalhes-compra').on('show.bs.modal', function(event) {
         // Recupera as informacoes do botao
         var botao = $(event.relatedTarget);

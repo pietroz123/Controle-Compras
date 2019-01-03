@@ -15,21 +15,24 @@
 
 ?>
 
-<table class="table table-hover" style="width: 110%; margin-left: -35px;">
+<table class="table table-hover" id="tabela-compras" style="width: 110%; margin-left: -50px;">
 
     <thead class="thead-dark">
         <tr>
-            <th scope="col">Data</th>
-            <th scope="col">Valor</th>
-            <th scope="col">Observacoes</th>
-            <th scope="col">Desconto</th>
-            <th scope="col">Pagamento</th>
-            <th scope="col">Comprador</th>
-            <th scope="col"></th>
-            <th scope="col"></th>
+            <th class="th-sm t-id">ID</th>
+            <th class="th-sm t-data">Data</th>
+            <th class="th-sm t-observacoes">Observacoes</th>
+            <th class="th-sm t-valor">Valor</th>
+            <th class="th-sm t-desconto">Desconto</th>
+            <th class="th-sm t-pagamento">Pagamento</th>
+            <th class="th-sm t-comprador">Comprador</th>
+            <th class="th-sm t-alterar">Alterar</th>
+            <th class="th-sm t-remover">Remover</th>
+            <th class="th-sm t-detalhes">Detalhes</th> 
         </tr>
     </thead>
 
+    <tbody>
     <?php
 
         if ($id_comprador == 0) {
@@ -44,29 +47,35 @@
             $soma += $valor;
     ?>
 
-    <tbody>
         <tr>
-            <th scope="row"><?= $compra['Data']; ?></th>
-            <td><?= $compra['Valor']; ?></td>
-            <td><?= $compra['Observacoes']; ?></td>
-            <td><?= $compra['Desconto']; ?></td>            
-            <td><?= $compra['Forma_Pagamento']; ?></td>
-            <td><?= $compra['Nome_Comprador']; ?></td>
-            <td>
-                <a class="btn btn-primary" href="formulario-alterar-compra.php?id=<?= $compra['Id']; ?>">alterar</a>
-            </td>
-            <td>
-                <form action="remover-compra.php" method="post">
+            <td class="t-id"><?= $compra['Id']; ?></td>
+            <td class="t-data"><?= $compra['Data']; ?></td>
+            <td class="t-observacoes"><?= $compra['Observacoes']; ?></td>
+            <td class="t-valor"><?= $compra['Valor']; ?></td>
+            <td class="t-desconto"><?= $compra['Desconto']; ?></td>          
+            <td class="t-pagamento"><?= $compra['Forma_Pagamento']; ?></td>
+            <td class="t-comprador"><?= $compra['Nome_Comprador']; ?></td>
+            <td class="t-alterar">
+                <form action="formulario-alterar-compra.php" method="post">
                     <input type="hidden" name="id" value="<?= $compra['Id'] ?>">
-                    <button class="btn btn-danger" onclick="return confirm('Deseja prosseguir com a remoção?');">remover</button>
+                    <button class="btn btn-primary" style="padding: 6px 12px; margin: unset;">alterar</button>
                 </form>
             </td>
+            <td class="t-remover">
+                <form action="remover-compra.php" method="post">
+                    <input type="hidden" name="id" value="<?= $compra['Id'] ?>">
+                    <button class="btn btn-danger" onclick="return confirm('Deseja prosseguir com a remoção?');" style="padding: 6px 12px; margin: unset;">remover</button>
+                </form>
+            </td>
+            <td class="t-detalhes">
+                <button class="btn btn-info" style="padding: 6px 12px; margin: unset;" data-toggle="modal" data-target="#modal-detalhes-compra" data-id="<?= $compra['Id']; ?>" data-data="<?= $compra['Data']; ?>" data-observacoes="<?= $compra['Observacoes']; ?>" data-valor="<?= $compra['Valor']; ?>" data-desconto="<?= $compra['Desconto']; ?>" data-pagamento="<?= $compra['Forma_Pagamento']; ?>" data-comprador="<?= $compra['Nome_Comprador']; ?>">detalhes</button>
+            </td>
         </tr>
-    </tbody>
 
     <?php
         endforeach
     ?>
+    </tbody>
 
 </table><br>
 
@@ -75,4 +84,80 @@
 </div>
 
 
+<!-- Modal para detalhes da Compra -->
+<div class="modal" id="modal-detalhes-compra">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Informações</h2>
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="grid">
+                    <div class="row">
+                        <div class="col-3">ID</div>
+                        <div class="col-9"><input type="text" class="form-control" id="id-compra" readonly></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3">Data</div>
+                        <div class="col-9"><input class="form-control" type="date" name="data" id="data-compra" readonly></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3">Obs.</div>
+                        <div class="col-9"><input class="form-control" type="text" name="observacoes" id="observacoes-compra" readonly></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3">Valor</div>
+                        <div class="col-9"><input class="form-control" type="number" name="valor" min="0" step="0.01" id="valor-compra" readonly></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3">Desconto</div>
+                        <div class="col-9"><input class="form-control" type="number" name="desconto" min="0" step="0.01" value="0"  id="desconto-compra" readonly></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3">Pagamento</div>
+                        <div class="col-9"><input type="text" class="form-control" name="forma-pagamento" id="pagamento-compra" readonly></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3">Comprador</div>
+                        <div class="col-9"><input type="text" class="form-control" name="comprador" id="comprador-compra" readonly></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">alterar</button>
+                <button type="button" class="btn btn-danger">remover</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 <?php include("rodape.php"); ?>
+
+<script>
+    // Coloca as informacoes no modal
+    $('#modal-detalhes-compra').on('show.bs.modal', function(event) {
+        // Recupera as informacoes do botao
+        var botao = $(event.relatedTarget);
+        var id = botao.data('id');
+        var data = botao.data('data');
+        var observacoes = botao.data('observacoes');
+        var valor = botao.data('valor');
+        var desconto = botao.data('desconto');
+        var pagamento = botao.data('pagamento');
+        var comprador = botao.data('comprador');
+        
+        // Imprime nos campos do modal-detalhes-compra
+        var modal = $(this);
+        modal.find('#id-compra').val(id);
+        modal.find("#data-compra").val(data);
+        modal.find("#observacoes-compra").val(observacoes);
+        modal.find("#valor-compra").val(valor);
+        modal.find("#desconto-compra").val(desconto);
+        modal.find("#pagamento-compra").val(pagamento);
+        modal.find("#comprador-compra").val(comprador);
+
+    });
+</script>
