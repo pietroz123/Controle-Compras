@@ -22,12 +22,12 @@
         </tr>
     </thead>
 
+    <tbody>
     <?php
         $compras = listar($conexao, "SELECT cmp.*, cmpd.Nome AS Nome_Comprador FROM compras AS cmp JOIN compradores AS cmpd ON cmp.Comprador_ID = cmpd.ID ORDER BY year(data), month(data), day(data);");
         foreach ($compras as $compra) :
     ?>
 
-    <tbody>
         <tr>
             <td><?= $compra['Id']; ?></td>
             <td><?= $compra['Data']; ?></td>
@@ -49,11 +49,12 @@
                 </form>
             </td>
         </tr>
-    </tbody>
 
     <?php
         endforeach
     ?>
+
+    </tbody>
 
     <tfoot>
         <tr>
@@ -81,8 +82,8 @@ Obs: O comando a seguir lista todas as características de cada compra no format
 <?php include("rodape.php"); ?>
 
 <script>
-    // $(document).ready(function () {
-    //     $('#tabela-produtos').DataTable();
-    //     $('.dataTables_length').addClass('bs-select');
-    // });
+    $(document).ready(function () {
+        $('#tabela-produtos').DataTable();
+        $('.dataTables_length').addClass('bs-select');
+    });
 </script>
