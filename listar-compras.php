@@ -51,7 +51,7 @@
                 </form>
             </td>
             <td>
-                <button class="btn btn-info" style="padding: 6px 12px; margin: unset;" data-toggle="modal" data-target="#modal-detalhes-compra" data-id="<?= $compra['Id']; ?>">detalhes</button>
+                <button class="btn btn-info" style="padding: 6px 12px; margin: unset;" data-toggle="modal" data-target="#modal-detalhes-compra" data-id="<?= $compra['Id']; ?>" data-data="<?= $compra['Data']; ?>" data-observacoes="<?= $compra['Observacoes']; ?>" data-valor="<?= $compra['Valor']; ?>" data-desconto="<?= $compra['Desconto']; ?>" data-pagamento="<?= $compra['Forma_Pagamento']; ?>" data-comprador="<?= $compra['Nome_Comprador']; ?>">detalhes</button>
             </td>
         </tr>
 
@@ -87,9 +87,36 @@
                 <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
             </div>
             <div class="modal-body">
-                Aqui ficam as informações sobre a compra.
-                <p id="id-compra"></p>
-                <!-- <input type="text" id="id-compra"> -->
+                <div class="grid">
+                    <div class="row">
+                        <div class="col-3">ID</div>
+                        <div class="col-9"><input type="text" class="form-control" id="id-compra" readonly></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3">Data</div>
+                        <div class="col-9"><input class="form-control" type="date" name="data" id="data-compra" readonly></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3">Observacoes</div>
+                        <div class="col-9"><input class="form-control" type="text" name="observacoes" id="observacoes-compra" readonly></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3">Valor</div>
+                        <div class="col-9"><input class="form-control" type="number" name="valor" min="0" step="0.01" id="valor-compra" readonly></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3">Desconto</div>
+                        <div class="col-9"><input class="form-control" type="number" name="desconto" min="0" step="0.01" value="0"  id="desconto-compra" readonly></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3">Pagamento</div>
+                        <div class="col-9"><input type="text" class="form-control" name="forma-pagamento" id="pagamento-compra" readonly></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3">Comprador</div>
+                        <div class="col-9"><input type="text" class="form-control" name="comprador" id="comprador-compra" readonly></div>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary">alterar</button>
@@ -109,10 +136,25 @@
     });
 
     $('#modal-detalhes-compra').on('show.bs.modal', function(event) {
+        // Recupera as informacoes do botao
         var botao = $(event.relatedTarget);
         var id = botao.data('id');
-
+        var data = botao.data('data');
+        var observacoes = botao.data('observacoes');
+        var valor = botao.data('valor');
+        var desconto = botao.data('desconto');
+        var pagamento = botao.data('pagamento');
+        var comprador = botao.data('comprador');
+        
+        // Imprime nos campos do modal-detalhes-compra
         var modal = $(this);
         modal.find('#id-compra').val(id);
-    })
+        modal.find("#data-compra").val(data);
+        modal.find("#observacoes-compra").val(observacoes);
+        modal.find("#valor-compra").val(valor);
+        modal.find("#desconto-compra").val(desconto);
+        modal.find("#pagamento-compra").val(pagamento);
+        modal.find("#comprador-compra").val(comprador);
+
+    });
 </script>
