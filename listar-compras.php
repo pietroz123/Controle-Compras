@@ -6,19 +6,41 @@
 
 <h1>Lista de Compras</h1>
 
+<!-- Modal para detalhes da Compra -->
+<div class="modal" id="detalhes-compra">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Informações</h2>
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+            </div>
+            <div class="modal-body">
+                Aqui ficam as informações sobre a compra.
+                <input type="text" id="id-compra">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">alterar</button>
+                <button type="button" class="btn btn-danger">remover</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Tabela com as compras -->
 <table class="table table-hover" id="tabela-produtos" style="width: 110%; margin-left: -35px;">
 
     <thead class="thead-dark">
         <tr>
             <th class="th-sm">ID</th>
             <th class="th-sm">Data</th>
-            <th class="th-sm">Valor</th>
             <th class="th-sm">Observacoes</th>
+            <th class="th-sm">Valor</th>
             <th class="th-sm">Desconto</th>
             <th class="th-sm">Pagamento</th>
             <th class="th-sm">Comprador</th>
-            <th class="th-sm"></th>
-            <th class="th-sm"></th>            
+            <th class="th-sm">Alterar</th>
+            <th class="th-sm">Remover</th>
+            <th class="th-sm">Detalhes</th> 
         </tr>
     </thead>
 
@@ -31,8 +53,8 @@
         <tr>
             <td><?= $compra['Id']; ?></td>
             <td><?= $compra['Data']; ?></td>
-            <td><?= $compra['Valor']; ?></td>
             <td><?= $compra['Observacoes']; ?></td>
+            <td><?= $compra['Valor']; ?></td>
             <td><?= $compra['Desconto']; ?></td>          
             <td><?= $compra['Forma_Pagamento']; ?></td>
             <td><?= $compra['Nome_Comprador']; ?></td>
@@ -48,6 +70,9 @@
                     <button class="btn btn-danger" onclick="return confirm('Deseja prosseguir com a remoção?');" style="padding: 6px 12px; margin: unset;">remover</button>
                 </form>
             </td>
+            <td>
+                <button class="btn btn-info" style="padding: 6px 12px; margin: unset;" data-toggle="modal" data-target="#detalhes-compra" data-id="<?= $compra['Id']; ?>">detalhes</button>
+            </td>
         </tr>
 
     <?php
@@ -60,24 +85,19 @@
         <tr>
             <th>ID</th>
             <th>Data</th>
-            <th>Valor</th>
             <th>Observacoes</th>
+            <th>Valor</th>
             <th>Desconto</th>
             <th>Pagamento</th>
             <th>Comprador</th>
-            <th></th>
-            <th></th>            
+            <th>Alterar</th>
+            <th>Remover</th>
+            <th>Detalhes</th>            
         </tr>
     </tfoot>
 
 </table>
 
-<!-- 
-Obs: O comando a seguir lista todas as características de cada compra no formato de um array
-    echo "<pre>";
-    echo print_r($produto); 
-    echo "</pre>"; 
--->
 
 <?php include("rodape.php"); ?>
 
@@ -86,4 +106,12 @@ Obs: O comando a seguir lista todas as características de cada compra no format
         $('#tabela-produtos').DataTable();
         $('.dataTables_length').addClass('bs-select');
     });
+
+    $('#detalhes-compra').on('show.bs.modal', function(event) {
+        var botao = $(event.relatedTarget);
+        var id = botao.data('id');
+
+        var modal = $(this);
+        modal.find('#id-compra').val(id);
+    })
 </script>
