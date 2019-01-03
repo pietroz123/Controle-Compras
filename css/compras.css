@@ -108,7 +108,7 @@ body > .container {
         display: table-cell;
     }
 }
-@media only screen and (max-width: 770px) {
+@media only screen and (max-width: 900px) {
     .t-desconto, .t-pagamento, .t-comprador, .t-alterar, .t-remover {
         display: none;
     }
