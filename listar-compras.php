@@ -7,7 +7,7 @@
 <h1>Lista de Compras</h1>
 
 <!-- Tabela com as compras -->
-<table class="table table-hover" id="tabela-produtos" style="width: 110%; margin-left: -35px;">
+<table class="table table-hover" id="tabela-compras" style="width: 110%; margin-left: -50px;">
 
     <thead class="thead-dark">
         <tr>
@@ -97,7 +97,7 @@
                         <div class="col-9"><input class="form-control" type="date" name="data" id="data-compra" readonly></div>
                     </div>
                     <div class="row">
-                        <div class="col-3">Observacoes</div>
+                        <div class="col-3">Obs.</div>
                         <div class="col-9"><input class="form-control" type="text" name="observacoes" id="observacoes-compra" readonly></div>
                     </div>
                     <div class="row">
@@ -131,7 +131,7 @@
 
 <script>
     $(document).ready(function () {
-        $('#tabela-produtos').DataTable();
+        $('#tabela-compras').DataTable();
         $('.dataTables_length').addClass('bs-select');
     });
 
