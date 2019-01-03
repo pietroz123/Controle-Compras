@@ -140,9 +140,16 @@
                 "info": "Mostrando página _PAGE_ de _PAGES_",
                 "infoEmpty": "Nenhum item encontrado",
                 "infoFiltered": "(filtrado a partir de _MAX_ itens)",
-                "search": "Buscar",
-                "previous": "Anterior",
-                "next": "Próximo"
+                "search": "Buscar:",
+                "emptyTable":     "Nenhum dado disponível na tabela",
+                "loadingRecords": "Carregando...",
+                "processing":     "Processando...",
+                "paginate": {
+                    "first":      "Primeiro",
+                    "last":       "Último",
+                    "next":       "Próximo",
+                    "previous":   "Anterior"
+                }
             }
         });
         $('.dataTables_length').addClass('bs-select');
