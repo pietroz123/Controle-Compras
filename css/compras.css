@@ -125,6 +125,16 @@ body > .container {
     text-align: left;
 }
 
+.bs-select {
+    float: left;
+    margin-left: -40px;
+}
+.dataTables_info {
+    color: darkgrey;
+    float: left;
+    margin-left: -40px;
+}
+
 
 /* ==========================================================
    =================== BARRA DE NAVEGACAO ===================
