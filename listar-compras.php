@@ -130,11 +130,25 @@
 <?php include("rodape.php"); ?>
 
 <script>
+
+    // Inicializa a tabela
     $(document).ready(function () {
-        $('#tabela-compras').DataTable();
+        $('#tabela-compras').DataTable({
+            "language": {
+                "lengthMenu": "Mostrar _MENU_ itens por página",
+                "zeroRecords": "Nenhum item encontrado - desculpa",
+                "info": "Mostrando página _PAGE_ de _PAGES_",
+                "infoEmpty": "Nenhum item encontrado",
+                "infoFiltered": "(filtrado a partir de _MAX_ itens)",
+                "search": "Buscar",
+                "previous": "Anterior",
+                "next": "Próximo"
+            }
+        });
         $('.dataTables_length').addClass('bs-select');
     });
 
+    // Coloca as informacoes na tabela
     $('#modal-detalhes-compra').on('show.bs.modal', function(event) {
         // Recupera as informacoes do botao
         var botao = $(event.relatedTarget);
