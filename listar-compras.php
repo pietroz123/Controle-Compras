@@ -6,26 +6,6 @@
 
 <h1>Lista de Compras</h1>
 
-<!-- Modal para detalhes da Compra -->
-<div class="modal" id="detalhes-compra">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Informações</h2>
-                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
-            </div>
-            <div class="modal-body">
-                Aqui ficam as informações sobre a compra.
-                <input type="text" id="id-compra">
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary">alterar</button>
-                <button type="button" class="btn btn-danger">remover</button>
-            </div>
-        </div>
-    </div>
-</div>
-
 <!-- Tabela com as compras -->
 <table class="table table-hover" id="tabela-produtos" style="width: 110%; margin-left: -35px;">
 
@@ -71,7 +51,7 @@
                 </form>
             </td>
             <td>
-                <button class="btn btn-info" style="padding: 6px 12px; margin: unset;" data-toggle="modal" data-target="#detalhes-compra" data-id="<?= $compra['Id']; ?>">detalhes</button>
+                <button class="btn btn-info" style="padding: 6px 12px; margin: unset;" data-toggle="modal" data-target="#modal-detalhes-compra" data-id="<?= $compra['Id']; ?>">detalhes</button>
             </td>
         </tr>
 
@@ -98,6 +78,27 @@
 
 </table>
 
+<!-- Modal para detalhes da Compra -->
+<div class="modal" id="modal-detalhes-compra">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Informações</h2>
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+            </div>
+            <div class="modal-body">
+                Aqui ficam as informações sobre a compra.
+                <p id="id-compra"></p>
+                <!-- <input type="text" id="id-compra"> -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">alterar</button>
+                <button type="button" class="btn btn-danger">remover</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <?php include("rodape.php"); ?>
 
@@ -107,7 +108,7 @@
         $('.dataTables_length').addClass('bs-select');
     });
 
-    $('#detalhes-compra').on('show.bs.modal', function(event) {
+    $('#modal-detalhes-compra').on('show.bs.modal', function(event) {
         var botao = $(event.relatedTarget);
         var id = botao.data('id');
 
