@@ -14,7 +14,7 @@
                 <div class="div-palavra-chave">
                     <li class="list-group-item">Palavra/frase chave</li>
                     <li class="list-group-item">
-                        <input class="form-control palavra-chave" type="text" name="texto">
+                        <input class="form-control palavra-chave" type="text" name="texto" placeholder="Digite a palavra chave">
                     </li>
                 </div>
                 <div class="div-data">
@@ -27,7 +27,7 @@
                     <li class="list-group-item">
                         <select class="custom-select" name="comprador" id="comprador">
                             <option class="text-muted">Selecione uma Opção</option>
-                            <option value="0">Todos</option>
+                            <option value="0" selected>Todos</option>
                             <?php 
                                 $compradores = listar($conexao, "SELECT * FROM compradores");
                                 foreach ($compradores as $comprador) :
