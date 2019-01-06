@@ -141,8 +141,12 @@ body > .container {
    =================== BARRA DE NAVEGACAO ===================
    ========================================================== */
 
-li.nav-item:hover {
+.nav-hover-bg {
     background-color: grey;
+}
+
+.links-login-signin {
+    display: -webkit-inline-box;
 }
 
 /* ==========================================================

@@ -24,7 +24,7 @@
 
         <!-- Menu de navegação: no Bootstrap é a classe navbar -->
         <!-- https://www.youtube.com/watch?v=23bpce-5s8I -->
-        <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
                 
             <div class="navbar-header">
                 <a class="navbar-brand" href="index.php">Home</a>
@@ -37,22 +37,22 @@
             <div class="collapse navbar-collapse" id="navbarMenu">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="formulario-compra-grid.php">Adicionar Compra</a>
+                        <a class="nav-link" onmouseover="this.classList.add('nav-hover-bg')" onmouseout="this.classList.remove('nav-hover-bg')" href="formulario-compra-grid.php">Adicionar Compra</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="formulario-comprador-grid.php">Adicionar Comprador</a>
+                        <a class="nav-link" onmouseover="this.classList.add('nav-hover-bg')" onmouseout="this.classList.remove('nav-hover-bg')" href="formulario-comprador-grid.php">Adicionar Comprador</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="listar-compras.php">Compras</a>
+                        <a class="nav-link" onmouseover="this.classList.add('nav-hover-bg')" onmouseout="this.classList.remove('nav-hover-bg')" href="listar-compras.php">Compras</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="buscar.php">Buscar</a>
+                        <a class="nav-link" onmouseover="this.classList.add('nav-hover-bg')" onmouseout="this.classList.remove('nav-hover-bg')" href="buscar.php">Buscar</a>
                     </li>
                 </ul>
 
-                <ul class="navbar-nav">
+                <ul class="navbar-nav links-login-signin">
                     <li class="nav-item">
-                        <button class="btn btn-primary botao-pequeno">LOG IN</button>
+                        <button class="btn btn-primary botao-pequeno" style="margin-right: 10px;">LOG IN</button>
                     </li>
                     <li class="nav-item">
                         <button class="btn btn-indigo botao-pequeno">SIGN UP</button>                        
