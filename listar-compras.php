@@ -41,17 +41,17 @@
             <td class="t-alterar">
                 <form action="formulario-alterar-compra.php" method="post">
                     <input type="hidden" name="id" value="<?= $compra['Id'] ?>">
-                    <button class="btn btn-primary" style="padding: 6px 12px; margin: unset;">alterar</button>
+                    <button class="btn btn-primary botao-pequeno">alterar</button>
                 </form>
             </td>
             <td class="t-remover">
                 <form action="remover-compra.php" method="post">
                     <input type="hidden" name="id" value="<?= $compra['Id'] ?>">
-                    <button class="btn btn-danger" onclick="return confirm('Deseja prosseguir com a remoção?');" style="padding: 6px 12px; margin: unset;">remover</button>
+                    <button class="btn btn-danger botao-pequeno" onclick="return confirm('Deseja prosseguir com a remoção?');">remover</button>
                 </form>
             </td>
             <td class="t-detalhes">
-                <button class="btn btn-info" style="padding: 6px 12px; margin: unset;" data-toggle="modal" data-target="#modal-detalhes-compra" data-id="<?= $compra['Id']; ?>" data-data="<?= $compra['Data']; ?>" data-observacoes="<?= $compra['Observacoes']; ?>" data-valor="<?= $compra['Valor']; ?>" data-desconto="<?= $compra['Desconto']; ?>" data-pagamento="<?= $compra['Forma_Pagamento']; ?>" data-comprador="<?= $compra['Nome_Comprador']; ?>">detalhes</button>
+                <button class="btn btn-info botao-pequeno" data-toggle="modal" data-target="#modal-detalhes-compra" data-id="<?= $compra['Id']; ?>" data-data="<?= $compra['Data']; ?>" data-observacoes="<?= $compra['Observacoes']; ?>" data-valor="<?= $compra['Valor']; ?>" data-desconto="<?= $compra['Desconto']; ?>" data-pagamento="<?= $compra['Forma_Pagamento']; ?>" data-comprador="<?= $compra['Nome_Comprador']; ?>">detalhes</button>
             </td>
         </tr>
 

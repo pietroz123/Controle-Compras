@@ -144,3 +144,12 @@ body > .container {
 li.nav-item:hover {
     background-color: grey;
 }
+
+/* ==========================================================
+   ===================== BOTOES PEQUENOS ====================
+   ========================================================== */
+
+.botao-pequeno {
+    padding: 6px 12px;
+    margin: unset;
+}

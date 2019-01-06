@@ -35,7 +35,7 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarMenu">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="formulario-compra-grid.php">Adicionar Compra</a>
                     </li>
@@ -47,6 +47,15 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="buscar.php">Buscar</a>
+                    </li>
+                </ul>
+
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <button class="btn btn-primary botao-pequeno">LOG IN</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-indigo botao-pequeno">SIGN UP</button>                        
                     </li>
                 </ul>
             </div>
