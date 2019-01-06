@@ -49,13 +49,13 @@
                         <a class="nav-link" onmouseover="this.classList.add('nav-hover-bg')" onmouseout="this.classList.remove('nav-hover-bg')" href="buscar.php">Buscar</a>
                     </li>
                 </ul>
-
+                <hr style="background-color: white">
                 <ul class="navbar-nav links-login-signin">
                     <li class="nav-item">
-                        <button class="btn btn-primary botao-pequeno" style="margin-right: 10px;">LOG IN</button>
+                        <button class="btn btn-primary botao-pequeno" style="margin-right: 10px;">log in</button>
                     </li>
                     <li class="nav-item">
-                        <button class="btn btn-indigo botao-pequeno">SIGN UP</button>                        
+                        <button class="btn btn-indigo botao-pequeno">cadastrar</button>                        
                     </li>
                 </ul>
             </div>
