@@ -29,6 +29,7 @@ body h1 {
 .conteudo-principal {
     padding: 40px 15px;
     text-align: center;
+    font-family: 'Roboto Slab', serif;
 }
 
 .conteudo-principal p {
