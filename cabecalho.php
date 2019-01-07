@@ -1,3 +1,7 @@
+<?php
+    // Inicia a sessao
+    session_start();
+?>
 <html>
 
     <head>
