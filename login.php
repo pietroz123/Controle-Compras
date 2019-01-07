@@ -25,6 +25,11 @@
             header("Location: index.php");
             die();
         }
+        if ($usuario['Autenticado'] == 0) {
+            $_SESSION['danger'] = "Usuário aguardando confirmacao de cadastro.";
+            header("Location: index.php");
+            die();
+        }
         login($usuario['Primeiro_Nome'], $usuario['Usuario']);
         $_SESSION['success'] = "Logado com sucesso.";
         header("Location: index.php");

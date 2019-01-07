@@ -16,20 +16,7 @@
 
     // Recebe o ID da requisicao POST
     $id_usuario_temp = $_POST['id'];
-
-    // Recupera o usuario temporario correspondente
-    $usuario_temp = buscar_usuario_temp($conexao, $id_usuario_temp);
-
-    // Dados do usuario temporario
-    $nome = $usuario_temp['Primeiro_Nome'];
-    $sobrenome = $usuario_temp['Sobrenome'];
-    $username = $usuario_temp['Usuario'];
-    $email = $usuario_temp['Email'];
-    $senha = $usuario_temp['Senha'];
-
-    // Insere o usuario
-    if (adicionar_usuario_definitivo($conexao, $nome, $sobrenome, $username, $email, $senha)) {
-        remover_usuario_temp($conexao, $id_usuario_temp);
+    if (adicionar_usuario_definitivo($conexao, $id_usuario_temp)) {
         $_SESSION['success'] = "Usuario adicionado com sucesso.";
         header("Location: requisicoes.php");
         die();

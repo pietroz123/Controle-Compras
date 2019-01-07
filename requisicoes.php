@@ -22,7 +22,7 @@
 
     <tbody>
     <?php
-        $usuarios_temp = listar($conexao, "SELECT * FROM usuarios_temp;");
+        $usuarios_temp = listar($conexao, "SELECT * FROM usuarios WHERE autenticado = 0;");
         foreach ($usuarios_temp as $usuario_temp) {
     ?>
         <tr>
