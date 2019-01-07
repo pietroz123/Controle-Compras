@@ -9,6 +9,14 @@
                 <div class="modal-body">
                     <div class="grid">
                         <div class="row">
+                            <div class="col-sm-4">Nome</div>
+                            <div class="col-sm-8"><input type="text" name="nome" class="form-control" placeholder="Digite o seu primeiro nome"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">Sobrenome</div>
+                            <div class="col-sm-8"><input type="text" name="sobrenome" class="form-control" placeholder="Digite o seu sobrenome"></div>
+                        </div>
+                        <div class="row">
                             <div class="col-sm-4">Usuario</div>
                             <div class="col-sm-8"><input type="text" name="usuario" class="form-control" placeholder="Escolha um nome de usuario"></div>
                         </div>
