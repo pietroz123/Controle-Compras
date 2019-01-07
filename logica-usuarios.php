@@ -19,8 +19,9 @@ function mostra_alerta($tipo) {
 // Verifica se o usuario esta logado e, caso contrario, o redireciona para a pagina principal
 function verifica_usuario() {
     if (!usuario_esta_logado()) {
-        $_SESSION['danger'] = "Voce nao tem acesso a essa funcionalidade.";
-        header("Location: index.php");
+        $_SESSION['danger'] = "Você não tem acesso a essa funcionalidade.";
+        // header("Location: index.php");
+        echo("<script>location.href = 'index.php'</script>");
         die();
     }
 }
