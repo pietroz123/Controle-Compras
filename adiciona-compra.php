@@ -1,6 +1,7 @@
 <?php 
     include("cabecalho.php");
     include("conexao.php");
+    include("funcoes.php");
 ?>
 
 <?php
@@ -17,14 +18,13 @@
     $forma_pagamento    = $_POST['forma-pagamento'];
     $comprador_id       = $_POST['comprador-id'];
 
-    $c = new Compra($valor, $data, $observacoes, $desconto, $forma_pagamento, $comprador_id);
 
 ?>
 
 <!-- Abre conexão e verifica possível erro -->
 <?php 
 
-    if ($op->adicionar_compra($mysqli, $c)) {   
+    if (inserir_compra($conexao, $valor, $data, $observacoes, $desconto, $forma_pagamento, $comprador_id)) {   
 
 ?>
 
@@ -48,7 +48,7 @@
 <!-- Else -->
 <?php 
     } else {
-        $mensagem_erro = mysqli_error($mysqli);
+        $mensagem_erro = mysqli_error($conexao);
 ?>
 
         <!-- Alerta de erro -->

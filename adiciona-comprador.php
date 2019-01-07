@@ -1,6 +1,7 @@
 <?php
     include("cabecalho.php");
     include("conexao.php");
+    include("funcoes.php");
 ?>
 
 <?php
@@ -19,14 +20,13 @@
     $email      = $_GET['email'];
     $telefone   = $_GET['telefone'];
 
-    $c = new Comprador($nome, $cidade, $estado, $endereco, $cep, $cpf, $email, $telefone);
 
 ?>
 
 <!-- Abre conexão e verifica possível erro -->
 <?php 
 
-    if ($op->adicionar_comprador($mysqli, $c)) {
+    if (inserir_comprador($conexao, $nome, $cidade, $estado, $endereco, $cep, $cpf, $email, $telefone)) {
 
 ?>
 

@@ -12,6 +12,11 @@ function listar($conexao, $query) {
 
 /*********************** Funções das compras ***********************/
 
+function inserir_compra($conexao, $valor, $data, $observacoes, $desconto, $forma_pagamento, $comprador_id) {
+    $query = "INSERT INTO compras (valor, data, observacoes, desconto, forma_pagamento, comprador_id) VALUES ({$valor}, '{$data}', '{$observacoes}', {$desconto}, '{$forma_pagamento}', {$comprador_id});";
+    return mysqli_query($conexao, $query);
+}
+
 function remover_compra($conexao, $id) {
     $query = "DELETE FROM compras WHERE Id = {$id}";
     $resultado = mysqli_query($conexao, $query);
@@ -31,3 +36,8 @@ function buscar_compra($conexao, $id) {
 }
 
 /*********************** Funções dos compradores ***********************/
+
+function inserir_comprador($conexao, $nome, $cidade, $estado, $endereco, $cep, $cpf, $email, $telefone) {
+    $query = "INSERT INTO compradores (nome, cidade, estado, endereco, cep, cpf, email, telefone) VALUES ('{$nome}', '{$cidade}', '{$estado}', '{$endereco}', '{$cep}', '{$cpf}', '{$email}', '{$telefone}');";
+    return mysqli_query($conexao, $query);
+}
