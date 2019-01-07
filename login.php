@@ -25,7 +25,7 @@
             header("Location: index.php");
             die();
         }
-        login($usuario['Primeiro_Nome']);
+        login($usuario['Primeiro_Nome'], $usuario['Usuario']);
         $_SESSION['success'] = "Logado com sucesso.";
         header("Location: index.php");
     }

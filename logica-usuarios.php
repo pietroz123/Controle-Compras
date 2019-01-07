@@ -37,7 +37,10 @@ function usuario_logado() {
 }
 
 // Efetua o login do usuario
-function login($email_usuario) {
+function login($email_usuario, $username) {
+    if ($username == "admin") {
+        $_SESSION['admin'] = true;
+    }
     $_SESSION['login'] = $email_usuario;
 }
 
@@ -47,4 +50,9 @@ function logout() {
     session_start();
     $_SESSION['success'] = "Deslogado com sucesso.";
     header("Location: index.php");
+}
+
+// Retorna se o usuario atual e o admin
+function admin() {
+    return isset($_SESSION['admin']);
 }
