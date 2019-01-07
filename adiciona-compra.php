@@ -1,6 +1,11 @@
 <?php 
     include("cabecalho.php");
     include("conexao.php");
+    include("logica-usuarios.php");
+?>
+
+<?php
+    verifica_usuario();
 ?>
 
 <!-- Recebe as requisições de formulario-compra.php -->

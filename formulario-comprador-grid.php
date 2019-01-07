@@ -1,4 +1,11 @@
-<?php include("cabecalho.php"); ?>
+<?php 
+    include("cabecalho.php");
+    include("logica-usuarios.php");
+?>
+
+<?php
+    verifica_usuario();
+?>
 
         <h1>Formulário de Adição de Comprador</h1>
         
