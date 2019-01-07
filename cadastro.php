@@ -36,7 +36,7 @@
 
     // Cria o usuario
     if (criar_usuario($conexao, $nome, $sobrenome, $username, $email_cadastro, $senha_cadastro)) {
-        $_SESSION['success'] = "Cadastrado com sucesso. Favor efetuar o login no Menu de Navegacao.";
+        $_SESSION['success'] = "Cadastrado com sucesso. Favor esperar a confirmacao do cadastro.";
         header("Location: index.php");
         die();
     } else {
