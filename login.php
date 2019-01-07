@@ -10,10 +10,10 @@
         session_start();
     }
 
-    $email_usuario = $_POST['email'];
+    $email_nome_usuario = $_POST['autenticacao'];
     $senha_usuario = $_POST['senha'];
 
-    $usuario = buscar_usuario($conexao, $email_usuario, $senha_usuario);
+    $usuario = buscar_usuario($conexao, $email_nome_usuario);
     
     if ($usuario == null) {
         $_SESSION['danger'] = "Usuário nao encontrado.";
@@ -25,7 +25,7 @@
             header("Location: index.php");
             die();
         }
-        login($email_usuario);
+        login($email_nome_usuario);
         $_SESSION['success'] = "Logado com sucesso.";
         header("Location: index.php");
     }

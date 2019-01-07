@@ -1,7 +1,7 @@
 <?php
 
-function buscar_usuario($conexao, $email) {
-    $query = "SELECT * FROM usuarios WHERE email = '{$email}';";
+function buscar_usuario($conexao, $email_username) {
+    $query = "SELECT * FROM usuarios WHERE usuario = '{$email_username}' OR email = '{$email_username}';";
     $resultado = mysqli_query($conexao, $query);
     $usuario = mysqli_fetch_assoc($resultado);
     return $usuario;
