@@ -27,7 +27,6 @@ function buscar_usuario_temp($conexao, $id) {
 }
 
 function adicionar_usuario_definitivo($conexao, $nome, $sobrenome, $username, $email, $senha) {
-    $hash_senha = password_hash($senha, PASSWORD_DEFAULT);
     $query_insert = "INSERT INTO usuarios (primeiro_nome, sobrenome, usuario, email, senha) VALUES ('$nome', '$sobrenome', '$username', '$email', '$hash_senha');";
     $resultado = mysqli_query($conexao, $query_insert);
     return $resultado;
