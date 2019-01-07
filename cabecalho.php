@@ -74,7 +74,7 @@
                 ?>
                     <ul class="navbar-nav links-logout">
                         <li class="nav-item">
-                            <button class="btn btn-unique botao-pequeno">logout</button>
+                            <a href="logout.php" class="nav-link btn btn-unique botao-pequeno">logout</a>
                         </li>
                     </ul>
                 <?php

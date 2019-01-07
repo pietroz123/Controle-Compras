@@ -40,3 +40,11 @@ function usuario_logado() {
 function login($email_usuario) {
     $_SESSION['login'] = $email_usuario;
 }
+
+// Efetua o logout do usuario
+function logout() {
+    session_destroy();
+    session_start();
+    $_SESSION['success'] = "Deslogado com sucesso.";
+    header("Location: index.php");
+}
