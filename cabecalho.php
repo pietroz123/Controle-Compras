@@ -14,13 +14,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
         <!-- Fontes de Texto -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather|Slabo+27px">
+        <link href="https://fonts.googleapis.com/css?family=Merriweather|Slabo+27px" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
     </head>
 
     <body>
+
+        <!-- Modal de Login -->
+        <?php include("modal-login.php"); ?>
 
         <!-- Menu de navegação: no Bootstrap é a classe navbar -->
         <!-- https://www.youtube.com/watch?v=23bpce-5s8I -->
@@ -52,7 +55,7 @@
                 <hr style="background-color: white">
                 <ul class="navbar-nav links-login-signin">
                     <li class="nav-item">
-                        <button class="btn btn-primary botao-pequeno" style="margin-right: 10px;">log in</button>
+                        <button class="btn btn-primary botao-pequeno" style="margin-right: 10px;" data-toggle="modal" data-target="#modal-login">login</button>
                     </li>
                     <li class="nav-item">
                         <button class="btn btn-indigo botao-pequeno">cadastrar</button>                        

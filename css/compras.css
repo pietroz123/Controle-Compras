@@ -157,3 +157,16 @@ body > .container {
     padding: 6px 12px;
     margin: unset;
 }
+
+
+/* ==========================================================
+   ================== FORMULARIO DE LOGIN ===================
+   ========================================================== */
+
+.formulario-login-header h2 {
+    font-family: 'Merriweather', serif;
+}
+
+.formulario-login-body {
+    font-family: 'Roboto Slab', serif;
+}
