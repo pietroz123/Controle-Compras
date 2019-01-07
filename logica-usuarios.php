@@ -20,8 +20,8 @@ function mostra_alerta($tipo) {
 function verifica_usuario() {
     if (!usuario_esta_logado()) {
         $_SESSION['danger'] = "Você não tem acesso a essa funcionalidade.";
-        // header("Location: index.php");
-        echo("<script>location.href = 'index.php'</script>");
+        header("Location: index.php");
+        // echo("<script>location.href = 'index.php'</script>");
         die();
     }
 }
