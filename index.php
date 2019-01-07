@@ -1,7 +1,6 @@
 <?php 
     include("cabecalho.php"); 
     include("funcoes-usuarios.php");
-    include("logica-usuarios.php");
 ?>
 
 <?php
