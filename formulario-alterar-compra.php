@@ -1,6 +1,6 @@
 <?php 
     include("cabecalho.php"); 
-    include("conexao.php");
+    include("database/conexao.php");
     include("funcoes.php");
 ?>
 

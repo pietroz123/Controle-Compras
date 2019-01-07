@@ -7,9 +7,9 @@ function buscar_usuario($conexao, $email) {
     return $usuario;
 }
 
-function criar_usuario($conexao, $email, $senha) {
+function criar_usuario($conexao, $nome_usuario, $email, $senha) {
     $hash_senha = password_hash($senha, PASSWORD_DEFAULT);
-    $query = "INSERT INTO usuarios (email, senha) VALUES ('$email', '$hash_senha');";
+    $query = "INSERT INTO usuarios (usuario, email, senha) VALUES ('$nome_usuario', '$email', '$hash_senha');";
     $resultado = mysqli_query($conexao, $query);
     return $resultado;
 }
