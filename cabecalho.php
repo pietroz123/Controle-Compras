@@ -9,6 +9,7 @@
         <meta charset="utf-8">
         
         <!-- CSSs -->
+        <link rel="shortcut icon" href="img/shopping.png" type="image/x-icon">
         <link type="text/css" href="css/bootstrap4.css"rel="stylesheet">
         <link type="text/css" href="css/mdb.css" rel="stylesheet">
         <link type="text/css" href="css/datatables.css" rel="stylesheet">
