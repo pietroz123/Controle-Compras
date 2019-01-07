@@ -11,13 +11,13 @@
 ?>
 
 
-<table class="table table-hover" style="width: 110%; margin-left: -50px;">
+<table class="table table-hover" id="tabela-requisicoes" style="width: 110%; margin-left: -35px;">
     <thead class="thead-dark">
-        <th>Nome</th>
-        <th>Sobrenome</th>
-        <th>Usuario</th>
-        <th>E-mail</th>
-        <th>Adicionar</th>
+        <th class="t-nome-usuario">Nome</th>
+        <th class="t-sobrenome-usuario">Sobrenome</th>
+        <th class="t-username-usuario">Usuario</th>
+        <th class="t-email-usuario">E-mail</th>
+        <th class="t-adicionar-usuario">Adicionar</th>
     </thead>
 
     <tbody>
@@ -26,11 +26,11 @@
         foreach ($usuarios_temp as $usuario_temp) {
     ?>
         <tr>
-            <td><?= $usuario_temp['Primeiro_Nome'] ?></td>
-            <td><?= $usuario_temp['Sobrenome'] ?></td>
-            <td><?= $usuario_temp['Usuario'] ?></td>
-            <td><?= $usuario_temp['Email'] ?></td>
-            <td>
+            <td class="t-nome-usuario"><?= $usuario_temp['Primeiro_Nome'] ?></td>
+            <td class="t-sobrenome-usuario"><?= $usuario_temp['Sobrenome'] ?></td>
+            <td class="t-username-usuario"><?= $usuario_temp['Usuario'] ?></td>
+            <td class="t-email-usuario"><?= $usuario_temp['Email'] ?></td>
+            <td class="t-adicionar-usuario">
                 <form action="adiciona-usuario-temp.php" method="post">
                     <input type="hidden" name="id" value="<?= $usuario_temp['ID'] ?>">
                     <button class="btn btn-primary botao-pequeno">adicionar</button>

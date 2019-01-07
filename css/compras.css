@@ -108,6 +108,9 @@ body > .container {
     .t-detalhes {
         display: table-cell;
     }
+    .t-username-usuario, .t-email-usuario {
+        display: none;
+    }
 }
 @media only screen and (max-width: 900px) {
     .t-desconto, .t-pagamento, .t-comprador, .t-alterar, .t-remover {
