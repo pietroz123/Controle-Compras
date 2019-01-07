@@ -44,29 +44,35 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarMenu">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" onmouseover="this.classList.add('nav-hover-bg')" onmouseout="this.classList.remove('nav-hover-bg')" href="formulario-compra-grid.php">Adicionar Compra</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" onmouseover="this.classList.add('nav-hover-bg')" onmouseout="this.classList.remove('nav-hover-bg')" href="formulario-comprador-grid.php">Adicionar Comprador</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" onmouseover="this.classList.add('nav-hover-bg')" onmouseout="this.classList.remove('nav-hover-bg')" href="listar-compras.php">Compras</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" onmouseover="this.classList.add('nav-hover-bg')" onmouseout="this.classList.remove('nav-hover-bg')" href="buscar.php">Buscar</a>
-                    </li>
-                    <?php
-                        if (admin()) {
-                    ?>
+                <?php
+                    if (usuario_esta_logado()) {
+                ?>
+                    <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link" onmouseover="this.classList.add('nav-hover-bg')" onmouseout="this.classList.remove('nav-hover-bg')" href="requisicoes.php">Requisicoes</a>
+                            <a class="nav-link" onmouseover="this.classList.add('nav-hover-bg')" onmouseout="this.classList.remove('nav-hover-bg')" href="formulario-compra-grid.php">Adicionar Compra</a>
                         </li>
-                    <?php
-                        }
-                    ?>
-                </ul>
+                        <li class="nav-item">
+                            <a class="nav-link" onmouseover="this.classList.add('nav-hover-bg')" onmouseout="this.classList.remove('nav-hover-bg')" href="formulario-comprador-grid.php">Adicionar Comprador</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" onmouseover="this.classList.add('nav-hover-bg')" onmouseout="this.classList.remove('nav-hover-bg')" href="listar-compras.php">Compras</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" onmouseover="this.classList.add('nav-hover-bg')" onmouseout="this.classList.remove('nav-hover-bg')" href="buscar.php">Buscar</a>
+                        </li>
+                        <?php
+                            if (admin()) {
+                        ?>
+                            <li class="nav-item">
+                                <a class="nav-link" onmouseover="this.classList.add('nav-hover-bg')" onmouseout="this.classList.remove('nav-hover-bg')" href="requisicoes.php">Requisicoes</a>
+                            </li>
+                        <?php
+                            }
+                        ?>
+                    </ul>
+                <?php
+                    }
+                ?>
                 <hr style="background-color: white">
                 <?php
                     if (!usuario_esta_logado()) {
