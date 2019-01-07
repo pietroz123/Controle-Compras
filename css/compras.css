@@ -160,13 +160,13 @@ body > .container {
 
 
 /* ==========================================================
-   ================== FORMULARIO DE LOGIN ===================
+   ========================== MODAL =========================
    ========================================================== */
 
-.formulario-login-header h2 {
+.modal-header {
     font-family: 'Merriweather', serif;
 }
 
-.formulario-login-body {
+.modal-body, .modal-footer {
     font-family: 'Roboto Slab', serif;
 }

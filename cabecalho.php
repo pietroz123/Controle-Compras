@@ -24,6 +24,7 @@
 
         <!-- Modal de Login -->
         <?php include("modal-login.php"); ?>
+        <?php include("modal-cadastro.php"); ?>
 
         <!-- Menu de navegação: no Bootstrap é a classe navbar -->
         <!-- https://www.youtube.com/watch?v=23bpce-5s8I -->
@@ -58,7 +59,7 @@
                         <button class="btn btn-primary botao-pequeno" style="margin-right: 10px;" data-toggle="modal" data-target="#modal-login">login</button>
                     </li>
                     <li class="nav-item">
-                        <button class="btn btn-indigo botao-pequeno">cadastrar</button>                        
+                        <button class="btn btn-indigo botao-pequeno" data-toggle="modal" data-target="#modal-cadastro">cadastrar</button>                        
                     </li>
                 </ul>
             </div>
