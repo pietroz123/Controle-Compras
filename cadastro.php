@@ -24,6 +24,13 @@
         die();
     }
 
+    // Verifica se a repeticao de senha e igual
+    if ($senha_cadastro != $senha_rep_cadastro) {
+        $_SESSION['danger'] = "As senhas nao sao iguais!";
+        header("Location: index.php");
+        die();
+    }
+
     // Cria o usuario
     if (criar_usuario($conexao, $email_cadastro, $senha_cadastro)) {
         $_SESSION['success'] = "Cadastrado com sucesso. Favor efetuar o login no Menu de Navegacao.";
