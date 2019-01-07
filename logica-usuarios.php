@@ -1,12 +1,15 @@
 <?php
 
+if (!isset($_SESSION) || !is_array($_SESSION)) {
+    session_start();
+}
 
 // Mostra um alerta ao usuario, tanto de sucesso quanto de fracasso
 function mostra_alerta($tipo) {
     if (isset($_SESSION[$tipo])) {
 ?>
-        <div class="alert alert-<?php $tipo ?>" role="alert">
-            <p><?php $_SESSION[$tipo] ?></p>    
+        <div class="alert alert-<?= $tipo ?>" role="alert">
+            <?= $_SESSION[$tipo] ?>
         </div>
 <?php
     unset($_SESSION[$tipo]);

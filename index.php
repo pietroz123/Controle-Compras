@@ -5,31 +5,8 @@
 ?>
 
 <?php
-    // mostra_alerta("success");
-    // mostra_alerta("danger");
-?>
-
-<?php
-    if (isset($_SESSION['success'])) {
-?>
-        <div class="alert alert-success" role="alert">
-            <p><?php $_SESSION['success'] ?></p>    
-        </div>
-<?php
-    unset($_SESSION['success']);
-    }
-
-    elseif (isset($_SESSION['danger'])) {
-?>
-        <div class="alert alert-danger" role="alert">
-            <p><?php $_SESSION['danger'] ?></p>    
-        </div>
-<?php
-    unset($_SESSION['danger']);
-    }
-    else {
-        echo "<p>Nao tem nada nessa coisa.</p>";
-    }
+    mostra_alerta("success");
+    mostra_alerta("danger");
 ?>
 
     <h1>Bem Vindo ao Controle de Compras</h1>
@@ -41,13 +18,11 @@
 <?php
     if (usuario_esta_logado()) {
 ?>
-        <div class="alert alert-info">Logado como <?php usuario_logado(); ?></div>
+        <div class="alert alert-info">Logado como <?= usuario_logado(); ?></div>
 <?php
     } else {
 ?>
-
-        <p>Efetue o login ou o cadastro a partir do Menu de Navegacao.</p>
-
+        <div class="alert alert-warning">Efetue o login ou o cadastro à partir do Menu de Navegação.</div>
 <?php
     }
 ?>

@@ -6,13 +6,17 @@
 
 <?php
 
+    if (!isset($_SESSION) || !is_array($_SESSION)) {
+        session_start();
+    }
+
     $email_usuario = $_POST['email'];
     $senha_usuario = $_POST['senha'];
 
     $usuario = buscar_usuario($conexao, $email_usuario, $senha_usuario);
     
     if ($usuario == null) {
-        $_SESSION['danger'] = "Usuario ou senha invalido.";
+        $_SESSION['danger'] = "Usuário ou senha inválidos.";
         header("Location: index.php");
     } else {
         login($email_usuario);
