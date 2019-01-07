@@ -58,14 +58,28 @@
                     </li>
                 </ul>
                 <hr style="background-color: white">
-                <ul class="navbar-nav links-login-signin">
-                    <li class="nav-item">
-                        <button class="btn btn-primary botao-pequeno" style="margin-right: 10px;" data-toggle="modal" data-target="#modal-login">login</button>
-                    </li>
-                    <li class="nav-item">
-                        <button class="btn btn-indigo botao-pequeno" data-toggle="modal" data-target="#modal-cadastro">cadastrar</button>                        
-                    </li>
-                </ul>
+                <?php
+                    if (!usuario_esta_logado()) {
+                ?>
+                    <ul class="navbar-nav links-login-signin">
+                        <li class="nav-item">
+                            <button class="btn btn-primary botao-pequeno" style="margin-right: 10px;" data-toggle="modal" data-target="#modal-login">login</button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="btn btn-indigo botao-pequeno" data-toggle="modal" data-target="#modal-cadastro">cadastrar</button>                        
+                        </li>
+                    </ul>
+                <?php
+                    } else {
+                ?>
+                    <ul class="navbar-nav links-logout">
+                        <li class="nav-item">
+                            <button class="btn btn-unique botao-pequeno">logout</button>
+                        </li>
+                    </ul>
+                <?php
+                    }
+                ?>
             </div>
 
         </nav>
