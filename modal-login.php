@@ -9,8 +9,8 @@
                 <div class="modal-body">
                     <div class="grid">
                         <div class="row">
-                            <div class="col-sm-4">E-mail/Usuario</div>
-                            <div class="col-sm-8"><input type="text" name="autenticacao" class="form-control" placeholder="Digite seu email/nome de usuario"></div>
+                            <div class="col-sm-4">E-mail/Usuário</div>
+                            <div class="col-sm-8"><input type="text" name="autenticacao" class="form-control" placeholder="Digite seu email/nome de usuário"></div>
                         </div>
                         <div class="row">
                             <div class="col-sm-4">Senha</div>
