@@ -7,7 +7,7 @@
 <?php
 
     if (!isset($_POST['submit'])) {
-        $_SESSION['danger'] = "Voce nao deu submit!";
+        $_SESSION['danger'] = "Você não deu submit!";
         header("Location: index.php");
         die();
     }
@@ -29,14 +29,14 @@
 
     // Verifica se a repeticao de senha e igual
     if ($senha_cadastro != $senha_rep_cadastro) {
-        $_SESSION['danger'] = "As senhas nao sao iguais!";
+        $_SESSION['danger'] = "As senhas não são iguais!";
         header("Location: index.php");
         die();
     }
 
     // Cria o usuario
     if (criar_usuario($conexao, $nome, $sobrenome, $username, $email_cadastro, $senha_cadastro)) {
-        $_SESSION['success'] = "Cadastrado com sucesso. Favor esperar a confirmacao do cadastro.";
+        $_SESSION['success'] = "Cadastrado com sucesso. Favor esperar a confirmação do cadastro.";
         header("Location: index.php");
         die();
     } else {

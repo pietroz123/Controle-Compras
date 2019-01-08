@@ -15,7 +15,7 @@
     <thead class="thead-dark">
         <th class="t-nome-usuario">Nome</th>
         <th class="t-sobrenome-usuario">Sobrenome</th>
-        <th class="t-username-usuario">Usuario</th>
+        <th class="t-username-usuario">Usuário</th>
         <th class="t-email-usuario">E-mail</th>
         <th class="t-adicionar-usuario">Adicionar</th>
     </thead>

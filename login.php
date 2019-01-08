@@ -26,7 +26,7 @@
             die();
         }
         if ($usuario['Autenticado'] == 0) {
-            $_SESSION['danger'] = "Usuário aguardando confirmacao de cadastro.";
+            $_SESSION['danger'] = "Usuário aguardando confirmação de cadastro.";
             header("Location: index.php");
             die();
         }
