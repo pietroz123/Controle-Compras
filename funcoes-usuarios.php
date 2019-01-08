@@ -31,3 +31,15 @@ function adicionar_usuario_definitivo($conexao, $id) {
     $resultado = mysqli_query($conexao, $query);
     return $resultado;
 }
+
+// !NAO FUNCIONA
+function enviar_email($email_usuario) {
+
+    $email_de = "pietrozuntini@gmail.com";
+    $email_para = $email_usuario;
+    $headers = "From: " . $email_de;
+    $assunto = "Autorizacao Compras";
+    $mensagem = "Voce esta autorizado! :)";
+
+    mail($email_para, $assunto, $mensagem, $headers);
+}
