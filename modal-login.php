@@ -16,6 +16,7 @@
                             <div class="col-sm-4">Senha</div>
                             <div class="col-sm-8"><input type="password" name="senha" class="form-control" placeholder="Digite sua senha"></div>
                         </div>
+                        <a href="recuperacao-senha.php" class="text-danger">Esqueceu sua senha?</a>
                     </div>
                 </div>
                 <div class="modal-footer">

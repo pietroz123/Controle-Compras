@@ -173,3 +173,19 @@ body > .container {
 .modal-body, .modal-footer {
     font-family: 'Roboto Slab', serif;
 }
+
+
+/* ==========================================================
+   ============== FORMULÁRIO RECUPERAÇÃO DE SENHA ===========
+   ========================================================== */
+
+.formulario-recuperacao-senha {
+    margin: 50px auto;
+    width: 80%;
+}
+
+@media only screen and (max-width: 550px) {
+    .formulario-recuperacao-senha {
+        width: 100%;
+    }
+}

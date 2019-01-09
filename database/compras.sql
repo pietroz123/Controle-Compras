@@ -12,8 +12,8 @@ CREATE TRIGGER atualiza_autenticado_em
         BEGIN
             IF (OLD.Autenticado <> NEW.Autenticado) AND (NEW.Autenticado = 1) THEN
                 SET NEW.Autenticado_Em = CURRENT_TIMESTAMP;
-            ELSE
+			ELSEIF (OLD.Autenticado <> NEW.Autenticado) AND (NEW.Autenticado = 0) THEN
                 SET NEW.Autenticado_Em = NULL;
-        END IF;
-    END //
+            END IF;
+        END //
 DELIMITER ;
