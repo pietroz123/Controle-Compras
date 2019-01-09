@@ -13,7 +13,7 @@
             </div>
         </div>
         <hr>
-        <button type="submit" name="submit" class="btn btn-primary">receber nova senha por e-mail</button>
+        <button type="submit" name="submit-recuperacao" class="btn btn-primary">receber nova senha por e-mail</button>
     </form>
     
 
