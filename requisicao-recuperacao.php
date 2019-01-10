@@ -41,7 +41,7 @@
         $query = "DELETE FROM recuperacao_senha WHERE email = ?;";
         $stmt = mysqli_stmt_init($conexao);
         if (!mysqli_stmt_prepare($stmt, $query)) {
-            $_SESSION['danger'] = "Ocorreu um erro na ao deletar os tokens pre-existentes.";
+            $_SESSION['danger'] = "Ocorreu um erro ao deletar os tokens pre-existentes.";
             header("Location: recuperacao-senha.php");
             die();
         } else {
