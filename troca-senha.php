@@ -3,10 +3,6 @@
 ?>
 
 <?php
-    mostra_alerta("danger");
-?>
-
-<?php
 
     // Inicia a sessao
     if (!isset($_SESSION) || !is_array($_SESSION)) {
@@ -26,20 +22,21 @@
         $nova_senha = $_POST['nova_senha'];
         $nova_senha_rep = $_POST['nova_senha_rep'];
 
-        // Salva a URI caso haja erro no formulario de troca de senha
+        
+        // Salva a URI para caso haja erro
         $url = "criar-nova-senha.php?seletor=" . $seletor . "&token=" . $token;      
 
 
         // Verifica se existe algum campo em branco
         if (empty($nova_senha) || empty($nova_senha_rep)) {
             $_SESSION['danger'] = "Existem campos em branco";
-            header("Location: " . $_SERVER['HTTP_REFERER']);
+            header("Location: " . $url);
             die();
         }
         // Verifica se as senhas são iguais
         elseif ($nova_senha != $nova_senha_rep) {
             $_SESSION['danger'] = "As senhas não são iguais";
-            header("Location: " . $_SERVER['HTTP_REFERER']);
+            header("Location: " . $url);
             die();
         }
 

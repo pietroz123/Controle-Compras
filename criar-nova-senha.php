@@ -3,6 +3,10 @@
 ?>
 
 <?php
+    mostra_alerta("danger");
+?>
+
+<?php
     $seletor = $_GET['seletor'];
     $token = $_GET['token'];
 
