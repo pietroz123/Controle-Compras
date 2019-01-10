@@ -3,6 +3,10 @@
 ?>
 
 <?php
+    mostra_alerta("danger");
+?>
+
+<?php
 
     // Inicia a sessao
     if (!isset($_SESSION) || !is_array($_SESSION)) {
@@ -22,17 +26,17 @@
         $nova_senha = $_POST['nova_senha'];
         $nova_senha_rep = $_POST['nova_senha_rep'];
 
-
-        $config = parse_ini_file("../private/config_compras.ini");
-        $site = $config['site'];
-        $url = $site . "/criar-nova-senha.php?seletor=" . $seletor . "&token=" . $token;      
+        // Salva a URI caso haja erro no formulario de troca de senha
+        $url = "criar-nova-senha.php?seletor=" . $seletor . "&token=" . $token;      
 
 
+        // Verifica se existe algum campo em branco
         if (empty($nova_senha) || empty($nova_senha_rep)) {
             $_SESSION['danger'] = "Existem campos em branco";
             header("Location: " . $url);
             die();
         }
+        // Verifica se as senhas são iguais
         elseif ($nova_senha != $nova_senha_rep) {
             $_SESSION['danger'] = "As senhas não são iguais";
             header("Location: " . $url);
@@ -102,8 +106,6 @@
                                 $hash_nova_senha = password_hash($nova_senha, PASSWORD_DEFAULT);
                                 mysqli_stmt_bind_param($stmt, "ss", $hash_nova_senha, $token_email);
                                 mysqli_stmt_execute($stmt);
-
-                                $_SESSION['success'] = "Sua senha foi atualizada com sucesso!";
 
                                 // Deleta todos os possiveis tokens ainda existentes e relacionados ao e-mail do usuario
                                 $query = "DELETE FROM recuperacao_senha WHERE email = ?;";
