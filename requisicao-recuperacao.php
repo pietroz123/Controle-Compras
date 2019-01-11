@@ -61,9 +61,28 @@
             mysqli_stmt_bind_param($stmt, "ssss", $email_usuario, $seletor, $hash_token, $expira);
             mysqli_stmt_execute($stmt);
         }
+
+
+        // Seleciona o usuario para exibir informações no email
+        $query = "SELECT * FROM usuarios WHERE email = ?;";
+        if (!mysqli_stmt_prepare($stmt, $query)) {
+            $_SESSION['danger'] = "Ocorreu um erro ao buscar as informações do usuário.";
+            header("Location: recuperacao-senha.php");
+            die();
+        } else {
+            mysqli_stmt_bind_param($stmt, "s", $email_usuario);
+            mysqli_stmt_execute($stmt);
+
+            $resultado = mysqli_stmt_get_result($stmt);
+            $usuario = mysqli_fetch_assoc($resultado);
+            if ($usuario == null) {
+                $_SESSION['danger'] = "Usuário inexistente.";
+                header("Location: recuperacao-senha.php");
+                die();
+            }
+        }
         
         mysqli_stmt_close($stmt);
-
 
 
         // Envia o e-mail
@@ -79,6 +98,7 @@
         $mensagem .= "<body style='background-color: #f2f2f2;'>";
         $mensagem .= "<h1 style='position: fixed;left: 0;top: 0;width: 99.5%;text-align: center;font-size: 20px;background-color: #990000;padding: 25px 0;margin: 0;color: white;text-transform: uppercase;border: 3px solid black;'>Informações para a recuperação da sua senha</h1>";
         $mensagem .= "<div class='texto-email' style='margin: 120px 30px;text-align: justify;font-size: 18px;'>";
+        $mensagem .= "<p style='margin-bottom: 15px;'>Olá " . $usuario['Primeiro_Nome'] . ", tudo bem?</p>";
         $mensagem .= "<p style='margin-bottom: 15px;'>Recebemos uma requisição de recuperação de senha. O link para recuperar sua senha está logo abaixo. Se você não fez essa requisição, ignore este e-email.</p>";
         $mensagem .= "<p style='margin-bottom: 15px;'>Aqui está o link de recuperação da senha:<br><a href='" . $url ."'>" . $url ."</a></p>";
         $mensagem .= "</div>";
