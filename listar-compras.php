@@ -124,7 +124,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary">alterar</button>
-                <button type="button" class="btn btn-danger">remover</button>
+                <button type="button" class="btn btn-danger" onclick="printID()">remover</button>
             </div>
         </div>
     </div>
@@ -182,4 +182,12 @@
         modal.find("#comprador-compra").val(comprador);
 
     });
+
+    function printID() {
+        id = $("#id-compra").val();
+        console.log(id);
+        
+    }
+
+
 </script>
