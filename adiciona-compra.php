@@ -48,7 +48,9 @@
             $tamanho_permitido = 500 * $kb;
             if ($imagem_tamanho < $tamanho_permitido) {
                 // Cria um nome único para a imagem
-                $novo_nome = uniqid('', true) . '.' . $ext;
+                // $novo_nome = uniqid('', true) . '.' . $ext;
+                $novo_nome = uniqid('') . "-" . $observacoes . $data . "." . $ext;
+                
                 // Destino do imagem
                 $destino = "../private/uploads/compras/" . $novo_nome;
 
