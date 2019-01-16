@@ -30,6 +30,23 @@ function inserir_compra($conexao, $valor, $data, $observacoes, $desconto, $forma
 }
 
 
+// Comprime a imagem
+function comprimir($fonte, $destino, $qualidade) {
+
+    $info = getimagesize($fonte);
+
+    if ($info['mime'] == 'image/jpeg') 
+        $imagem = imagecreatefromjpeg($fonte);
+
+    elseif ($info['mime'] == 'image/png') 
+        $imagem = imagecreatefrompng($fonte);
+
+    imagejpeg($imagem, $destino, $qualidade);
+
+    return $destino;
+}
+
+
 // ==================================================================
 // ========================= DELETE =================================
 // ==================================================================

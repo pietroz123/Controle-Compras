@@ -44,26 +44,36 @@
         // Verifica se não houve erros
         if ($imagem_erro === 0) {
             // Verifica se o tamanho está dentro do aceitado
-            $kb = 1024;
-            $tamanho_permitido = 500 * $kb;
-            if ($imagem_tamanho < $tamanho_permitido) {
+            // $kb = 1024;
+            // $tamanho_permitido = 500 * $kb;
+            // if ($imagem_tamanho < $tamanho_permitido) {
                 // Cria um nome único para a imagem
                 // $novo_nome = uniqid('', true) . '.' . $ext;
-                $novo_nome = uniqid('') . "-" . $observacoes . $data . "." . $ext;
+                $novo_nome = uniqid('') . "-" . $observacoes . "-" . $data . "." . $ext;
                 
                 // Destino do imagem
                 $destino = "../private/uploads/compras/" . $novo_nome;
 
                 // Armazena a imagem
                 move_uploaded_file($imagem_nome_tmp, $destino);
+
+                $novo_destino = comprimir($destino, "../private/uploads/compras/compressed" . $novo_nome, 90);
+                move_uploaded_file($destino, $novo_destino);
+
+                // echo "<p>Temp: " . $imagem_nome_tmp . "</p>";
+                // echo "<p>Novo_Nome: " . $novo_nome . "</p>";  
+                // echo "<p>Destino: " . $destino . "</p>";  
+                // echo "<p>Novo_Destino: " . $novo_destino . "</p>";  
+                
                 $_SESSION['success'] = "Imagem salva com sucesso.";
-            }
-            else {
-                $_SESSION['danger'] = "O tamanho da imagem ultrapassa '" . $tamanho_permitido . "!";
-            }
+            // }
+            // else {
+                
+            //     $_SESSION['danger'] = "O tamanho da imagem ultrapassa '" . $tamanho_permitido . "!";
+            // }
         }
         else {
-            $_SESSION['danger'] = "Ocorreu um erro no upload da imagem!";
+            $_SESSION['danger'] = "Ocorreu um erro no upload da imagem!"; 
         }
     }
     else {
