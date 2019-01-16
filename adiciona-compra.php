@@ -41,8 +41,9 @@
     // Extensões permitidas
     $permitido = array('jpg', 'jpeg', 'png');
 
-    // Verifica se a extensão é uma imagem
-    if (!empty($novo_nome)) {
+    // Verifica se uma imagem foi enviada
+    if (is_uploaded_file($_FILES['imagem']['tmp_name'])) {
+        // Verifica se a extensão é uma imagem
         if (in_array($ext, $permitido)) {
             // Verifica se não houve erros
             if ($imagem_erro === 0) {

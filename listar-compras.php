@@ -119,21 +119,21 @@
     });
 
     // Preenche o modal-detalhes-compra utilizando AJAX
-    $(document).ready(function() {
-        $(".btn-detalhes").click(function() {
-            var id_compra = $(this).attr("id");
+    $(".btn-detalhes").click(function() {
+        var id_compra = $(this).attr("id");
+        console.log(id_compra);
+        
 
-            $.ajax({
-                url: "modal-detalhes-produto.php",
-                method: "post",
-                data: {
-                    id_compra: id_compra
-                },
-                success: function(data) {
-                    $("#detalhes-compra").html(data);
-                    $("#modal-detalhes-compra").modal("show");
-                }
-            });
+        $.ajax({
+            url: "modal-detalhes-produto.php",
+            method: "post",
+            data: {
+                id_compra: id_compra
+            },
+            success: function(data) {
+                $("#detalhes-compra").html(data);
+                $("#modal-detalhes-compra").modal("show");
+            }
         });
     });
 
