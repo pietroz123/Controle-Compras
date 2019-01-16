@@ -49,7 +49,7 @@
                 <div class="col-9"><input type="text" class="form-control" name="comprador" id="comprador-compra" value="<?= $comprador['Nome'] ?>" readonly></div>
             </div>
             <div class="row">
-                <div class="col"><button type="button" class="btn light-blue btn-block" id="btn-mostrar-imagem">mostrar imagem</button></div>
+                <div class="col"><button type="button" class="btn light-blue btn-block" id="btn-mostrar-imagem" value="<?= $compra['imagem'] ?>">mostrar imagem</button></div>
             </div>
         </div>
     </div>
@@ -66,10 +66,15 @@
 <script>
 
     $("#btn-mostrar-imagem").click(function() {
-        var id_compra = $(this).find("#id-compra");
-        console.log(id_compra);
+        var nome_imagem = document.getElementById("btn-mostrar-imagem").value;
+        console.log(nome_imagem);
         
-        $(this).html("<img src='../private/uploads/compras/<?= $compra['imagem'] ?>' class='responsive' id='imagem-aberta'>");
+        if (nome_imagem) {
+            $(this).html("<img src='../private/uploads/compras/<?= $compra['imagem'] ?>' class='responsive' id='imagem-aberta'>");
+        }
+        else {
+            $(this).html("<div class='text-danger'>Imagem indisponível!</div>");
+        }
     });
 
 </script>
