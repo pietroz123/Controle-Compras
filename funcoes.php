@@ -24,6 +24,7 @@ function inserir_compra($conexao, $valor, $data, $observacoes, $desconto, $forma
     $desconto = mysqli_real_escape_string($conexao, $desconto);
     $forma_pagamento = mysqli_real_escape_string($conexao, $forma_pagamento);
     $comprador_id = mysqli_real_escape_string($conexao, $comprador_id);
+    $imagem = mysqli_real_escape_string($conexao, $imagem);
 
     $query = "INSERT INTO compras (valor, data, observacoes, desconto, forma_pagamento, comprador_id, imagem) VALUES ({$valor}, '{$data}', '{$observacoes}', {$desconto}, '{$forma_pagamento}', {$comprador_id}, '{$imagem}');";
     return mysqli_query($conexao, $query);
