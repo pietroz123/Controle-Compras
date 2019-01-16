@@ -50,7 +50,7 @@
                 // Cria um nome único para a imagem
                 $novo_nome = uniqid('', true) . '.' . $ext;
                 // Destino do imagem
-                $destino = "img/uploads/" . $novo_nome;
+                $destino = "../private/uploads/compras/" . $novo_nome;
 
                 // Armazena a imagem
                 move_uploaded_file($imagem_nome_tmp, $destino);
