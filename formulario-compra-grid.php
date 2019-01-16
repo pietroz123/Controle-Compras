@@ -10,7 +10,7 @@
 
         <h1>Formulário de Adição de Compra</h1>
 
-        <form action="adiciona-compra.php" method="post">        
+        <form action="adiciona-compra.php" method="post" enctype="multipart/form-data">        
             
             <div class="grid">
 
@@ -63,9 +63,14 @@
                     </div>
                 </div>
                 <hr>
+                <div class="row">
+                    <div class="col-lg-4">Imagem (Opcional)</div>
+                    <div class="col-lg-8"><input class="form-control-file" type="file" name="imagem"></div>
+                </div>
+                <hr>
             </div>
             
-            <div><button type="submit" class="btn btn-primary btn-block align-content-center">Adicionar</button></div>
+            <div><button type="submit" name="submit-form-compra" class="btn btn-primary btn-block align-content-center">Adicionar</button></div>
 
         </form>
 

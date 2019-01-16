@@ -11,13 +11,30 @@
 <!-- Recebe as requisições de formulario-compra.php -->
 <?php 
 
+    if (isset($_POST['submit-form-compra'])) {
+
+        
+    // Variáveis da compra
     $valor              = $_POST['valor'];
     $data               = $_POST['data'];
     $observacoes        = $_POST['observacoes'];
     $desconto           = $_POST['desconto'];
     $forma_pagamento    = $_POST['forma-pagamento'];
     $comprador_id       = $_POST['comprador-id'];
+    
 
+    // Variáveis da imagem
+    $imagem             = $_FILES['imagem'];
+    $imagem_nome        = $_FILES['imagem']['name'];
+    $imagem_nome_tmp    = $_FILES['imagem']['tmp_name'];
+    $imagem_tamanho     = $_FILES['imagem']['size'];
+    $imagem_erro        = $_FILES['imagem']['error'];
+    $imagem_tipo        = $_FILES['imagem']['type'];
+
+
+    // Recupera a extensão do arquivo (para verificar se é JPG ou PNG)
+    $extensao = explode('.', $imagem_nome);
+    
 
 ?>
 
@@ -67,6 +84,7 @@
 
 <!-- Fecha a conexão -->
 <?php
+    }
     }
 ?>
 
