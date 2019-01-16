@@ -12,7 +12,11 @@ function listar($conexao, $query) {
 
 /*********************** Funções das compras ***********************/
 
-function inserir_compra($conexao, $valor, $data, $observacoes, $desconto, $forma_pagamento, $comprador_id) {
+// ==================================================================
+// ========================= INSERT =================================
+// ==================================================================
+
+function inserir_compra($conexao, $valor, $data, $observacoes, $desconto, $forma_pagamento, $comprador_id, $imagem) {
     
     $valor = mysqli_real_escape_string($conexao, $valor);
     $data = mysqli_real_escape_string($conexao, $data);
@@ -21,9 +25,14 @@ function inserir_compra($conexao, $valor, $data, $observacoes, $desconto, $forma
     $forma_pagamento = mysqli_real_escape_string($conexao, $forma_pagamento);
     $comprador_id = mysqli_real_escape_string($conexao, $comprador_id);
 
-    $query = "INSERT INTO compras (valor, data, observacoes, desconto, forma_pagamento, comprador_id) VALUES ({$valor}, '{$data}', '{$observacoes}', {$desconto}, '{$forma_pagamento}', {$comprador_id});";
+    $query = "INSERT INTO compras (valor, data, observacoes, desconto, forma_pagamento, comprador_id, imagem) VALUES ({$valor}, '{$data}', '{$observacoes}', {$desconto}, '{$forma_pagamento}', {$comprador_id}, '{$imagem}');";
     return mysqli_query($conexao, $query);
 }
+
+
+// ==================================================================
+// ========================= DELETE =================================
+// ==================================================================
 
 function remover_compra($conexao, $id) {
 
@@ -33,6 +42,11 @@ function remover_compra($conexao, $id) {
     $resultado = mysqli_query($conexao, $query);
     return $resultado;
 }
+
+
+// ==================================================================
+// ========================= UPDATE =================================
+// ==================================================================
 
 function alterar_compra($conexao, $id, $valor, $data, $observacoes, $desconto, $forma_pagamento, $comprador_id) {
 
@@ -48,6 +62,11 @@ function alterar_compra($conexao, $id, $valor, $data, $observacoes, $desconto, $
     $resultado = mysqli_query($conexao, $query);
     return $resultado;
 }
+
+
+// ==================================================================
+// ========================= SELECT =================================
+// ==================================================================
 
 function buscar_compra($conexao, $id) {
 
@@ -66,6 +85,8 @@ function buscar_comprador($conexao, $id_comprador) {
     $resultado = mysqli_query($conexao, $query);
     return mysqli_fetch_assoc($resultado);
 }
+
+
 
 /*********************** Funções dos compradores ***********************/
 

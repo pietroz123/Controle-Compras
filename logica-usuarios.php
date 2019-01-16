@@ -9,7 +9,7 @@ function mostra_alerta($tipo) {
     if (isset($_SESSION[$tipo])) {
 ?>
         <div class="alert alert-<?= $tipo ?>" role="alert">
-            <?= $_SESSION[$tipo] ?>
+            <p style="text-align: center;"><?= $_SESSION[$tipo] ?></p>
         </div>
 <?php
     unset($_SESSION[$tipo]);

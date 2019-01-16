@@ -54,27 +54,29 @@
 
                 // Armazena a imagem
                 move_uploaded_file($imagem_nome_tmp, $destino);
-                echo "<div class='alert alert-success' role='alert'><p>Imagem salva com sucesso.</p></div>";                
+                $_SESSION['success'] = "Imagem salva com sucesso.";
             }
             else {
-                echo "<div class='alert alert-danger' role='alert'><p>O tamanho da imagem ultrapassa '" . $tamanho_permitido . "!</p></div>";
+                $_SESSION['danger'] = "O tamanho da imagem ultrapassa '" . $tamanho_permitido . "!";
             }
         }
         else {
-            echo "<div class='alert alert-danger' role='alert'><p>Ocorreu um erro no upload da imagem!</p></div>";
+            $_SESSION['danger'] = "Ocorreu um erro no upload da imagem!";
         }
     }
     else {
-        echo "<div class='alert alert-danger' role='alert'><p>Essa extensão não é permitida!</p></div>";
+        $_SESSION['danger'] = "Essa extensão não é permitida!";
     }
 
 
+    mostra_alerta("danger");
+    mostra_alerta("success");
 ?>
 
 <!-- Abre conexão e verifica possível erro -->
 <?php 
 
-    if (inserir_compra($conexao, $valor, $data, $observacoes, $desconto, $forma_pagamento, $comprador_id)) {   
+    if (inserir_compra($conexao, $valor, $data, $observacoes, $desconto, $forma_pagamento, $comprador_id, $novo_nome)) {        
 
 ?>
 
