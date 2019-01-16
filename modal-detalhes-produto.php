@@ -67,7 +67,6 @@
 
     $("#btn-mostrar-imagem").click(function() {
         var nome_imagem = document.getElementById("btn-mostrar-imagem").value;
-        console.log(nome_imagem);
         
         if (nome_imagem) {
             $(this).html("<img src='../private/uploads/compras/<?= $compra['imagem'] ?>' class='responsive' id='imagem-aberta'>");

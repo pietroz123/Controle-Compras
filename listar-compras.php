@@ -120,9 +120,7 @@
 
     // Preenche o modal-detalhes-compra utilizando AJAX
     $(".btn-detalhes").click(function() {
-        var id_compra = $(this).attr("id");
-        console.log(id_compra);
-        
+        var id_compra = $(this).attr("id");        
 
         $.ajax({
             url: "modal-detalhes-produto.php",
@@ -163,12 +161,5 @@
     //     modal.find("#pagamento-compra").val(pagamento);
     //     modal.find("#comprador-compra").val(comprador);
     // });
-
-    function printID() {
-        id = $("#id-compra").val();
-        console.log(id);
-        
-    }
-
 
 </script>
