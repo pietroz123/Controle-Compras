@@ -33,8 +33,41 @@
 
 
     // Recupera a extensão do arquivo (para verificar se é JPG ou PNG)
-    $extensao = explode('.', $imagem_nome);
-    
+    $extensao = explode('.', $imagem_nome); // Divide a string e pega apenas a parte a partir do '.'
+    $ext = strtolower(end($extensao));      // Converte tudo pra letra minuscula e pega apenas depois do '.'
+
+    // Extensões permitidas
+    $permitido = array('jpg', 'jpeg', 'png');
+
+    // Verifica se a extensão é uma imagem
+    if (in_array($ext, $permitido)) {
+        // Verifica se não houve erros
+        if ($imagem_erro === 0) {
+            // Verifica se o tamanho está dentro do aceitado
+            $kb = 1024;
+            $tamanho_permitido = 500 * $kb;
+            if ($imagem_tamanho < $tamanho_permitido) {
+                // Cria um nome único para a imagem
+                $novo_nome = uniqid('', true) . '.' . $ext;
+                // Destino do imagem
+                $destino = "img/uploads/" . $novo_nome;
+
+                // Armazena a imagem
+                move_uploaded_file($imagem_nome_tmp, $destino);
+                echo "<div class='alert alert-success' role='alert'><p>Imagem salva com sucesso.</p></div>";                
+            }
+            else {
+                echo "<div class='alert alert-danger' role='alert'><p>O tamanho da imagem ultrapassa '" . $tamanho_permitido . "!</p></div>";
+            }
+        }
+        else {
+            echo "<div class='alert alert-danger' role='alert'><p>Ocorreu um erro no upload da imagem!</p></div>";
+        }
+    }
+    else {
+        echo "<div class='alert alert-danger' role='alert'><p>Essa extensão não é permitida!</p></div>";
+    }
+
 
 ?>
 
@@ -46,20 +79,14 @@
 ?>
 
         <!-- Alerta de sucesso -->
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <div class="alert alert-success" role="alert">
-                        <p>
-                            Compra (<?= $valor; ?>, <?= $data; ?>, <?= $observacoes; ?>, <?= $desconto; ?>, <?= $forma_pagamento; ?>, <?= $comprador_id; ?>) adicionada com sucesso!
-                        </p>
-                        <hr>
-                        <p class="mb-0">
-                            <a href="formulario-compra-grid.php" class="alert-link">Inserir Outra Compra</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
+        <div class="alert alert-success" role="alert">
+            <p>
+                Compra (<?= $valor; ?>, <?= $data; ?>, <?= $observacoes; ?>, <?= $desconto; ?>, <?= $forma_pagamento; ?>, <?= $comprador_id; ?>) adicionada com sucesso!
+            </p>
+            <hr>
+            <p class="mb-0">
+                <a href="formulario-compra-grid.php" class="alert-link">Inserir Outra Compra</a>
+            </p>
         </div>
 
 <!-- Else -->
@@ -69,17 +96,11 @@
 ?>
 
         <!-- Alerta de erro -->
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <div class="alert alert-danger">
-                        <h2 class="alert-heading">Erro na adição da Compra</h2>
-                        <p>
-                            <?= $mensagem_erro; ?>
-                        </p>
-                    </div>
-                </div>
-            </div>
+        <div class="alert alert-danger">
+            <h2 class="alert-heading">Erro na adição da Compra</h2>
+            <p>
+                <?= $mensagem_erro; ?>
+            </p>
         </div>
 
 <!-- Fecha a conexão -->
