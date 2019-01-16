@@ -72,7 +72,7 @@
                 </form>
             </td>
             <td class="t-detalhes">
-                <button class="btn btn-info botao-pequeno" data-toggle="modal" data-target="#modal-detalhes-compra" data-id="<?= $compra['Id']; ?>" data-data="<?= $compra['Data']; ?>" data-observacoes="<?= $compra['Observacoes']; ?>" data-valor="<?= $compra['Valor']; ?>" data-desconto="<?= $compra['Desconto']; ?>" data-pagamento="<?= $compra['Forma_Pagamento']; ?>" data-comprador="<?= $compra['Nome_Comprador']; ?>">detalhes</button>
+                <button type="button" id="<?= $compra['Id']; ?>" class="btn btn-info botao-pequeno btn-detalhes">detalhes</button>
             </td>
         </tr>
 
@@ -90,49 +90,8 @@
 
 <!-- Modal para detalhes da Compra -->
 <div class="modal" id="modal-detalhes-compra">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Informações</h2>
-                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
-            </div>
-            <div class="modal-body">
-                <div class="grid">
-                    <div class="row">
-                        <div class="col-3">ID</div>
-                        <div class="col-9"><input type="text" class="form-control" id="id-compra" readonly></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-3">Data</div>
-                        <div class="col-9"><input class="form-control" type="date" name="data" id="data-compra" readonly></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-3">Obs.</div>
-                        <div class="col-9"><input class="form-control" type="text" name="observacoes" id="observacoes-compra" readonly></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-3">Valor</div>
-                        <div class="col-9"><input class="form-control" type="number" name="valor" min="0" step="0.01" id="valor-compra" readonly></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-3">Desconto</div>
-                        <div class="col-9"><input class="form-control" type="number" name="desconto" min="0" step="0.01" value="0"  id="desconto-compra" readonly></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-3">Pagamento</div>
-                        <div class="col-9"><input type="text" class="form-control" name="forma-pagamento" id="pagamento-compra" readonly></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-3">Comprador</div>
-                        <div class="col-9"><input type="text" class="form-control" name="comprador" id="comprador-compra" readonly></div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary">alterar</button>
-                <button type="button" class="btn btn-danger">remover</button>
-            </div>
-        </div>
+    <div class="modal-dialog" id="detalhes-compra">
+        <!-- Preenchido com AJAX (JS) -->
     </div>
 </div>
 
@@ -141,27 +100,48 @@
 <?php include("rodape.php"); ?>
 
 <script>
-    // Coloca as informacoes no modal
-    $('#modal-detalhes-compra').on('show.bs.modal', function(event) {
-        // Recupera as informacoes do botao
-        var botao = $(event.relatedTarget);
-        var id = botao.data('id');
-        var data = botao.data('data');
-        var observacoes = botao.data('observacoes');
-        var valor = botao.data('valor');
-        var desconto = botao.data('desconto');
-        var pagamento = botao.data('pagamento');
-        var comprador = botao.data('comprador');
-        
-        // Imprime nos campos do modal-detalhes-compra
-        var modal = $(this);
-        modal.find('#id-compra').val(id);
-        modal.find("#data-compra").val(data);
-        modal.find("#observacoes-compra").val(observacoes);
-        modal.find("#valor-compra").val(valor);
-        modal.find("#desconto-compra").val(desconto);
-        modal.find("#pagamento-compra").val(pagamento);
-        modal.find("#comprador-compra").val(comprador);
 
+    //* <button class="btn btn-info botao-pequeno" data-toggle="modal" data-target="#modal-detalhes-compra" data-id="<?= $compra['Id']; ?>" data-data="<?= $compra['Data']; ?>" data-observacoes="<?= $compra['Observacoes']; ?>" data-valor="<?= $compra['Valor']; ?>" data-desconto="<?= $compra['Desconto']; ?>" data-pagamento="<?= $compra['Forma_Pagamento']; ?>" data-comprador="<?= $compra['Nome_Comprador']; ?>">detalhes</button>
+    // // Coloca as informacoes no modal
+    // $('#modal-detalhes-compra').on('show.bs.modal', function(event) {
+    //     // Recupera as informacoes do botao
+    //     var botao = $(event.relatedTarget);
+    //     var id = botao.data('id');
+    //     var data = botao.data('data');
+    //     var observacoes = botao.data('observacoes');
+    //     var valor = botao.data('valor');
+    //     var desconto = botao.data('desconto');
+    //     var pagamento = botao.data('pagamento');
+    //     var comprador = botao.data('comprador');
+        
+    //     // Imprime nos campos do modal-detalhes-compra
+    //     var modal = $(this);
+    //     modal.find('#id-compra').val(id);
+    //     modal.find("#data-compra").val(data);
+    //     modal.find("#observacoes-compra").val(observacoes);
+    //     modal.find("#valor-compra").val(valor);
+    //     modal.find("#desconto-compra").val(desconto);
+    //     modal.find("#pagamento-compra").val(pagamento);
+    //     modal.find("#comprador-compra").val(comprador);
+    // });
+
+
+    // Preenche o modal-detalhes-compra utilizando AJAX
+    $(".btn-detalhes").click(function() {
+        var id_compra = $(this).attr("id");        
+
+        $.ajax({
+            url: "modal-detalhes-produto.php",
+            method: "post",
+            data: {
+                id_compra: id_compra
+            },
+            success: function(data) {
+                $("#detalhes-compra").html(data);
+                $("#modal-detalhes-compra").modal("show");
+            }
+        });
     });
+    
+
 </script>
