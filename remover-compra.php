@@ -1,35 +1,22 @@
-<?php 
-    include("cabecalho.php");
+<?php
     include("database/conexao.php"); 
     include("funcoes.php");
-?>
+    include("logica-usuarios.php");
 
-<?php
     verifica_usuario();
-?>
-
-
-<?php
 
     $id = $_POST['id'];
     if (remover_compra($conexao, $id)) {
 
-?>
+        $_SESSION['success'] = "Compra (ID = '{$id}') removida!";
+        header("Location: listar-compras.php");
+        die();
 
-        <p class="alert-success">Compra (ID = '<?= $id ?>') removida!</p><br>
-
-<?php
     } else {
-        $mensagem_erro = mysqli_error($conexao);
-?>
+        
+        $_SESSION['danger'] = "Erro na remoção da compra (ID = '{$id}')!";
+        header("Location: listar-compras.php");
+        die();
 
-        <p class="alert-danger">Erro na remoção da compra (ID = '<?= $id ?>')!</p><br>
-
-<?php
     }
     mysqli_close($conexao);
-?>
-
-
-
-<?php include("rodape.php"); ?>
