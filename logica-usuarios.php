@@ -8,8 +8,8 @@ if (!isset($_SESSION) || !is_array($_SESSION)) {
 function mostra_alerta($tipo) {
     if (isset($_SESSION[$tipo])) {
 ?>
-        <div class="alert alert-<?= $tipo ?>" role="alert">
-            <p style="text-align: center;"><?= $_SESSION[$tipo] ?></p>
+        <div class="alert alert-<?= $tipo ?>" style="text-align: center;" role="alert">
+            <?= $_SESSION[$tipo] ?>
         </div>
 <?php
     unset($_SESSION[$tipo]);

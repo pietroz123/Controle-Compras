@@ -6,6 +6,8 @@
 
 <?php
     verifica_usuario();
+    mostra_alerta("success");
+    mostra_alerta("danger");
 ?>
 
 <h1>Lista de Compras</h1>
