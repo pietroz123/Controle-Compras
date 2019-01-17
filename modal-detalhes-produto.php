@@ -69,7 +69,7 @@
         var nome_imagem = document.getElementById("btn-mostrar-imagem").value;
         
         if (nome_imagem) {
-            $(this).html("<img src='../private/uploads/compras/<?= $compra['imagem'] ?>' class='responsive' id='imagem-aberta'>");
+            $(this).html("<img src='imagem.php?imagem=<?= $compra['imagem'] ?>' class='responsive'>");
         }
         else {
             $(this).html("<div class='text-danger'>Imagem indisponível!</div>");
