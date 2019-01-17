@@ -22,6 +22,7 @@
             <th class="th-sm t-desconto">Desconto</th>
             <th class="th-sm t-pagamento">Pagamento</th>
             <th class="th-sm t-comprador">Comprador</th>
+            <th class="t-imagem">Imagem</th>
             <th class="th-sm t-alterar">Alterar</th>
             <th class="th-sm t-remover">Remover</th>
             <th class="th-sm t-detalhes">Detalhes</th> 
@@ -42,6 +43,9 @@
             <td class="t-desconto"><?= $compra['Desconto']; ?></td>          
             <td class="t-pagamento"><?= $compra['Forma_Pagamento']; ?></td>
             <td class="t-comprador"><?= $compra['Nome_Comprador']; ?></td>
+            <td class="t-imagem">
+                <button type="button" class="btn light-blue btn-block botao-pequeno btn-imagem" id="<?= $compra['Id']; ?>">imagem</button>
+            </td>
             <td class="t-alterar">
                 <form action="formulario-alterar-compra.php" method="post">
                     <input type="hidden" name="id" value="<?= $compra['Id'] ?>">
@@ -74,6 +78,7 @@
             <th class="t-desconto">Desconto</th>
             <th class="t-pagamento">Pagamento</th>
             <th class="t-comprador">Comprador</th>
+            <th class="t-imagem">Imagem</th>
             <th class="t-alterar">Alterar</th>
             <th class="t-remover">Remover</th>
             <th class="t-detalhes">Detalhes</th>            
@@ -86,6 +91,13 @@
 <div class="modal" id="modal-detalhes-compra">
     <div class="modal-dialog" id="detalhes-compra">
         <!-- Preenchido com AJAX (JS) -->
+    </div>
+</div>
+
+<!-- Modal para imagem da Compra -->
+<div class="modal" id="modal-imagem-compra">
+    <div class="modal-dialog" id="imagem-compra">
+        <!-- Preenchido com AJAX (JS) -->        
     </div>
 </div>
 
@@ -131,6 +143,23 @@
             success: function(data) {
                 $("#detalhes-compra").html(data);
                 $("#modal-detalhes-compra").modal("show");
+            }
+        });
+    });
+
+    // Modal para a imagem da compra
+    $(".btn-imagem").click(function() {
+        var id_compra = $(this).attr("id");        
+
+        $.ajax({
+            url: "modal-imagem-compra.php",
+            method: "post",
+            data: {
+                id_compra: id_compra
+            },
+            success: function(data) {
+                $("#imagem-compra").html(data);
+                $("#modal-imagem-compra").modal("show");
             }
         });
     });
