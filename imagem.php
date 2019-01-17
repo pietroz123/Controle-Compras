@@ -1,5 +1,10 @@
 <?php
 
+    include 'logica-usuarios.php';
+
+    verifica_usuario();
+
+
     if (isset($_GET['imagem'])) {
 
         $nome_imagem = $_GET['imagem'];
