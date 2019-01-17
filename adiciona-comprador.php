@@ -42,7 +42,7 @@
                         </p>
                         <hr>
                         <p class="mb-0">
-                            <a href="formulario-comprador-grid.php" class="alert-link">Inserir Outro Comprador</a>
+                            <a href="formulario-comprador.php" class="alert-link">Inserir Outro Comprador</a>
                         </p>
                     </div>
                 </div>
