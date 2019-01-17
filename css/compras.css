@@ -102,7 +102,7 @@ body > .container {
 }
 
 @media only screen and (max-width: 550px) {
-    .t-id, .t-valor, .t-desconto, .t-pagamento, .t-comprador, .t-alterar, .t-remover {
+    .t-id, .t-valor, .t-desconto, .t-pagamento, .t-comprador, .t-alterar, .t-remover, .t-imagem {
         display: none;
     }
     .t-detalhes {
@@ -113,13 +113,19 @@ body > .container {
     }
 }
 @media only screen and (max-width: 900px) {
-    .t-desconto, .t-pagamento, .t-comprador, .t-alterar, .t-remover {
+    .t-desconto, .t-pagamento, .t-comprador, .t-alterar, .t-remover, .t-imagem {
         display: none;
     }
     .t-detalhes {
         display: table-cell;
     }
 }
+@media only screen and (max-width: 1160px) {
+    .t-id {
+        display: none;
+    }
+}
+
 
 /* ==========================================================
    ====================== GRID SYSTEM =======================
