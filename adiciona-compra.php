@@ -56,12 +56,12 @@
                     $novo_nome = uniqid('') . "-" . $observacoes . "-" . $data . "." . $ext;
                     
                     // Destino do imagem
-                    $destino = "../private/uploads/compras/" . $novo_nome;
+                    $destino = "img/uploads/compras/" . $novo_nome;
     
                     // Armazena a imagem
                     move_uploaded_file($imagem_nome_tmp, $destino);
     
-                    $novo_destino = comprimir($destino, "../private/uploads/compras/" . $novo_nome, 20);
+                    $novo_destino = comprimir($destino, "img/uploads/compras/" . $novo_nome, 20);
                     move_uploaded_file($destino, $novo_destino);
     
                     // echo "<p>Temp: " . $imagem_nome_tmp . "</p>";

@@ -25,7 +25,7 @@
                     }
                     else {
                 ?>
-                        <img src="../private/uploads/compras/<?= $compra['imagem'] ?>" class="responsive">
+                        <img src="img/uploads/compras/<?= $compra['imagem'] ?>" class="responsive">
                 <?php
                     }
                 ?>
