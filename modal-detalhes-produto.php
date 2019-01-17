@@ -48,14 +48,21 @@
                 <div class="col-3">Comprador</div>
                 <div class="col-9"><input type="text" class="form-control" name="comprador" id="comprador-compra" value="<?= $comprador['Nome'] ?>" readonly></div>
             </div>
+            <hr>
             <div class="row">
                 <div class="col"><button type="button" class="btn light-blue btn-block" id="btn-mostrar-imagem" value="<?= $compra['imagem'] ?>">mostrar imagem</button></div>
             </div>
         </div>
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-primary">alterar</button>
-        <button type="button" class="btn btn-danger" onclick="printID()">remover</button>
+        <form action="formulario-alterar-compra.php" method="post">
+            <input type="hidden" name="id" value="<?= $compra['Id'] ?>">
+            <button class="btn btn-primary" style="float: left;">alterar</button>
+        </form>
+        <form action="remover-compra.php" method="post">
+            <input type="hidden" name="id" value="<?= $compra['Id'] ?>">
+            <button class="btn btn-danger" style="float: right;"  onclick="return confirm('Deseja prosseguir com a remoção?');">remover</button>
+        </form>
     </div>
 </div>
 
