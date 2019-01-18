@@ -1,5 +1,5 @@
 <?php
-    include("cabecalho.php");
+    include 'cabecalho.php';
 ?>
 
 <?php
@@ -23,5 +23,5 @@
     
 
 <?php
-    include("rodape.php");
+    include 'rodape.php';
 ?>

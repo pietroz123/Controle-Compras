@@ -1,7 +1,7 @@
 <?php
-    include("funcoes-usuarios.php");
-    include("database/conexao.php");
-    include("logica-usuarios.php");
+    include 'funcoes-usuarios.php';
+    include 'database/conexao.php';
+    include 'logica-usuarios.php';
 ?>
 
 <?php
