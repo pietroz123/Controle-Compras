@@ -50,7 +50,7 @@
             </div>
             <hr>
             <div class="row">
-                <div class="col"><button type="button" class="btn light-blue btn-block" id="btn-mostrar-imagem" value="<?= $compra['imagem'] ?>">mostrar imagem</button></div>
+                <div class="col"><button type="button" class="btn light-blue btn-block" id="btn-mostrar-imagem" value="<?= $compra['Imagem'] ?>">mostrar imagem</button></div>
             </div>
         </div>
     </div>
@@ -76,7 +76,7 @@
         var nome_imagem = document.getElementById("btn-mostrar-imagem").value;
         
         if (nome_imagem) {
-            $(this).html("<img src='imagem.php?imagem=<?= $compra['imagem'] ?>' class='responsive'>");
+            $(this).html("<img src='imagem.php?imagem=<?= $compra['Imagem'] ?>' class='responsive'>");
         }
         else {
             $(this).html("<div class='text-danger'>Imagem indisponível!</div>");

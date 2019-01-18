@@ -18,14 +18,14 @@
             <div class="row">
                 <div class="col">
                 <?php
-                    if (empty($compra['imagem'])) {
+                    if (empty($compra['Imagem'])) {
                 ?>
                         <div class="alert alert-danger" role="alert"><p>Imagem inexistente!</p></div>
                 <?php
                     }
                     else {
                 ?>
-                        <img src="imagem.php?imagem=<?= $compra['imagem'] ?>" class="responsive">
+                        <img src="imagem.php?imagem=<?= $compra['Imagem'] ?>" class="responsive">
                 <?php
                     }
                 ?>
