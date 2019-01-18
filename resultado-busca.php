@@ -1,7 +1,7 @@
 <?php 
-    include("cabecalho.php");
-    include("database/conexao.php"); 
-    include("funcoes.php");
+    include 'cabecalho.php';
+    include 'database/conexao.php'; 
+    include 'funcoes.php';
 ?>
 
 <?php
@@ -97,7 +97,7 @@
 
 
 
-<?php include("rodape.php"); ?>
+<?php include 'rodape.php'; ?>
 
 <script>
 

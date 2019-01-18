@@ -1,6 +1,6 @@
 <?php
     ob_start();
-    include("logica-usuarios.php");
+    include 'logica-usuarios.php';
 ?>
 <html>
 
@@ -27,9 +27,11 @@
 
     <body>
 
-        <!-- Modal de Login -->
-        <?php include("modal-login.php"); ?>
-        <?php include("modal-cadastro.php"); ?>
+        <!-- Modal de Login e Cadastro -->
+        <?php
+            include 'modal-login.php';
+            include 'modal-cadastro.php';
+        ?>
 
         <!-- Menu de navegação: no Bootstrap é a classe navbar -->
         <!-- https://www.youtube.com/watch?v=23bpce-5s8I -->

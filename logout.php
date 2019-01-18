@@ -1,5 +1,5 @@
 <?php
-    include("logica-usuarios.php");
+    include 'logica-usuarios.php';
 ?>
 
 <?php

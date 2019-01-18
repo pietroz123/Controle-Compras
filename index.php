@@ -1,6 +1,6 @@
 <?php 
-    include("cabecalho.php"); 
-    include("funcoes-usuarios.php");
+    include 'cabecalho.php'; 
+    include 'funcoes-usuarios.php';
 ?>
 
 <?php
@@ -34,4 +34,4 @@
         </ul>
     </div>
 
-<?php include("rodape.php"); ?>
+<?php include 'rodape.php'; ?>

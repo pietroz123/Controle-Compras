@@ -1,7 +1,7 @@
 <?php 
-    include("cabecalho.php"); 
-    include("database/conexao.php");
-    include("funcoes.php");
+    include 'cabecalho.php'; 
+    include 'database/conexao.php';
+    include 'funcoes.php';
 ?>
 
 <?php
@@ -80,4 +80,4 @@
         </form>
 
 
-<?php include("rodape.php"); ?>
+<?php include 'rodape.php'; ?>
