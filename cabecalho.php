@@ -23,6 +23,9 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
+        <!-- Icones -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
     </head>
 
     <body>
@@ -89,6 +92,13 @@
                     } else {
                 ?>
                     <ul class="navbar-nav links-logout">
+                        <li class="nav-item mr-2">
+                            <a href="perfil-usuario.php">
+                                <span class="badge badge-light">
+                                    <img src="img/usuario.png" class="imagem-usuario">
+                                </span>
+                            </a>
+                        </li>
                         <li class="nav-item">
                             <a href="logout.php" class="nav-link btn btn-unique botao-pequeno">logout</a>
                         </li>

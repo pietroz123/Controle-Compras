@@ -203,4 +203,22 @@ body > .container {
 .responsive {
     width: 100%;
     height: auto;
-  }
+}
+
+
+/* ==========================================================
+   ==================== PERFIL USUÁRIO ======================
+   ========================================================== */
+
+.badge {
+    border-radius: 30px;
+}
+
+.imagem-usuario {
+    height: 25px;
+    width: 25px;
+}
+
+.titulo-perfil {
+    text-align: left;
+}
