@@ -222,3 +222,17 @@ body > .container {
 .titulo-perfil {
     text-align: left;
 }
+
+.dados-perfil {
+    margin-top: 30px;
+}
+
+.nome-perfil {
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+p.texto-dados {
+    font-size: 20px;
+    margin: 0 0;
+}
