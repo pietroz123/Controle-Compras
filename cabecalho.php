@@ -32,8 +32,10 @@
 
         <!-- Modal de Login e Cadastro -->
         <?php
-            include 'modal-login.php';
-            include 'modal-cadastro.php';
+            if (!usuario_esta_logado()) {
+                include 'modal-login.php';
+                include 'modal-cadastro.php';
+            }
         ?>
 
         <!-- Menu de navegação: no Bootstrap é a classe navbar -->
