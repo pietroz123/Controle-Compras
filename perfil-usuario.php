@@ -52,9 +52,9 @@
                                     <tr class="row">
                                         <td class="col-sm-4">Família</td>
                                         <td class="col-sm-3">2019-20-01</td>
-                                        <td class="col-sm-3">7</td>
+                                        <td class="col-sm-3">2</td>
                                         <td class="col-sm-2">
-                                            <button class="btn btn-info botao-pequeno">Membros</button>
+                                            <button class="btn btn-info botao-pequeno btn-membros" id="1">Membros</button>
                                         </td>
                                     </tr>
                                     <tr class="row">
@@ -85,3 +85,22 @@
 <?php
     include 'rodape.php';
 ?>
+
+<script>
+    // Preenche o modal-membros-grupo utilizando AJAX
+    $(".btn-membros").click(function() {
+        var id_grupo = $(this).attr("id");        
+
+        $.ajax({
+            url: "modal-membros-grupo.php",
+            method: "post",
+            data: {
+                id_grupo: id_grupo
+            },
+            success: function(data) {
+                $("#membros-grupo").html(data);
+                $("#modal-membros-grupo").modal("show");
+            }
+        });
+    });
+</script>
