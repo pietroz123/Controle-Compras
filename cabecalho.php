@@ -1,6 +1,6 @@
 <?php
     ob_start();
-    include 'logica-usuarios.php';
+    include("logica-usuarios.php");
 ?>
 <html>
 
@@ -23,15 +23,16 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
+        <!-- Icones -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
     </head>
 
     <body>
 
-        <!-- Modal de Login e Cadastro -->
-        <?php
-            include 'modal-login.php';
-            include 'modal-cadastro.php';
-        ?>
+        <!-- Modal de Login -->
+        <?php include("modal-login.php"); ?>
+        <?php include("modal-cadastro.php"); ?>
 
         <!-- Menu de navegação: no Bootstrap é a classe navbar -->
         <!-- https://www.youtube.com/watch?v=23bpce-5s8I -->
@@ -51,10 +52,10 @@
                 ?>
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link" onmouseover="this.classList.add('nav-hover-bg')" onmouseout="this.classList.remove('nav-hover-bg')" href="formulario-compra.php">Adicionar Compra</a>
+                            <a class="nav-link" onmouseover="this.classList.add('nav-hover-bg')" onmouseout="this.classList.remove('nav-hover-bg')" href="formulario-compra-grid.php">Adicionar Compra</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" onmouseover="this.classList.add('nav-hover-bg')" onmouseout="this.classList.remove('nav-hover-bg')" href="formulario-comprador.php">Adicionar Comprador</a>
+                            <a class="nav-link" onmouseover="this.classList.add('nav-hover-bg')" onmouseout="this.classList.remove('nav-hover-bg')" href="formulario-comprador-grid.php">Adicionar Comprador</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" onmouseover="this.classList.add('nav-hover-bg')" onmouseout="this.classList.remove('nav-hover-bg')" href="listar-compras.php">Compras</a>
@@ -91,6 +92,13 @@
                     } else {
                 ?>
                     <ul class="navbar-nav links-logout">
+                        <li class="nav-item mr-2">
+                            <a href="perfil-usuario.php">
+                                <span class="badge badge-light">
+                                    <img src="img/usuario.png" class="imagem-usuario">
+                                </span>
+                            </a>
+                        </li>
                         <li class="nav-item">
                             <a href="logout.php" class="nav-link btn btn-unique botao-pequeno">logout</a>
                         </li>
