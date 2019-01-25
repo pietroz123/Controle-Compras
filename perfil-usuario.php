@@ -39,7 +39,7 @@
                     <div class="card-header default-color-dark white-text">
                         Grupos
                         <button class="btn default-color botao-pequeno ml-2 btn-recarregar" style="float: right;"><i class="fas fa-sync-alt" id="icone-recarregar"></i> recarregar grupos</button>
-                        <button class="btn default-color botao-pequeno" style="float: right;">criar grupo</button>
+                        <button class="btn default-color botao-pequeno" style="float: right;" data-toggle="modal" data-target="#modal-criar-grupo">criar grupo</button>
                     </div>
                     <div class="card-body">
                         <div class="container">
@@ -85,6 +85,9 @@
         </div>
     </div>
 
+    <?php
+        include 'modal-criar-grupo.php';
+    ?>
 
 <?php
     include 'rodape.php';
