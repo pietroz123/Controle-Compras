@@ -36,7 +36,11 @@
         <div class="row">
             <div class="col">
                 <div class="card z-depth-2">
-                    <div class="card-header default-color-dark white-text">Grupos</div>
+                    <div class="card-header default-color-dark white-text">
+                        Grupos
+                        <button class="btn default-color botao-pequeno ml-2 btn-recarregar" style="float: right;"><i class="fas fa-sync-alt" id="icone-recarregar"></i> recarregar grupos</button>
+                        <button class="btn default-color botao-pequeno" style="float: right;">criar grupo</button>
+                    </div>
                     <div class="card-body">
                         <div class="container">
                             <table class="table table-hover">
@@ -103,4 +107,15 @@
             }
         });
     });
+
+    $(".btn-recarregar").click(function() {
+        var icone = document.querySelector("#icone-recarregar");
+        
+        icone.classList.add('fa-spin');
+
+        setTimeout(function() {
+            icone.classList.remove('fa-spin');
+        }, 1000);
+    });
+
 </script>
