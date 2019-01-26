@@ -1,6 +1,6 @@
 <?php 
-    include 'cabecalho.php'; 
-    include 'funcoes-usuarios.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/compras/cabecalho.php'; 
+    include $_SERVER['DOCUMENT_ROOT'].'/compras/includes/funcoes-usuarios.php';
 ?>
 
 <?php
@@ -34,4 +34,4 @@
         </ul>
     </div>
 
-<?php include 'rodape.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/compras/rodape.php'; ?>

@@ -20,8 +20,8 @@ function mostra_alerta($tipo) {
 function verifica_usuario() {
     if (!usuario_esta_logado()) {
         $_SESSION['danger'] = "Você não tem acesso a essa funcionalidade.";
-        header("Location: index.php");
-        // echo("<script>location.href = 'index.php'</script>");
+        header("Location: ../index.php");
+        // echo("<script>location.href = '../index.php'</script>");
         die();
     }
 }
@@ -49,7 +49,7 @@ function logout() {
     session_destroy();
     session_start();
     $_SESSION['success'] = "Deslogado com sucesso.";
-    header("Location: index.php");
+    header("Location: ../index.php");
 }
 
 // Retorna se o usuario atual e o admin

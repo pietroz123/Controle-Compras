@@ -5,7 +5,7 @@
                 <h2>Formulario de Cadastro</h2>
                 <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
             </div>
-            <form action="cadastro.php" method="post">
+            <form action="scripts/cadastro.php" method="post">
                 <div class="modal-body">
                     <div class="grid">
                         <div class="row">

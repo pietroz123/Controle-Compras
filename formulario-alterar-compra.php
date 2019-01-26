@@ -1,7 +1,6 @@
 <?php 
-    include 'cabecalho.php'; 
-    include 'database/conexao.php';
-    include 'funcoes.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/compras/cabecalho.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/compras/includes/funcoes.php';
 ?>
 
 <?php
@@ -17,7 +16,7 @@
 
         <h1>Formulário de Alteração de Compra</h1>
         
-        <form action="altera-compra.php" method="post">
+        <form action="scripts/altera-compra.php" method="post">
 
             <input type="hidden" name="id" value="<?= $compra['Id'] ?>">
 
@@ -80,4 +79,4 @@
         </form>
 
 
-<?php include 'rodape.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/compras/rodape.php'; ?>

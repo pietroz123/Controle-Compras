@@ -1,7 +1,6 @@
 <?php 
-    include 'cabecalho.php';
-    include 'database/conexao.php'; 
-    include 'funcoes.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/compras/cabecalho.php'; 
+    include $_SERVER['DOCUMENT_ROOT'].'/compras/includes/funcoes.php';
 ?>
 
 <?php
@@ -55,7 +54,7 @@
                 </form>
             </td>
             <td class="t-remover">
-                <form action="remover-compra.php" method="post">
+                <form action="scripts/remover-compra.php" method="post">
                     <input type="hidden" name="id" value="<?= $compra['Id'] ?>">
                     <button class="btn btn-danger botao-pequeno" onclick="return confirm('Deseja prosseguir com a remoção?');">remover</button>
                 </form>
@@ -104,7 +103,7 @@
 </div>
 
 
-<?php include 'rodape.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/compras/rodape.php'; ?>
 
 <script>
 

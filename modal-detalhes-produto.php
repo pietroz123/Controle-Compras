@@ -1,6 +1,6 @@
 <?php
-    include 'database/conexao.php';
-    include 'funcoes.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/compras/database/conexao.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/compras/includes/funcoes.php';
 ?>
 
 <?php
@@ -59,7 +59,7 @@
             <input type="hidden" name="id" value="<?= $compra['Id'] ?>">
             <button class="btn btn-primary" style="float: left;">alterar</button>
         </form>
-        <form action="remover-compra.php" method="post">
+        <form action="scripts/remover-compra.php" method="post">
             <input type="hidden" name="id" value="<?= $compra['Id'] ?>">
             <button class="btn btn-danger" style="float: right;"  onclick="return confirm('Deseja prosseguir com a remoção?');">remover</button>
         </form>
@@ -76,7 +76,7 @@
         var nome_imagem = document.getElementById("btn-mostrar-imagem").value;
         
         if (nome_imagem) {
-            $(this).html("<img src='imagem.php?imagem=<?= $compra['Imagem'] ?>' class='responsive'>");
+            $(this).html("<img src='scripts/imagem.php?imagem=<?= $compra['Imagem'] ?>' class='responsive'>");
         }
         else {
             $(this).html("<div class='text-danger'>Imagem indisponível!</div>");

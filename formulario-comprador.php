@@ -1,5 +1,5 @@
 <?php 
-    include 'cabecalho.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/compras/cabecalho.php';
 ?>
 
 <?php
@@ -49,4 +49,4 @@
         </form>
 
 
-<?php include 'rodape.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/compras/rodape.php'; ?>

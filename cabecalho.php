@@ -1,6 +1,7 @@
 <?php
     ob_start();
-    include 'logica-usuarios.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/compras/includes/logica-usuarios.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/compras/database/conexao.php';
 ?>
 <html>
 
@@ -92,7 +93,7 @@
                 ?>
                     <ul class="navbar-nav links-logout">
                         <li class="nav-item">
-                            <a href="logout.php" class="nav-link btn btn-unique botao-pequeno">logout</a>
+                            <a href="scripts/logout.php" class="nav-link btn btn-unique botao-pequeno">logout</a>
                         </li>
                     </ul>
                 <?php

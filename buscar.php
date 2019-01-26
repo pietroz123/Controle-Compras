@@ -1,7 +1,6 @@
 <?php 
-    include 'cabecalho.php';
-    include 'database/conexao.php';
-    include 'funcoes.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/compras/cabecalho.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/compras/includes/funcoes.php';
 ?>
 
 <?php
@@ -52,4 +51,4 @@
 </form>
 
 
-<?php include 'rodape.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/compras/rodape.php'; ?>

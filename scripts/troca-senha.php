@@ -1,5 +1,5 @@
 <?php
-    include 'database/conexao.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/compras/database/conexao.php';
 ?>
 
 <?php
@@ -12,7 +12,7 @@
     // Verifica se o botão de submit foi pressionado
     if (!isset($_POST['submit-troca-senha'])) {
         $_SESSION['danger'] = "Você não deu submit!";
-        header("Location: index.php");
+        header("Location: ../index.php");
     }
     else {
 
@@ -109,14 +109,14 @@
                                 $stmt = mysqli_stmt_init($conexao);
                                 if (!mysqli_stmt_prepare($stmt, $query)) {
                                     $_SESSION['danger'] = "Ocorreu um erro ao deletar os tokens pre-existentes após a atualização da senha.";
-                                    header("Location: index.php");
+                                    header("Location: ../index.php");
                                     die();
                                 } else {
                                     mysqli_stmt_bind_param($stmt, "s", $token_email);
                                     mysqli_stmt_execute($stmt);
 
                                     $_SESSION['success'] = "Sua senha foi atualizada com sucesso e requisições pre-existentes foram removidas.";
-                                    header("Location: index.php");
+                                    header("Location: ../index.php");
                                     die();
 
                                 }

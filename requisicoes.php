@@ -1,7 +1,6 @@
 <?php
-    include 'cabecalho.php';
-    include 'database/conexao.php';
-    include 'funcoes.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/compras/cabecalho.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/compras/includes/funcoes.php';
 ?>
 
 <?php
@@ -31,7 +30,7 @@
             <td class="t-username-usuario"><?= $usuario_temp['Usuario'] ?></td>
             <td class="t-email-usuario"><?= $usuario_temp['Email'] ?></td>
             <td class="t-adicionar-usuario">
-                <form action="adiciona-usuario-temp.php" method="post">
+                <form action="scripts/adiciona-usuario-temp.php" method="post">
                     <input type="hidden" name="id" value="<?= $usuario_temp['ID'] ?>">
                     <button class="btn btn-primary botao-pequeno">adicionar</button>
                 </form>
@@ -45,5 +44,5 @@
 </table>
 
 <?php
-    include 'rodape.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/compras/rodape.php';
 ?>

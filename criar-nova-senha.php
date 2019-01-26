@@ -1,5 +1,5 @@
 <?php
-    include 'cabecalho.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/compras/cabecalho.php';
 ?>
 
 <?php
@@ -12,7 +12,7 @@
 
     if (empty($seletor) || empty($token)) {
         $_SESSION['danger'] = "Não foi possível validar sua requisição!";
-        header("Location: index.php");
+        header("Location: ../index.php");
         die();
     } else {
 
@@ -20,7 +20,7 @@
         if (ctype_xdigit($seletor) !== false && ctype_xdigit($token) !== false) {
 ?>
 
-            <form action="troca-senha.php" method="post">
+            <form action="scripts/troca-senha.php" method="post">
                 <input type="hidden" class="form-control" name="seletor" value="<?= $seletor ?>">
                 <input type="hidden" class="form-control" name="token" value="<?= $token ?>">
                 <input type="password" class="form-control" name="nova_senha" placeholder="Digite uma nova senha">
@@ -36,5 +36,5 @@
 
 
 <?php
-    include 'rodape.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/compras/rodape.php';
 ?>

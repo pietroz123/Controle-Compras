@@ -1,6 +1,6 @@
 <?php
-    include 'database/conexao.php';
-    include 'funcoes.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/compras/database/conexao.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/compras/includes/funcoes.php';
 ?>
 
 <?php
@@ -25,7 +25,7 @@
                     }
                     else {
                 ?>
-                        <img src="imagem.php?imagem=<?= $compra['Imagem'] ?>" class="responsive">
+                        <img src="scripts/imagem.php?imagem=<?= $compra['Imagem'] ?>" class="responsive">
                 <?php
                     }
                 ?>

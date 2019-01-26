@@ -1,14 +1,14 @@
 <?php
-    include 'database/conexao.php';
-    include 'funcoes-usuarios.php';
-    include 'logica-usuarios.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/compras/database/conexao.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/compras/includes/funcoes-usuarios.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/compras/includes/logica-usuarios.php';
 ?>
 
 <?php
 
     if (!isset($_POST['submit'])) {
         $_SESSION['danger'] = "Você não deu submit!";
-        header("Location: index.php");
+        header("Location: ../index.php");
         die();
     }
 
@@ -23,24 +23,24 @@
     // Verifica se existem campos em branco
     if (empty($nome) || empty($sobrenome) || empty($username) || empty($email_cadastro) || empty($senha_cadastro) || empty($senha_rep_cadastro)) {
         $_SESSION['danger'] = "Existem campos em branco!";
-        header("Location: index.php");
+        header("Location: ../index.php");
         die();
     }
 
     // Verifica se a repeticao de senha e igual
     if ($senha_cadastro != $senha_rep_cadastro) {
         $_SESSION['danger'] = "As senhas não são iguais!";
-        header("Location: index.php");
+        header("Location: ../index.php");
         die();
     }
 
     // Cria o usuario
     if (criar_usuario($conexao, $nome, $sobrenome, $username, $email_cadastro, $senha_cadastro)) {
         $_SESSION['success'] = "Cadastrado com sucesso. Favor esperar a confirmação do cadastro.";
-        header("Location: index.php");
+        header("Location: ../index.php");
         die();
     } else {
         $_SESSION['danger'] = "Erro ao cadastrar.";
-        header("Location: index.php");
+        header("Location: ../index.php");
         die();
     }

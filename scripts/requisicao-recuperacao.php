@@ -1,5 +1,5 @@
 <?php
-    include 'database/conexao.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/compras/database/conexao.php';
 ?>
 
 <?php
@@ -12,7 +12,7 @@
     // Verifica se o botão de submit foi pressionado
     if (!isset($_POST['submit-recuperacao'])) {
         $_SESSION['danger'] = "Você não deu submit!";
-        header("Location: index.php");
+        header("Location: ../index.php");
     }
     else {
 
