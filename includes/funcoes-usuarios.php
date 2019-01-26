@@ -27,7 +27,7 @@ function criar_usuario($conexao, $nome, $sobrenome, $username, $email, $senha) {
 }
 
 function join_usuario_comprador($conexao, $email) {
-    $sql = "SELECT * FROM usuarios WHERE usuarios.Email = ?";
+    $sql = "SELECT * FROM usuarios JOIN compradores ON usuarios.Email = compradores.Email WHERE usuarios.Email = ?";
     $stmt = mysqli_stmt_init($conexao);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
         $_SESSION['danger'] = "Ocorreu um erro ao buscar as informações do usuário.";
