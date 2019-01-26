@@ -3,7 +3,7 @@
    ========================== HTML ==========================
    ========================================================== */
 
-html {
+   html {
     position: relative;
     min-height: 100%;
 }
@@ -203,4 +203,36 @@ body > .container {
 .responsive {
     width: 100%;
     height: auto;
-  }
+}
+
+
+/* ==========================================================
+   ==================== PERFIL USUÁRIO ======================
+   ========================================================== */
+
+.badge {
+    border-radius: 30px;
+}
+
+.imagem-usuario {
+    height: 25px;
+    width: 25px;
+}
+
+.titulo-perfil {
+    text-align: left;
+}
+
+.dados-perfil {
+    margin-top: 30px;
+}
+
+.nome-perfil {
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+p.texto-dados {
+    font-size: 20px;
+    margin: 0 0;
+}
