@@ -64,7 +64,7 @@
 
 
         // Seleciona o usuario para exibir informações no email
-        $query = "SELECT * FROM usuarios WHERE email = ?;";
+        $query = "SELECT * FROM usuarios JOIN compradores on usuarios.Email = compradores.Email WHERE usuarios.email = ?;";
         if (!mysqli_stmt_prepare($stmt, $query)) {
             $_SESSION['danger'] = "Ocorreu um erro ao buscar as informações do usuário.";
             header("Location: recuperacao-senha.php");
@@ -155,7 +155,7 @@
 
                     <h1>Informações para a recuperação da sua senha</h1>
                     <div class='texto-email'>
-                        <p style='margin-bottom: 15px;'>Olá " . $usuario['Primeiro_Nome'] . ", tudo bem?</p>
+                        <p style='margin-bottom: 15px;'>Olá " . $usuario['Nome'] . ", tudo bem?</p>
                         <p>Recebemos uma requisição de recuperação de senha. O link para recuperar sua senha está logo abaixo. Se você não fez essa requisição, ignore este e-email.</p>
                         <p style='margin-bottom: 15px;'>Aqui está o link de recuperação da senha:<br><a href='" . $url ."'>" . $url ."</a></p>
                     </div>
