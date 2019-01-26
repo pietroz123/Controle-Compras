@@ -17,8 +17,8 @@
     else {
 
         // Configuracoes do servidor
-        $config = parse_ini_file('../private/config_compras.ini');
-        $site = $config['site'];
+        $config         = parse_ini_file('../../private/config_compras.ini');
+        $site           = $config['site'];
         $email_servidor = $config['email_servidor'];
 
 
