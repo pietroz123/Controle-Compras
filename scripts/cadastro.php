@@ -1,7 +1,7 @@
 <?php
-    include $_SERVER['DOCUMENT_ROOT'].'/compras/database/conexao.php';
-    include $_SERVER['DOCUMENT_ROOT'].'/compras/includes/funcoes-usuarios.php';
-    include $_SERVER['DOCUMENT_ROOT'].'/compras/includes/logica-usuarios.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/database/conexao.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes-usuarios.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/includes/logica-usuarios.php';
 ?>
 
 <?php

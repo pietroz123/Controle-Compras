@@ -1,6 +1,6 @@
 <?php
 
-    include $_SERVER['DOCUMENT_ROOT'].'/compras/includes/logica-usuarios.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/includes/logica-usuarios.php';
 
     verifica_usuario();
 

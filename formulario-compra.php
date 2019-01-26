@@ -1,6 +1,6 @@
 <?php 
-    include $_SERVER['DOCUMENT_ROOT'].'/compras/cabecalho.php'; 
-    include $_SERVER['DOCUMENT_ROOT'].'/compras/includes/funcoes.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/cabecalho.php'; 
+    include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes.php';
 ?>
 
 <?php
@@ -73,4 +73,4 @@
 
         </form>
 
-<?php include $_SERVER['DOCUMENT_ROOT'].'/compras/rodape.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/rodape.php'; ?>
