@@ -26,6 +26,30 @@ function criar_usuario($conexao, $nome, $sobrenome, $username, $email, $senha) {
     return $resultado;
 }
 
+function join_usuario_comprador($conexao, $email) {
+    $sql = "SELECT * FROM usuarios WHERE usuarios.Email = ?";
+    $stmt = mysqli_stmt_init($conexao);
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        $_SESSION['danger'] = "Ocorreu um erro ao buscar as informações do usuário.";
+        header("Location: ../index.php");
+        die();
+    } else {
+        mysqli_stmt_bind_param($stmt, "s", $email);
+        mysqli_stmt_execute($stmt);
+
+        $resultado = mysqli_stmt_get_result($stmt);
+        $usuario = mysqli_fetch_assoc($resultado);
+        if ($usuario == null) {
+            $_SESSION['danger'] = "Usuário inexistente.";
+            header("Location: ../index.php");
+            die();
+        }
+        else {
+            return $usuario;
+        }
+    }
+}
+
 
 /******************************* Funcoes usuarios temporarios *******************************/
 

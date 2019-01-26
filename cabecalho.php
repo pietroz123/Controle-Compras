@@ -105,7 +105,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="logout.php" class="nav-link btn btn-unique botao-pequeno">logout</a>
+                            <a href="scripts/logout.php" class="nav-link btn btn-unique botao-pequeno">logout</a>
                         </li>
                     </ul>
                 <?php
