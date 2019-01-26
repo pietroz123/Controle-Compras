@@ -42,7 +42,7 @@
         $stmt = mysqli_stmt_init($conexao);
         if (!mysqli_stmt_prepare($stmt, $query)) {
             $_SESSION['danger'] = "Ocorreu um erro ao deletar os tokens pre-existentes.";
-            header("Location: recuperacao-senha.php");
+            header("Location: ../recuperacao-senha.php");
             die();
         } else {
             mysqli_stmt_bind_param($stmt, "s", $email_usuario);
@@ -54,7 +54,7 @@
         $query = "INSERT INTO recuperacao_senha (email, seletor, token, expira) VALUES (?, ?, ?, ?);";
         if (!mysqli_stmt_prepare($stmt, $query)) {
             $_SESSION['danger'] = "Ocorreu um erro na inserção da requisição da senha.";
-            header("Location: recuperacao-senha.php");
+            header("Location: ../recuperacao-senha.php");
             die();
         } else {
             $hash_token = password_hash($token, PASSWORD_DEFAULT);
@@ -67,7 +67,7 @@
         $query = "SELECT * FROM usuarios WHERE email = ?;";
         if (!mysqli_stmt_prepare($stmt, $query)) {
             $_SESSION['danger'] = "Ocorreu um erro ao buscar as informações do usuário.";
-            header("Location: recuperacao-senha.php");
+            header("Location: ../recuperacao-senha.php");
             die();
         } else {
             mysqli_stmt_bind_param($stmt, "s", $email_usuario);
@@ -77,7 +77,7 @@
             $usuario = mysqli_fetch_assoc($resultado);
             if ($usuario == null) {
                 $_SESSION['danger'] = "Usuário inexistente.";
-                header("Location: recuperacao-senha.php");
+                header("Location: ../recuperacao-senha.php");
                 die();
             }
         }
@@ -177,6 +177,6 @@
 
         // Retorna para a pagina inicial
         $_SESSION['success'] = "Um e-mail foi enviado para '" . $email_usuario . "' com as informações de recuperação de senha. Verifique seu e-mail.";
-        header("Location: recuperacao-senha.php");
+        header("Location: ../recuperacao-senha.php");
 
     }
