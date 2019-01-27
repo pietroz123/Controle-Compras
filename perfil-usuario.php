@@ -5,6 +5,8 @@
 
 <?php
     verifica_usuario();
+    mostra_alerta("success");
+    mostra_alerta("danger");
 
     $usuario = join_usuario_comprador($conexao, $_SESSION['login']);
 ?>
