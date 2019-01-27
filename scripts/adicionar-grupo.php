@@ -2,6 +2,13 @@
 
     include $_SERVER['DOCUMENT_ROOT'].'/database/conexao.php';
 
+
+    // Inicia a sessao
+    if (!isset($_SESSION) || !is_array($_SESSION)) {
+        session_start();
+    }
+
+
     if (isset($_POST['submit-criar-grupo'])) {
 
         if (isset($_POST['usernames'])) {
