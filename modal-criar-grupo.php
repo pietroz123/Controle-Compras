@@ -11,15 +11,17 @@
                         <div class="col-sm-4">Nome:</div>
                         <div class="col-sm-8"><input type="text" name="nome" class="form-control" placeholder="Nome do grupo"></div>
                     </div>
-                    <hr>
-                    <div class="row">
-                        
-                    </div>
                 </div>
+                <table class="table" id="campos-dinamicos">
+                    <tr>
+                        <td><input type="text" name="usernames[]" placeholder="Digite um nome de usuário" class="form-control" required></td>
+                        <td><button type="button" name="adicionar" id="adicionar" class="btn btn-success botao-pequeno" style="padding: 9px;">adicionar</button></td>
+                    </tr>
+                </table>
             </div>
             <div class="modal-footer">
-                
+                <button type="submit" name="submit-criar-grupo" id="submit-criar-grupo" class="btn btn-blue">Criar grupo</button>
             </div>
         </div>
     </div>
-</div>
+</div>    

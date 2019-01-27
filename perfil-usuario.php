@@ -99,31 +99,57 @@
 ?>
 
 <script>
-    // Preenche o modal-membros-grupo utilizando AJAX
-    $(".btn-membros").click(function() {
-        var id_grupo = $(this).attr("id");        
 
-        $.ajax({
-            url: "modal-membros-grupo.php",
-            method: "post",
-            data: {
-                id_grupo: id_grupo
-            },
-            success: function(data) {
-                $("#membros-grupo").html(data);
-                $("#modal-membros-grupo").modal("show");
-            }
+    $(document).ready(function() {
+
+        // Preenche o modal-membros-grupo utilizando AJAX
+        $(".btn-membros").click(function() {
+            var id_grupo = $(this).attr("id");        
+
+            $.ajax({
+                url: "modal-membros-grupo.php",
+                method: "post",
+                data: {
+                    id_grupo: id_grupo
+                },
+                success: function(data) {
+                    $("#membros-grupo").html(data);
+                    $("#modal-membros-grupo").modal("show");
+                }
+            });
         });
-    });
 
-    $(".btn-recarregar").click(function() {
-        var icone = document.querySelector("#icone-recarregar");
-        
-        icone.classList.add('fa-spin');
+        $(".btn-recarregar").click(function() {
+            var icone = document.querySelector("#icone-recarregar");
+            
+            icone.classList.add('fa-spin');
 
-        setTimeout(function() {
-            icone.classList.remove('fa-spin');
-        }, 1000);
+            setTimeout(function() {
+                icone.classList.remove('fa-spin');
+            }, 1000);
+        });
+
+
+        /* ==============================================================================================================
+        ===================================== ADICIONA E REMOVE CAMPOS DINÂMICOS =====================================
+        ============================================================================================================== */
+
+        var url = "scripts/adicionar-mais.php";
+
+        var cont = 1;
+
+        // Para adicionar os campos
+        $("#adicionar").click(function() {
+            cont++;
+            $("#campos-dinamicos").append('<tr id="input'+cont+'" class="dinamico-adicionado"><td><input type="text" name="usernames[]" placeholder="Digite um nome de usuário" class="form-control" required></td><td><button type="button" name="remover" id="'+cont+'" class="btn btn-danger botao-pequeno btn-remover" style="padding: 9px;">remover</button></td></tr>');
+        });
+
+        // Para remover os campos
+        $(document).on('click', '.btn-remover', function(){
+            var id_botao = $(this).attr("id");
+            $('#input'+id_botao).remove();
+        });
+    
     });
 
 </script>
