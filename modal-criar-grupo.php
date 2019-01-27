@@ -6,21 +6,23 @@
                 <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
             </div>
             <div class="modal-body">
-                <div class="grid">
-                    <div class="row">
-                        <div class="col-sm-4">Nome:</div>
-                        <div class="col-sm-8"><input type="text" name="nome" class="form-control" placeholder="Nome do grupo"></div>
+                <form name="adicionar-username" id="adicionar-username" action="scripts/adicionar-grupo.php" method="post">
+                    <div class="grid">
+                        <div class="row">
+                            <div class="col-sm-4">Nome:</div>
+                            <div class="col-sm-8"><input type="text" name="nome-grupo" class="form-control" placeholder="Nome do grupo"></div>
+                        </div>
                     </div>
-                </div>
-                <table class="table" id="campos-dinamicos">
-                    <tr>
-                        <td><input type="text" name="usernames[]" placeholder="Digite um nome de usuário" class="form-control" required></td>
-                        <td><button type="button" name="adicionar" id="adicionar" class="btn btn-success botao-pequeno" style="padding: 9px;">adicionar</button></td>
-                    </tr>
-                </table>
+                    <table class="table" id="campos-dinamicos">
+                        <tr>
+                            <td><input type="text" name="usernames[]" placeholder="Digite um nome de usuário" class="form-control" required></td>
+                            <td><button type="button" name="adicionar" id="adicionar" class="btn btn-success botao-pequeno" style="padding: 9px;">adicionar</button></td>
+                        </tr>
+                    </table>
+                    <button type="submit" name="submit-criar-grupo" id="submit-criar-grupo" class="btn btn-blue">Criar grupo</button>
+                </form>
             </div>
             <div class="modal-footer">
-                <button type="submit" name="submit-criar-grupo" id="submit-criar-grupo" class="btn btn-blue">Criar grupo</button>
             </div>
         </div>
     </div>
