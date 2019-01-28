@@ -154,28 +154,34 @@
         ===================================== REALIZA BUSCA POR USERNAMES NO BD ======================================
         ============================================================================================================== */
 
-        $("#primeiro").keyup(function() {
-            var usuario = $(this).val();
-            
-            if (usuario.length >= 3) {
-                $.ajax({
-                    url: "scripts/busca-usuario.php",
-                    method: "post",
-                    data: {
-                        busca: "sim",
-                        texto: usuario
-                    },
-                    dataType: "json",
-                    success: function(retorno) {
-                        if (retorno.quantidade == 0) {
-                            $('#resultado-busca').html("Não existe nenhum usuário com esse nome");
-                        } else {
-                            $('#resultado-busca').html(retorno.dados);
-                        }
-                    }
-                });
-            }
+        var awesomplete = new Awesomplete("#primeiro", {
+            minChars: 1,
+            autoFirst: true
         });
+
+        $("#primeiro").on("keyup", function() {
+            var usuario = $(this).val();
+            $.ajax({
+                url: "scripts/busca-usuario.php",
+                type: "post",
+                data: {
+                    busca: "sim",
+                    texto: usuario
+                },
+                dataType: "json",
+                success: function(retorno) {
+                    var lista = [];
+                    console.log(retorno);
+                    
+                    $.each(retorno.dados, function(key, value) {                        
+                        lista.push(value);
+                    });
+                    
+                    awesomplete.list = lista;
+                }
+            });
+        });
+
 
     });
 

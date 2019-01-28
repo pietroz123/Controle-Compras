@@ -15,15 +15,10 @@
                     </div>
                     <table class="table" id="campos-dinamicos">
                         <tr>
-                            <td><input type="text" name="usernames[]" id="primeiro" placeholder="Digite um nome de usuário" class="form-control" required></td>
+                            <td><input type="text" name="usernames[]" id="primeiro" placeholder="Digite um nome de usuário" class="form-control awesomplete" list="lista-usuarios" data-list="" required></td>
                             <td><button type="button" name="adicionar" id="adicionar" class="btn btn-success botao-pequeno" style="padding: 9px;">adicionar</button></td>
                         </tr>
-                        <tr>
-                            <td id="resultado-busca"></td>
-                            <td></td>
-                        </tr>
                     </table>
-                    <!-- <div id="resultado-busca"></div> -->
                     <button type="submit" name="submit-criar-grupo" id="submit-criar-grupo" class="btn btn-blue">Criar grupo</button>
                 </form>
             </div>

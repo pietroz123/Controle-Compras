@@ -13,7 +13,7 @@
         <script type="text/javascript" src="js/bootstrap.js"></script>
         <script type="text/javascript" src="js/mdb.js"></script>
         <script type="text/javascript" src="js/datatables.js"></script>
-
+        <script type="text/javascript" src="js/awesomplete.js"></script>
 
     </body>
 
