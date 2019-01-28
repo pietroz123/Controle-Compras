@@ -141,45 +141,52 @@
         // Para adicionar os campos
         $("#adicionar").click(function() {
             cont++;
-            $("#campos-dinamicos").append('<tr id="input'+cont+'" class="dinamico-adicionado"><td><input type="text" name="usernames[]" placeholder="Digite um nome de usuário" class="form-control" required></td><td><button type="button" name="remover" id="'+cont+'" class="btn btn-danger botao-pequeno btn-remover" style="padding: 9px;">remover</button></td></tr>');
+            $("#campos-dinamicos").append('<tr id="usuario'+cont+'" class="dinamico-adicionado"><td><input type="text" name="usernames[]" placeholder="Digite um nome de usuário" class="form-control input-usuario" required></td><td><button type="button" name="remover" id="'+cont+'" class="btn btn-danger botao-pequeno btn-remover" style="padding: 9px;">remover</button></td></tr>');
         });
 
         // Para remover os campos
         $(document).on('click', '.btn-remover', function(){
             var id_botao = $(this).attr("id");
-            $('#input'+id_botao).remove();
+            $('#usuario'+id_botao).remove();
         });
 
         /* ===========================================================================================================
         ===================================== REALIZA BUSCA POR USERNAMES NO BD ======================================
         ============================================================================================================== */
 
-        var awesomplete = new Awesomplete("#primeiro", {
+
+        var awesomplete = new Awesomplete("#usuario1", {
             minChars: 1,
             autoFirst: true
         });
 
-        $("#primeiro").on("keyup", function() {
+        // Awesomplete detecta as setas para cima e para baixo como input, ou seja, recarrega o ajax. Assim, precisamos removê-las
+        // Setas para cima e para baixo
+        var arrowKeys = [38, 40];
+
+        $("#usuario1").on("keyup", function(e) {
             var usuario = $(this).val();
-            $.ajax({
-                url: "scripts/busca-usuario.php",
-                type: "post",
-                data: {
-                    busca: "sim",
-                    texto: usuario
-                },
-                dataType: "json",
-                success: function(retorno) {
-                    var lista = [];
-                    console.log(retorno);
-                    
-                    $.each(retorno.dados, function(key, value) {                        
-                        lista.push(value);
-                    });
-                    
-                    awesomplete.list = lista;
-                }
-            });
+            // Verifica se não foram tecladas as setas para cima e para baixo
+            if ($.inArray(e.keyCode, arrowKeys) == -1) {
+                $.ajax({
+                    url: "scripts/busca-usuario.php",
+                    type: "post",
+                    data: {
+                        busca: "sim",
+                        texto: usuario
+                    },
+                    dataType: "json",
+                    success: function(retorno) {
+                        var lista = [];
+                        
+                        $.each(retorno.dados, function(key, value) {                        
+                            lista.push(value);
+                        });
+                        
+                        awesomplete.list = lista;
+                    }
+                });
+            }
         });
 
 
