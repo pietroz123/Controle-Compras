@@ -19,12 +19,12 @@
             $retorno = array();
             $resultado = mysqli_stmt_get_result($stmt);
 
-            $retorno['quantidade'] = mysqli_stmt_num_rows($stmt);
-            if ($retorno['quantidade'] >= 0) {
-                while ($usuario_retorno = mysqli_fetch_assoc($resultado)) {
-                    $retorno['dados'][] = $usuario_retorno['Usuario'];
-                }
-            }            
+            $i = 0;
+            while ($usuario_retorno = mysqli_fetch_assoc($resultado)) {
+                $retorno['dados'][] = $usuario_retorno['Usuario'];
+                $i++;
+            }
+            $retorno['quantidade'] = $i;
 
             echo json_encode($retorno);
         }

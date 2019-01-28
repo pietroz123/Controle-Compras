@@ -168,6 +168,12 @@
             teclasLetras[j] = i;
         }
 
+        $(".input-usuario").focus(function() {
+            var id = $(this).attr("id");
+            console.log(id);
+            
+        });
+
         $("#usuario"+contUsuario).on("keyup", function(e) {
             var usuario = $(this).val();
             // Verifica se não foram tecladas setas não permitidas
@@ -181,13 +187,15 @@
                     },
                     dataType: "json",
                     success: function(retorno) {
-                        var lista = [];
-                        
-                        $.each(retorno.dados, function(key, value) {                        
-                            lista.push(value);
-                        });
-                        
-                        awesomplete.list = lista;
+                        if (retorno.quantidade > 0) {
+                            var lista = [];
+                            
+                            $.each(retorno.dados, function(key, value) {                        
+                                lista.push(value);
+                            });
+                            
+                            awesomplete.list = lista;
+                        }
                     }
                 });
             }
