@@ -154,20 +154,24 @@
         ===================================== REALIZA BUSCA POR USERNAMES NO BD ======================================
         ============================================================================================================== */
 
+        var contUsuario = 1;
 
-        var awesomplete = new Awesomplete("#usuario1", {
+        var awesomplete = new Awesomplete("#usuario"+contUsuario, {
             minChars: 1,
             autoFirst: true
         });
 
         // Awesomplete detecta as setas para cima e para baixo como input, ou seja, recarrega o ajax. Assim, precisamos removê-las
-        // Setas para cima e para baixo
-        var arrowKeys = [38, 40];
+        // Setas permitidas: de A a Z (65 a 90)
+        var teclasLetras = [];
+        for (let i = 65, j = 0; i <= 90; i++, j++) {
+            teclasLetras[j] = i;
+        }
 
-        $("#usuario1").on("keyup", function(e) {
+        $("#usuario"+contUsuario).on("keyup", function(e) {
             var usuario = $(this).val();
-            // Verifica se não foram tecladas as setas para cima e para baixo
-            if ($.inArray(e.keyCode, arrowKeys) == -1) {
+            // Verifica se não foram tecladas setas não permitidas
+            if ($.inArray(e.keyCode, teclasLetras) !== -1) {
                 $.ajax({
                     url: "scripts/busca-usuario.php",
                     type: "post",
