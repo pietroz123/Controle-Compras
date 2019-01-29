@@ -141,7 +141,7 @@
         // Para adicionar os campos
         $("#adicionar").click(function() {
             cont++;
-            $("#campos-dinamicos").append('<tr id="tr-usuario'+cont+'" class="dinamico-adicionado"><td><input id="usuario'+cont+'" type="text" name="usernames[]" placeholder="Digite um nome de usuário" class="form-control input-usuario" required></td><td><button type="button" name="remover" id="'+cont+'" class="btn btn-danger botao-pequeno btn-remover" style="padding: 9px;">remover</button></td></tr>');
+            $("#campos-dinamicos").append('<tr id="tr-usuario'+cont+'" class="dinamico-adicionado"><td><input id="usuario'+cont+'" type="text" name="usernames[]" placeholder="Nome de usuário" class="form-control input-usuario" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" required></td><td><button type="button" name="remover" id="'+cont+'" class="btn btn-danger botao-pequeno btn-remover" style="padding: 9px;">remover</button></td></tr>');
         });
 
         // Para remover os campos
@@ -156,11 +156,6 @@
 
         var contUsuario = 1;
 
-        // var awesomplete = new Awesomplete("#usuario"+contUsuario, {
-        //     minChars: 1,
-        //     autoFirst: true
-        // });
-
         // Awesomplete detecta as setas para cima e para baixo como input, ou seja, recarrega o ajax. Assim, precisamos removê-las
         // Setas permitidas: de A a Z (65 a 90)
         var teclasLetras = [];
@@ -168,67 +163,44 @@
             teclasLetras[j] = i;
         }
 
-        $(document).on('focus', '.input-usuario', function() {
-            var id = $(this).attr("id");
-            console.log(id);
-            var awesomplete = new Awesomplete("#"+id, {
-                minChars: 1,
-                autoFirst: true
-            });
-            $("#"+id).on("keyup", function(e) {
-                var usuario = $(this).val();
-                // Verifica se não foram tecladas setas não permitidas
-                if ($.inArray(e.keyCode, teclasLetras) !== -1) {
-                    $.ajax({
-                        url: "scripts/busca-usuario.php",
-                        type: "post",
-                        data: {
-                            busca: "sim",
-                            texto: usuario
-                        },
-                        dataType: "json",
-                        success: function(retorno) {
-                            if (retorno.quantidade > 0) {
-                                var lista = [];
-                                
-                                $.each(retorno.dados, function(key, value) {                        
-                                    lista.push(value);
-                                });
-                                
-                                awesomplete.list = lista;
-                            }
-                        }
-                    });
-                }
-            });
+        var awesomplete = new Awesomplete("#usuario"+contUsuario, {
+            minChars: 1,
+            autoFirst: true
         });
 
-        // $("#usuario"+contUsuario).on("keyup", function(e) {
-        //     var usuario = $(this).val();
-        //     // Verifica se não foram tecladas setas não permitidas
-        //     if ($.inArray(e.keyCode, teclasLetras) !== -1) {
-        //         $.ajax({
-        //             url: "scripts/busca-usuario.php",
-        //             type: "post",
-        //             data: {
-        //                 busca: "sim",
-        //                 texto: usuario
-        //             },
-        //             dataType: "json",
-        //             success: function(retorno) {
-        //                 if (retorno.quantidade > 0) {
-        //                     var lista = [];
+        //! Não funciona
+        // $(document).on('focus', '.input-usuario', function() {
+        //     var id = $(this).attr('id');
+        //     console.log(id);
+            
+        // }); 
+
+        $("#usuario"+contUsuario).on("keyup", function(e) {
+            var usuario = $(this).val();
+            // Verifica se não foram tecladas setas não permitidas
+            if ($.inArray(e.keyCode, teclasLetras) !== -1) {
+                $.ajax({
+                    url: "scripts/busca-usuario.php",
+                    type: "post",
+                    data: {
+                        busca: "sim",
+                        texto: usuario
+                    },
+                    dataType: "json",
+                    success: function(retorno) {
+                        if (retorno.quantidade > 0) {
+                            var lista = [];
                             
-        //                     $.each(retorno.dados, function(key, value) {                        
-        //                         lista.push(value);
-        //                     });
+                            $.each(retorno.dados, function(key, value) {                        
+                                lista.push(value);
+                            });
                             
-        //                     awesomplete.list = lista;
-        //                 }
-        //             }
-        //         });
-        //     }
-        // });
+                            awesomplete.list = lista;
+                        }
+                    }
+                });
+            }
+        });
 
 
     });
