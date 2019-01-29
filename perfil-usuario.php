@@ -141,13 +141,13 @@
         // Para adicionar os campos
         $("#adicionar").click(function() {
             cont++;
-            $("#campos-dinamicos").append('<tr id="usuario'+cont+'" class="dinamico-adicionado"><td><input type="text" name="usernames[]" placeholder="Digite um nome de usuário" class="form-control input-usuario" required></td><td><button type="button" name="remover" id="'+cont+'" class="btn btn-danger botao-pequeno btn-remover" style="padding: 9px;">remover</button></td></tr>');
+            $("#campos-dinamicos").append('<tr id="tr-usuario'+cont+'" class="dinamico-adicionado"><td><input id="usuario'+cont+'" type="text" name="usernames[]" placeholder="Digite um nome de usuário" class="form-control input-usuario" required></td><td><button type="button" name="remover" id="'+cont+'" class="btn btn-danger botao-pequeno btn-remover" style="padding: 9px;">remover</button></td></tr>');
         });
 
         // Para remover os campos
         $(document).on('click', '.btn-remover', function(){
             var id_botao = $(this).attr("id");
-            $('#usuario'+id_botao).remove();
+            $('#tr-usuario'+id_botao).remove();
         });
 
         /* ===========================================================================================================
@@ -156,10 +156,10 @@
 
         var contUsuario = 1;
 
-        var awesomplete = new Awesomplete("#usuario"+contUsuario, {
-            minChars: 1,
-            autoFirst: true
-        });
+        // var awesomplete = new Awesomplete("#usuario"+contUsuario, {
+        //     minChars: 1,
+        //     autoFirst: true
+        // });
 
         // Awesomplete detecta as setas para cima e para baixo como input, ou seja, recarrega o ajax. Assim, precisamos removê-las
         // Setas permitidas: de A a Z (65 a 90)
@@ -168,38 +168,67 @@
             teclasLetras[j] = i;
         }
 
-        $(".input-usuario").focus(function() {
+        $(document).on('focus', '.input-usuario', function() {
             var id = $(this).attr("id");
             console.log(id);
-            
+            var awesomplete = new Awesomplete("#"+id, {
+                minChars: 1,
+                autoFirst: true
+            });
+            $("#"+id).on("keyup", function(e) {
+                var usuario = $(this).val();
+                // Verifica se não foram tecladas setas não permitidas
+                if ($.inArray(e.keyCode, teclasLetras) !== -1) {
+                    $.ajax({
+                        url: "scripts/busca-usuario.php",
+                        type: "post",
+                        data: {
+                            busca: "sim",
+                            texto: usuario
+                        },
+                        dataType: "json",
+                        success: function(retorno) {
+                            if (retorno.quantidade > 0) {
+                                var lista = [];
+                                
+                                $.each(retorno.dados, function(key, value) {                        
+                                    lista.push(value);
+                                });
+                                
+                                awesomplete.list = lista;
+                            }
+                        }
+                    });
+                }
+            });
         });
 
-        $("#usuario"+contUsuario).on("keyup", function(e) {
-            var usuario = $(this).val();
-            // Verifica se não foram tecladas setas não permitidas
-            if ($.inArray(e.keyCode, teclasLetras) !== -1) {
-                $.ajax({
-                    url: "scripts/busca-usuario.php",
-                    type: "post",
-                    data: {
-                        busca: "sim",
-                        texto: usuario
-                    },
-                    dataType: "json",
-                    success: function(retorno) {
-                        if (retorno.quantidade > 0) {
-                            var lista = [];
+        // $("#usuario"+contUsuario).on("keyup", function(e) {
+        //     var usuario = $(this).val();
+        //     // Verifica se não foram tecladas setas não permitidas
+        //     if ($.inArray(e.keyCode, teclasLetras) !== -1) {
+        //         $.ajax({
+        //             url: "scripts/busca-usuario.php",
+        //             type: "post",
+        //             data: {
+        //                 busca: "sim",
+        //                 texto: usuario
+        //             },
+        //             dataType: "json",
+        //             success: function(retorno) {
+        //                 if (retorno.quantidade > 0) {
+        //                     var lista = [];
                             
-                            $.each(retorno.dados, function(key, value) {                        
-                                lista.push(value);
-                            });
+        //                     $.each(retorno.dados, function(key, value) {                        
+        //                         lista.push(value);
+        //                     });
                             
-                            awesomplete.list = lista;
-                        }
-                    }
-                });
-            }
-        });
+        //                     awesomplete.list = lista;
+        //                 }
+        //             }
+        //         });
+        //     }
+        // });
 
 
     });
