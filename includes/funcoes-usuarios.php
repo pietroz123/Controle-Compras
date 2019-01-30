@@ -2,11 +2,23 @@
 
 /******************************* Funcoes usuarios definitivos *******************************/
 
+// Busca pelo email ou username
 function buscar_usuario($conexao, $email_username) {
 
     $email_username = mysqli_real_escape_string($conexao, $email_username);
 
     $query = "SELECT * FROM usuarios WHERE usuario = '{$email_username}' OR email = '{$email_username}';";
+    $resultado = mysqli_query($conexao, $query);
+    $usuario = mysqli_fetch_assoc($resultado);
+    return $usuario;
+}
+
+// Busca pelo ID
+function buscar_usuario_id($conexao, $id_usuario) {
+
+    $email_username = mysqli_real_escape_string($conexao, $id_usuario);
+
+    $query = "SELECT * FROM usuarios WHERE id = {$id_usuario};";
     $resultado = mysqli_query($conexao, $query);
     $usuario = mysqli_fetch_assoc($resultado);
     return $usuario;

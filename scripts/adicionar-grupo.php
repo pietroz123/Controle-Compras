@@ -1,6 +1,7 @@
 <?php
 
     include $_SERVER['DOCUMENT_ROOT'].'/database/conexao.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes-usuarios.php';
 
 
     // Inicia a sessao
@@ -36,9 +37,14 @@
                         }
 
                         // ======== INSERÇÃO DOS USUÁRIOS ========
-                        $usuarios = $_POST['usernames'];
+
+                        /* Como o POST é um array com os IDs dos Usuários, precisamos buscar o username de cada um utilizando uma query */
+                        /* Essa query é executada a partir da função buscar_usuarios_id() */
+                        $ids_usuarios = $_POST['usernames'];
+                        
                         $id_grupo = mysqli_stmt_insert_id($stmt);
-                        foreach ($usuarios as $usuario) {
+                        foreach ($ids_usuarios as $id_usuario) {
+                            $usuario = buscar_usuario_id($conexao, $id_usuario);
                             $sql = "INSERT INTO grupo_usuarios (id_grupo, username) VALUES (?, ?)";
                             $stmt = mysqli_stmt_init($conexao);
                             if (!mysqli_stmt_prepare($stmt, $sql)) {
@@ -46,7 +52,7 @@
                                 header("Location: ../perfil-usuario.php");
                                 die();
                             } else {
-                                mysqli_stmt_bind_param($stmt, "is", $id_grupo, $usuario);
+                                mysqli_stmt_bind_param($stmt, "is", $id_grupo, $usuario['Usuario']);
                                 mysqli_stmt_execute($stmt);
                                 // Sucesso
                             }

@@ -1,5 +1,6 @@
 <?php
 
+
     if (isset($_POST['busca']) && $_POST['busca'] == 'sim') {
 
         include $_SERVER['DOCUMENT_ROOT'].'/database/conexao.php';
@@ -19,12 +20,12 @@
             $retorno = array();
             $resultado = mysqli_stmt_get_result($stmt);
 
-            $i = 0;
             while ($usuario_retorno = mysqli_fetch_assoc($resultado)) {
-                $retorno['dados'][] = $usuario_retorno['Usuario'];
-                $i++;
+                $retorno[] = array(
+                    'id'    => $usuario_retorno['ID'],
+                    'text'  => $usuario_retorno['Usuario']
+                );
             }
-            $retorno['quantidade'] = $i;
 
             echo json_encode($retorno);
         }
