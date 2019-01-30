@@ -43,7 +43,7 @@
                     <tr>
                         <td><i class="fas fa-user"></i></td>
                         <td><?= $membro['Nome']; ?></td>
-                        <td>AAAA-DD-MM</td>
+                        <td><?= date("d/m/Y h:m", strtotime($membro['Membro_Desde'])); ?></td>
                     </tr>
                     <?php
                         }

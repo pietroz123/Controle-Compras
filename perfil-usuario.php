@@ -59,12 +59,12 @@
                                 <pre><?php print_r($grupos); ?></pre>
                                 <pre><?php echo count($grupos); ?></pre>
                                 <table class="table table-hover">
-                                    <thead>
+                                    <thead style="font-weight: bold;">
                                         <tr class="row">
-                                            <th class="col-sm-4">Nome</th>
-                                            <th class="col-sm-3">Data Criação</th>
-                                            <th class="col-sm-3">Número Membros</th>
-                                            <th class="col-sm-2">Visualizar</th>
+                                            <th class="col-sm-4 thead-grupos">Nome</th>
+                                            <th class="col-sm-3 thead-grupos">Data Criação</th>
+                                            <th class="col-sm-3 thead-grupos">Número Membros</th>
+                                            <th class="col-sm-2 thead-grupos">Visualizar</th>
                                         </tr>
                                     </thead>
                                     <tbody>
