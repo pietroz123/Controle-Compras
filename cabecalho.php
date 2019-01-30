@@ -16,7 +16,7 @@
         <link type="text/css" href="css/datatables.css" rel="stylesheet">
         <link type="text/css" href="css/compras.css" rel="stylesheet">
         <link type="text/css" href="css/awesomplete.css" rel="stylesheet">
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+        <link type="text/css" href="css/select2.css" rel="stylesheet">
         
         <!-- Viewport -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
