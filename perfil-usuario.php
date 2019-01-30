@@ -47,8 +47,8 @@
                 <div class="card z-depth-2">
                     <div class="card-header default-color-dark white-text">
                         Grupos
-                        <button class="btn default-color botao-pequeno ml-2 btn-recarregar" style="float: right;"><i class="fas fa-sync-alt" id="icone-recarregar"></i> recarregar grupos</button>
-                        <button class="btn default-color botao-pequeno" style="float: right;" data-toggle="modal" data-target="#modal-criar-grupo">criar grupo</button>
+                        <button class="btn default-color botao-pequeno ml-2 btn-recarregar-grupos" style="float: right;"><i class="fas fa-sync-alt" id="icone-recarregar"></i> recarregar grupos</button>
+                        <button class="btn default-color botao-pequeno btn-criar-grupo" style="float: right;" data-toggle="modal" data-target="#modal-criar-grupo">criar grupo</button>
                     </div>
                     <div class="card-body">
                         <div class="container">
@@ -116,6 +116,16 @@
 
     $(document).ready(function() {
 
+        $(window).resize(function() {
+            if ($(window).width() <= 500) {
+                $('.btn-criar-grupo').addClass("btn-block mt-2");
+                $('.btn-recarregar-grupos').addClass("btn-block mt-2");
+            } else {
+                $('.btn-criar-grupo').removeClass("btn-block mt-2");
+                $('.btn-recarregar-grupos').removeClass("btn-block mt-2");
+            }
+        });
+
         // Preenche o modal-membros-grupo utilizando AJAX
         $(".btn-membros").click(function() {
             var id_grupo = $(this).attr("id");
@@ -133,7 +143,7 @@
             });
         });
 
-        $(".btn-recarregar").click(function() {
+        $(".btn-recarregar-grupos").click(function() {
             var icone = document.querySelector("#icone-recarregar");
             
             icone.classList.add('fa-spin');
