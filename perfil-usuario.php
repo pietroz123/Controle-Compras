@@ -118,7 +118,7 @@
 
         // Preenche o modal-membros-grupo utilizando AJAX
         $(".btn-membros").click(function() {
-            var id_grupo = $(this).attr("id");        
+            var id_grupo = $(this).attr("id");
 
             $.ajax({
                 url: "modal-membros-grupo.php",
