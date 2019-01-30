@@ -34,7 +34,8 @@
                 <thead>
                     <th>Imagem</th>
                     <th>Nome</th>
-                    <th>Membro desde</th>
+                    <th>Desde</th>
+                    <th></th>
                 </thead>
                 <tbody>
                     <?php 
@@ -44,6 +45,7 @@
                         <td><i class="fas fa-user"></i></td>
                         <td><?= $membro['Nome']; ?></td>
                         <td><?= date("d/m/Y h:m", strtotime($membro['Membro_Desde'])); ?></td>
+                        <td><img src="img/cancel.png" style="width: 23px; height: 23px;"></td>
                     </tr>
                     <?php
                         }
