@@ -1,6 +1,7 @@
 <?php
     include $_SERVER['DOCUMENT_ROOT'].'/cabecalho.php';
     include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes-usuarios.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes-grupos.php';
 ?>
 
 <?php
@@ -11,6 +12,7 @@
     $usuario = join_usuario_comprador($conexao, $_SESSION['login']);
 ?>
 
+    <pre><?php print_r($usuario); ?></pre>
 
 
     <h2 class="titulo-perfil">Perfil de <?= $usuario['Nome']; ?></h2>
@@ -50,33 +52,43 @@
                     </div>
                     <div class="card-body">
                         <div class="container">
-                            <table class="table table-hover">
-                                <thead>
-                                    <tr class="row">
-                                        <th class="col-sm-4">Nome</th>
-                                        <th class="col-sm-3">Data Criação</th>
-                                        <th class="col-sm-3">Número Membros</th>
-                                        <th class="col-sm-2">Visualizar</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="row">
-                                        <td class="col-sm-4">Família</td>
-                                        <td class="col-sm-3">2019-20-01</td>
-                                        <td class="col-sm-3">2</td>
-                                        <td class="col-sm-2">
-                                            <button class="btn btn-info botao-pequeno btn-membros" id="1">Membros</button>
-                                        </td>
-                                    </tr>
-                                    <tr class="row">
-                                        <td class="col-sm-4">Amigos</td>
-                                        <td class="col-sm-3">2019-24-01</td>
-                                        <td class="col-sm-3">4</td>
-                                        <td class="col-sm-2">
-                                            <button class="btn btn-info botao-pequeno">Membros</button>
-                                        </td>
-                                    </tr>
-                                </tbody>
+                            <?php
+                                $grupos = recuperar_grupos($conexao, $usuario['Usuario']);
+                                if (count($grupos) > 0) {
+                            ?>
+                                <pre><?php print_r($grupos); ?></pre>
+                                <pre><?php echo count($grupos); ?></pre>
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr class="row">
+                                            <th class="col-sm-4">Nome</th>
+                                            <th class="col-sm-3">Data Criação</th>
+                                            <th class="col-sm-3">Número Membros</th>
+                                            <th class="col-sm-2">Visualizar</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php
+                                        foreach ($grupos AS $grupo) {
+                                    ?>
+                                        <tr class="row">
+                                            <td class="col-sm-4"><?= $grupo['Nome']; ?></td>
+                                            <td class="col-sm-3"><?= $grupo['Data_Criacao']; ?></td>
+                                            <td class="col-sm-3"><?= $grupo['Numero_Membros']; ?></td>
+                                            <td class="col-sm-2">
+                                                <button class="btn btn-info botao-pequeno btn-membros" id="<?= $grupo['ID']; ?>">Membros</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                <?php
+                                        }
+                                    }
+                                    else {
+                                ?>
+                                    <div class="alert alert-danger" role="alert">Você não está em nenhum grupo</div>
+                                <?php
+                                    }
+                                ?>
                             </table>
                         </div>
                     </div>
