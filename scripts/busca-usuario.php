@@ -8,7 +8,7 @@
         $usuario = strip_tags($_POST['texto']);
         
         /* Busca o usuário no Banco de Dados */
-        $sql = "SELECT * FROM `usuarios` WHERE `Usuario` LIKE ?";
+        $sql = "SELECT * FROM `usuarios` WHERE `Usuario` LIKE ? AND `Autenticado` = 1";
         $stmt = mysqli_stmt_init($conexao);
         if (!mysqli_stmt_prepare($stmt, $sql)) {
             // Erro
