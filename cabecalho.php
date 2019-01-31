@@ -3,6 +3,7 @@
     include $_SERVER['DOCUMENT_ROOT'].'/includes/logica-usuarios.php';
     include $_SERVER['DOCUMENT_ROOT'].'/database/conexao.php';
 ?>
+<!DOCTYPE html>
 <html>
 
     <head>
@@ -17,6 +18,7 @@
         <link type="text/css" href="css/compras.css" rel="stylesheet">
         <link type="text/css" href="css/awesomplete.css" rel="stylesheet">
         <link type="text/css" href="css/select2.css" rel="stylesheet">
+        <link type="text/css" href="css/realtime-validation.css" rel="stylesheet">
         
         <!-- Viewport -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
