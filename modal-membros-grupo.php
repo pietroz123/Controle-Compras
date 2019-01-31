@@ -4,6 +4,7 @@
 
         include $_SERVER['DOCUMENT_ROOT'].'/database/conexao.php';        
         include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes-grupos.php';
+        include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes-usuarios.php';
 
         $id_grupo = $_POST['id_grupo'];
 
@@ -14,6 +15,18 @@
             $username = $_POST['username'];
 
             remover_membro($conexao, $id_grupo, $username);
+
+        }
+
+
+        // Verifica se a requisicao foi para adicionar um membro ao grupo
+        if (isset($_POST['adicionar']) && $_POST['adicionar'] == "sim") {
+
+            $ids_adicionar = $_POST['ids_adicionar'];
+            foreach ($ids_adicionar as $id_adicionar) {
+                $usuario = buscar_usuario_id($conexao, $id_adicionar);
+                adicionar_membro($conexao, $id_grupo, $usuario['Usuario']);
+            }
 
         }
 
@@ -67,14 +80,14 @@
                 <div class="row">
                     <div class="col-sm">
                         <label for="select2" class="font-weight-bold left">Adicionar usuários</label>
-                        <select class="form-control input-usuario" id="select2" name="usernames[]" multiple="multiple" style="width: 100%;">
+                        <select class="form-control input-usuario" id="select2-usuarios" name="usernames[]" multiple="multiple" style="width: 100%;">
                 
                         </select>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm">
-                        <button class="btn btn-success btn-block btn-adicionar-membros">adicionar</button>
+                        <button class="btn btn-success btn-block btn-adicionar-membros" id-grupo="<?= $grupo['ID']; ?>">adicionar</button>
                     </div>
                 </div>
             </div>

@@ -229,6 +229,26 @@
                     dataType: "html",
                     success: function(retorno) {
                         $('#membros-grupo').html(retorno);
+                        $('.input-usuario').select2({
+                            ajax: {
+                                url: "scripts/busca-usuario.php",
+                                type: "post",
+                                dataType: "json",
+                                delay: 250,
+                                data: function(params) {
+                                    return {
+                                        busca: "sim",
+                                        texto: params.term
+                                    };
+                                },
+                                processResults: function(data) {
+                                    return {
+                                        results: data
+                                    };
+                                },
+                                cache: true
+                            }
+                        });
                     }
                 });
             },
@@ -240,6 +260,56 @@
 
 
     });
+
+
+    /* ===========================================================================================================
+    ====================================== REALIZA ADIÇÃO MAIS MEMBROS NO GRUPO ==================================
+    ============================================= E RECARREGA O MODAL ============================================
+    ============================================================================================================== */
+
+    $(document).on('click', '.btn-adicionar-membros', function() {
+
+        // Recupera os IDs dos usuários a serem adicionados
+        var select = $('#select2-usuarios').val();
+        var id_grupo = $(this).attr('id-grupo');        
+
+        $.ajax({
+            url: "modal-membros-grupo.php",
+            method: "post",
+            data: {
+                adicionar: "sim",
+                id_grupo: id_grupo,
+                ids_adicionar: select
+            },
+            dataType: "html",
+            success: function(retorno) {
+                $('#membros-grupo').html(retorno);
+                $('.input-usuario').select2({
+                    ajax: {
+                        url: "scripts/busca-usuario.php",
+                        type: "post",
+                        dataType: "json",
+                        delay: 250,
+                        data: function(params) {
+                            return {
+                                busca: "sim",
+                                texto: params.term
+                            };
+                        },
+                        processResults: function(data) {
+                            return {
+                                results: data
+                            };
+                        },
+                        cache: true
+                    }
+                });
+            }
+        });
+        
+        
+    });
+
 
 
 </script>

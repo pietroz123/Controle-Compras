@@ -69,3 +69,17 @@ function remover_membro($conexao, $id_grupo, $username) {
         mysqli_stmt_execute($stmt);
     }
 }
+
+// Adiciona um membro no grupo, dado o Username do Membro e o ID do Grupo
+function adicionar_membro($conexao, $id_grupo, $username) {
+    $sql = "INSERT INTO grupo_usuarios (ID_Grupo, Username) VALUES (?, ?)";
+    $stmt = mysqli_stmt_init($conexao);
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        $_SESSION['danger'] = "Ocorreu um erro ao remover o membro.";
+        header("Location: ../perfil-usuario.php");
+        die();
+    } else {
+        mysqli_stmt_bind_param($stmt, "is", $id_grupo, $username);
+        mysqli_stmt_execute($stmt);
+    }
+}
