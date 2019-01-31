@@ -241,7 +241,9 @@
     $(document).on('mouseover', '.btn-remover-membro', function(){
         
         var id_grupo = $(this).attr("id-grupo");
-        var username = $(this).attr("username-membro");        
+        var username_usuario = $(this).attr('username-usuario');
+        var username = $(this).attr("username-membro");
+
         
         $('[data-toggle=confirmation]').confirmation({
             rootSelector: '[data-toggle=confirmation]',
@@ -257,6 +259,13 @@
                     },
                     dataType: "html",
                     success: function(retorno) {
+                        
+                        // Se o usuário estiver se removendo, apenas volta para a página de perfil
+                        if (username_usuario == username) {
+                            location.href = "perfil-usuario.php";
+                            return;
+                        }
+                        
                         $('#membros-grupo').html(retorno);
                         $('.input-usuario').select2({
                             ajax: {

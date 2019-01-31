@@ -69,9 +69,13 @@
                         <td><?= $membro['Nome']; ?></td>
                         <td><?= date("d/m/Y h:m", strtotime($membro['Membro_Desde'])); ?></td>
                 <?php
-                    if (isAdmin($conexao, $grupo['ID'], $_POST['username']) OR $membro['Usuario'] == $_POST['username']) {
+                    if ($membro['Usuario'] == $_POST['username']) {
                 ?>
-                        <td><button class="btn btn-danger botao-pequeno btn-remover-membro" id-grupo="<?= $grupo['ID']; ?>" username-membro="<?= $membro['Usuario']; ?>" data-toggle="confirmation" data-singleton="true"><i class="fas fa-times"></i></button></td>
+                        <td><button class="btn btn-danger botao-pequeno btn-remover-membro" id-grupo="<?= $grupo['ID']; ?>" username-usuario="<?= $_POST['username']; ?>" username-membro="<?= $membro['Usuario']; ?>" data-toggle="confirmation" data-singleton="true">sair</button></td>
+                <?php
+                    } elseif (isAdmin($conexao, $grupo['ID'], $_POST['username'])) {
+                ?>
+                        <td><button class="btn btn-danger botao-pequeno btn-remover-membro" id-grupo="<?= $grupo['ID']; ?>" username-usuario="<?= $_POST['username']; ?>" username-membro="<?= $membro['Usuario']; ?>" data-toggle="confirmation" data-singleton="true"><i class="fas fa-times"></i></button></td>
                 <?php
                     }
                 ?>
