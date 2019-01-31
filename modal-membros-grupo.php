@@ -55,7 +55,8 @@
         </div>
         <div class="modal-footer">
             <form action="scripts/remover-grupo.php" method="post">
-                <button type="submit" class="btn btn-danger">remover grupo</button>
+                <input type="hidden" name="id" value="<?= $grupo['ID']; ?>">
+                <button type="submit" name="submit-remover-grupo" class="btn btn-danger">remover grupo</button>
             </form>
         </div>
     </div>

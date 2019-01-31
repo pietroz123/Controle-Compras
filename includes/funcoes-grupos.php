@@ -41,3 +41,17 @@ function recuperar_membros($conexao, $id_grupo) {
     }
     return $membros;
 }
+
+// Remove um grupo, dado seu ID
+function remover_grupo($conexao, $id_grupo) {
+    $sql = "DELETE FROM grupos WHERE ID = ?";
+    $stmt = mysqli_stmt_init($conexao);
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        $_SESSION['danger'] = "Ocorreu um erro ao remover o grupo.";
+        header("Location: ../perfil-usuario.php");
+        die();
+    } else {
+        mysqli_stmt_bind_param($stmt, "i", $id_grupo);
+        mysqli_stmt_execute($stmt);
+    }
+}
