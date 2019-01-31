@@ -9,8 +9,8 @@
         $membros = recuperar_membros($conexao, $id_grupo);
 ?>
 
-    <pre><?php print_r($grupo); ?></pre>
-    <pre><?php print_r($membros); ?></pre>
+    <!-- <pre><?php print_r($grupo); ?></pre> -->
+    <!-- <pre><?php print_r($membros); ?></pre> -->
 
     <div class="modal-content">
         <div class="modal-header">
@@ -45,7 +45,7 @@
                         <td><i class="fas fa-user"></i></td>
                         <td><?= $membro['Nome']; ?></td>
                         <td><?= date("d/m/Y h:m", strtotime($membro['Membro_Desde'])); ?></td>
-                        <td><img src="img/cancel.png" style="width: 23px; height: 23px;"></td>
+                        <td><a href="#" class="btn-remover-membro"><img src="img/cancel.png" style="width: 23px; height: 23px;"></a></td>
                     </tr>
                     <?php
                         }
@@ -54,7 +54,9 @@
             </table>
         </div>
         <div class="modal-footer">
-            
+            <form action="scripts/remover-grupo.php" method="post">
+                <button type="submit" class="btn btn-danger">remover grupo</button>
+            </form>
         </div>
     </div>
 
