@@ -69,11 +69,11 @@
                         <td><?= $membro['Nome']; ?></td>
                         <td><?= date("d/m/Y h:m", strtotime($membro['Membro_Desde'])); ?></td>
                 <?php
-                    // if ($membro['Admin'] == 1) {
+                    if (isAdmin($conexao, $grupo['ID'], $_POST['username']) OR $membro['Usuario'] == $_POST['username']) {
                 ?>
                         <td><button class="btn btn-danger botao-pequeno btn-remover-membro" id-grupo="<?= $grupo['ID']; ?>" username-membro="<?= $membro['Usuario']; ?>" data-toggle="confirmation" data-singleton="true"><i class="fas fa-times"></i></button></td>
                 <?php
-                    // }
+                    }
                 ?>
                     </tr>
                     <?php

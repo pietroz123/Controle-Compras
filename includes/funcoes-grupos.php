@@ -83,3 +83,25 @@ function adicionar_membro($conexao, $id_grupo, $username) {
         mysqli_stmt_execute($stmt);
     }
 }
+
+// Verifica se dado usuário é ou não Admin do grupo, dado o ID do Grupo e o Nome do Usuário
+function isAdmin($conexao, $id_grupo, $username) {
+    $sql = "SELECT Admin FROM grupo_usuarios WHERE ID_Grupo = ? AND Username = ?";
+    $stmt = mysqli_stmt_init($conexao);
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        $_SESSION['danger'] = "Ocorreu um erro ao verificar admin.";
+        header("Location: ../perfil-usuario.php");
+        die();
+    } else {
+        mysqli_stmt_bind_param($stmt, "is", $id_grupo, $username);
+        mysqli_stmt_execute($stmt);
+
+        $resultado = mysqli_stmt_get_result($stmt);
+        $admin = mysqli_fetch_assoc($resultado);
+
+        if ($admin['Admin'] == 1)
+            return true;
+        else
+            return false;
+    }
+}

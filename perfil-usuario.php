@@ -71,7 +71,7 @@
                                             <td class="col-sm-3"><?= $grupo['Data_Criacao']; ?></td>
                                             <td class="col-sm-3"><?= $grupo['Numero_Membros']; ?></td>
                                             <td class="col-sm-2">
-                                                <button class="btn btn-info botao-pequeno btn-membros" id="<?= $grupo['ID']; ?>">Membros</button>
+                                                <button class="btn btn-info botao-pequeno btn-membros" id="<?= $grupo['ID']; ?>" username="<?= $usuario['Usuario']; ?>">Membros</button>
                                             </td>
                                         </tr>
                                     <?php } ?>
@@ -138,12 +138,14 @@
 
         $(".btn-membros").click(function() {
             var id_grupo = $(this).attr("id");
+            var username = $(this).attr("username");            
 
             $.ajax({
                 url: "modal-membros-grupo.php",
                 method: "post",
                 data: {
-                    id_grupo: id_grupo
+                    id_grupo: id_grupo,
+                    username: username
                 },
                 success: function(data) {
                     $("#membros-grupo").html(data);
