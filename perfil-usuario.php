@@ -46,7 +46,7 @@
                     <div class="card-header default-color-dark white-text">
                         Grupos
                         <button class="btn default-color botao-pequeno ml-2 btn-recarregar-grupos" style="float: right;" username-usuario="<?= $usuario['Usuario'] ?>"><i class="fas fa-sync-alt" id="icone-recarregar"></i> recarregar grupos</button>
-                        <button class="btn default-color botao-pequeno btn-criar-grupo" style="float: right;" data-toggle="modal" data-target="#modal-criar-grupo">criar grupo</button>
+                        <button class="btn default-color botao-pequeno btn-criar-grupo" style="float: right;" data-toggle="modal" data-target="#modal-criar-grupo" data-username="<?= $usuario['Usuario']; ?>">criar grupo</button>
                     </div>
                     <div class="card-body">
                         <div class="container">
@@ -120,6 +120,15 @@
                 $('.btn-criar-grupo').removeClass("btn-block mt-2");
                 $('.btn-recarregar-grupos').removeClass("btn-block mt-2");
             }
+        });
+
+        $('#modal-criar-grupo').on('show.bs.modal', function(event) {
+            // Recupera as informacoes do botao
+            var botao = $(event.relatedTarget);
+            var username = botao.data('username');
+
+            var modal = $(this);
+            modal.find('#criar-username').val(username);
         });
 
 
