@@ -45,7 +45,7 @@
                 <div class="card z-depth-2">
                     <div class="card-header default-color-dark white-text">
                         Grupos
-                        <button class="btn default-color botao-pequeno ml-2 btn-recarregar-grupos" style="float: right;"><i class="fas fa-sync-alt" id="icone-recarregar"></i> recarregar grupos</button>
+                        <button class="btn default-color botao-pequeno ml-2 btn-recarregar-grupos" style="float: right;" username-usuario="<?= $usuario['Usuario'] ?>"><i class="fas fa-sync-alt" id="icone-recarregar"></i> recarregar grupos</button>
                         <button class="btn default-color botao-pequeno btn-criar-grupo" style="float: right;" data-toggle="modal" data-target="#modal-criar-grupo">criar grupo</button>
                     </div>
                     <div class="card-body">
@@ -63,10 +63,9 @@
                                             <th class="col-sm-2 thead-grupos">Visualizar</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                    <?php
-                                        foreach ($grupos AS $grupo) {
-                                    ?>
+                                    <tbody id="grupos-usuario">
+
+                                    <?php foreach ($grupos AS $grupo) { ?>
                                         <tr class="row">
                                             <td class="col-sm-4"><?= $grupo['Nome']; ?></td>
                                             <td class="col-sm-3"><?= $grupo['Data_Criacao']; ?></td>
@@ -75,16 +74,17 @@
                                                 <button class="btn btn-info botao-pequeno btn-membros" id="<?= $grupo['ID']; ?>">Membros</button>
                                             </td>
                                         </tr>
+                                    <?php } ?>
+
                                     </tbody>
-                                <?php
-                                        }
-                                    }
-                                    else {
-                                ?>
+                            <?php
+                                }
+                                else {
+                            ?>
                                     <div class="alert alert-danger" role="alert">Você não está em nenhum grupo</div>
-                                <?php
-                                    }
-                                ?>
+                            <?php
+                                }
+                            ?>
                             </table>
                         </div>
                     </div>
@@ -165,12 +165,25 @@
 
         $(".btn-recarregar-grupos").click(function() {
             var icone = document.querySelector("#icone-recarregar");
+            var username = $(this).attr('username-usuario');
             
             icone.classList.add('fa-spin');
 
             setTimeout(function() {
                 icone.classList.remove('fa-spin');
             }, 1000);
+
+            $.ajax({
+                url: "scripts/recarregar-grupos.php",
+                method: "post",
+                data: {
+                    username: username
+                },
+                success: function(retorno) {
+                    $('#grupos-usuario').html(retorno);                    
+                }
+            });
+
         });
 
         
