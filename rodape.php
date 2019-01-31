@@ -16,6 +16,7 @@
         <script type="text/javascript" src="js/awesomplete.js"></script>
         <script type="text/javascript" src="js/select2.js"></script>
         <script type="text/javascript" src="js/jquery.mask.js"></script>
+        <script type="text/javascript" src="js/bootstrap-confirmation.js"></script>
 
         <script type="text/javascript" src="js/main.js"></script>
 

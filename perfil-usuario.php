@@ -12,8 +12,6 @@
     $usuario = join_usuario_comprador($conexao, $_SESSION['login']);
 ?>
 
-    <pre><?php print_r($usuario); ?></pre>
-
 
     <h2 class="titulo-perfil">Perfil de <?= $usuario['Nome']; ?></h2>
 
@@ -56,8 +54,6 @@
                                 $grupos = recuperar_grupos($conexao, $usuario['Usuario']);
                                 if (count($grupos) > 0) {
                             ?>
-                                <pre><?php print_r($grupos); ?></pre>
-                                <pre><?php echo count($grupos); ?></pre>
                                 <table class="table table-hover">
                                     <thead style="font-weight: bold;">
                                         <tr class="row">
@@ -190,26 +186,37 @@
     ============================================= E RECARREGA O MODAL ============================================
     ============================================================================================================== */
 
-
-    $(document).on('click', '.btn-remover-membro', function(){  
-        var username = $(this).attr("username-membro");
-        var id_grupo = $(this).attr("id-grupo");
+    
+    
+    $(document).on('mouseover', '.btn-remover-membro', function(){
         
-        $.ajax({
-            url: "modal-membros-grupo.php",
-            method: "post",
-            data: {
-                remover: "sim",
-                id_grupo: id_grupo,
-                username: username
+        var id_grupo = $(this).attr("id-grupo");
+        var username = $(this).attr("username-membro");        
+        
+        $('[data-toggle=confirmation]').confirmation({
+            rootSelector: '[data-toggle=confirmation]',
+            onConfirm: function() {
+                // Caso o usuário pressione 'Sim'
+                $.ajax({
+                    url: "modal-membros-grupo.php",
+                    method: "post",
+                    data: {
+                        remover: "sim",
+                        id_grupo: id_grupo,
+                        username: username
+                    },
+                    dataType: "html",
+                    success: function(retorno) {
+                        $('#membros-grupo').html(retorno);
+                    }
+                });
             },
-            dataType: "html",
-            success: function(retorno) {
-                console.log(retorno);
-                            
-                $('#membros-grupo').html(retorno);
+            onCancel: function() {
+                // Caso o usuário pressione 'Não'
             }
+            // other options
         });
+
 
     });
 
