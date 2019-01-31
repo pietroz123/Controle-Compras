@@ -62,6 +62,22 @@
                     ?>
                 </tbody>
             </table>
+            <hr>
+            <div class="container mt-3 mb-3">
+                <div class="row">
+                    <div class="col-sm">
+                        <label for="select2" class="font-weight-bold left">Adicionar usuários</label>
+                        <select class="form-control input-usuario" id="select2" name="usernames[]" multiple="multiple" style="width: 100%;">
+                
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm">
+                        <button class="btn btn-success btn-block btn-adicionar-membros">adicionar</button>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="modal-footer">
             <form action="scripts/remover-grupo.php" method="post">

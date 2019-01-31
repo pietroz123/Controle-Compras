@@ -122,7 +122,11 @@
             }
         });
 
-        // Preenche o modal-membros-grupo utilizando AJAX
+
+        /* ===========================================================================================================
+        ===================================== PREENCHE MODAL MEMBROS GRUPO COM AJAX ==================================
+        ============================================================================================================== */
+
         $(".btn-membros").click(function() {
             var id_grupo = $(this).attr("id");
 
@@ -135,6 +139,26 @@
                 success: function(data) {
                     $("#membros-grupo").html(data);
                     $("#modal-membros-grupo").modal("show");
+                    $('.input-usuario').select2({
+                        ajax: {
+                            url: "scripts/busca-usuario.php",
+                            type: "post",
+                            dataType: "json",
+                            delay: 250,
+                            data: function(params) {
+                                return {
+                                    busca: "sim",
+                                    texto: params.term
+                                };
+                            },
+                            processResults: function(data) {
+                                return {
+                                    results: data
+                                };
+                            },
+                            cache: true
+                        }
+                    });
                 }
             });
         });
@@ -149,44 +173,41 @@
             }, 1000);
         });
 
-
-        /* ===========================================================================================================
-        ===================================== REALIZA BUSCA POR USERNAMES NO BD ======================================
-        ========================================= UTILIZA O PLUGIN select2 ===========================================
-        ============================================================================================================== */
-        
-
-        $('.input-usuario').select2({
-            ajax: {
-                url: "scripts/busca-usuario.php",
-                type: "post",
-                dataType: "json",
-                delay: 250,
-                data: function(params) {
-                    return {
-                        busca: "sim",
-                        texto: params.term
-                    };
-                },
-                processResults: function(data) {
-                    return {
-                        results: data
-                    };
-                },
-                cache: true
-            }
-        });
-
-
         
     });
     
+
+    /* ===========================================================================================================
+    ===================================== REALIZA BUSCA POR USERNAMES NO BD ======================================
+    ========================================= UTILIZA O PLUGIN select2 ===========================================
+    ============================================================================================================== */
+    
+    $('.input-usuario').select2({
+        ajax: {
+            url: "scripts/busca-usuario.php",
+            type: "post",
+            dataType: "json",
+            delay: 250,
+            data: function(params) {
+                return {
+                    busca: "sim",
+                    texto: params.term
+                };
+            },
+            processResults: function(data) {
+                return {
+                    results: data
+                };
+            },
+            cache: true
+        }
+    });
+
+
     /* ===========================================================================================================
     ===================================== REALIZA REMOÇÃO DE UM MEMBRO NO GRUPO ==================================
     ============================================= E RECARREGA O MODAL ============================================
     ============================================================================================================== */
-
-    
     
     $(document).on('mouseover', '.btn-remover-membro', function(){
         
