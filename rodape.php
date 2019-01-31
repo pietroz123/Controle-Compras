@@ -17,14 +17,7 @@
         <script type="text/javascript" src="js/select2.js"></script>
         <script type="text/javascript" src="js/jquery.mask.js"></script>
         <script type="text/javascript" src="js/bootstrap-confirmation.js"></script>
-        <?php
-            if (!usuario_esta_logado()) {
-        ?>
-                <!-- Validação de formulário -->
-                <script type="text/javascript" src="js/realtime-validation.js"></script>
-        <?php
-            }
-        ?>
+        <script type="text/javascript" src="js/realtime-validation.js"></script>
 
         <script type="text/javascript" src="js/main.js"></script>
 
