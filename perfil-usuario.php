@@ -12,7 +12,7 @@
     $usuario = join_usuario_comprador($conexao, $_SESSION['login']);
 ?>
 
-    <!-- <pre><?php print_r($usuario); ?></pre> -->
+    <pre><?php print_r($usuario); ?></pre>
 
 
     <h2 class="titulo-perfil">Perfil de <?= $usuario['Nome']; ?></h2>
@@ -56,8 +56,8 @@
                                 $grupos = recuperar_grupos($conexao, $usuario['Usuario']);
                                 if (count($grupos) > 0) {
                             ?>
-                                <!-- <pre><?php print_r($grupos); ?></pre> -->
-                                <!-- <pre><?php echo count($grupos); ?></pre> -->
+                                <pre><?php print_r($grupos); ?></pre>
+                                <pre><?php echo count($grupos); ?></pre>
                                 <table class="table table-hover">
                                     <thead style="font-weight: bold;">
                                         <tr class="row">
@@ -196,7 +196,7 @@
         var id_grupo = $(this).attr("id-grupo");
         
         $.ajax({
-            url: "scripts/remover-grupo-membro.php",
+            url: "modal-membros-grupo.php",
             method: "post",
             data: {
                 remover: "sim",
@@ -204,8 +204,10 @@
                 username: username
             },
             dataType: "html",
-            success: function(retorno) {                
-                $('#usuarios-grupo').html(retorno);
+            success: function(retorno) {
+                console.log(retorno);
+                            
+                $('#membros-grupo').html(retorno);
             }
         });
 

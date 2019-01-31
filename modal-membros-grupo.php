@@ -1,18 +1,28 @@
 <?php
     if (isset($_POST['id_grupo'])) {
 
+
         include $_SERVER['DOCUMENT_ROOT'].'/database/conexao.php';        
         include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes-grupos.php';
 
         $id_grupo = $_POST['id_grupo'];
+
+
+        // Verifica se a requisicao foi para remover um membro do grupo
+        if (isset($_POST['remover']) && $_POST['remover'] == "sim") {
+
+            $username = $_POST['username'];
+
+            remover_membro($conexao, $id_grupo, $username);
+
+        }
+
+
         $grupo = recuperar_grupo($conexao, $id_grupo);
         $membros = recuperar_membros($conexao, $id_grupo);
 ?>
 
-    <!-- <pre><?php //print_r($grupo); ?></pre> -->
-    <!-- <pre><?php //print_r($membros); ?></pre> -->
-
-    <div class="modal-content" id="usuarios-grupo">
+    <div class="modal-content">
         <div class="modal-header">
             <div class="grid informacoes-grupo" style="width: 100%;">
                 <div class="row">
