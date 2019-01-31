@@ -62,9 +62,6 @@
                             <a class="nav-link" onmouseover="this.classList.add('nav-hover-bg')" onmouseout="this.classList.remove('nav-hover-bg')" href="formulario-compra.php">Adicionar Compra</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" onmouseover="this.classList.add('nav-hover-bg')" onmouseout="this.classList.remove('nav-hover-bg')" href="formulario-comprador.php">Adicionar Comprador</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link" onmouseover="this.classList.add('nav-hover-bg')" onmouseout="this.classList.remove('nav-hover-bg')" href="listar-compras.php">Compras</a>
                         </li>
                         <li class="nav-item">
