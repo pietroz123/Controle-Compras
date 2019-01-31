@@ -26,13 +26,13 @@ function recuperar_grupos($conexao, $usuario) {
 
 // Recupera todos os membros de um grupo com determinado ID
 function recuperar_membros($conexao, $id_grupo) {
-    $sql = "SELECT *
-            FROM usuarios
-            JOIN grupo_usuarios
-            ON usuarios.Usuario = grupo_usuarios.Username
-            JOIN compradores
-            ON usuarios.Email = compradores.Email
-            WHERE grupo_usuarios.ID_Grupo = $id_grupo";
+    $sql = "SELECT c.Nome, u.ID AS ID_Usuario, u.Usuario, gu.Membro_Desde
+            FROM usuarios AS u
+            JOIN grupo_usuarios AS gu
+            ON u.Usuario = gu.Username
+            JOIN compradores AS c
+            ON u.Email = c.Email
+            WHERE gu.ID_Grupo = $id_grupo";
 
     $membros = array();
     $resultado = mysqli_query($conexao, $sql);

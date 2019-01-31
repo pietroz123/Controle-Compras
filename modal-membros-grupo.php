@@ -10,7 +10,7 @@
 ?>
 
     <!-- <pre><?php print_r($grupo); ?></pre> -->
-    <!-- <pre><?php print_r($membros); ?></pre> -->
+    <pre><?php print_r($membros); ?></pre>
 
     <div class="modal-content">
         <div class="modal-header">
@@ -45,7 +45,7 @@
                         <td><i class="fas fa-user"></i></td>
                         <td><?= $membro['Nome']; ?></td>
                         <td><?= date("d/m/Y h:m", strtotime($membro['Membro_Desde'])); ?></td>
-                        <td><a href="#" class="btn-remover-membro"><img src="img/cancel.png" style="width: 23px; height: 23px;"></a></td>
+                        <td><button class="btn-remover-membro" id="<?= $membro['ID_Usuario']; ?>"><img src="img/cancel.png" style="width: 23px; height: 23px;"></button></td>
                     </tr>
                     <?php
                         }
