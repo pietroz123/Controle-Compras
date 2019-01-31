@@ -18,16 +18,14 @@
     $id_usuario_temp = $_POST['id'];
     if (adicionar_usuario_definitivo($conexao, $id_usuario_temp)) {
         
-        // !NAO FUNCIONA
-        /* $usuario_temp = buscar_usuario_temp($conexao, $id_usuario_temp);
-        enviar_email($usuario_temp['Email']);
-        $_SESSION['success'] = "Usuario adicionado com sucesso. Email enviado para '" . $usuario_temp['Email'] . "'"; */
-        
         $_SESSION['success'] = "Usuário adicionado com sucesso.";
-        header("Location: requisicoes.php");
+        header("Location: ../requisicoes.php");
         die();
+
     } else {
+        
         $_SESSION['danger'] = "Erro na adição do usuário.";
-        header("Location: requisicoes.php");
+        header("Location: ../requisicoes.php");
         die();
+    
     }

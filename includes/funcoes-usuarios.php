@@ -24,16 +24,30 @@ function buscar_usuario_id($conexao, $id_usuario) {
     return $usuario;
 }
 
-function criar_usuario($conexao, $nome, $sobrenome, $username, $email, $senha) {
+function criar_usuario($conexao, $nome, $cpf, $cep, $cidade, $estado, $endereco, $telefone, $username, $email, $senha) {
 
     $nome = mysqli_real_escape_string($conexao, $nome);
-    $sobrenome = mysqli_real_escape_string($conexao, $sobrenome);
+    $cpf = mysqli_real_escape_string($conexao, $cpf);
+    $cep = mysqli_real_escape_string($conexao, $cep);
+    $cidade = mysqli_real_escape_string($conexao, $cidade);
+    $estado = mysqli_real_escape_string($conexao, $estado);
+    $endereco = mysqli_real_escape_string($conexao, $endereco);
+    $telefone = mysqli_real_escape_string($conexao, $telefone);
+
+    // Insere o comprador
+    if (!inserir_comprador($conexao, $nome, $cidade, $estado, $endereco, $cep, $cpf, $email, $telefone)) {
+        $_SESSION['danger'] = "Erro ao inserir comprador" . mysqli_error($conexao);
+        header("Location: ../index.php");
+        die();
+    }
+
     $username = mysqli_real_escape_string($conexao, $username);
     $email = mysqli_real_escape_string($conexao, $email);
     $senha = mysqli_real_escape_string($conexao, $senha);
 
+    // Insere o usuario
     $hash_senha = password_hash($senha, PASSWORD_DEFAULT);
-    $query = "INSERT INTO usuarios (primeiro_nome, sobrenome, usuario, email, senha) VALUES ('$nome', '$sobrenome', '$username', '$email', '$hash_senha');";
+    $query = "INSERT INTO usuarios (usuario, email, senha) VALUES ('$username', '$email', '$hash_senha');";
     $resultado = mysqli_query($conexao, $query);
     return $resultado;
 }
