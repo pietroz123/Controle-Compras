@@ -1,4 +1,4 @@
-            </div>
+</div>
         </div>
 
         <footer class="footer black">
@@ -15,6 +15,9 @@
         <script type="text/javascript" src="js/datatables.js"></script>
         <script type="text/javascript" src="js/awesomplete.js"></script>
         <script type="text/javascript" src="js/select2.js"></script>
+        <script type="text/javascript" src="js/jquery.mask.js"></script>
+
+        <script type="text/javascript" src="js/main.js"></script>
 
 
     </body>
