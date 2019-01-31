@@ -55,3 +55,17 @@ function remover_grupo($conexao, $id_grupo) {
         mysqli_stmt_execute($stmt);
     }
 }
+
+// Remove um membro do grupo, dado o Username do Membro e o ID do Grupo
+function remover_membro($conexao, $id_grupo, $username) {
+    $sql = "DELETE FROM grupo_usuarios WHERE ID_Grupo = ? AND Username = ?";
+    $stmt = mysqli_stmt_init($conexao);
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        $_SESSION['danger'] = "Ocorreu um erro ao remover o membro.";
+        header("Location: ../perfil-usuario.php");
+        die();
+    } else {
+        mysqli_stmt_bind_param($stmt, "is", $id_grupo, $username);
+        mysqli_stmt_execute($stmt);
+    }
+}

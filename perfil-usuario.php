@@ -191,11 +191,25 @@
     ============================================================================================================== */
 
 
-    function remover_membro(botao) {
-        var id = botao.id;
-        console.log(id);
+    $(document).on('click', '.btn-remover-membro', function(){  
+        var username = $(this).attr("username-membro");
+        var id_grupo = $(this).attr("id-grupo");
         
-    }
+        $.ajax({
+            url: "scripts/remover-grupo-membro.php",
+            method: "post",
+            data: {
+                remover: "sim",
+                id_grupo: id_grupo,
+                username: username
+            },
+            dataType: "html",
+            success: function(retorno) {                
+                $('#usuarios-grupo').html(retorno);
+            }
+        });
+
+    });
 
 
 </script>
