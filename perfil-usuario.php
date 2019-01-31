@@ -46,7 +46,7 @@
                     <div class="card-header default-color-dark white-text">
                         Grupos
                         <button class="btn default-color botao-pequeno ml-2 btn-recarregar-grupos" style="float: right;" username-usuario="<?= $usuario['Usuario'] ?>"><i class="fas fa-sync-alt" id="icone-recarregar"></i> recarregar grupos</button>
-                        <button class="btn default-color botao-pequeno btn-criar-grupo" style="float: right;" data-toggle="modal" data-target="#modal-criar-grupo" data-username="<?= $usuario['Usuario']; ?>">criar grupo</button>
+                        <button class="btn default-color botao-pequeno btn-criar-grupo" style="float: right;" data-toggle="modal" data-target="#modal-criar-grupo">criar grupo</button>
                     </div>
                     <div class="card-body">
                         <div class="container">
@@ -71,7 +71,7 @@
                                             <td class="col-sm-3"><?= $grupo['Data_Criacao']; ?></td>
                                             <td class="col-sm-3"><?= $grupo['Numero_Membros']; ?></td>
                                             <td class="col-sm-2">
-                                                <button class="btn btn-info botao-pequeno btn-membros" id="<?= $grupo['ID']; ?>" username="<?= $usuario['Usuario']; ?>">Membros</button>
+                                                <button class="btn btn-info botao-pequeno btn-membros" id="<?= $grupo['ID']; ?>">Membros</button>
                                             </td>
                                         </tr>
                                     <?php } ?>
@@ -122,15 +122,6 @@
             }
         });
 
-        $('#modal-criar-grupo').on('show.bs.modal', function(event) {
-            // Recupera as informacoes do botao
-            var botao = $(event.relatedTarget);
-            var username = botao.data('username');
-
-            var modal = $(this);
-            modal.find('#criar-username').val(username);
-        });
-
 
         /* ===========================================================================================================
         ===================================== PREENCHE MODAL MEMBROS GRUPO COM AJAX ==================================
@@ -138,14 +129,12 @@
 
         $(".btn-membros").click(function() {
             var id_grupo = $(this).attr("id");
-            var username = $(this).attr("username");            
 
             $.ajax({
                 url: "modal-membros-grupo.php",
                 method: "post",
                 data: {
-                    id_grupo: id_grupo,
-                    username: username
+                    id_grupo: id_grupo
                 },
                 success: function(data) {
                     $("#membros-grupo").html(data);
@@ -241,9 +230,7 @@
     $(document).on('mouseover', '.btn-remover-membro', function(){
         
         var id_grupo = $(this).attr("id-grupo");
-        var username_usuario = $(this).attr('username-usuario');
-        var username = $(this).attr("username-membro");
-
+        var username = $(this).attr("username-membro");        
         
         $('[data-toggle=confirmation]').confirmation({
             rootSelector: '[data-toggle=confirmation]',
@@ -259,13 +246,6 @@
                     },
                     dataType: "html",
                     success: function(retorno) {
-                        
-                        // Se o usuário estiver se removendo, apenas volta para a página de perfil
-                        if (username_usuario == username) {
-                            location.href = "perfil-usuario.php";
-                            return;
-                        }
-                        
                         $('#membros-grupo').html(retorno);
                         $('.input-usuario').select2({
                             ajax: {
