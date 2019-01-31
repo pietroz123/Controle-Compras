@@ -97,7 +97,7 @@
                 </div>
                 <div class="row">
                     <div class="col-sm">
-                        <button class="btn btn-success btn-block btn-adicionar-membros" id-grupo="<?= $grupo['ID']; ?>">adicionar</button>
+                        <button class="btn btn-success btn-block btn-adicionar-membros" id-grupo="<?= $grupo['ID']; ?>" username-usuario="<?= $_POST['username']; ?>">adicionar</button>
                     </div>
                 </div>
             </div>

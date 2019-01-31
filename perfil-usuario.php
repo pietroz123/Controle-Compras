@@ -310,6 +310,7 @@
         // Recupera os IDs dos usuários a serem adicionados
         var select = $('#select2-usuarios').val();
         var id_grupo = $(this).attr('id-grupo');        
+        var username = $(this).attr('username-usuario');        
 
         $.ajax({
             url: "modal-membros-grupo.php",
@@ -317,7 +318,8 @@
             data: {
                 adicionar: "sim",
                 id_grupo: id_grupo,
-                ids_adicionar: select
+                ids_adicionar: select,
+                username: username
             },
             dataType: "html",
             success: function(retorno) {
