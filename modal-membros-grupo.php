@@ -33,8 +33,12 @@
         elseif (isset($_POST['sair']) && $_POST['sair'] == "sim") {
 
             $username = $_POST['usuario'];
-
+            
             remover_membro($conexao, $id_grupo, $username);
+
+            $membros = recuperar_membros($conexao, $id_grupo);
+            $retorno['quantidade'] = count($membros);
+            echo json_encode($retorno);
             die();            
 
         }

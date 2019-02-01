@@ -366,13 +366,24 @@
         $.ajax({
             url: "modal-membros-grupo.php",
             method: "post",
+            dataType: "json",
             data: {
                 sair: "sim",
                 id_grupo: id_grupo,
                 usuario: username
             },
-            success: function(retorno) {
-                location.href = "perfil-usuario.php";
+            success: function(retorno) { 
+                if (retorno.quantidade == 0) {
+                    $.post('scripts/remover-grupo.php', {
+                        remover_grupo: "sim",
+                        id: id_grupo
+                    }, function(data, status) {
+                        location.href = "perfil-usuario.php";
+                    });
+                }
+                else {
+                    location.href = "perfil-usuario.php";
+                }
             }
         });
 
