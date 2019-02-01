@@ -97,7 +97,7 @@
                 </table>
             </div>
             <?php
-                if (isAdmin($conexao, $grupo['ID'], $_POST['username']) && $membro['Usuario'] != $_POST['username']) {
+                if (isAdmin($conexao, $grupo['ID'], $_POST['username'])) {
             ?>
                 <hr>
                 <div class="container mt-3 mb-3">

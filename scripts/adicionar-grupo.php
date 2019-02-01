@@ -45,7 +45,12 @@
                         $id_grupo = mysqli_stmt_insert_id($stmt);
                         foreach ($ids_usuarios as $id_usuario) {
                             $usuario = buscar_usuario_id($conexao, $id_usuario);
-                            $sql = "INSERT INTO grupo_usuarios (id_grupo, username) VALUES (?, ?)";
+                            if ($usuario['Usuario'] == $_POST['criar-username']) {
+                                $sql = "INSERT INTO grupo_usuarios (id_grupo, username, admin) VALUES (?, ?, 1)";
+                            }
+                            else {
+                                $sql = "INSERT INTO grupo_usuarios (id_grupo, username) VALUES (?, ?)";
+                            }
                             $stmt = mysqli_stmt_init($conexao);
                             if (!mysqli_stmt_prepare($stmt, $sql)) {
                                 $_SESSION['danger'] = "Ocorreu um erro na inserção dos usuários no grupo.";

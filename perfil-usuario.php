@@ -46,7 +46,7 @@
                     <div class="card-header default-color-dark white-text">
                         Grupos
                         <button class="btn default-color botao-pequeno ml-2 btn-recarregar-grupos" style="float: right;" username-usuario="<?= $usuario['Usuario'] ?>"><i class="fas fa-sync-alt" id="icone-recarregar"></i> recarregar grupos</button>
-                        <button class="btn default-color botao-pequeno btn-criar-grupo" style="float: right;" data-toggle="modal" data-target="#modal-criar-grupo">criar grupo</button>
+                        <button class="btn default-color botao-pequeno btn-criar-grupo" style="float: right;" data-toggle="modal" data-target="#modal-criar-grupo" data-username="<?= $usuario['Usuario']; ?>">criar grupo</button>
                     </div>
                     <div class="card-body">
                         <div class="container">
@@ -71,7 +71,7 @@
                                             <td class="col-sm-3"><?= $grupo['Data_Criacao']; ?></td>
                                             <td class="col-sm-3"><?= $grupo['Numero_Membros']; ?></td>
                                             <td class="col-sm-2">
-                                                <button class="btn btn-info botao-pequeno btn-membros" id="<?= $grupo['ID']; ?>">Membros</button>
+                                                <button class="btn btn-info botao-pequeno btn-membros" id="<?= $grupo['ID']; ?>" username="<?= $usuario['Usuario']; ?>">Membros</button>
                                             </td>
                                         </tr>
                                     <?php } ?>

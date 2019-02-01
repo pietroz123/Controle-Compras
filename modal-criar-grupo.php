@@ -6,6 +6,7 @@
                 <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
             </div>
             <form name="adicionar-username" id="adicionar-username" action="scripts/adicionar-grupo.php" method="post">
+                <input type="hidden" id="criar-username" name="criar-username">
                 <div class="modal-body">
                     <div class="grid">
                         <div class="row">
