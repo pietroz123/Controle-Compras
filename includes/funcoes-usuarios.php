@@ -76,6 +76,43 @@ function join_usuario_comprador($conexao, $email) {
     }
 }
 
+// Seleciona todas as compras dos usuarios que tem os IDs permitidos ORDENADO por Data
+function compras_permitidas($conexao, $username, $email) {
+    $sql = "SELECT cmp.*, cmpd.Nome AS Nome_Comprador
+            FROM compras AS cmp
+            JOIN compradores AS cmpd ON cmp.Comprador_ID = cmpd.ID
+            WHERE cmpd.ID IN (
+                SELECT DISTINCT cmp.Comprador_ID
+                FROM compras AS cmp
+                JOIN compradores AS cmpd ON cmp.Comprador_ID = cmpd.ID
+                WHERE cmp.Comprador_ID IN (
+                    SELECT DISTINCT c.ID AS Comprador_ID
+                    FROM grupo_usuarios gu
+                    JOIN usuarios u on gu.Username = u.Usuario
+                    JOIN compradores c on u.Email = c.Email
+                    WHERE gu.ID_Grupo IN (
+                        SELECT gu.ID_Grupo
+                        FROM grupo_usuarios gu
+                        JOIN usuarios u on gu.Username = u.Usuario
+                        WHERE u.Usuario = '$username'
+                    )
+                ) OR cmp.Comprador_ID IN (
+                    SELECT compradores.ID
+                    FROM usuarios
+                    JOIN compradores ON usuarios.Email = compradores.Email
+                    WHERE usuarios.Email = '$email'
+                )
+            )
+            ORDER BY year(data), month(data), day(data);";
+    
+    $compras = array();
+    $resultado = mysqli_query($conexao, $sql);
+    while ($compra = mysqli_fetch_assoc($resultado)) {
+        array_push($compras, $compra);
+    }
+    return $compras;
+}
+
 
 /******************************* Funcoes usuarios temporarios *******************************/
 

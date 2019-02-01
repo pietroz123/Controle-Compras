@@ -1,6 +1,7 @@
 <?php 
     include $_SERVER['DOCUMENT_ROOT'].'/cabecalho.php'; 
     include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes-usuarios.php';
     include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes-grupos.php';
 ?>
 
@@ -9,10 +10,25 @@
     mostra_alerta("success");
     mostra_alerta("danger");
 
-    $ids_compradores = recupera_ids_compradores_grupos($conexao, $_SESSION['login-username']);
+    // Recupera todas as informações do usuário
+    $comprador_usuario = join_usuario_comprador($conexao, $_SESSION['login-email']);
+    
+    // Recupera todos os grupos do usuário
+    $grupos = recuperar_grupos($conexao, $_SESSION['login-username']);
+    
+    // Recupera todos os IDs dos compradores em todos os grupos do usuário
+    $ids_compradores = recupera_ids_compradores_grupos($conexao, $_SESSION['login-username'], $_SESSION['login-email']);
+
+    // Recupera as compras que o usuário pode visualizar
+    $compras_permitidas = compras_permitidas($conexao, $_SESSION['login-username'], $_SESSION['login-email']);
+
 ?>
 
+<pre><?php print_r($comprador_usuario); ?></pre>
+<pre><?php print_r($grupos); ?></pre>
 <pre><?php print_r($ids_compradores); ?></pre>
+<pre><?php print_r($compras_permitidas); ?></pre>
+
 
 
 <h1>Lista de Compras</h1>

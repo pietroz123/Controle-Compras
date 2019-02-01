@@ -1,16 +1,27 @@
 <?php
 
-function recupera_ids_compradores_grupos($conexao, $username) {
-    $sql = "SELECT DISTINCT c.ID AS Comprador_ID
-        FROM grupo_usuarios gu
-        JOIN usuarios u on gu.Username = u.Usuario
-        JOIN compradores c on u.Email = c.Email
-        WHERE gu.ID_Grupo IN (
-            SELECT gu.ID_Grupo
-            FROM grupo_usuarios gu
-            JOIN usuarios u on gu.Username = u.Usuario
-            WHERE u.Usuario = '$username'
-        )";
+// Seleciona todos os ids dos compradores de todos os grupos em que o usuario esta
+function recupera_ids_compradores_grupos($conexao, $username, $email) {
+    $sql = "SELECT DISTINCT cmp.Comprador_ID
+            FROM compras AS cmp
+            JOIN compradores AS cmpd ON cmp.Comprador_ID = cmpd.ID
+            WHERE cmp.Comprador_ID IN (
+                SELECT DISTINCT c.ID AS Comprador_ID
+                FROM grupo_usuarios gu
+                JOIN usuarios u on gu.Username = u.Usuario
+                JOIN compradores c on u.Email = c.Email
+                WHERE gu.ID_Grupo IN (
+                    SELECT gu.ID_Grupo
+                    FROM grupo_usuarios gu
+                    JOIN usuarios u on gu.Username = u.Usuario
+                    WHERE u.Usuario = '$username'
+                )
+            ) OR cmp.Comprador_ID IN (
+                SELECT compradores.ID
+                FROM usuarios
+                JOIN compradores ON usuarios.Email = compradores.Email
+                WHERE usuarios.Email = '$email'
+            )";
 
     $ids_compradores = array();
     $resultado = mysqli_query($conexao, $sql);
