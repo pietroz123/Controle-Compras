@@ -32,8 +32,8 @@
     <div class="btn-indigo cartao-grupo-banner"></div>
 
     <!-- Imagem do Grupo -->
-    <div class="mx-auto white cartao-grupo-imagem">
-        <i class="fas fa-users fa-5x"></i>
+    <div class="mx-auto white cartao-grupo-imagem rounded-circle">
+        <i class="fas fa-users fa-4x"></i>
     </div>
 
     <!-- Informações -->
