@@ -1,5 +1,13 @@
 <?php
 
+    include $_SERVER['DOCUMENT_ROOT'].'/database/conexao.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes-grupos.php';
+
+    if (isset($_POST['remover_grupo']) && $_POST['remover_grupo'] == "sim") {
+        remover_grupo($conexao, $_POST['id']);
+        die();
+    }
+
     if (!isset($_POST['submit-remover-grupo'])) {
         $_SESSION['danger'] = "Não foi dado submit!";
         header("Location: ../perfil-usuario.php");
@@ -12,8 +20,6 @@
         die();
     }
 
-    include $_SERVER['DOCUMENT_ROOT'].'/database/conexao.php';
-    include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes-grupos.php';
 
     // Inicia a SESSAO
     if (!isset($_SESSION) || !is_array($_SESSION)) {
