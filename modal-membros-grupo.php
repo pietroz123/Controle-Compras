@@ -83,11 +83,7 @@
                             <td class="col-sm-5"><i class="fas fa-user mr-2 float-left"></i><?= $membro['Nome']; ?></td>
                             <td class="col-sm-4"><?= date("d/m/Y h:m", strtotime($membro['Membro_Desde'])); ?></td>
                     <?php
-                        if ($membro['Usuario'] == $_POST['username']) {
-                    ?>
-                            <td class="col-sm-3 text-right"><button class="btn btn-danger botao-pequeno btn-remover-membro w-75" id-grupo="<?= $grupo['ID']; ?>" username-usuario="<?= $_POST['username']; ?>" username-membro="<?= $membro['Usuario']; ?>" data-toggle="confirmation" data-singleton="true">sair</button></td>
-                    <?php
-                        } elseif (isAdmin($conexao, $grupo['ID'], $_POST['username'])) {
+                        if (isAdmin($conexao, $grupo['ID'], $_POST['username']) && $membro['Usuario'] != $_POST['username']) {
                     ?>
                             <td class="col-sm-3 text-right"><button class="btn btn-danger botao-pequeno btn-remover-membro w-75" id-grupo="<?= $grupo['ID']; ?>" username-usuario="<?= $_POST['username']; ?>" username-membro="<?= $membro['Usuario']; ?>" data-toggle="confirmation" data-singleton="true"><i class="fas fa-times"></i></button></td>
                     <?php
@@ -100,22 +96,28 @@
                     </tbody>
                 </table>
             </div>
-            <hr>
-            <div class="container mt-3 mb-3">
-                <div class="row">
-                    <div class="col-sm">
-                        <label for="select2" class="font-weight-bold left">Adicionar usuários</label>
-                        <select class="form-control input-usuario" id="select2-usuarios" name="usernames[]" multiple="multiple" style="width: 100%;">
-                
-                        </select>
+            <?php
+                if (isAdmin($conexao, $grupo['ID'], $_POST['username']) && $membro['Usuario'] != $_POST['username']) {
+            ?>
+                <hr>
+                <div class="container mt-3 mb-3">
+                    <div class="row">
+                        <div class="col-sm">
+                            <label for="select2" class="font-weight-bold left">Adicionar usuários</label>
+                            <select class="form-control input-usuario" id="select2-usuarios" name="usernames[]" multiple="multiple" style="width: 100%;">
+                    
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm">
+                            <button class="btn btn-success btn-block btn-adicionar-membros" id-grupo="<?= $grupo['ID']; ?>" username-usuario="<?= $_POST['username']; ?>">adicionar</button>
+                        </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-sm">
-                        <button class="btn btn-success btn-block btn-adicionar-membros" id-grupo="<?= $grupo['ID']; ?>" username-usuario="<?= $_POST['username']; ?>">adicionar</button>
-                    </div>
-                </div>
-            </div>
+            <?php
+                }
+            ?>
         </div>
         <div class="modal-footer">
             <?php
