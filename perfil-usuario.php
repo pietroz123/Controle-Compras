@@ -354,5 +354,30 @@
     });
 
 
+    /* ===========================================================================================================
+    ========================================== BOTÃO PARA SAIR DO GRUPO ==========================================
+    ============================================================================================================== */
+
+    $(document).on('click', '.btn-sair-grupo', function() {
+
+        var id_grupo = $(this).attr('id-grupo');        
+        var username = $(this).attr('username-usuario');
+
+        $.ajax({
+            url: "modal-membros-grupo.php",
+            method: "post",
+            data: {
+                sair: "sim",
+                id_grupo: id_grupo,
+                usuario: username
+            },
+            success: function(retorno) {
+                location.href = "perfil-usuario.php";
+            }
+        });
+
+    });
+
+
 
 </script>

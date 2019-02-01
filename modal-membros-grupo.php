@@ -18,15 +18,24 @@
 
         }
 
-
         // Verifica se a requisicao foi para adicionar um membro ao grupo
-        if (isset($_POST['adicionar']) && $_POST['adicionar'] == "sim") {
+        elseif (isset($_POST['adicionar']) && $_POST['adicionar'] == "sim") {
 
             $ids_adicionar = $_POST['ids_adicionar'];
             foreach ($ids_adicionar as $id_adicionar) {
                 $usuario = buscar_usuario_id($conexao, $id_adicionar);
                 adicionar_membro($conexao, $id_grupo, $usuario['Usuario']);
             }
+
+        }
+
+        // Verifica se a requisicao foi para sair do grupo
+        elseif (isset($_POST['sair']) && $_POST['sair'] == "sim") {
+
+            $username = $_POST['usuario'];
+
+            remover_membro($conexao, $id_grupo, $username);
+            die();            
 
         }
 
@@ -105,10 +114,17 @@
             </div>
         </div>
         <div class="modal-footer">
-            <form action="scripts/remover-grupo.php" method="post">
-                <input type="hidden" name="id" value="<?= $grupo['ID']; ?>">
-                <button type="submit" name="submit-remover-grupo" class="btn btn-danger">remover grupo</button>
-            </form>
+            <?php
+                if (isAdmin($conexao, $grupo['ID'], $_POST['username'])) {
+            ?>
+                <form action="scripts/remover-grupo.php" method="post">
+                    <input type="hidden" name="id" value="<?= $grupo['ID']; ?>">
+                    <button type="submit" name="submit-remover-grupo" class="btn btn-danger float-right">remover grupo</button>
+                </form>
+            <?php
+                }
+            ?>
+            <button class="btn btn-danger btn-sair-grupo float-left" id-grupo="<?= $grupo['ID']; ?>" username-usuario="<?= $_POST['username']; ?>">sair do grupo</button>
         </div>
     </div>
 
