@@ -1,13 +1,19 @@
 <?php 
     include $_SERVER['DOCUMENT_ROOT'].'/cabecalho.php'; 
     include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes-grupos.php';
 ?>
 
 <?php
     verifica_usuario();
     mostra_alerta("success");
     mostra_alerta("danger");
+
+    $ids_compradores = recupera_ids_compradores_grupos($conexao, $_SESSION['login-username']);
 ?>
+
+<pre><?php print_r($ids_compradores); ?></pre>
+
 
 <h1>Lista de Compras</h1>
 

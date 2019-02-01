@@ -1,5 +1,25 @@
 <?php
 
+function recupera_ids_compradores_grupos($conexao, $username) {
+    $sql = "SELECT DISTINCT c.ID AS Comprador_ID
+        FROM grupo_usuarios gu
+        JOIN usuarios u on gu.Username = u.Usuario
+        JOIN compradores c on u.Email = c.Email
+        WHERE gu.ID_Grupo IN (
+            SELECT gu.ID_Grupo
+            FROM grupo_usuarios gu
+            JOIN usuarios u on gu.Username = u.Usuario
+            WHERE u.Usuario = '$username'
+        )";
+
+    $ids_compradores = array();
+    $resultado = mysqli_query($conexao, $sql);
+    while ($id_comprador = mysqli_fetch_assoc($resultado)) {
+        array_push($ids_compradores, $id_comprador);
+    }
+    return $ids_compradores;
+}
+
 // Recupera o grupo com determinado ID
 function recuperar_grupo($conexao, $id) {
     $sql = "SELECT * FROM grupos WHERE ID = $id";
