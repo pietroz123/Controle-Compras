@@ -33,7 +33,7 @@ function usuario_esta_logado() {
 
 // Retorna o usuario logado (seu id unico na sessao)
 function usuario_logado() {
-    return $_SESSION['login'];
+    return $_SESSION['login-username'];
 }
 
 // Efetua o login do usuario
@@ -41,7 +41,9 @@ function login($email_usuario, $username) {
     if ($username == "admin") {
         $_SESSION['admin'] = true;
     }
-    $_SESSION['login'] = $email_usuario;
+    $_SESSION['login'] = true;
+    $_SESSION['login-email'] = $email_usuario;
+    $_SESSION['login-username'] = $username;
 }
 
 // Efetua o logout do usuario
