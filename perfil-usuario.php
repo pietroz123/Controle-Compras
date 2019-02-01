@@ -131,80 +131,80 @@
             modal.find('#criar-username').val(username);
         });
 
-
-        /* ===========================================================================================================
-        ===================================== PREENCHE MODAL MEMBROS GRUPO COM AJAX ==================================
-        ============================================================================================================== */
-
-        $(".btn-membros").click(function() {
-            var id_grupo = $(this).attr("id");
-            var username = $(this).attr("username");            
-
-            $.ajax({
-                url: "modal-membros-grupo.php",
-                method: "post",
-                data: {
-                    id_grupo: id_grupo,
-                    username: username
-                },
-                success: function(data) {
-                    $("#membros-grupo").html(data);
-                    $("#modal-membros-grupo").modal("show");
-                    $('.input-usuario').select2({
-                        ajax: {
-                            url: "scripts/busca-usuario.php",
-                            type: "post",
-                            dataType: "json",
-                            delay: 250,
-                            data: function(params) {
-                                return {
-                                    busca: "sim",
-                                    texto: params.term
-                                };
-                            },
-                            processResults: function(data) {
-                                return {
-                                    results: data
-                                };
-                            },
-                            cache: true
-                        }
-                    });
-                }
-            });
-        });
-        
-
-        /* ===========================================================================================================
-        ========================================= RECARREGA OS GRUPOS COM AJAX =======================================
-        ============================================================================================================== */
-
-        $(".btn-recarregar-grupos").click(function() {
-            var icone = document.querySelector("#icone-recarregar");
-            var username = $(this).attr('username-usuario');
-            
-            icone.classList.add('fa-spin');
-
-            setTimeout(function() {
-                icone.classList.remove('fa-spin');
-            }, 1000);
-
-            $.ajax({
-                url: "scripts/recarregar-grupos.php",
-                method: "post",
-                data: {
-                    username: username
-                },
-                success: function(retorno) {
-                    $('#grupos-usuario').html(retorno);                    
-                }
-            });
-
-        });
-
-        
+                
     });
-    
+
+
+    /* ===========================================================================================================
+    ===================================== PREENCHE MODAL MEMBROS GRUPO COM AJAX ==================================
+    ============================================================================================================== */
+
+    $(document).on('click', '.btn-membros', function() {
+        var id_grupo = $(this).attr("id");
+        var username = $(this).attr("username");            
+
+        $.ajax({
+            url: "modal-membros-grupo.php",
+            method: "post",
+            data: {
+                id_grupo: id_grupo,
+                username: username
+            },
+            success: function(data) {
+                $("#membros-grupo").html(data);
+                $("#modal-membros-grupo").modal("show");
+                $('.input-usuario').select2({
+                    ajax: {
+                        url: "scripts/busca-usuario.php",
+                        type: "post",
+                        dataType: "json",
+                        delay: 250,
+                        data: function(params) {
+                            return {
+                                busca: "sim",
+                                texto: params.term
+                            };
+                        },
+                        processResults: function(data) {
+                            return {
+                                results: data
+                            };
+                        },
+                        cache: true
+                    }
+                });
+            }
+        });
+    });
+
+
+    /* ===========================================================================================================
+    ========================================= RECARREGA OS GRUPOS COM AJAX =======================================
+    ============================================================================================================== */
+
+    $(".btn-recarregar-grupos").click(function() {
+        var icone = document.querySelector("#icone-recarregar");
+        var username = $(this).attr('username-usuario');
+        
+        icone.classList.add('fa-spin');
+
+        setTimeout(function() {
+            icone.classList.remove('fa-spin');
+        }, 1000);
+
+        $.ajax({
+            url: "scripts/recarregar-grupos.php",
+            method: "post",
+            data: {
+                username: username
+            },
+            success: function(retorno) {
+                $('#grupos-usuario').html(retorno);                    
+            }
+        });
+
+    });
+
 
     /* ===========================================================================================================
     ===================================== REALIZA BUSCA POR USERNAMES NO BD ======================================

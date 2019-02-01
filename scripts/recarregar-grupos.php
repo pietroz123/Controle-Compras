@@ -14,7 +14,7 @@ if (isset($_POST['username'])) {
             <td class="col-sm-3">'.$grupo['Data_Criacao'].'</td>
             <td class="col-sm-3">'.$grupo['Numero_Membros'].'</td>
             <td class="col-sm-2">
-                <button class="btn btn-info botao-pequeno btn-membros" id="'.$grupo['ID'].'">Membros</button>
+                <button class="btn btn-info botao-pequeno btn-membros" id="'.$grupo['ID'].'" username="'.$_POST['username'].'">Membros</button>
             </td>
         </tr>';
 
