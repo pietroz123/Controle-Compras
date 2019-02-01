@@ -53,38 +53,40 @@
             <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
         </div>
         <div class="modal-body">
-            <table class="table table-hover">
-                <thead>
-                    <th>Imagem</th>
-                    <th>Nome</th>
-                    <th>Desde</th>
-                    <th></th>
-                </thead>
-                <tbody>
-                    <?php 
-                        foreach ($membros as $membro) {
+            <div class="container">
+                <table class="table table-hover text-left">
+                    <thead>
+                        <tr class="row">
+                            <th class="col-sm-5">Nome</th>
+                            <th class="col-sm-4">Desde</th>
+                            <th class="col-sm-3"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php 
+                            foreach ($membros as $membro) {
+                        ?>
+                        <tr class="row">
+                            <td class="col-sm-5"><i class="fas fa-user mr-2 float-left"></i><?= $membro['Nome']; ?></td>
+                            <td class="col-sm-4"><?= date("d/m/Y h:m", strtotime($membro['Membro_Desde'])); ?></td>
+                    <?php
+                        if ($membro['Usuario'] == $_POST['username']) {
                     ?>
-                    <tr>
-                        <td><i class="fas fa-user"></i></td>
-                        <td><?= $membro['Nome']; ?></td>
-                        <td><?= date("d/m/Y h:m", strtotime($membro['Membro_Desde'])); ?></td>
-                <?php
-                    if ($membro['Usuario'] == $_POST['username']) {
-                ?>
-                        <td><button class="btn btn-danger botao-pequeno btn-remover-membro" id-grupo="<?= $grupo['ID']; ?>" username-usuario="<?= $_POST['username']; ?>" username-membro="<?= $membro['Usuario']; ?>" data-toggle="confirmation" data-singleton="true">sair</button></td>
-                <?php
-                    } elseif (isAdmin($conexao, $grupo['ID'], $_POST['username'])) {
-                ?>
-                        <td><button class="btn btn-danger botao-pequeno btn-remover-membro" id-grupo="<?= $grupo['ID']; ?>" username-usuario="<?= $_POST['username']; ?>" username-membro="<?= $membro['Usuario']; ?>" data-toggle="confirmation" data-singleton="true"><i class="fas fa-times"></i></button></td>
-                <?php
-                    }
-                ?>
-                    </tr>
+                            <td class="col-sm-3 text-right"><button class="btn btn-danger botao-pequeno btn-remover-membro w-75" id-grupo="<?= $grupo['ID']; ?>" username-usuario="<?= $_POST['username']; ?>" username-membro="<?= $membro['Usuario']; ?>" data-toggle="confirmation" data-singleton="true">sair</button></td>
+                    <?php
+                        } elseif (isAdmin($conexao, $grupo['ID'], $_POST['username'])) {
+                    ?>
+                            <td class="col-sm-3 text-right"><button class="btn btn-danger botao-pequeno btn-remover-membro w-75" id-grupo="<?= $grupo['ID']; ?>" username-usuario="<?= $_POST['username']; ?>" username-membro="<?= $membro['Usuario']; ?>" data-toggle="confirmation" data-singleton="true"><i class="fas fa-times"></i></button></td>
                     <?php
                         }
-                        ?>
-                </tbody>
-            </table>
+                    ?>
+                        </tr>
+                        <?php
+                            }
+                            ?>
+                    </tbody>
+                </table>
+            </div>
             <hr>
             <div class="container mt-3 mb-3">
                 <div class="row">
