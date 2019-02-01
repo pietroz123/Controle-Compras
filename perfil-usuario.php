@@ -242,7 +242,7 @@
         
         var id_grupo = $(this).attr("id-grupo");
         var username_usuario = $(this).attr('username-usuario');
-        var username = $(this).attr("username-membro");
+        var usuario = $(this).attr("username-membro");
 
         
         $('[data-toggle=confirmation]').confirmation({
@@ -255,13 +255,14 @@
                     data: {
                         remover: "sim",
                         id_grupo: id_grupo,
-                        username: username
+                        usuario: usuario,
+                        username: username_usuario
                     },
                     dataType: "html",
                     success: function(retorno) {
                         
                         // Se o usuário estiver se removendo, apenas volta para a página de perfil
-                        if (username_usuario == username) {
+                        if (username_usuario == usuario) {
                             location.href = "perfil-usuario.php";
                             return;
                         }
@@ -310,42 +311,44 @@
         // Recupera os IDs dos usuários a serem adicionados
         var select = $('#select2-usuarios').val();
         var id_grupo = $(this).attr('id-grupo');        
-        var username = $(this).attr('username-usuario');        
+        var username = $(this).attr('username-usuario');
 
-        $.ajax({
-            url: "modal-membros-grupo.php",
-            method: "post",
-            data: {
-                adicionar: "sim",
-                id_grupo: id_grupo,
-                ids_adicionar: select,
-                username: username
-            },
-            dataType: "html",
-            success: function(retorno) {
-                $('#membros-grupo').html(retorno);
-                $('.input-usuario').select2({
-                    ajax: {
-                        url: "scripts/busca-usuario.php",
-                        type: "post",
-                        dataType: "json",
-                        delay: 250,
-                        data: function(params) {
-                            return {
-                                busca: "sim",
-                                texto: params.term
-                            };
-                        },
-                        processResults: function(data) {
-                            return {
-                                results: data
-                            };
-                        },
-                        cache: true
-                    }
-                });
-            }
-        });
+        if (select) {
+            $.ajax({
+                url: "modal-membros-grupo.php",
+                method: "post",
+                data: {
+                    adicionar: "sim",
+                    id_grupo: id_grupo,
+                    ids_adicionar: select,
+                    username: username
+                },
+                dataType: "html",
+                success: function(retorno) {
+                    $('#membros-grupo').html(retorno);
+                    $('.input-usuario').select2({
+                        ajax: {
+                            url: "scripts/busca-usuario.php",
+                            type: "post",
+                            dataType: "json",
+                            delay: 250,
+                            data: function(params) {
+                                return {
+                                    busca: "sim",
+                                    texto: params.term
+                                };
+                            },
+                            processResults: function(data) {
+                                return {
+                                    results: data
+                                };
+                            },
+                            cache: true
+                        }
+                    });
+                }
+            });
+        }
         
         
     });

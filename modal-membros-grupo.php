@@ -12,7 +12,7 @@
         // Verifica se a requisicao foi para remover um membro do grupo
         if (isset($_POST['remover']) && $_POST['remover'] == "sim") {
 
-            $username = $_POST['username'];
+            $username = $_POST['usuario'];
 
             remover_membro($conexao, $id_grupo, $username);
 
