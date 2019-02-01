@@ -10,24 +10,45 @@
     mostra_alerta("success");
     mostra_alerta("danger");
 
-    // Recupera todas as informações do usuário
-    $comprador_usuario = join_usuario_comprador($conexao, $_SESSION['login-email']);
+    // // Recupera todas as informações do usuário
+    // $comprador_usuario = join_usuario_comprador($conexao, $_SESSION['login-email']);
     
     // Recupera todos os grupos do usuário
     $grupos = recuperar_grupos($conexao, $_SESSION['login-username']);
     
-    // Recupera todos os IDs dos compradores em todos os grupos do usuário
-    $ids_compradores = recupera_ids_compradores_grupos($conexao, $_SESSION['login-username'], $_SESSION['login-email']);
+    // // Recupera todos os IDs dos compradores em todos os grupos do usuário
+    // $ids_compradores = recupera_ids_compradores_grupos($conexao, $_SESSION['login-username'], $_SESSION['login-email']);
 
-    // Recupera as compras que o usuário pode visualizar
-    $compras_permitidas = compras_permitidas($conexao, $_SESSION['login-username'], $_SESSION['login-email']);
+    // // Recupera as compras que o usuário pode visualizar
+    // $compras_permitidas = compras_permitidas($conexao, $_SESSION['login-username'], $_SESSION['login-email']);
 
 ?>
 
-<pre><?php print_r($comprador_usuario); ?></pre>
-<pre><?php print_r($grupos); ?></pre>
-<pre><?php print_r($ids_compradores); ?></pre>
-<pre><?php print_r($compras_permitidas); ?></pre>
+
+<!-- Cartão Grupo -->
+<div class="card cartao-grupo">
+
+    <!-- Banner do cartao -->
+    <div class="btn-indigo cartao-grupo-banner"></div>
+
+    <!-- Imagem do Grupo -->
+    <div class="mx-auto white cartao-grupo-imagem">
+        <i class="fas fa-users fa-5x"></i>
+    </div>
+
+    <!-- Informações -->
+    <div class="card-body cartao-grupo-informacoes">
+        <!-- Nome -->
+        <h4 class="card-title cartao-grupo-nome">Nome grupo</h4>
+        <hr>
+        <!-- Integrantes -->
+        <div class="cartao-grupo-integrantes">
+            <p>Integrantes</p>
+        </div>
+    </div>
+
+</div>
+<!-- Cartão Grupo -->
 
 
 
