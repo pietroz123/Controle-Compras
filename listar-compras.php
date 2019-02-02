@@ -28,23 +28,28 @@
 <!-- Cartão Grupo -->
 <div class="card cartao-grupo">
 
-    <!-- Banner do cartao -->
-    <div class="btn-indigo cartao-grupo-banner"></div>
+    <div class="row">
 
-    <!-- Imagem do Grupo -->
-    <div class="mx-auto white cartao-grupo-imagem rounded-circle">
-        <i class="fas fa-users fa-4x"></i>
-    </div>
-
-    <!-- Informações -->
-    <div class="card-body cartao-grupo-informacoes">
-        <!-- Nome -->
-        <h4 class="card-title cartao-grupo-nome">Nome grupo</h4>
-        <hr>
-        <!-- Integrantes -->
-        <div class="cartao-grupo-integrantes">
-            <p>Integrantes</p>
+        <div class="col">
+            <div class="btn-indigo cartao-grupo-banner"></div>
         </div>
+        <div class="col">
+            <div class="mx-auto white cartao-grupo-imagem rounded-circle">
+                <i class="fas fa-users fa-4x"></i>
+            </div>        
+        </div>
+        <div class="col">
+            <div class="card-body cartao-grupo-informacoes">
+                <!-- Nome -->
+                <h4 class="card-title cartao-grupo-nome">Nome grupo</h4>
+                <hr>
+                <!-- Integrantes -->
+                <div class="cartao-grupo-integrantes">
+                    <p>Integrantes</p>
+                </div>
+            </div>
+        </div>
+
     </div>
 
 </div>
