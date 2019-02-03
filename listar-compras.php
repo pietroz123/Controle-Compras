@@ -24,40 +24,33 @@
 
 ?>
 
-
-<!-- Cartão Grupo -->
-<div class="card cartao-grupo">
-
+<div class="cartao-grupo">
     <div class="row">
-
-        <div class="col">
-            <div class="btn-indigo cartao-grupo-banner"></div>
+        <div class="col-sm-3 col cartao-grupo-imagem indigo">
+            <i class="fa fa-users fa-2x grupo-imagem rounded-circle"></i>
         </div>
-        <div class="col">
-            <div class="mx-auto white cartao-grupo-imagem rounded-circle">
-                <i class="fas fa-users fa-4x"></i>
-            </div>        
-        </div>
-        <div class="col">
-            <div class="card-body cartao-grupo-informacoes">
-                <!-- Nome -->
-                <h4 class="card-title cartao-grupo-nome">Nome grupo</h4>
-                <hr>
-                <!-- Integrantes -->
-                <div class="cartao-grupo-integrantes">
-                    <p>Integrantes</p>
+        <div class="col-sm-9 col cartao-grupo-informacoes white">
+            <div class="row">
+                <div class="col">
+                    <h6 class="cartao-grupo-nome">Nome do grupo</h6>
                 </div>
             </div>
+            <hr>
+            <div class="row">
+                <div class="col-sm-6 col" id="data-criacao">Data de Criação</div>
+                <div class="col-sm-6 col" id="data">12/08/2018</div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 col" id="numero-membros">Número de membros</div>
+                <div class="col-sm-6 col" id="numero">3</div>
+            </div>
         </div>
-
-    </div>
-
+    </div>  
 </div>
-<!-- Cartão Grupo -->
 
 
 
-<h1>Lista de Compras</h1>
+<h1 style="margin-top: 40px;">Lista de Compras</h1>
 
 <!-- Tabela com as compras -->
 <table class="table table-hover" id="tabela-compras" style="width: 110%; margin-left: -50px;">
@@ -239,5 +232,20 @@
     //     modal.find("#pagamento-compra").val(pagamento);
     //     modal.find("#comprador-compra").val(comprador);
     // });
+
+    // $('.cartao-grupo.imagem').ready(function() {
+    //     var largura = $('.cartao-grupo-imagem').width();
+    //     var altura = $('.cartao-grupo-imagem').height();
+
+    //     console.log(largura);
+    //     console.log(altura);
+
+    //     $('.grupo-imagem').css({
+    //         'margin-top': (altura/4),
+    //         'margin-left': (largura/20)
+    //     });
+        
+    // });
+
 
 </script>
