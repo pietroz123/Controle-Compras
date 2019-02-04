@@ -1,5 +1,6 @@
 <?php
     ob_start();
+    date_default_timezone_set('America/Sao_Paulo');
     include $_SERVER['DOCUMENT_ROOT'].'/includes/logica-usuarios.php';
     include $_SERVER['DOCUMENT_ROOT'].'/database/conexao.php';
 ?>

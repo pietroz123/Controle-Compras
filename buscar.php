@@ -23,7 +23,7 @@
                 <div class="div-data">
                     <li class="list-group-item">Data</li>
                     <li class="list-group-item">De: <input class="form-control" type="date" name="dataInicio" value="2018-01-01"></li>
-                    <li class="list-group-item">Até: <input class="form-control" type="date" name="dataFim" value="2018-12-30"></li>
+                    <li class="list-group-item">Até: <input class="form-control" type="date" name="dataFim" value="<?= date('Y-m-d'); ?>"></li>
                 </div>
                 <div class="div-comprador">
                     <li class="list-group-item">Comprador</li>
