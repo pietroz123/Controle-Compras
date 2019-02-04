@@ -111,7 +111,7 @@
                     </div>
                     <div class="row">
                         <div class="col-sm">
-                            <button class="btn blue darken-4 btn-block btn-adicionar-membros" id-grupo="<?= $grupo['ID']; ?>" username-usuario="<?= $_POST['username']; ?>">adicionar</button>
+                            <button class="btn stylish-color btn-block btn-adicionar-membros" id-grupo="<?= $grupo['ID']; ?>" username-usuario="<?= $_POST['username']; ?>">adicionar</button>
                         </div>
                     </div>
                 </div>
