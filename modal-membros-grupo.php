@@ -85,7 +85,7 @@
                     <?php
                         if (isAdmin($conexao, $grupo['ID'], $_POST['username']) && $membro['Usuario'] != $_POST['username']) {
                     ?>
-                            <td class="col-sm-3 text-right"><button class="btn btn-danger botao-pequeno btn-remover-membro w-75" id-grupo="<?= $grupo['ID']; ?>" username-usuario="<?= $_POST['username']; ?>" username-membro="<?= $membro['Usuario']; ?>" data-toggle="confirmation" data-singleton="true"><i class="fas fa-times"></i></button></td>
+                            <td class="col-sm-3 text-right"><button class="btn black botao-pequeno btn-remover-membro w-75" id-grupo="<?= $grupo['ID']; ?>" username-usuario="<?= $_POST['username']; ?>" username-membro="<?= $membro['Usuario']; ?>" data-toggle="confirmation" data-singleton="true"><i class="fas fa-times"></i></button></td>
                     <?php
                         }
                     ?>
@@ -111,7 +111,7 @@
                     </div>
                     <div class="row">
                         <div class="col-sm">
-                            <button class="btn btn-success btn-block btn-adicionar-membros" id-grupo="<?= $grupo['ID']; ?>" username-usuario="<?= $_POST['username']; ?>">adicionar</button>
+                            <button class="btn blue darken-4 btn-block btn-adicionar-membros" id-grupo="<?= $grupo['ID']; ?>" username-usuario="<?= $_POST['username']; ?>">adicionar</button>
                         </div>
                     </div>
                 </div>
@@ -125,12 +125,12 @@
             ?>
                 <form action="scripts/remover-grupo.php" method="post">
                     <input type="hidden" name="id" value="<?= $grupo['ID']; ?>">
-                    <button type="submit" name="submit-remover-grupo" class="btn btn-danger float-right">remover grupo</button>
+                    <button type="submit" name="submit-remover-grupo" class="btn red darken-4 float-right">remover grupo</button>
                 </form>
             <?php
                 }
             ?>
-            <button class="btn btn-danger btn-sair-grupo float-left" id-grupo="<?= $grupo['ID']; ?>" username-usuario="<?= $_POST['username']; ?>">sair do grupo</button>
+            <button class="btn red darken-4 btn-sair-grupo float-left" id-grupo="<?= $grupo['ID']; ?>" username-usuario="<?= $_POST['username']; ?>">sair do grupo</button>
         </div>
     </div>
 
