@@ -24,6 +24,15 @@
 
 ?>
 
+<h1 style="text-align: left;">Grupos</h1>
+
+<div class="listar-grupos">
+<?php
+    $i = 0;
+    foreach ($grupos as $grupo) {
+        $i++;
+?>
+
 <div class="cartao-grupo">
     <div class="row">
         <div class="col-sm-3 col cartao-grupo-imagem indigo">
@@ -32,24 +41,32 @@
         <div class="col-sm-9 col cartao-grupo-informacoes white">
             <div class="row">
                 <div class="col">
-                    <h6 class="cartao-grupo-nome">Nome do grupo</h6>
+                    <h6 class="cartao-grupo-nome"><?= $grupo['Nome']; ?></h6>
                 </div>
             </div>
-            <hr>
             <div class="row">
                 <div class="col-sm-6 col" id="data-criacao">Data de Criação</div>
-                <div class="col-sm-6 col" id="data">12/08/2018</div>
+                <div class="col-sm-6 col" id="data"><?= date("d/m/Y h:m", strtotime($grupo['Data_Criacao'])); ?></div>
             </div>
             <div class="row">
                 <div class="col-sm-6 col" id="numero-membros">Número de membros</div>
-                <div class="col-sm-6 col" id="numero">3</div>
+                <div class="col-sm-6 col" id="numero"><?= $grupo['Numero_Membros']; ?></div>
             </div>
         </div>
     </div>  
 </div>
 
+<?php
+    }
+    if ($i == 0) {
+?>
+        <div class="alert alert-info">Você não está em nenhum grupo, logo apenas poderá ver suas compras</div>
+<?php
+    }
+?>
+</div>
 
-
+<hr>
 <h1 style="margin-top: 40px;">Lista de Compras</h1>
 
 <!-- Tabela com as compras -->

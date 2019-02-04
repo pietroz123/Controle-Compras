@@ -273,6 +273,17 @@ p.texto-dados {
    =================== CARTÕES GRUPOS =======================
    ========================================================== */
 
+.listar-grupos {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+.cartao-grupo .row {
+    border: 3px solid white;
+    border-radius: 7px;
+}
+
 .cartao-grupo {
     text-align: left;
     max-width: 30rem;
@@ -285,6 +296,7 @@ p.texto-dados {
 }
 
 .cartao-grupo-imagem {
+    width: 300px;
     border-top: 3px solid black;
     border-left: 3px solid black;
     border-bottom: 3px solid black;
@@ -307,6 +319,7 @@ p.texto-dados {
 }
 
 .cartao-grupo-informacoes {
+    width: 160px;
     border-top: 3px solid darkgrey;
     border-right: 3px solid darkgrey;
     border-bottom: 3px solid darkgrey;
@@ -318,8 +331,5 @@ p.texto-dados {
     margin-top: 10px;
     font-size: 110%;
     padding: 5px;
-}
-
-.cartao-grupo-integrantes {
-
+    border-bottom: 2px solid grey;  
 }
