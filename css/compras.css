@@ -341,3 +341,6 @@ p.texto-dados {
 .link-cartao-minhas-compras {
     color: black;
 }
+.cartao-grupo:hover {
+    color: cornflowerblue;
+}

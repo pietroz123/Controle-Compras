@@ -26,7 +26,7 @@
 
 <h1 style="text-align: left;">Grupos</h1>
 
-<a href="#" class="link-cartao-minhas-compras" id-comprador="<?= $_SESSION['login-id-comprador']; ?>"><div class="cartao-grupo">
+<a role="button" class="link-cartao-minhas-compras" id-comprador="<?= $_SESSION['login-id-comprador']; ?>"><div class="cartao-grupo">
     <div class="row">
         <div class="col-sm-3 col cartao-grupo-imagem pink darken-4" style="height: 102px;">
             <i class="fa fa-user fa-2x grupo-imagem rounded-circle" style="padding: 25px 27px;"></i>
@@ -51,7 +51,7 @@
         $i++;
 ?>
 
-<a href="#" class="link-cartao-grupo" id-grupo="<?= $grupo['ID']; ?>"><div class="cartao-grupo">
+<a role="button" class="link-cartao-grupo" id-grupo="<?= $grupo['ID']; ?>"><div class="cartao-grupo">
     <div class="row">
         <div class="col-sm-3 col cartao-grupo-imagem indigo">
             <i class="fa fa-users fa-2x grupo-imagem rounded-circle"></i>
