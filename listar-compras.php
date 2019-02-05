@@ -325,6 +325,11 @@
                     }
                 });
                 $('.dataTables_length').addClass('bs-select');
+
+                // Scroll até a tabela de compras
+                $('html, body').animate({
+                    scrollTop: $('#tabela-compras').offset().top - 120
+                }, 1000);
             }
         });
         
@@ -373,6 +378,11 @@
                     }
                 });
                 $('.dataTables_length').addClass('bs-select');
+
+                // Scroll até a tabela de compras
+                $('html, body').animate({
+                    scrollTop: $('#tabela-compras').offset().top - 120
+                }, 1000);
             }
         });
         
