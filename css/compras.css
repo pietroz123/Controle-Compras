@@ -286,7 +286,7 @@ p.texto-dados {
 
 .cartao-grupo {
     text-align: left;
-    max-width: 30rem;
+    max-width: 28rem;
     font-style: Roboto,sans-serif;
     padding: 7px;
 }
@@ -336,5 +336,8 @@ p.texto-dados {
 
 /* Click .cartao-grupo */
 .link-cartao-grupo {
+    color: black;
+}
+.link-cartao-minhas-compras {
     color: black;
 }

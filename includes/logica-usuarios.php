@@ -37,13 +37,15 @@ function usuario_logado() {
 }
 
 // Efetua o login do usuario
-function login($email_usuario, $username) {
+function login($email_usuario, $username, $nome, $id_comprador) {
     if ($username == "admin") {
         $_SESSION['admin'] = true;
     }
     $_SESSION['login'] = true;
     $_SESSION['login-email'] = $email_usuario;
     $_SESSION['login-username'] = $username;
+    $_SESSION['login-nome'] = $nome;
+    $_SESSION['login-id-comprador'] = $id_comprador;
 }
 
 // Efetua o logout do usuario

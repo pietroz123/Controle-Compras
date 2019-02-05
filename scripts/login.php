@@ -30,7 +30,8 @@
             header("Location: ../index.php");
             die();
         }
-        login($usuario['Email'], $usuario['Usuario']);
+        $comprador = join_usuario_comprador($conexao, $usuario['Email']);
+        login($usuario['Email'], $usuario['Usuario'], $comprador['Nome'], $comprador['ID']);
         $_SESSION['success'] = "Logado com sucesso.";
         header("Location: ../index.php");
     }

@@ -86,6 +86,20 @@ function alterar_compra($conexao, $id, $valor, $data, $observacoes, $desconto, $
 // ========================= SELECT =================================
 // ==================================================================
 
+function recuperar_compras($conexao, $id_comprador) {
+    $sql = "SELECT cmp.*, cmpd.Nome AS Nome_Comprador
+            FROM compras cmp
+            JOIN compradores cmpd ON cmp.Comprador_ID = cmpd.ID
+            WHERE cmpd.ID = $id_comprador
+            ORDER BY year(data), month(data), day(data)";
+    $resultado = mysqli_query($conexao, $sql);
+    $compras = array();
+    while ($compra = mysqli_fetch_assoc($resultado)) {
+        array_push($compras, $compra);
+    }
+    return $compras;
+}
+
 function buscar_compra($conexao, $id) {
 
     $id = mysqli_real_escape_string($conexao, $id);

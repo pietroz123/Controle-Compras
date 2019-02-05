@@ -26,6 +26,24 @@
 
 <h1 style="text-align: left;">Grupos</h1>
 
+<a href="#" class="link-cartao-minhas-compras" id-comprador="<?= $_SESSION['login-id-comprador']; ?>"><div class="cartao-grupo">
+    <div class="row">
+        <div class="col-sm-3 col cartao-grupo-imagem pink darken-4" style="height: 102px;">
+            <i class="fa fa-user fa-2x grupo-imagem rounded-circle" style="padding: 25px 27px;"></i>
+        </div>
+        <div class="col-sm-9 col cartao-grupo-informacoes white">
+            <div class="row">
+                <div class="col">
+                    <h6 class="cartao-grupo-nome">Minhas Compras</h6>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col" style="text-transform: uppercase;"><?= $_SESSION['login-nome']; ?></div>
+            </div>
+        </div>
+    </div>  
+</div></a>
+
 <div class="listar-grupos">
 <?php
     $i = 0;
@@ -311,6 +329,56 @@
         });
         
     });
+
+
+    // ======================================================================================================================================
+    // ================================== AO CLICAR EM MINHAS COMPRAS, RECUPERA AS COMPRAS DAQUELE COMPRADOR ================================
+    // ======================================================================================================================================
+
+    $('.link-cartao-minhas-compras').click(function () {
+        var id_comprador = $(this).attr('id-comprador');
+
+        $.ajax({
+            url: "scripts/recuperar-compras.php",
+            method: "post",
+            data: {
+                id_comprador: id_comprador
+            },
+            success: function(retorno) {                
+
+                // Limpa e destrói a tabela
+                $("#tabela-compras").DataTable().clear().destroy();
+
+                // Preenche a tabela com as compras do grupo
+                $('#compras-datatable').html(retorno);
+                
+                // Reinicializa a datatable
+                $('#tabela-compras').DataTable({
+                    "language": {
+                        "lengthMenu": "Mostrar _MENU_ itens por página",
+                        "zeroRecords": "Nenhum item encontrado - desculpa",
+                        "info": "Mostrando página _PAGE_ de _PAGES_",
+                        "infoEmpty": "Nenhum item encontrado",
+                        "infoFiltered": "(filtrado a partir de _MAX_ itens)",
+                        "search": "Buscar:",
+                        "emptyTable":     "Nenhum dado disponível na tabela",
+                        "loadingRecords": "Carregando...",
+                        "processing":     "Processando...",
+                        "paginate": {
+                            "first":      "Primeiro",
+                            "last":       "Último",
+                            "next":       "Próximo",
+                            "previous":   "Anterior"
+                        }
+                    }
+                });
+                $('.dataTables_length').addClass('bs-select');
+            }
+        });
+        
+    });
+
+
 
 
 </script>
