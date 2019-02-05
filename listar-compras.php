@@ -190,7 +190,7 @@
     });
 
     // Preenche o modal-detalhes-compra utilizando AJAX
-    $(".btn-detalhes").click(function() {
+    $(document).on('click', '.btn-detalhes', function() {
         var id_compra = $(this).attr("id");        
 
         $.ajax({
@@ -207,8 +207,8 @@
     });
 
     // Modal para a imagem da compra
-    $(".btn-imagem").click(function() {
-        var id_compra = $(this).attr("id");        
+    $(document).on('click', '.btn-imagem', function() {
+        var id_compra = $(this).attr("id");   
 
         $.ajax({
             url: "modal-imagem-compra.php",
