@@ -33,7 +33,7 @@
         $i++;
 ?>
 
-<div class="cartao-grupo">
+<a href="#" class="link-cartao-grupo" id-grupo="<?= $grupo['ID']; ?>"><div class="cartao-grupo">
     <div class="row">
         <div class="col-sm-3 col cartao-grupo-imagem indigo">
             <i class="fa fa-users fa-2x grupo-imagem rounded-circle"></i>
@@ -64,7 +64,7 @@
 <?php
     }
 ?>
-</div>
+</div></a>
 
 <hr>
 <h1 style="margin-top: 40px;">Lista de Compras</h1>
@@ -88,7 +88,7 @@
         </tr>
     </thead>
 
-    <tbody>
+    <tbody id="compras-datatable">
     <?php
         $compras = listar($conexao, "SELECT cmp.*, cmpd.Nome AS Nome_Comprador FROM compras AS cmp JOIN compradores AS cmpd ON cmp.Comprador_ID = cmpd.ID ORDER BY year(data), month(data), day(data);");
         foreach ($compras as $compra) :
@@ -263,6 +263,54 @@
     //     });
         
     // });
+
+
+    // ======================================================================================================================================
+    // ==================================== AO CLICAR EM UM GRUPO, RECUPERA AS COMPRAS DAQUELE GRUPO ========================================
+    // ======================================================================================================================================
+
+    $('.link-cartao-grupo').click(function () {
+        var id_grupo = $(this).attr('id-grupo');
+
+        $.ajax({
+            url: "scripts/recuperar-compras.php",
+            method: "post",
+            data: {
+                id_grupo: id_grupo
+            },
+            success: function(retorno) {
+
+                // Limpa e destrói a tabela
+                $("#tabela-compras").DataTable().clear().destroy();
+
+                // Preenche a tabela com as compras do grupo
+                $('#compras-datatable').html(retorno);
+                
+                // Reinicializa a datatable
+                $('#tabela-compras').DataTable({
+                    "language": {
+                        "lengthMenu": "Mostrar _MENU_ itens por página",
+                        "zeroRecords": "Nenhum item encontrado - desculpa",
+                        "info": "Mostrando página _PAGE_ de _PAGES_",
+                        "infoEmpty": "Nenhum item encontrado",
+                        "infoFiltered": "(filtrado a partir de _MAX_ itens)",
+                        "search": "Buscar:",
+                        "emptyTable":     "Nenhum dado disponível na tabela",
+                        "loadingRecords": "Carregando...",
+                        "processing":     "Processando...",
+                        "paginate": {
+                            "first":      "Primeiro",
+                            "last":       "Último",
+                            "next":       "Próximo",
+                            "previous":   "Anterior"
+                        }
+                    }
+                });
+                $('.dataTables_length').addClass('bs-select');
+            }
+        });
+        
+    });
 
 
 </script>

@@ -31,6 +31,28 @@ function recupera_ids_compradores_grupos($conexao, $username, $email) {
     return $ids_compradores;
 }
 
+// Seleciona todos os ids dos compradores em um determinado grupo
+function recuperar_compradores($conexao, $id_grupo) {
+    $sql = "SELECT c.ID, c.Nome
+            FROM compradores c
+            WHERE c.Email IN (
+                SELECT u.Email
+                FROM usuarios u
+                WHERE u.Usuario IN (
+                    SELECT gu.Username
+                    FROM grupo_usuarios gu
+                    WHERE gu.ID_Grupo = $id_grupo
+                )
+            )";
+
+    $ids_compradores = array();
+    $resultado = mysqli_query($conexao, $sql);
+    while ($id_comprador = mysqli_fetch_assoc($resultado)) {
+        array_push($ids_compradores, $id_comprador);
+    }
+    return $ids_compradores;
+}
+
 // Recupera o grupo com determinado ID
 function recuperar_grupo($conexao, $id) {
     $sql = "SELECT * FROM grupos WHERE ID = $id";

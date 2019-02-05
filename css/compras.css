@@ -333,3 +333,8 @@ p.texto-dados {
     padding: 5px;
     border-bottom: 2px solid grey;  
 }
+
+/* Click .cartao-grupo */
+.link-cartao-grupo {
+    color: black;
+}
