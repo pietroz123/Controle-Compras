@@ -25,6 +25,9 @@
 ?>
 
 <h1 style="text-align: left;">Grupos</h1>
+<div class="mensagem-alerta">
+    <div>Selecione as compras que deseja visualizar:</div>
+</div>
 
 <a role="button" class="link-cartao-minhas-compras" id-comprador="<?= $_SESSION['login-id-comprador']; ?>"><div class="cartao-grupo">
     <div class="row">
@@ -108,7 +111,7 @@
 
     <tbody id="compras-datatable">
     <?php
-        $compras = listar($conexao, "SELECT cmp.*, cmpd.Nome AS Nome_Comprador FROM compras AS cmp JOIN compradores AS cmpd ON cmp.Comprador_ID = cmpd.ID ORDER BY year(data), month(data), day(data);");
+        $compras = recuperar_compras($conexao, $_SESSION['login-id-comprador']);
         foreach ($compras as $compra) :
     ?>
 
@@ -266,20 +269,6 @@
     //     modal.find("#desconto-compra").val(desconto);
     //     modal.find("#pagamento-compra").val(pagamento);
     //     modal.find("#comprador-compra").val(comprador);
-    // });
-
-    // $('.cartao-grupo.imagem').ready(function() {
-    //     var largura = $('.cartao-grupo-imagem').width();
-    //     var altura = $('.cartao-grupo-imagem').height();
-
-    //     console.log(largura);
-    //     console.log(altura);
-
-    //     $('.grupo-imagem').css({
-    //         'margin-top': (altura/4),
-    //         'margin-left': (largura/20)
-    //     });
-        
     // });
 
 
