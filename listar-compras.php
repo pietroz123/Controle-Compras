@@ -87,6 +87,39 @@
 ?>
 </div></a>
 
+<div class="cartoes">
+    <div class="cartao-novo">
+        <div class="container">
+            <!-- Linha que contém todas as informações -->
+            <div class="row">
+                <!-- Coluna da imagem -->
+                <div class="col-sm-2 cg-coluna-imagem">
+                    <img src="img/usuario.png" alt="Imagem perfil" class="rounded-circle special-color cg-imagem">
+                </div>
+                <!-- Coluna das informações -->
+                <div class="col-sm cg-coluna-informacoes">
+                    <!-- Linha do nome -->
+                    <div class="row cg-linha-nome">
+                        <div class="col-sm">
+                            <div class="cg-nome">Nome das compras</div>
+                        </div>
+                    </div>
+                    <!-- Linha da data -->
+                    <div class="row">
+                        <div class="col-sm small font-weight-bold">Data de criação</div>
+                        <div class="col-sm small grey-text">01/01/2019</div>
+                    </div>
+                    <!-- Linha do número -->
+                    <div class="row">
+                        <div class="col-sm small font-weight-bold">Número de membros</div>
+                        <div class="col-sm small grey-text">4</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <hr>
 <h1 style="margin-top: 40px;">Lista de Compras</h1>
 
@@ -188,6 +221,19 @@
 
     // Inicializa a tabela de dados
     $(document).ready(function () {
+
+        // $(window).resize(function() {
+        //     if ($(window).width() <= 660) {
+        //         $('.cartao-novo').css({
+        //             'width': '100%'
+        //         });
+        //     } else {
+        //         $('.cartao-novo').css({
+        //             'width': '50%'
+        //         });
+        //     }
+        // });
+
         $('#tabela-compras').DataTable({
             "language": {
                 "lengthMenu": "Mostrar _MENU_ itens por página",

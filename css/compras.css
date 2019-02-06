@@ -356,3 +356,45 @@ p.texto-dados {
     width: 100%;
     margin-left: -0%;   /* (w-100)/2 */
 }
+
+/* NOVO CARTAO */
+.cartao-novo {
+    width: 50%;
+}
+
+.cartoes {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+.cg-coluna-imagem {
+    border: 3px solid green;
+    height: 100px;
+}
+.cg-imagem {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+.cg-coluna-informacoes {
+    padding: 20px;
+    text-align: left;
+}
+.cg-linha-nome {
+    margin-bottom: 10px;
+}
+.cg-nome {
+    border-bottom: 3px solid red;
+}
+.small-bold {
+    font-size: 12px;
+    font-weight: bold;
+}
+.small-faded {
+    font-size: 12px;
+    color: grey;
+}
