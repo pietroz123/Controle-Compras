@@ -370,7 +370,7 @@ p.texto-dados {
 
 .cg-coluna-imagem {
     border: 3px solid green;
-    height: 100px;
+    /* height: 100px; */
 }
 .cg-imagem {
     margin: 0;

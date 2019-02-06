@@ -47,35 +47,37 @@
     </div>  
 </div></a>
 
-<div class="listar-grupos">
+<!-- <div class="listar-grupos"> -->
+<div class="cartoes">
 <?php
     $i = 0;
     foreach ($grupos as $grupo) {
         $i++;
 ?>
 
-<a role="button" class="link-cartao-grupo" id-grupo="<?= $grupo['ID']; ?>"><div class="cartao-grupo">
-    <div class="row">
-        <div class="col-sm-3 col cartao-grupo-imagem indigo">
-            <i class="fa fa-users fa-2x grupo-imagem rounded-circle"></i>
-        </div>
-        <div class="col-sm-9 col cartao-grupo-informacoes white">
-            <div class="row">
-                <div class="col">
-                    <h6 class="cartao-grupo-nome"><?= $grupo['Nome']; ?></h6>
+<a role="button" class="link-cartao-grupo" id-grupo="<?= $grupo['ID']; ?>">
+    <div class="cartao-grupo">
+        <div class="row">
+            <div class="col-sm-3 col cartao-grupo-imagem indigo">
+                <i class="fa fa-users fa-2x grupo-imagem rounded-circle"></i>
+            </div>
+            <div class="col-sm-9 col cartao-grupo-informacoes white">
+                <div class="row">
+                    <div class="col">
+                        <h6 class="cartao-grupo-nome"><?= $grupo['Nome']; ?></h6>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 col" id="data-criacao">Data de Criação</div>
+                    <div class="col-sm-6 col" id="data"><?= date("d/m/Y h:m", strtotime($grupo['Data_Criacao'])); ?></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 col" id="numero-membros">Número de membros</div>
+                    <div class="col-sm-6 col" id="numero"><?= $grupo['Numero_Membros']; ?></div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-sm-6 col" id="data-criacao">Data de Criação</div>
-                <div class="col-sm-6 col" id="data"><?= date("d/m/Y h:m", strtotime($grupo['Data_Criacao'])); ?></div>
-            </div>
-            <div class="row">
-                <div class="col-sm-6 col" id="numero-membros">Número de membros</div>
-                <div class="col-sm-6 col" id="numero"><?= $grupo['Numero_Membros']; ?></div>
-            </div>
-        </div>
-    </div>  
-</div>
+        </div>  
+    </div>
 
 <?php
     }
@@ -85,7 +87,8 @@
 <?php
     }
 ?>
-</div></a>
+    </div>
+</a>
 
 <div class="cartoes">
     <div class="cartao-novo">
@@ -101,18 +104,18 @@
                     <!-- Linha do nome -->
                     <div class="row cg-linha-nome">
                         <div class="col-sm">
-                            <div class="cg-nome">Nome das compras</div>
+                            <div class="cg-nome"><?= $grupo['Nome']; ?></div>
                         </div>
                     </div>
                     <!-- Linha da data -->
                     <div class="row">
                         <div class="col-sm small font-weight-bold">Data de criação</div>
-                        <div class="col-sm small grey-text">01/01/2019</div>
+                        <div class="col-sm small grey-text"><?= date("d/m/Y h:m", strtotime($grupo['Data_Criacao'])); ?></div>
                     </div>
                     <!-- Linha do número -->
                     <div class="row">
                         <div class="col-sm small font-weight-bold">Número de membros</div>
-                        <div class="col-sm small grey-text">4</div>
+                        <div class="col-sm small grey-text"><?= $grupo['Numero_Membros']; ?></div>
                     </div>
                 </div>
             </div>
