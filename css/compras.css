@@ -361,6 +361,9 @@ p.texto-dados {
 .cartao-novo {
     width: 50%;
 }
+.cartao-novo:hover {
+    color: cornflowerblue;
+}
 
 .cartoes {
     display: flex;

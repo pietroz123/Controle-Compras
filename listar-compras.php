@@ -56,7 +56,7 @@
 ?>
 
     <a role="button" class="link-cartao-grupo" id-grupo="<?= $grupo['ID']; ?>">
-        <div class="cartao-grupo">
+    <div class="cartao-grupo">
             <div class="row">
                 <div class="col-sm-3 col cartao-grupo-imagem indigo">
                     <i class="fa fa-users fa-2x grupo-imagem rounded-circle"></i>
@@ -90,29 +90,30 @@
 ?>
 </div>
 
+<hr>
+
 <div class="cartoes">
+<?php
+    $i = 0;
+    foreach ($grupos as $grupo) {
+        $i++;
+?>
     <div class="cartao-novo">
         <div class="container">
-            <!-- Linha que contém todas as informações -->
             <div class="row">
-                <!-- Coluna da imagem -->
                 <div class="col-sm-2 cg-coluna-imagem">
                     <img src="img/usuario.png" alt="Imagem perfil" class="rounded-circle special-color cg-imagem">
                 </div>
-                <!-- Coluna das informações -->
                 <div class="col-sm cg-coluna-informacoes">
-                    <!-- Linha do nome -->
                     <div class="row cg-linha-nome">
                         <div class="col-sm">
                             <div class="cg-nome"><?= $grupo['Nome']; ?></div>
                         </div>
                     </div>
-                    <!-- Linha da data -->
                     <div class="row">
                         <div class="col-sm small font-weight-bold">Data de criação</div>
                         <div class="col-sm small grey-text"><?= date("d/m/Y h:m", strtotime($grupo['Data_Criacao'])); ?></div>
                     </div>
-                    <!-- Linha do número -->
                     <div class="row">
                         <div class="col-sm small font-weight-bold">Número de membros</div>
                         <div class="col-sm small grey-text"><?= $grupo['Numero_Membros']; ?></div>
@@ -121,6 +122,81 @@
             </div>
         </div>
     </div>
+    <!-- <div class="cartao-novo">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-2 cg-coluna-imagem">
+                    <img src="img/usuario.png" alt="Imagem perfil" class="rounded-circle special-color cg-imagem">
+                </div>
+                <div class="col-sm cg-coluna-informacoes">
+                    <div class="row cg-linha-nome">
+                        <div class="col-sm">
+                            <div class="cg-nome"><?= $grupo['Nome']; ?></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm small font-weight-bold">Data de criação</div>
+                        <div class="col-sm small grey-text"><?= date("d/m/Y h:m", strtotime($grupo['Data_Criacao'])); ?></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm small font-weight-bold">Número de membros</div>
+                        <div class="col-sm small grey-text"><?= $grupo['Numero_Membros']; ?></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="cartao-novo">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-2 cg-coluna-imagem">
+                    <img src="img/usuario.png" alt="Imagem perfil" class="rounded-circle special-color cg-imagem">
+                </div>
+                <div class="col-sm cg-coluna-informacoes">
+                    <div class="row cg-linha-nome">
+                        <div class="col-sm">
+                            <div class="cg-nome"><?= $grupo['Nome']; ?></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm small font-weight-bold">Data de criação</div>
+                        <div class="col-sm small grey-text"><?= date("d/m/Y h:m", strtotime($grupo['Data_Criacao'])); ?></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm small font-weight-bold">Número de membros</div>
+                        <div class="col-sm small grey-text"><?= $grupo['Numero_Membros']; ?></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="cartao-novo">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-2 cg-coluna-imagem">
+                    <img src="img/usuario.png" alt="Imagem perfil" class="rounded-circle special-color cg-imagem">
+                </div>
+                <div class="col-sm cg-coluna-informacoes">
+                    <div class="row cg-linha-nome">
+                        <div class="col-sm">
+                            <div class="cg-nome"><?= $grupo['Nome']; ?></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm small font-weight-bold">Data de criação</div>
+                        <div class="col-sm small grey-text"><?= date("d/m/Y h:m", strtotime($grupo['Data_Criacao'])); ?></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm small font-weight-bold">Número de membros</div>
+                        <div class="col-sm small grey-text"><?= $grupo['Numero_Membros']; ?></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <?php
+    }
+?>
 </div>
 
 <hr>
