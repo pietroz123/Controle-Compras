@@ -9,6 +9,7 @@
 
         <!-- Scripts (Javascript) -->
         <script type="text/javascript" src="js/jquery-latest.js"></script>
+        <script type="text/javascript" src="js/jquery-ui.js"></script>
         <script type="text/javascript" src="js/popper.min.js"></script>
         <script type="text/javascript" src="js/bootstrap.js"></script>
         <script type="text/javascript" src="js/mdb.js"></script>

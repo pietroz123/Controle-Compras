@@ -42,11 +42,13 @@
         </div>
         <div class="row">
             <div class="col">
-                <div class="card z-depth-2">
+                <div class="card z-depth-2" id="cartao-grupos-usuario">
                     <div class="card-header default-color-dark white-text">
                         Grupos
                         <button class="btn default-color botao-pequeno ml-2 btn-recarregar-grupos" style="float: right;" username-usuario="<?= $usuario['Usuario'] ?>"><i class="fas fa-sync-alt" id="icone-recarregar"></i> recarregar grupos</button>
                         <button class="btn default-color botao-pequeno btn-criar-grupo" style="float: right;" data-toggle="modal" data-target="#modal-criar-grupo" data-username="<?= $usuario['Usuario']; ?>">criar grupo</button>
+                        <div class="adicional" style="display: none; float: right;"></div>
+                        
                     </div>
                     <div class="card-body">
                         <div class="container">
@@ -111,6 +113,26 @@
 <script>
 
     $(document).ready(function() {
+
+        var url = window.location.href;
+        var id = url.substring(url.lastIndexOf("#") + 1);
+        
+        if (id == "cartao-grupos-usuario") {
+            $(".btn-criar-grupo").effect( "shake", "slow" );
+
+            var largura = $(".btn-criar-grupo").width();
+
+            $(".adicional").css({
+                'display': 'inline'
+            });
+            $(".adicional").html('<div class="arrow bounce"><a class="fa fa-arrow-down fa-2x text-black-50" href="#"></a></div>');
+            $(".arrow").css({
+                'position': 'absolute',
+                'z-index': '1',
+                'margin-left': largura/2 + "px",
+                'top': '0'
+            });
+        }
 
         $(window).resize(function() {
             if ($(window).width() <= 500) {

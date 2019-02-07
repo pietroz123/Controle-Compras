@@ -91,7 +91,12 @@
     }    
     if ($i == 0) {
 ?>
-        <div class="alert alert-info">Você não está em nenhum grupo, logo apenas poderá ver suas compras</div>
+        <div class="alert alert-info text-left">
+            <div class="alert-heading">
+                <strong>Você não está em nenhum grupo, logo apenas poderá ver suas compras</strong>
+            </div>
+            <a href="perfil-usuario.php#cartao-grupos-usuario" class="alert-link">Deseja criar um grupo?</a>
+        </div>
 <?php
     }
 ?>
