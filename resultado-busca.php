@@ -18,7 +18,7 @@
 
 ?>
 
-<table class="table table-hover" id="tabela-compras" style="width: 110%; margin-left: -50px;">
+<table class="table table-hover" id="tabela-compras">
 
     <thead class="thead-dark">
         <tr>
