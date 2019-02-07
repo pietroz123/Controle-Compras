@@ -1,13 +1,7 @@
-body {
-    background: #2d2d37;
-}
-a {
-color: white;
-text-decoration: none;
-}
+
 .arrow {
     text-align: center;
-    margin: 8% 0;
+    /* margin: 8% auto; */
 }
 .bounce {
     -webkit-animation: bounce 2s infinite;

@@ -49,9 +49,9 @@
                             <div class="col-sm col-md col-lg">Grupos</div>
                             <div class="col-sm-2 col-md-3 col-lg-2">
                                 <button class="btn default-color botao-pequeno btn-criar-grupo btn-block" style="float: right;" data-toggle="modal" data-target="#modal-criar-grupo" data-username="<?= $usuario['Usuario']; ?>">criar grupo</button>
-                                <div class="adicional" style="display: none; float: right;"></div>
+                                <div class="adicional" style="display: none; float: left;"></div>
                             </div>
-                            <div class="col-sm-2 col-md-4 col-lg-3"><button class="btn default-color botao-pequeno btn-recarregar-grupos btn-block" style="float: right;" username-usuario="<?= $usuario['Usuario'] ?>"><i class="fas fa-sync-alt" id="icone-recarregar"></i> recarregar grupos</button></div>
+                            <div class="col-sm-2 col-md-4 col-lg-3"><button class="btn default-color botao-pequeno btn-recarregar-grupos btn-block" username-usuario="<?= $usuario['Usuario'] ?>"><i class="fas fa-sync-alt" id="icone-recarregar"></i> recarregar grupos</button></div>
                         </div>
                     </div>
 
@@ -123,19 +123,27 @@
         var id = url.substring(url.lastIndexOf("#") + 1);
         
         if (id == "cartao-grupos-usuario") {
+
+            // Cria um efeito
             $(".btn-criar-grupo").effect( "shake", "slow" );
 
+            // Recupera a largura do botão para centralizar a flecha
             var largura = $(".btn-criar-grupo").width();
 
+            // Adiciona o display
             $(".adicional").css({
                 'display': 'inline'
             });
-            $(".adicional").html('<div class="arrow bounce"><a class="fa fa-arrow-down fa-2x text-black-50" href="#"></a></div>');
+
+            // Adiciona a flecha pra baixo
+            $(".adicional").html('<div class="arrow bounce"><a class="fa fa-arrow-down fa-3x text-black-50" href="#"></a></div>');
+            
+            // Adiciona o CSS para centralizar e colocar no topo
             $(".arrow").css({
                 'position': 'absolute',
                 'z-index': '1',
-                'margin-left': largura/2 + "px",
-                'top': '0'
+                'margin-left': ((largura/2) - 10) + "px",
+                'top': '-50px'
             });
         }
 
