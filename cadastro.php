@@ -78,6 +78,11 @@
     </div>
 </form>
 
+
+<?php
+    include $_SERVER['DOCUMENT_ROOT'].'/rodape.php';
+?>
+
 <script type="text/javascript" src="js/awesomplete.js"></script>
 <script type="text/javascript" src="js/realtime-validation.js"></script>
 <script>
@@ -103,9 +108,5 @@
         });
 
     });
-    
-</script>
 
-<?php
-    include $_SERVER['DOCUMENT_ROOT'].'/rodape.php';
-?>
+</script>
