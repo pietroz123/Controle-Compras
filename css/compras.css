@@ -372,7 +372,6 @@ p.texto-dados {
 }
 
 .cg-coluna-imagem {
-    /* height: 100px; */
     /* Bordas */
     border-top: 3px solid black;
     border-left: 3px solid black;
@@ -382,12 +381,16 @@ p.texto-dados {
     border-right: 4px solid black;
 }
 .cg-imagem {
+    padding: 7px;
+    /* Centraliza verticalmente/horizontalmente */
     margin: 0;
     position: absolute;
     top: 50%;
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+    /* Bordas */
+    border: 3px solid lightgrey;
 }
 .cg-coluna-informacoes {
     padding: 20px;

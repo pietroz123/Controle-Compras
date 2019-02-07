@@ -29,23 +29,28 @@
     <div>Selecione as compras que deseja visualizar:</div>
 </div>
 
-<a role="button" class="link-cartao-minhas-compras" id-comprador="<?= $_SESSION['login-id-comprador']; ?>"><div class="cartao-grupo">
-    <div class="row">
-        <div class="col-sm-3 col cartao-grupo-imagem pink darken-4" style="height: 102px;">
-            <i class="fa fa-user fa-2x grupo-imagem rounded-circle" style="padding: 25px 27px;"></i>
-        </div>
-        <div class="col-sm-9 col cartao-grupo-informacoes white">
+
+<div class="cartao-novo">
+    <a role="button" class="link-cartao-minhas-compras" id-comprador="<?= $_SESSION['login-id-comprador']; ?>">
+        <div class="container">
             <div class="row">
-                <div class="col">
-                    <h6 class="cartao-grupo-nome">Minhas Compras</h6>
+                <div class="col-sm-2 cg-coluna-imagem pink darken-4">
+                    <img src="img/usuario.png" alt="Imagem perfil" class="rounded-circle white cg-imagem">
+                </div>
+                <div class="col-sm cg-coluna-informacoes">
+                    <div class="row cg-linha-nome">
+                        <div class="col-sm">
+                            <div class="cg-nome">Minhas Compras</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm"><?= $_SESSION['login-nome']; ?></div>
+                    </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col" style="text-transform: uppercase;"><?= $_SESSION['login-nome']; ?></div>
-            </div>
         </div>
-    </div>  
-</div></a>
+    </a>
+</div>
 
 
 <hr>
@@ -60,8 +65,8 @@
         <a role="button" class="link-cartao-grupo" id-grupo="<?= $grupo['ID']; ?>">
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-2 cg-coluna-imagem indigo lighten-2">
-                        <img src="img/grupo.png" alt="Imagem perfil" class="rounded-circle special-color cg-imagem">
+                    <div class="col-sm-2 cg-coluna-imagem indigo">
+                        <img src="img/grupo.png" alt="Imagem perfil" class="rounded-circle white cg-imagem">
                     </div>
                     <div class="col-sm cg-coluna-informacoes">
                         <div class="row cg-linha-nome">
