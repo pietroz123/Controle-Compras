@@ -24,12 +24,15 @@
 
                         // ======== INSERÇÃO DO GRUPO =========
                         $nome_grupo = $_POST['nome-grupo'];
+                        
                         $sql = "INSERT INTO grupos (nome) VALUES (?)";
                         $stmt = mysqli_stmt_init($conexao);
+                        
                         if (!mysqli_stmt_prepare($stmt, $sql)) {
                             $_SESSION['danger'] = "Ocorreu um erro na inserção do grupo.";
                             header("Location: ../perfil-usuario.php");
                             die();
+                        
                         } else {
                             mysqli_stmt_bind_param($stmt, "s", $nome_grupo);
                             mysqli_stmt_execute($stmt);
@@ -40,22 +43,42 @@
 
                         /* Como o POST é um array com os IDs dos Usuários, precisamos buscar o username de cada um utilizando uma query */
                         /* Essa query é executada a partir da função buscar_usuarios_id() */
+                        
                         $ids_usuarios = $_POST['usernames'];
                         
                         $id_grupo = mysqli_stmt_insert_id($stmt);
+
+
+                        // Insere o usuário logado no grupo
+                        
+                        $sql = "INSERT INTO grupo_usuarios (id_grupo, username, admin) VALUES (?, ?, 1)";
+                        $stmt = mysqli_stmt_init($conexao);
+                        
+                        if (!mysqli_stmt_prepare($stmt, $sql)) {
+                            $_SESSION['danger'] = "Ocorreu um erro na inserção do usuário logado no grupo.";
+                            header("Location: ../perfil-usuario.php");
+                            die();
+                        
+                        } else {
+                            mysqli_stmt_bind_param($stmt, "is", $id_grupo, $_SESSION['login-username']);
+                            mysqli_stmt_execute($stmt);
+                            // Sucesso
+                        }
+
+
+                        // Para cada usuário, inserimos no grupo
+
                         foreach ($ids_usuarios as $id_usuario) {
                             $usuario = buscar_usuario_id($conexao, $id_usuario);
-                            if ($usuario['Usuario'] == $_POST['criar-username']) {
-                                $sql = "INSERT INTO grupo_usuarios (id_grupo, username, admin) VALUES (?, ?, 1)";
-                            }
-                            else {
-                                $sql = "INSERT INTO grupo_usuarios (id_grupo, username) VALUES (?, ?)";
-                            }
+
+                            $sql = "INSERT INTO grupo_usuarios (id_grupo, username) VALUES (?, ?)";
                             $stmt = mysqli_stmt_init($conexao);
+                            
                             if (!mysqli_stmt_prepare($stmt, $sql)) {
                                 $_SESSION['danger'] = "Ocorreu um erro na inserção dos usuários no grupo.";
                                 header("Location: ../perfil-usuario.php");
                                 die();
+                            
                             } else {
                                 mysqli_stmt_bind_param($stmt, "is", $id_grupo, $usuario['Usuario']);
                                 mysqli_stmt_execute($stmt);
