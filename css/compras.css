@@ -88,16 +88,6 @@ body > .container {
     text-align: left;
 }
 
-.bs-select {
-    float: left;
-    margin-left: -40px;
-}
-.dataTables_info {
-    color: darkgrey;
-    float: left;
-    margin-left: -40px;
-}
-
 
 /* ==========================================================
    =================== BARRA DE NAVEGACAO ===================
@@ -163,9 +153,19 @@ body > .container {
    ========================================================== */
 
 #tabela-compras {
-    width: 110%;
-    margin-left: -50px;
+    margin-left:auto; 
+    margin-right:auto;
 }
+
+/* .bs-select {
+    float: left;
+    margin-left: -40px;
+}
+.dataTables_info {
+    color: darkgrey;
+    float: left;
+    margin-left: -40px;
+} */
 
 
 /* ==========================================================

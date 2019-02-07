@@ -23,14 +23,10 @@
     .redes {
         padding-bottom: 7px;
     }
-    .card {
-        width: 120%;
-        margin-left: -30px;
+    body > .container {
+        width: 115%;
+        margin-left: -7.5%;
     }
-    /* body > .container {
-        width: 110%;
-        margin-left: -5%;
-    } */
     table th, table td, .btn {
         font-size: 15px;
     }
@@ -98,11 +94,11 @@
     }
 }
 @media only screen and (max-width: 900px) {
-    .t-desconto, .t-pagamento, .t-comprador, .t-alterar, .t-remover, .t-imagem {
+    .t-desconto, .t-pagamento {
         display: none;
     }
-    .t-detalhes {
-        display: table-cell;
+    #tabela-compras {
+        /* margin-left: -8%; */
     }
 }
 @media only screen and (max-width: 1160px) {
