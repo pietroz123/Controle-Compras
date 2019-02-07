@@ -318,6 +318,15 @@ p.texto-dados {
     border-bottom-left-radius: 7px;
     border-right: 4px solid black;
 }
+.cg-coluna-imagem-usuario {
+    /* Bordas */
+    border-top: 3px solid black;
+    border-left: 3px solid black;
+    border-bottom: 3px solid black;
+    border-top-left-radius: 7px;
+    border-bottom-left-radius: 7px;
+    border-right: 4px solid black;
+}
 .cg-imagem {
     padding: 7px;
     /* Centraliza verticalmente/horizontalmente */
@@ -331,6 +340,17 @@ p.texto-dados {
     border: 3px solid lightgrey;
 }
 .cg-coluna-informacoes {
+    padding: 20px;
+    text-align: left;
+    background-color: white;
+    /* Bordas */
+    border-top: 3px solid darkgrey;
+    border-right: 3px solid darkgrey;
+    border-bottom: 3px solid darkgrey;
+    border-top-right-radius: 7px;
+    border-bottom-right-radius: 7px;
+}
+.cg-coluna-informacoes-usuario {
     padding: 20px;
     text-align: left;
     background-color: white;

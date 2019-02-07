@@ -42,6 +42,21 @@
     .t-username-usuario, .t-email-usuario {
         display: none;
     }
+    .cartao-usuario {
+        width: 100%;
+    }
+    .cg-coluna-informacoes-usuario {
+        height: 100px;
+        padding: 20px;
+        text-align: left;
+        background-color: white;
+        /* Bordas */
+        border-top: 3px solid darkgrey;
+        border-right: 3px solid darkgrey;
+        border-bottom: 3px solid darkgrey;
+        border-top-right-radius: 7px;
+        border-bottom-right-radius: 7px;
+    }
     .cg-coluna-imagem {
         height: 100px;
         /* Bordas */
@@ -54,7 +69,7 @@
         border-right: 3px solid black;
     }
     .cg-coluna-informacoes {
-        height: 160px;
+        height: 170px;
         padding: 20px;
         text-align: left;
         background-color: white;
@@ -71,11 +86,6 @@
         font-size: 10px;
     }
 }
-@media only screen and (max-width: 1200px) {
-    .cartao-novo {
-        width: 49%;
-    }
-}
 @media only screen and (max-width: 900px) {
     .t-desconto, .t-pagamento, .t-comprador, .t-alterar, .t-remover, .t-imagem {
         display: none;
@@ -87,11 +97,5 @@
 @media only screen and (max-width: 1160px) {
     .t-id {
         display: none;
-    }
-    .cartao-novo {
-        width: 49%;
-    }
-    .cg-coluna-imagem {
-        width: 200px;
     }
 }

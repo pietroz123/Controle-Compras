@@ -30,14 +30,14 @@
 </div>
 
 
-<div class="cartao-novo">
+<div class="cartao-novo cartao-usuario">
     <a role="button" class="link-cartao-minhas-compras" id-comprador="<?= $_SESSION['login-id-comprador']; ?>">
         <div class="container">
             <div class="row">
-                <div class="col-sm-2 col-md-4 col-lg-3 col-xl-2 cg-coluna-imagem pink darken-4">
+                <div class="col-4 col-sm-2 col-md-4 col-lg-3 col-xl-2 cg-coluna-imagem-usuario pink darken-4">
                     <img src="img/usuario.png" alt="Imagem perfil" class="rounded-circle white cg-imagem">
                 </div>
-                <div class="col-sm-10 col-md col-lg col-xl cg-coluna-informacoes">
+                <div class="col col-sm-10 col-md col-lg col-xl cg-coluna-informacoes-usuario">
                     <div class="row cg-linha-nome">
                         <div class="col-sm">
                             <div class="cg-nome">Minhas Compras</div>
