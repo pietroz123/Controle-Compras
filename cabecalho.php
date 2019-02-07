@@ -42,7 +42,6 @@
         <?php
             if (!usuario_esta_logado()) {
                 include 'modal-login.php';
-                include 'modal-cadastro.php';
             }
         ?>
 
@@ -94,7 +93,7 @@
                             <button class="btn btn-primary botao-pequeno" style="margin-right: 10px;" data-toggle="modal" data-target="#modal-login">login</button>
                         </li>
                         <li class="nav-item">
-                            <button class="btn btn-indigo botao-pequeno" data-toggle="modal" data-target="#modal-cadastro">cadastrar</button>                        
+                            <a href="cadastro.php" class="btn btn-indigo botao-pequeno">cadastrar</a>
                         </li>
                     </ul>
                 <?php
