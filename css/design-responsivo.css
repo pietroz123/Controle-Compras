@@ -1,0 +1,97 @@
+
+@media only screen and (max-width: 550px) {
+    .formulario-recuperacao-senha {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    body h1 {
+        font-size: 25px;
+    }
+    .conteudo-principal {
+        padding: 0px 0px;
+        margin-bottom: 100px;
+    }
+    .conteudo-principal p {
+        font-size: 20px;
+    }
+    .redes {
+        padding-bottom: 7px;
+    }
+    .card {
+        width: 120%;
+        margin-left: -30px;
+    }
+    table th, table td, .btn {
+        font-size: 15px;
+    }
+}
+
+.t-detalhes {
+    display: none;
+}
+
+@media only screen and (max-width: 550px) {
+    .t-id, .t-valor, .t-desconto, .t-pagamento, .t-comprador, .t-alterar, .t-remover, .t-imagem {
+        display: none;
+    }
+    .t-detalhes {
+        display: table-cell;
+    }
+    .t-username-usuario, .t-email-usuario {
+        display: none;
+    }
+    .cg-coluna-imagem {
+        height: 100px;
+        /* Bordas */
+        border-top: 3px solid black;
+        border-left: 3px solid black;
+        border-bottom: 4px solid black;
+        border-top-left-radius: 7px;
+        border-bottom-left-radius: 0px;
+        border-top-right-radius: 7px;
+        border-right: 3px solid black;
+    }
+    .cg-coluna-informacoes {
+        height: 160px;
+        padding: 20px;
+        text-align: left;
+        background-color: white;
+        /* Bordas */
+        border-top: 0px solid darkgrey;
+        border-right: 3px solid darkgrey;
+        border-bottom: 3px solid darkgrey;
+        border-left: 3px solid darkgrey;
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 7px;
+        border-bottom-left-radius: 7px;
+    }
+    .small-bold, .small-faded {
+        font-size: 10px;
+    }
+}
+@media only screen and (max-width: 1200px) {
+    .cartao-novo {
+        width: 49%;
+    }
+}
+@media only screen and (max-width: 900px) {
+    .t-desconto, .t-pagamento, .t-comprador, .t-alterar, .t-remover, .t-imagem {
+        display: none;
+    }
+    .t-detalhes {
+        display: table-cell;
+    }
+}
+@media only screen and (max-width: 1160px) {
+    .t-id {
+        display: none;
+    }
+    .cartao-novo {
+        width: 49%;
+    }
+    .cg-coluna-imagem {
+        width: 200px;
+    }
+}

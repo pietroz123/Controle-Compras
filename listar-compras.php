@@ -34,10 +34,10 @@
     <a role="button" class="link-cartao-minhas-compras" id-comprador="<?= $_SESSION['login-id-comprador']; ?>">
         <div class="container">
             <div class="row">
-                <div class="col-sm-2 cg-coluna-imagem pink darken-4">
+                <div class="col-sm-2 col-md-4 col-lg-3 col-xl-2 cg-coluna-imagem pink darken-4">
                     <img src="img/usuario.png" alt="Imagem perfil" class="rounded-circle white cg-imagem">
                 </div>
-                <div class="col-sm cg-coluna-informacoes">
+                <div class="col-sm-10 col-md col-lg col-xl cg-coluna-informacoes">
                     <div class="row cg-linha-nome">
                         <div class="col-sm">
                             <div class="cg-nome">Minhas Compras</div>
@@ -65,22 +65,22 @@
         <a role="button" class="link-cartao-grupo" id-grupo="<?= $grupo['ID']; ?>">
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-2 cg-coluna-imagem indigo">
+                    <div class="col-sm-2 col-md-4 col-lg-3 col-xl-2 cg-coluna-imagem indigo">
                         <img src="img/grupo.png" alt="Imagem perfil" class="rounded-circle white cg-imagem">
                     </div>
-                    <div class="col-sm cg-coluna-informacoes">
+                    <div class="col-sm-10 col-md col-lg col-xl cg-coluna-informacoes">
                         <div class="row cg-linha-nome">
-                            <div class="col-sm">
+                            <div class="col-sm-12">
                                 <div class="cg-nome"><?= $grupo['Nome']; ?></div>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-sm small font-weight-bold">Data de criação</div>
-                            <div class="col-sm small grey-text"><?= date("d/m/Y h:m", strtotime($grupo['Data_Criacao'])); ?></div>
+                            <div class="col-sm-6 col-md-10 col-lg-8 small-bold">Data de criação</div>
+                            <div class="col-sm-6 col-md col-lg small-faded"><?= date("d/m/Y", strtotime($grupo['Data_Criacao'])); ?></div>
                         </div>
                         <div class="row">
-                            <div class="col-sm small font-weight-bold">Número de membros</div>
-                            <div class="col-sm small grey-text"><?= $grupo['Numero_Membros']; ?></div>
+                            <div class="col-sm-6 col-md-10 col-lg-8 small-bold">Número de membros</div>
+                            <div class="col-sm-6 col-md col-lg small-faded"><?= $grupo['Numero_Membros']; ?></div>
                         </div>
                     </div>
                 </div>

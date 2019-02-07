@@ -81,63 +81,6 @@ body > .container {
 
 
 /* ==========================================================
-   ==================== DESIGN RESPONSIVO ===================
-   ========================================================== */
-
-@media screen and (max-width: 550px) {
-    body h1 {
-        font-size: 25px;
-    }
-    .conteudo-principal {
-        padding: 0px 0px;
-        margin-bottom: 100px;
-    }
-    .conteudo-principal p {
-        font-size: 20px;
-    }
-    .redes {
-        padding-bottom: 7px;
-    }
-    .card {
-        width: 120%;
-        margin-left: -30px;
-    }
-    table th, table td, .btn {
-        font-size: 15px;
-    }
-}
-
-.t-detalhes {
-    display: none;
-}
-
-@media only screen and (max-width: 550px) {
-    .t-id, .t-valor, .t-desconto, .t-pagamento, .t-comprador, .t-alterar, .t-remover, .t-imagem {
-        display: none;
-    }
-    .t-detalhes {
-        display: table-cell;
-    }
-    .t-username-usuario, .t-email-usuario {
-        display: none;
-    }
-}
-@media only screen and (max-width: 900px) {
-    .t-desconto, .t-pagamento, .t-comprador, .t-alterar, .t-remover, .t-imagem {
-        display: none;
-    }
-    .t-detalhes {
-        display: table-cell;
-    }
-}
-@media only screen and (max-width: 1160px) {
-    .t-id {
-        display: none;
-    }
-}
-
-
-/* ==========================================================
    ====================== GRID SYSTEM =======================
    ========================================================== */
 
@@ -204,11 +147,6 @@ body > .container {
     width: 80%;
 }
 
-@media only screen and (max-width: 550px) {
-    .formulario-recuperacao-senha {
-        width: 100%;
-    }
-}
 
 /* ==========================================================
    ================= IMAGENS RESPONSIVAS ====================
