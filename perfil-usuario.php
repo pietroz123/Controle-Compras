@@ -141,7 +141,7 @@
             });
 
             // Adiciona a flecha pra baixo
-            $(".adicional").html('<div class="arrow bounce"><a class="fa fa-arrow-down fa-3x text-black-50" href="#"></a></div>');
+            $(".adicional").html('<div class="arrow bounce"><a class="fa fa-arrow-down fa-3x text-black-75" href="#"></a></div>');
             
             // Adiciona o CSS para centralizar e colocar no topo
             $(".arrow").css({
