@@ -20,10 +20,13 @@
 
                     if (!empty($_POST['nome-grupo'])) {
 
+                        // Recupera as informações no $_POST
+                        $nome_grupo = $_POST['nome-grupo'];
+                        $ids_usuarios = $_POST['usernames'];
+
                         /* Podemos inserir o grupo */
 
                         // ======== INSERÇÃO DO GRUPO =========
-                        $nome_grupo = $_POST['nome-grupo'];
                         
                         $sql = "INSERT INTO grupos (nome) VALUES (?)";
                         $stmt = mysqli_stmt_init($conexao);
@@ -44,7 +47,6 @@
                         /* Como o POST é um array com os IDs dos Usuários, precisamos buscar o username de cada um utilizando uma query */
                         /* Essa query é executada a partir da função buscar_usuarios_id() */
                         
-                        $ids_usuarios = $_POST['usernames'];
                         
                         $id_grupo = mysqli_stmt_insert_id($stmt);
 
@@ -118,7 +120,7 @@
         }
         else {
             // Não existem usernames setados
-            $_SESSION['danger'] = "Não existem usuários setados.";
+            $_SESSION['danger'] = "Você deve obrigatoriamente adicionar uma pessoa no grupo.";
             header("Location: ../perfil-usuario.php");
             die();
         }
