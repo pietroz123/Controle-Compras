@@ -43,13 +43,18 @@
         <div class="row">
             <div class="col">
                 <div class="card z-depth-2" id="cartao-grupos-usuario">
+                    
                     <div class="card-header default-color-dark white-text">
-                        Grupos
-                        <button class="btn default-color botao-pequeno ml-2 btn-recarregar-grupos" style="float: right;" username-usuario="<?= $usuario['Usuario'] ?>"><i class="fas fa-sync-alt" id="icone-recarregar"></i> recarregar grupos</button>
-                        <button class="btn default-color botao-pequeno btn-criar-grupo" style="float: right;" data-toggle="modal" data-target="#modal-criar-grupo" data-username="<?= $usuario['Usuario']; ?>">criar grupo</button>
-                        <div class="adicional" style="display: none; float: right;"></div>
-                        
+                        <div class="row">
+                            <div class="col-sm col-md col-lg">Grupos</div>
+                            <div class="col-sm-2 col-md-3 col-lg-2">
+                                <button class="btn default-color botao-pequeno btn-criar-grupo btn-block" style="float: right;" data-toggle="modal" data-target="#modal-criar-grupo" data-username="<?= $usuario['Usuario']; ?>">criar grupo</button>
+                                <div class="adicional" style="display: none; float: right;"></div>
+                            </div>
+                            <div class="col-sm-2 col-md-4 col-lg-3"><button class="btn default-color botao-pequeno btn-recarregar-grupos btn-block" style="float: right;" username-usuario="<?= $usuario['Usuario'] ?>"><i class="fas fa-sync-alt" id="icone-recarregar"></i> recarregar grupos</button></div>
+                        </div>
                     </div>
+
                     <div class="card-body">
                         <div class="container">
                             <?php
