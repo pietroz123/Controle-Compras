@@ -40,11 +40,11 @@
                 <div class="col col-sm-10 col-md col-lg col-xl cg-coluna-informacoes-usuario">
                     <div class="row cg-linha-nome">
                         <div class="col-sm">
-                            <div class="cg-nome">Minhas Compras</div>
+                            <div class="cg-nome-usuario font-weight-bold">Minhas Compras</div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-sm"><?= $_SESSION['login-nome']; ?></div>
+                        <div class="col-sm cg-login-nome text-uppercase"><?= $_SESSION['login-nome']; ?></div>
                     </div>
                 </div>
             </div>

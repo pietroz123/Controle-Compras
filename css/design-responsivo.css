@@ -57,6 +57,12 @@
         border-top-right-radius: 7px;
         border-bottom-right-radius: 7px;
     }
+    .cg-nome-usuario {
+        font-size: 98%;
+    }
+    .cg-login-nome {
+        font-size: 96%;
+    }
     .cg-coluna-imagem {
         height: 100px;
         /* Bordas */
