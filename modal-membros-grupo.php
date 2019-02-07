@@ -80,7 +80,16 @@
                             foreach ($membros as $membro) {
                         ?>
                         <tr class="row">
-                            <td class="col-sm-5"><i class="fas fa-user mr-2 float-left"></i><?= $membro['Nome']; ?></td>
+                            <td class="col-sm-5">
+                                <i class="fas fa-user mr-2 float-left"></i><?= $membro['Nome']; ?>
+                            <?php
+                                if (isAdmin($conexao, $grupo['ID'], $membro['Usuario'])) {
+                            ?>
+                                    <span class="badge badge-pill badge-light ml-2">ADMIN</span>
+                            <?php
+                                }
+                            ?>
+                            </td>
                             <td class="col-sm-4"><?= date("d/m/Y h:m", strtotime($membro['Membro_Desde'])); ?></td>
                     <?php
                         if (isAdmin($conexao, $grupo['ID'], $_POST['username']) && $membro['Usuario'] != $_POST['username']) {
