@@ -30,6 +30,10 @@
     table th, table td, .btn {
         font-size: 15px;
     }
+    #form-cadastro {
+        width: 120%;
+        margin-left: -10%;
+    }
 }
 
 

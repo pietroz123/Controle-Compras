@@ -71,9 +71,14 @@
         </div>
     </div>
     <hr>
-    <button type="submit" name="submit" class="btn btn-cyan btn-block">cadastrar</button>
+    <div class="row">
+        <div class="col">
+            <button type="submit" name="submit" class="btn btn-cyan btn-block">cadastrar</button>
+        </div>
+    </div>
 </form>
 
+<script type="text/javascript" src="js/realtime-validation.js"></script>
 
 <?php
     include $_SERVER['DOCUMENT_ROOT'].'/rodape.php';
