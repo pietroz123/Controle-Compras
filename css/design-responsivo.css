@@ -98,7 +98,7 @@
         display: none;
     }
     #tabela-compras {
-        /* margin-left: -8%; */
+        margin-left: -8%;
     }
 }
 @media only screen and (max-width: 1160px) {
