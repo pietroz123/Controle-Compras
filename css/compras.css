@@ -101,10 +101,6 @@ body > .container {
     background-color: grey;
 }
 
-.links-login-signin {
-    display: -webkit-inline-box;
-}
-
 .links-logout {
     display: -webkit-inline-box;
 }
@@ -113,6 +109,25 @@ body > .container {
     margin-right: 15px;
     position: relative;
     top: -3px;
+}
+
+#btn-login {
+    font-family: 'Oswald', sans-serif;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border: 2px solid lightgrey;
+    border-radius: 15px;
+    width: 100px;
+    margin-right: 10px;
+}
+
+#btn-cadastrar {
+    font-family: 'Oswald', sans-serif;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border: 2px solid lightgrey;
+    border-radius: 15px;
+    width: 110px;
 }
 
 /* ==========================================================

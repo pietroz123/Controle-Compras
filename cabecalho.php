@@ -30,6 +30,7 @@
         <link href="https://fonts.googleapis.com/css?family=Merriweather|Slabo+27px" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
 
         <!-- Icones -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
@@ -100,12 +101,12 @@
                     <?php
                         if (!usuario_esta_logado()) {
                     ?>
-                        <ul class="navbar-nav links-login-signin">
-                            <li class="nav-item">
-                                <button class="btn btn-primary botao-pequeno" style="margin-right: 10px;" data-toggle="modal" data-target="#modal-login">login</button>
+                        <ul class="navbar-nav links-login-signin list-inline">
+                            <li class="nav-item list-inline-item">
+                                <button class="btn white black-text botao-pequeno" id="btn-login" data-toggle="modal" data-target="#modal-login">login</button>
                             </li>
-                            <li class="nav-item">
-                                <a href="cadastro.php" class="btn btn-indigo botao-pequeno">cadastrar</a>
+                            <li class="nav-item list-inline-item">
+                                <a href="cadastro.php" id="btn-cadastrar" class="btn btn-indigo botao-pequeno">cadastrar</a>
                             </li>
                         </ul>
                     <?php

@@ -95,12 +95,18 @@
     .btn-recarregar-grupos, .btn-criar-grupo {
         margin-top: 7px !important;
     }
+    .links-login-signin {
+        display: inline-block;
+    }
 }
 
 @media only screen and (max-width: 767px) {
     .nav-item {
         margin-left: 53px;
-    }   
+    }
+    #btn-login {
+        margin-right: 0px;
+    }
 }
 
 @media only screen and (max-width: 900px) {
