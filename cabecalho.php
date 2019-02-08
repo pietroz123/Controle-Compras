@@ -48,73 +48,79 @@
 
         <!-- Menu de navegação: no Bootstrap é a classe navbar -->
         <!-- https://www.youtube.com/watch?v=23bpce-5s8I -->
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top" id="barra-navegacao">
                 
-            <div class="navbar-header">
-                <a class="navbar-brand" href="index.php">Home</a>
-            </div>
-
-            <button class="navbar-toggler">
-                <span class="navbar-toggler-icon" data-toggle="collapse" data-target="#navbarMenu"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarMenu">
-                <?php
-                    if (usuario_esta_logado()) {
-                ?>
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" onmouseover="this.classList.add('nav-hover-bg')" onmouseout="this.classList.remove('nav-hover-bg')" href="formulario-compra.php">Adicionar Compra</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" onmouseover="this.classList.add('nav-hover-bg')" onmouseout="this.classList.remove('nav-hover-bg')" href="listar-compras.php">Compras</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" onmouseover="this.classList.add('nav-hover-bg')" onmouseout="this.classList.remove('nav-hover-bg')" href="buscar.php">Buscar</a>
-                        </li>
-                        <?php
-                            if (admin()) {
-                        ?>
+            <div class="container">
+                <div class="navbar-header">
+                    <?php
+                        if (usuario_esta_logado()) {
+                    ?>
+                        <a href="perfil-usuario.php" id="icone-usuario">
+                            <span class="badge badge-light rounded-circle">
+                                <img src="img/usuario.png" class="imagem-usuario">
+                            </span>
+                        </a>
+                    <?php
+                        }
+                    ?>
+                    <a class="navbar-brand" href="index.php"><strong>Home</strong></a>
+                </div>
+                
+                <button class="navbar-toggler">
+                    <span class="navbar-toggler-icon" data-toggle="collapse" data-target="#navbarMenu"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="navbarMenu">
+                    <?php
+                        if (usuario_esta_logado()) {
+                    ?>
+                        <ul class="navbar-nav mr-auto">
                             <li class="nav-item">
-                                <a class="nav-link" onmouseover="this.classList.add('nav-hover-bg')" onmouseout="this.classList.remove('nav-hover-bg')" href="requisicoes.php">Requisições</a>
+                                <a class="nav-link" onmouseover="this.classList.add('nav-hover-bg')" onmouseout="this.classList.remove('nav-hover-bg')" href="formulario-compra.php">Adicionar Compra</a>
                             </li>
-                        <?php
-                            }
-                        ?>
-                    </ul>
-                <?php
-                    }
-                ?>
-                <hr style="background-color: white">
-                <?php
-                    if (!usuario_esta_logado()) {
-                ?>
-                    <ul class="navbar-nav links-login-signin">
-                        <li class="nav-item">
-                            <button class="btn btn-primary botao-pequeno" style="margin-right: 10px;" data-toggle="modal" data-target="#modal-login">login</button>
-                        </li>
-                        <li class="nav-item">
-                            <a href="cadastro.php" class="btn btn-indigo botao-pequeno">cadastrar</a>
-                        </li>
-                    </ul>
-                <?php
-                    } else {
-                ?>
-                    <ul class="navbar-nav links-logout">
-                        <li class="nav-item mr-2">
-                            <a href="perfil-usuario.php">
-                                <span class="badge badge-light">
-                                    <img src="img/usuario.png" class="imagem-usuario">
-                                </span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="scripts/logout.php" class="nav-link btn btn-unique botao-pequeno">logout</a>
-                        </li>
-                    </ul>
-                <?php
-                    }
-                ?>
+                            <li class="nav-item">
+                                <a class="nav-link" onmouseover="this.classList.add('nav-hover-bg')" onmouseout="this.classList.remove('nav-hover-bg')" href="listar-compras.php">Compras</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" onmouseover="this.classList.add('nav-hover-bg')" onmouseout="this.classList.remove('nav-hover-bg')" href="buscar.php">Buscar</a>
+                            </li>
+                            <?php
+                                if (admin()) {
+                            ?>
+                                <li class="nav-item">
+                                    <a class="nav-link" onmouseover="this.classList.add('nav-hover-bg')" onmouseout="this.classList.remove('nav-hover-bg')" href="requisicoes.php">Requisições</a>
+                                </li>
+                            <?php
+                                }
+                            ?>
+                        </ul>
+                    <?php
+                        }
+                    ?>
+                    <hr style="background-color: white">
+                    <?php
+                        if (!usuario_esta_logado()) {
+                    ?>
+                        <ul class="navbar-nav links-login-signin">
+                            <li class="nav-item">
+                                <button class="btn btn-primary botao-pequeno" style="margin-right: 10px;" data-toggle="modal" data-target="#modal-login">login</button>
+                            </li>
+                            <li class="nav-item">
+                                <a href="cadastro.php" class="btn btn-indigo botao-pequeno">cadastrar</a>
+                            </li>
+                        </ul>
+                    <?php
+                        } else {
+                    ?>
+                        <ul class="navbar-nav links-logout">
+                            <li class="nav-item">
+                                <a href="scripts/logout.php" class="nav-link btn btn-unique botao-pequeno">logout</a>
+                            </li>
+                        </ul>
+                    <?php
+                        }
+                    ?>
+                </div>
             </div>
 
         </nav>

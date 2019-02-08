@@ -105,6 +105,12 @@ body > .container {
     display: -webkit-inline-box;
 }
 
+#icone-usuario {
+    margin-right: 10px;
+    position: relative;
+    top: -3px;
+}
+
 /* ==========================================================
    ===================== BOTOES PEQUENOS ====================
    ========================================================== */
@@ -183,13 +189,11 @@ body > .container {
    ==================== PERFIL USUÁRIO ======================
    ========================================================== */
 
-.badge {
-    border-radius: 30px;
-}
-
 .imagem-usuario {
     height: 25px;
     width: 25px;
+    padding-bottom: 2px;
+    margin-top: 2px;
 }
 
 .titulo-perfil {
