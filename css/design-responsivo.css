@@ -98,6 +98,9 @@
     .links-login-signin {
         display: inline-block;
     }
+    #btn-cadastrar {
+        margin-left: -30px;
+    }
 }
 
 @media only screen and (max-width: 767px) {
