@@ -18,7 +18,6 @@
         <link type="text/css" href="css/datatables.css" rel="stylesheet">
         <link type="text/css" href="css/awesomplete.css" rel="stylesheet">
         <link type="text/css" href="css/select2.css" rel="stylesheet">
-        <link type="text/css" href="css/realtime-validation.css" rel="stylesheet">
         <link type="text/css" href="css/bounce-arrow.css" rel="stylesheet">
         
         <link type="text/css" href="css/compras.css" rel="stylesheet">

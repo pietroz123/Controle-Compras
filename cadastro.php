@@ -1,7 +1,7 @@
 <?php
     include $_SERVER['DOCUMENT_ROOT'].'/cabecalho.php';
 ?>
-
+<link type="text/css" href="css/realtime-validation.css" rel="stylesheet">
 
 <form action="scripts/cadastrar.php" method="post" id="form-cadastro">
     <h1>Formulario de Cadastro</h1>
