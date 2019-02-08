@@ -114,7 +114,7 @@
                     ?>
                         <ul class="navbar-nav links-logout">
                             <li class="nav-item">
-                                <a href="scripts/logout.php" class="nav-link btn btn-unique botao-pequeno" style="font-weight: bold; padding-left: 15px; padding-right: 15px;">logout</a>
+                                <a href="scripts/logout.php" id="btn-logout" class="nav-link btn btn-unique botao-pequeno" style="font-weight: bold; padding-left: 15px; padding-right: 15px;">logout</a>
                             </li>
                         </ul>
                     <?php

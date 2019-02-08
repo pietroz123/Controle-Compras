@@ -127,7 +127,16 @@ body > .container {
     letter-spacing: 1px;
     border: 2px solid lightgrey;
     border-radius: 15px;
-    width: 110px;
+    width: 120px;
+}
+
+#btn-logout {
+    font-family: 'Oswald', sans-serif;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border: 2px solid lightgrey;
+    border-radius: 15px;
+    width: 100px;
 }
 
 /* ==========================================================
