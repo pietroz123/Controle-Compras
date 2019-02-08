@@ -4,12 +4,9 @@
 }
 
 @media only screen and (max-width: 550px) {
-    .formulario-recuperacao-senha {
-        width: 100%;
+    body {
+        margin-top: 70px;
     }
-}
-
-@media screen and (max-width: 550px) {
     body h1 {
         font-size: 25px;
     }
@@ -34,10 +31,9 @@
         width: 120%;
         margin-left: -10%;
     }
-}
-
-
-@media only screen and (max-width: 550px) {
+    .formulario-recuperacao-senha {
+        width: 100%;
+    }
     .t-id, .t-valor, .t-desconto, .t-pagamento, .t-comprador, .t-alterar, .t-remover, .t-imagem {
         display: none;
     }
@@ -97,6 +93,13 @@
         font-size: 10px;
     }
 }
+
+@media only screen and (max-width: 767px) {
+    .nav-item {
+        margin-left: 53px;
+    }   
+}
+
 @media only screen and (max-width: 900px) {
     .t-desconto, .t-pagamento {
         display: none;
@@ -105,6 +108,7 @@
         margin-left: -8%;
     }
 }
+
 @media only screen and (max-width: 1160px) {
     .t-id {
         display: none;
