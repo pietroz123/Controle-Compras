@@ -139,6 +139,18 @@ body > .container {
     width: 100px;
 }
 
+
+#btn-login:hover {
+    background-color: #eceff1 !important;
+}
+#btn-cadastrar:hover {
+    background-color: #5c6bc0 !important;
+}
+#btn-logout:hover {
+    background-color: #ad1457 !important;
+}
+
+
 /* ==========================================================
    ===================== BOTOES PEQUENOS ====================
    ========================================================== */
