@@ -69,18 +69,18 @@
             <div class="container">
                 <table class="table table-hover text-left">
                     <thead>
-                        <tr class="row">
-                            <th class="col-sm-5">Nome</th>
-                            <th class="col-sm-4">Desde</th>
-                            <th class="col-sm-3"></th>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Desde</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php 
                             foreach ($membros as $membro) {
                         ?>
-                        <tr class="row">
-                            <td class="col-sm-5">
+                        <tr>
+                            <td>
                                 <i class="fas fa-user mr-2 float-left"></i><?= $membro['Nome']; ?>
                             <?php
                                 if (isAdmin($conexao, $grupo['ID'], $membro['Usuario'])) {
@@ -90,11 +90,11 @@
                                 }
                             ?>
                             </td>
-                            <td class="col-sm-4"><?= date("d/m/Y h:m", strtotime($membro['Membro_Desde'])); ?></td>
+                            <td><?= date("d/m/Y h:m", strtotime($membro['Membro_Desde'])); ?></td>
                     <?php
                         if (isAdmin($conexao, $grupo['ID'], $_POST['username']) && $membro['Usuario'] != $_POST['username']) {
                     ?>
-                            <td class="col-sm-3 text-right"><button class="btn black botao-pequeno btn-remover-membro w-75" id-grupo="<?= $grupo['ID']; ?>" username-usuario="<?= $_POST['username']; ?>" username-membro="<?= $membro['Usuario']; ?>" data-toggle="confirmation" data-singleton="true"><i class="fas fa-times"></i></button></td>
+                            <td class="text-right"><button class="btn black botao-pequeno btn-remover-membro" id-grupo="<?= $grupo['ID']; ?>" username-usuario="<?= $_POST['username']; ?>" username-membro="<?= $membro['Usuario']; ?>" data-toggle="confirmation" data-singleton="true"><i class="fas fa-times"></i></button></td>
                     <?php
                         }
                     ?>
