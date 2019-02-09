@@ -106,81 +106,83 @@
 <h1 style="margin-top: 40px;">Lista de Compras</h1>
 
 <!-- Tabela com as compras -->
-<table class="table table-hover" id="tabela-compras">
-
-    <thead class="thead-dark">
-        <tr>
-            <th class="th-sm t-id">ID</th>
-            <th class="th-sm t-data">Data</th>
-            <th class="th-sm t-observacoes">Observacoes</th>
-            <th class="th-sm t-valor">Valor</th>
-            <th class="th-sm t-desconto">Desconto</th>
-            <th class="th-sm t-pagamento">Pagamento</th>
-            <th class="th-sm t-comprador">Comprador</th>
-            <th class="t-imagem">Imagem</th>
-            <th class="th-sm t-alterar">Alterar</th>
-            <th class="th-sm t-remover">Remover</th>
-            <th class="th-sm t-detalhes">Detalhes</th> 
-        </tr>
-    </thead>
-
-    <tbody id="compras-datatable">
-    <?php
-        $compras = recuperar_compras($conexao, $_SESSION['login-id-comprador']);
-        foreach ($compras as $compra) :
-    ?>
-
-        <tr>
-            <td class="t-id"><?= $compra['Id']; ?></td>
-            <td class="t-data"><?= $compra['Data']; ?></td>
-            <td class="t-observacoes"><?= $compra['Observacoes']; ?></td>
-            <td class="t-valor"><?= $compra['Valor']; ?></td>
-            <td class="t-desconto"><?= $compra['Desconto']; ?></td>          
-            <td class="t-pagamento"><?= $compra['Forma_Pagamento']; ?></td>
-            <td class="t-comprador"><?= $compra['Nome_Comprador']; ?></td>
-            <td class="t-imagem">
-                <button type="button" class="btn light-blue btn-block botao-pequeno btn-imagem" id="<?= $compra['Id']; ?>">imagem</button>
-            </td>
-            <td class="t-alterar">
-                <form action="formulario-alterar-compra.php" method="post">
-                    <input type="hidden" name="id" value="<?= $compra['Id'] ?>">
-                    <button class="btn btn-primary botao-pequeno">alterar</button>
-                </form>
-            </td>
-            <td class="t-remover">
-                <form action="scripts/remover-compra.php" method="post">
-                    <input type="hidden" name="id" value="<?= $compra['Id'] ?>">
-                    <button class="btn btn-danger botao-pequeno" onclick="return confirm('Deseja prosseguir com a remoção?');">remover</button>
-                </form>
-            </td>
-            <td class="t-detalhes">
-                <button type="button" id="<?= $compra['Id']; ?>" class="btn btn-info botao-pequeno btn-detalhes">detalhes</button>
-            </td>
-        </tr>
-
-    <?php
-        endforeach
-    ?>
-
-    </tbody>
-
-    <tfoot>
-        <tr>
-            <th class="t-id">ID</th>
-            <th class="t-data">Data</th>
-            <th class="t-observacoes">Observacoes</th>
-            <th class="t-valor">Valor</th>
-            <th class="t-desconto">Desconto</th>
-            <th class="t-pagamento">Pagamento</th>
-            <th class="t-comprador">Comprador</th>
-            <th class="t-imagem">Imagem</th>
-            <th class="t-alterar">Alterar</th>
-            <th class="t-remover">Remover</th>
-            <th class="t-detalhes">Detalhes</th>            
-        </tr>
-    </tfoot>
-
-</table>
+<!-- <div style="overflow-x: auto;"> -->
+    <table class="table table-hover" id="tabela-compras">
+    
+        <thead class="thead-dark">
+            <tr>
+                <th class="th-sm t-id">ID</th>
+                <th class="th-sm t-data">Data</th>
+                <th class="th-sm t-observacoes">Observacoes</th>
+                <th class="th-sm t-valor">Valor</th>
+                <th class="th-sm t-desconto">Desconto</th>
+                <th class="th-sm t-pagamento">Pagamento</th>
+                <th class="th-sm t-comprador">Comprador</th>
+                <th class="t-imagem">Imagem</th>
+                <th class="th-sm t-alterar">Alterar</th>
+                <th class="th-sm t-remover">Remover</th>
+                <th class="th-sm t-detalhes">Detalhes</th> 
+            </tr>
+        </thead>
+    
+        <tbody id="compras-datatable">
+        <?php
+            $compras = recuperar_compras($conexao, $_SESSION['login-id-comprador']);
+            foreach ($compras as $compra) :
+        ?>
+    
+            <tr>
+                <td class="t-id"><?= $compra['Id']; ?></td>
+                <td class="t-data"><?= $compra['Data']; ?></td>
+                <td class="t-observacoes"><?= $compra['Observacoes']; ?></td>
+                <td class="t-valor"><?= $compra['Valor']; ?></td>
+                <td class="t-desconto"><?= $compra['Desconto']; ?></td>          
+                <td class="t-pagamento"><?= $compra['Forma_Pagamento']; ?></td>
+                <td class="t-comprador"><?= $compra['Nome_Comprador']; ?></td>
+                <td class="t-imagem">
+                    <button type="button" class="btn light-blue btn-block botao-pequeno btn-imagem" id="<?= $compra['Id']; ?>">imagem</button>
+                </td>
+                <td class="t-alterar">
+                    <form action="formulario-alterar-compra.php" method="post">
+                        <input type="hidden" name="id" value="<?= $compra['Id'] ?>">
+                        <button class="btn btn-primary botao-pequeno">alterar</button>
+                    </form>
+                </td>
+                <td class="t-remover">
+                    <form action="scripts/remover-compra.php" method="post">
+                        <input type="hidden" name="id" value="<?= $compra['Id'] ?>">
+                        <button class="btn btn-danger botao-pequeno" onclick="return confirm('Deseja prosseguir com a remoção?');">remover</button>
+                    </form>
+                </td>
+                <td class="t-detalhes">
+                    <button type="button" id="<?= $compra['Id']; ?>" class="btn btn-info botao-pequeno btn-detalhes">detalhes</button>
+                </td>
+            </tr>
+    
+        <?php
+            endforeach
+        ?>
+    
+        </tbody>
+    
+        <tfoot>
+            <tr>
+                <th class="t-id">ID</th>
+                <th class="t-data">Data</th>
+                <th class="t-observacoes">Observacoes</th>
+                <th class="t-valor">Valor</th>
+                <th class="t-desconto">Desconto</th>
+                <th class="t-pagamento">Pagamento</th>
+                <th class="t-comprador">Comprador</th>
+                <th class="t-imagem">Imagem</th>
+                <th class="t-alterar">Alterar</th>
+                <th class="t-remover">Remover</th>
+                <th class="t-detalhes">Detalhes</th>            
+            </tr>
+        </tfoot>
+    
+    </table>
+<!-- </div> -->
 
 <!-- Modal para detalhes da Compra -->
 <div class="modal" id="modal-detalhes-compra">

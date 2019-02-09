@@ -10,19 +10,11 @@
     body h1 {
         font-size: 25px;
     }
-    .conteudo-principal {
-        padding: 0px 0px;
-        margin-bottom: 100px;
-    }
     .conteudo-principal p {
         font-size: 20px;
     }
     .redes {
         padding-bottom: 7px;
-    }
-    body > .container {
-        width: 115%;
-        margin-left: -7.5%;
     }
     table th, table td, .btn {
         font-size: 15px;
@@ -103,21 +95,33 @@
     }
 }
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 767px) and (min-width: 550px) {
     .nav-item {
         margin-left: 53px;
     }
+}
+
+@media only screen and (max-width: 768px) and (min-width: 550px) {
     #btn-login {
         margin-right: 0px;
     }
+    #tabela-compras {
+        margin-left: -5% !important;
+    }
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 900px) and (min-width: 768px) {
     .t-desconto, .t-pagamento {
         display: none;
     }
     #tabela-compras {
-        margin-left: -8%;
+        margin-left: -6%;
+    }
+}
+
+@media only screen and (max-width: 1024px) and (min-width: 900px) {
+    #tabela-compras {
+        margin-left: -3% !important;
     }
 }
 

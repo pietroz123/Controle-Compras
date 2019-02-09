@@ -23,7 +23,9 @@ html {
    ========================================================== */
 
 body {
-    margin: 50px 60px;
+    /* margin: 50px 60px; */
+    margin-top: 50px;
+    margin-bottom: 60px;
     background-color: aliceblue;
 }
 body h1 {
