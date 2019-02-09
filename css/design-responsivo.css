@@ -130,3 +130,57 @@
         display: none;
     }
 }
+
+
+/* =============================================================
+   ==================== TABELAS DOS GRUPOS =====================
+   ============================================================= */
+
+/*   https://css-tricks.com/responsive-data-tables/     */
+
+@media only screen and (max-width: 550px) {
+
+	/* Force table to not be like tables anymore */
+	#tabela-grupos, .table-grupos thead, .table-grupos tbody, .table-grupos th, .table-grupos td, .table-grupos tr { 
+		display: block; 
+	}
+	
+	/* Hide table headers (but not display: none;, for accessibility) */
+	.table-grupos thead tr { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+    }
+    
+    .table-grupos tr {
+        border-bottom: 2px solid #ccc;
+    }
+	
+	.table-grupos td { 
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee; 
+        position: relative;
+        padding-left: 50%;
+        padding-bottom: 30px !important;
+    }
+	
+	.table-grupos td:before { 
+        /* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		left: 6px;
+		width: 45%; 
+		padding-right: 10px; 
+        white-space: pre-wrap;
+        font-weight: bold;
+	}
+	
+	/*
+	Label the data
+	*/
+	.table-grupos td:nth-of-type(1):before { content: "Nome"; }
+	.table-grupos td:nth-of-type(2):before { content: "Data de Criação"; }
+	.table-grupos td:nth-of-type(3):before { content: "Número de Membros"; }
+	.table-grupos td:nth-of-type(4):before { content: "Membros"; }
+}

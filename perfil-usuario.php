@@ -61,23 +61,23 @@
                                 $grupos = recuperar_grupos($conexao, $usuario['Usuario']);
                                 if (count($grupos) > 0) {
                             ?>
-                                <table class="table table-hover">
+                                <table class="table table-hover table-grupos" id="tabela-grupos">
                                     <thead style="font-weight: bold;">
-                                        <tr class="row">
-                                            <th class="col-sm-4 thead-grupos">Nome</th>
-                                            <th class="col-sm-3 thead-grupos">Data Criação</th>
-                                            <th class="col-sm-3 thead-grupos">Número Membros</th>
-                                            <th class="col-sm-2 thead-grupos">Visualizar</th>
+                                        <tr>
+                                            <th class="thead-grupos">Nome</th>
+                                            <th class="thead-grupos">Data Criação</th>
+                                            <th class="thead-grupos">Número Membros</th>
+                                            <th class="thead-grupos">Visualizar</th>
                                         </tr>
                                     </thead>
                                     <tbody id="grupos-usuario">
 
                                     <?php foreach ($grupos AS $grupo) { ?>
-                                        <tr class="row">
-                                            <td class="col-sm-4"><?= $grupo['Nome']; ?></td>
-                                            <td class="col-sm-3"><?= date("d/m/Y h:m", strtotime($grupo['Data_Criacao'])); ?></td>
-                                            <td class="col-sm-3"><?= $grupo['Numero_Membros']; ?></td>
-                                            <td class="col-sm-2">
+                                        <tr>
+                                            <td><?= $grupo['Nome']; ?></td>
+                                            <td><?= date("d/m/Y h:m", strtotime($grupo['Data_Criacao'])); ?></td>
+                                            <td><?= $grupo['Numero_Membros']; ?></td>
+                                            <td>
                                                 <button class="btn btn-info botao-pequeno btn-membros" id="<?= $grupo['ID']; ?>" username="<?= $usuario['Usuario']; ?>">Membros</button>
                                             </td>
                                         </tr>
