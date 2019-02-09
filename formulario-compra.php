@@ -1,10 +1,14 @@
 <?php 
     include $_SERVER['DOCUMENT_ROOT'].'/cabecalho.php'; 
     include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes-grupos.php';
 ?>
 
 <?php
     verifica_usuario();
+
+    // Recupera todos os IDs dos compradores em todos os grupos do usuário
+    $ids_compradores = recupera_ids_compradores_grupos($conexao, $_SESSION['login-username'], $_SESSION['login-email']);
 ?>
 
         <h1>Formulário de Adição de Compra</h1>
@@ -50,13 +54,14 @@
                     <div class="col-lg-8">
                         <select class="custom-select" name="comprador-id" id="comprador-id">
                             <option class="text-muted">Selecione uma Opção</option>
-                            <?php 
-                                $compradores = listar($conexao, "SELECT * FROM compradores");
-                                foreach ($compradores as $comprador) :
+                            <?php
+                                foreach ($ids_compradores as $ids_comprador) {
+                                    $comprador = buscar_comprador($conexao, $ids_comprador['Comprador_ID']);
                             ?>
                                     <option value="<?= $comprador['ID']; ?>"><?= $comprador['Nome']; ?></option>
+
                             <?php
-                                endforeach;
+                                }
                             ?>
                         </select>
                     </div>
