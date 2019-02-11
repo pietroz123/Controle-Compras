@@ -387,3 +387,44 @@ p.texto-dados {
 .awesomplete {
     width: 100%;
 }
+
+
+/* ==========================================================
+   ================== DESIGN INPUT ARQUIVO ==================
+   ========================================================== */
+
+#input-imagem {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+    z-index: -1;
+}
+
+label[for=input-imagem] span {
+    font-family: 'Oswald', sans-serif;
+    letter-spacing: .5px;
+}
+
+#input-imagem + label {
+    width: 220px;
+    cursor: pointer;
+    font-size: 1.1em;
+    color: white;
+    padding: 8px 12px;
+    border: 3px solid lightgrey;
+    border-radius: 10px;
+    background-color: rgb(78, 68, 68);
+    display: inline-block;
+}
+
+#input-imagem:focus + label,
+#input-imagem + label:hover {
+    background-color: rgb(187, 187, 187);
+}
+
+#input-imagem:focus + label {
+	outline: 1px dotted #000;
+	outline: -webkit-focus-ring-color auto 5px;
+}

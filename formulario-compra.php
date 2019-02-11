@@ -69,7 +69,13 @@
                 <hr>
                 <div class="row">
                     <div class="col-lg-4">Imagem (Opcional)</div>
-                    <div class="col-lg-8"><input class="form-control-file" type="file" name="imagem"></div>
+                    <div class="col-lg-8">
+                        <input class="form-control-file" type="file" id="input-imagem" name="imagem" data-multiple-caption="{numero} arquivos selecionados" multiple>
+                        <label for="input-imagem">
+                            <i class="far fa-file-image"></i>
+                            <span>Selecione uma imagem</span>
+                        </label>
+                    </div>
                 </div>
                 <hr>
             </div>
@@ -79,3 +85,32 @@
         </form>
 
 <?php include $_SERVER['DOCUMENT_ROOT'].'/rodape.php'; ?>
+
+<script>
+
+    // https://tympanus.net/codrops/2015/09/15/styling-customizing-file-inputs-smart-way/
+    var inputs = $('#input-imagem');
+    Array.prototype.forEach.call( inputs, function( input )
+    {
+        var label	 = input.nextElementSibling,
+            labelVal = label.innerHTML;
+
+        input.addEventListener( 'change', function( e )
+        {
+            var fileName = '';
+            if( this.files && this.files.length > 1 )
+                fileName = ( this.getAttribute( 'data-multiple-caption' ) || '' ).replace( '{numero}', this.files.length );
+            else
+                fileName = e.target.value.split( '\\' ).pop();
+
+            if( fileName )
+                label.querySelector( 'span' ).innerHTML = fileName;
+            else
+                label.innerHTML = labelVal;
+        });
+    });
+
+    
+
+
+</script>
