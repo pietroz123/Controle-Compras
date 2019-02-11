@@ -126,43 +126,7 @@
         </thead>
     
         <tbody id="compras-datatable">
-        <?php
-            $compras = recuperar_compras($conexao, $_SESSION['login-id-comprador']);
-            foreach ($compras as $compra) :
-        ?>
-    
-            <tr>
-                <td class="t-id"><?= $compra['Id']; ?></td>
-                <td class="t-data"><?= $compra['Data']; ?></td>
-                <td class="t-observacoes"><?= $compra['Observacoes']; ?></td>
-                <td class="t-valor"><?= $compra['Valor']; ?></td>
-                <td class="t-desconto"><?= $compra['Desconto']; ?></td>          
-                <td class="t-pagamento"><?= $compra['Forma_Pagamento']; ?></td>
-                <td class="t-comprador"><?= $compra['Nome_Comprador']; ?></td>
-                <td class="t-imagem">
-                    <button type="button" class="btn light-blue btn-block botao-pequeno btn-imagem" id="<?= $compra['Id']; ?>">imagem</button>
-                </td>
-                <td class="t-alterar">
-                    <form action="formulario-alterar-compra.php" method="post">
-                        <input type="hidden" name="id" value="<?= $compra['Id'] ?>">
-                        <button class="btn btn-primary botao-pequeno">alterar</button>
-                    </form>
-                </td>
-                <td class="t-remover">
-                    <form action="scripts/remover-compra.php" method="post">
-                        <input type="hidden" name="id" value="<?= $compra['Id'] ?>">
-                        <button class="btn btn-danger botao-pequeno" onclick="return confirm('Deseja prosseguir com a remoção?');">remover</button>
-                    </form>
-                </td>
-                <td class="t-detalhes">
-                    <button type="button" id="<?= $compra['Id']; ?>" class="btn btn-info botao-pequeno btn-detalhes">detalhes</button>
-                </td>
-            </tr>
-    
-        <?php
-            endforeach
-        ?>
-    
+            <!-- Preenchido ao clicar nas compras desejadas -->
         </tbody>
     
         <tfoot>
@@ -205,18 +169,6 @@
 
     // Inicializa a tabela de dados
     $(document).ready(function () {
-
-        // $(window).resize(function() {
-        //     if ($(window).width() <= 660) {
-        //         $('.cartao-novo').css({
-        //             'width': '100%'
-        //         });
-        //     } else {
-        //         $('.cartao-novo').css({
-        //             'width': '50%'
-        //         });
-        //     }
-        // });
 
         $('#tabela-compras').DataTable({
             "language": {
@@ -275,31 +227,7 @@
     });
 
 
-    //! Outra forma de preencher o modal:
-    //? Antes era: 
-    //*     <button class="btn btn-info botao-pequeno" data-toggle="modal" data-target="#modal-detalhes-compra" data-id="<?= $compra['Id']; ?>" data-data="<?= $compra['Data']; ?>" data-observacoes="<?= $compra['Observacoes']; ?>" data-valor="<?= $compra['Valor']; ?>" data-desconto="<?= $compra['Desconto']; ?>" data-pagamento="<?= $compra['Forma_Pagamento']; ?>" data-comprador="<?= $compra['Nome_Comprador']; ?>">detalhes</button>
-    // // Coloca as informacoes no modal (javascript com AJAX)
-    // $('#modal-detalhes-compra').on('show.bs.modal', function(event) {
-    //     // Recupera as informacoes do botao
-    //     var botao = $(event.relatedTarget);
-    //     var id = botao.data('id');
-    //     var data = botao.data('data');
-    //     var observacoes = botao.data('observacoes');
-    //     var valor = botao.data('valor');
-    //     var desconto = botao.data('desconto');
-    //     var pagamento = botao.data('pagamento');
-    //     var comprador = botao.data('comprador');
-        
-    //     // Imprime nos campos do modal-detalhes-compra
-    //     var modal = $(this);
-    //     modal.find('#id-compra').val(id);
-    //     modal.find("#data-compra").val(data);
-    //     modal.find("#observacoes-compra").val(observacoes);
-    //     modal.find("#valor-compra").val(valor);
-    //     modal.find("#desconto-compra").val(desconto);
-    //     modal.find("#pagamento-compra").val(pagamento);
-    //     modal.find("#comprador-compra").val(comprador);
-    // });
+    
 
 
     // ======================================================================================================================================
