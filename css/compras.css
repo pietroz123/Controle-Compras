@@ -103,6 +103,14 @@ body > .container {
     background-color: grey;
 }
 
+.links-login-signin {
+    flex-direction: row;
+}
+.links-login-signin .nav-item {
+    display: block;
+    width: 50%;
+}
+
 .links-logout {
     display: -webkit-inline-box;
 }
@@ -120,7 +128,6 @@ body > .container {
     border: 2px solid lightgrey;
     border-radius: 15px;
     width: 100px;
-    margin-right: 10px;
 }
 
 #btn-cadastrar {

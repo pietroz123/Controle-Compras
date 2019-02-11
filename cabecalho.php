@@ -101,11 +101,11 @@
                     <?php
                         if (!usuario_esta_logado()) {
                     ?>
-                        <ul class="navbar-nav links-login-signin list-inline">
-                            <li class="nav-item list-inline-item">
+                        <ul class="navbar-nav links-login-signin">
+                            <li class="nav-item">
                                 <button class="btn white black-text botao-pequeno" id="btn-login" data-toggle="modal" data-target="#modal-login">login</button>
                             </li>
-                            <li class="nav-item list-inline-item">
+                            <li class="nav-item">
                                 <a href="cadastro.php" id="btn-cadastrar" class="btn btn-indigo botao-pequeno">cadastrar</a>
                             </li>
                         </ul>
