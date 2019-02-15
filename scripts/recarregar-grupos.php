@@ -2,22 +2,51 @@
 
 if (isset($_POST['username'])) {
     
+    
     include $_SERVER['DOCUMENT_ROOT'].'/database/conexao.php';        
     include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes-grupos.php';
     
+
     $grupos = recuperar_grupos($conexao, $_POST['username']);
     $retorno = '';
 
-    foreach ($grupos AS $grupo) { 
-        $retorno .= '<tr class="row">
-            <td class="col-sm-4">'.$grupo['Nome'].'</td>
-            <td class="col-sm-3">'.date("d/m/Y h:m", strtotime($grupo['Data_Criacao'])).'</td>
-            <td class="col-sm-3">'.$grupo['Numero_Membros'].'</td>
-            <td class="col-sm-2">
-                <button class="btn btn-info botao-pequeno btn-membros" id="'.$grupo['ID'].'" username="'.$_POST['username'].'">Membros</button>
-            </td>
-        </tr>';
+
+    if (count($grupos) > 0) {
+
+        $retorno = '
+        <table class="table table-hover table-grupos" id="tabela-grupos">
+            <thead style="font-weight: bold;">
+                <tr>
+                    <th class="thead-grupos">Nome</th>
+                    <th class="thead-grupos">Data Criação</th>
+                    <th class="thead-grupos">Número Membros</th>
+                    <th class="thead-grupos">Visualizar</th>
+                </tr>
+            </thead>
+            <tbody id="grupos-usuario">';
+
+        foreach ($grupos AS $grupo) {
+
+            $retorno .= '
+                <tr>
+                    <td>'.$grupo['Nome'].'</td>
+                    <td>'.date("d/m/Y h:m", strtotime($grupo['Data_Criacao'])).'</td>
+                    <td>'.$grupo['Numero_Membros'].'</td>
+                    <td>
+                        <button class="btn btn-info botao-pequeno btn-membros" id="'.$grupo['ID'].'" username="'.$_POST['username'].'">Membros</button>
+                    </td>
+                </tr>';
+        }
+
+        $retorno .= '</tbody>';
 
     }
+    else {
+        
+        $retorno .= '<div class="alert alert-danger" role="alert">Você não está em nenhum grupo</div>';
+    }
+
+    $retorno .= '</table>';
+
     echo $retorno;
 }

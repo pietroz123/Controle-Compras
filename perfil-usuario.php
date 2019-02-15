@@ -56,7 +56,7 @@
                     </div>
 
                     <div class="card-body">
-                        <div class="container">
+                        <div class="container" id="container-tabela-grupos">
                             <?php
                                 $grupos = recuperar_grupos($conexao, $usuario['Usuario']);
                                 if (count($grupos) > 0) {
@@ -241,7 +241,7 @@
                 username: username
             },
             success: function(retorno) {
-                $('#grupos-usuario').html(retorno);                    
+                $('#container-tabela-grupos').html(retorno);                    
             }
         });
 
