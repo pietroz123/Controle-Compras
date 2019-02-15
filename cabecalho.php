@@ -5,7 +5,7 @@
     include $_SERVER['DOCUMENT_ROOT'].'/database/conexao.php';
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 
     <head>
         <title>Minhas Compras</title>
@@ -13,7 +13,7 @@
         
         <!-- CSSs -->
         <link rel="shortcut icon" href="img/shopping.png" type="image/x-icon">
-        <link type="text/css" href="css/bootstrap4.css"rel="stylesheet">
+        <link type="text/css" href="css/bootstrap4.css" rel="stylesheet">
         <link type="text/css" href="css/mdb.css" rel="stylesheet">
         <link type="text/css" href="css/datatables.css" rel="stylesheet">
         <link type="text/css" href="css/awesomplete.css" rel="stylesheet">
@@ -27,9 +27,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
         <!-- Fontes de Texto -->
-        <link href="https://fonts.googleapis.com/css?family=Merriweather|Slabo+27px" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+        <link href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
 
         <!-- Icones -->

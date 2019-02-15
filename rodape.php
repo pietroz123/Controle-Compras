@@ -10,17 +10,17 @@
         </footer>
 
         <!-- Scripts (Javascript) -->
-        <script type="text/javascript" src="js/jquery-latest.js"></script>
-        <script type="text/javascript" src="js/jquery-ui.js"></script>
-        <script type="text/javascript" src="js/popper.min.js"></script>
-        <script type="text/javascript" src="js/bootstrap.js"></script>
-        <script type="text/javascript" src="js/mdb.js"></script>
-        <script type="text/javascript" src="js/datatables.js"></script>
-        <script type="text/javascript" src="js/select2.js"></script>
-        <script type="text/javascript" src="js/jquery.mask.js"></script>
-        <script type="text/javascript" src="js/bootstrap-confirmation.js"></script>
+        <script src="js/jquery-latest.js"></script>
+        <script src="js/jquery-ui.js"></script>
+        <script src="js/popper.min.js"></script>
+        <script src="js/bootstrap.js"></script>
+        <script src="js/mdb.js"></script>
+        <script src="js/datatables.js"></script>
+        <script src="js/select2.js"></script>
+        <script src="js/jquery.mask.js"></script>
+        <script src="js/bootstrap-confirmation.js"></script>
 
-        <script type="text/javascript" src="js/main.js"></script>
+        <script src="js/main.js"></script>
 
 
     </body>
