@@ -3,7 +3,7 @@
 ?>
 <link type="text/css" href="css/realtime-validation.css" rel="stylesheet">
 
-<form action="scripts/cadastrar.php" method="post" id="form-cadastro">
+<form action="scripts/cadastrar.php" method="post" id="form-cadastro" autocomplete="off">
     <h1>Formulario de Cadastro</h1>
     <div class="grid grid-cadastro">
         <div class="row">
@@ -79,9 +79,75 @@
 </form>
 
 
+<form action="scripts/cadastrar.php" method="post" id="form-cadastro" autocomplete="off">
+    <h1>Formulario de Cadastro</h1>
+
+    <div class="grid grid-cadastro mt-3">
+
+        <!-- Nome e E-mail -->
+        <div class="form-row">
+            <div class="col-sm-12 col-md-6">
+                <div class="md-form">
+                    <input type="text" name="nome" class="form-control" placeholder="Digite o seu primeiro nome" required>
+                    <label for="nome">Primeiro Nome</label>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6">
+                <div class="md-form">
+                    <img src="img/email.png" alt="Icone Email" class="prefix">
+                    <input type="email" name="email" class="form-control" placeholder="Digite seu e-mail" required>
+                    <label for="email">E-mail</label>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="entrada-usuario">
+            <div class="md-form">
+                <input type="text" name="usuario" class="form-control" placeholder="Escolha um nome de usuário" minlength="4" id="input-usuario-cadastro" required>
+                    <ul class="input-requirements">
+                        <li>Pelo menos 4 caracteres</li>
+                        <li>Apenas letras e números</li>
+                    </ul>
+                <label for="usuario">Username</label>
+            </div>
+        </div>
+
+        <div class="entrada-senha">
+            <div class="md-form">
+                <input type="password" name="senha" class="form-control" placeholder="Digite uma senha" autocomplete="off" minlength="5" maxlength="20" id="input-senha-cadastro" required>
+                    <ul class="input-requirements">
+                        <li>Pelo menos 5 caracteres</li>
+                        <li>Pelo menos 1 número</li>
+                        <li>Pelo menos 1 letra minúscula</li>
+                        <li>Pelo menos 1 letra maiúscula</li>
+                        <li>Pelo menos 1 caractere especial</li>
+                    </ul>
+                <label for="senha">Senha</label>
+            </div>
+        </div>
+
+        <div class="md-form">
+            <input type="password" name="senha-rep" class="form-control" placeholder="Repita a senha" id="input-senha-rep-cadastro" required>
+            <label for="senha-rep">Repita a senha</label>
+        </div>
+        
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col">
+            <button type="submit" name="submit" class="btn btn-cyan btn-block">cadastrar</button>
+        </div>
+    </div>
+</form>
+
+
 <?php
     include $_SERVER['DOCUMENT_ROOT'].'/rodape.php';
 ?>
+
+<div>Icons made by <a href="https://www.flaticon.com/authors/vectors-market" title="Vectors Market">Vectors Market</a> from <a href="https://www.flaticon.com/" 		    title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" 		    title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
 
 <script type="text/javascript" src="js/awesomplete.js"></script>
 <script type="text/javascript" src="js/realtime-validation.js"></script>

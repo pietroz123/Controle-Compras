@@ -14,17 +14,17 @@
     }
 
     // Pega os dados da requisicao POST
-    $nome = $_POST['nome'];
-    $cpf = $_POST['cpf'];
-    $cep = $_POST['cep'];
-    $cidade = $_POST['cidade'];
-    $estado = $_POST['estado'];
-    $endereco = $_POST['endereco'];
-    $telefone = $_POST['telefone'];
-    $email_cadastro = $_POST['email'];
-    $username = $_POST['usuario'];
-    $senha_cadastro = $_POST['senha'];
-    $senha_rep_cadastro = $_POST['senha-rep'];
+    $nome                   = $_POST['nome'];
+    $cpf                    = $_POST['cpf'];
+    $cep                    = $_POST['cep'];
+    $cidade                 = $_POST['cidade'];
+    $estado                 = $_POST['estado'];
+    $endereco               = $_POST['endereco'];
+    $telefone               = $_POST['telefone'];
+    $email_cadastro         = $_POST['email'];
+    $username               = $_POST['usuario'];
+    $senha_cadastro         = $_POST['senha'];
+    $senha_rep_cadastro     = $_POST['senha-rep'];
 
 
     // Verifica se existem campos em branco
