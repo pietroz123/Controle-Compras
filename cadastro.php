@@ -88,13 +88,14 @@
         <div class="form-row">
             <div class="col-sm-12 col-md-6">
                 <div class="md-form">
+                    <i class="fas fa-user-circle prefix"></i>
                     <input type="text" name="nome" class="form-control" placeholder="Digite o seu primeiro nome" required>
                     <label for="nome">Primeiro Nome</label>
                 </div>
             </div>
             <div class="col-sm-12 col-md-6">
                 <div class="md-form">
-                    <img src="img/email.png" alt="Icone Email" class="prefix">
+                    <i class="far fa-envelope prefix"></i>
                     <input type="email" name="email" class="form-control" placeholder="Digite seu e-mail" required>
                     <label for="email">E-mail</label>
                 </div>
@@ -105,6 +106,7 @@
 
         <div class="entrada-usuario">
             <div class="md-form">
+                <i class="fas fa-user prefix"></i>
                 <input type="text" name="usuario" class="form-control" placeholder="Escolha um nome de usuário" minlength="4" id="input-usuario-cadastro" required>
                     <ul class="input-requirements">
                         <li>Pelo menos 4 caracteres</li>
@@ -116,6 +118,7 @@
 
         <div class="entrada-senha">
             <div class="md-form">
+                <i class="fas fa-unlock prefix"></i>
                 <input type="password" name="senha" class="form-control" placeholder="Digite uma senha" autocomplete="off" minlength="5" maxlength="20" id="input-senha-cadastro" required>
                     <ul class="input-requirements">
                         <li>Pelo menos 5 caracteres</li>
@@ -129,6 +132,7 @@
         </div>
 
         <div class="md-form">
+            <i class="fas fa-unlock prefix"></i>
             <input type="password" name="senha-rep" class="form-control" placeholder="Repita a senha" id="input-senha-rep-cadastro" required>
             <label for="senha-rep">Repita a senha</label>
         </div>
@@ -146,8 +150,6 @@
 <?php
     include $_SERVER['DOCUMENT_ROOT'].'/rodape.php';
 ?>
-
-<div>Icons made by <a href="https://www.flaticon.com/authors/vectors-market" title="Vectors Market">Vectors Market</a> from <a href="https://www.flaticon.com/" 		    title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" 		    title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
 
 <script type="text/javascript" src="js/awesomplete.js"></script>
 <script type="text/javascript" src="js/realtime-validation.js"></script>
