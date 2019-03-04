@@ -24,7 +24,7 @@
         <link type="text/css" href="css/design-responsivo.css" rel="stylesheet">
         
         <!-- Viewport -->
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
         
         <!-- Fontes de Texto -->
         <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">

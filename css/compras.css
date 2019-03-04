@@ -198,9 +198,12 @@ body > .container {
    ========================================================== */
 
 #form-cadastro {
-    background-color: white;
     padding: 40px;
-    border-radius: 10px;
+}
+#form-cadastro h1 {
+    font-family: 'Oswald', sans-serif;
+    letter-spacing: 2.81px;
+    margin-bottom: 0;
 }
 
 

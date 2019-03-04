@@ -1,4 +1,10 @@
 
+.input-requirements {
+    margin-left: 10px;
+}
+.input-requirements li {
+    list-style-type: none !important;
+}
 
 .input-requirements li.invalid {
     color: #e74c3c;
