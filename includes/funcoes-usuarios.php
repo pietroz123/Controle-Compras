@@ -24,18 +24,12 @@ function buscar_usuario_id($conexao, $id_usuario) {
     return $usuario;
 }
 
-function criar_usuario($conexao, $nome, $cpf, $cep, $cidade, $estado, $endereco, $telefone, $username, $email, $senha) {
+function criar_usuario($conexao, $nome, $username, $email, $senha) {
 
     $nome = mysqli_real_escape_string($conexao, $nome);
-    $cpf = mysqli_real_escape_string($conexao, $cpf);
-    $cep = mysqli_real_escape_string($conexao, $cep);
-    $cidade = mysqli_real_escape_string($conexao, $cidade);
-    $estado = mysqli_real_escape_string($conexao, $estado);
-    $endereco = mysqli_real_escape_string($conexao, $endereco);
-    $telefone = mysqli_real_escape_string($conexao, $telefone);
 
     // Insere o comprador
-    if (!inserir_comprador($conexao, $nome, $cidade, $estado, $endereco, $cep, $cpf, $email, $telefone)) {
+    if (!inserir_comprador($conexao, $nome, $email)) {
         $_SESSION['danger'] = "Erro ao inserir comprador" . mysqli_error($conexao);
         header("Location: ../index.php");
         die();

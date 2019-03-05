@@ -122,17 +122,11 @@ function buscar_comprador($conexao, $id_comprador) {
 
 /*********************** Funções dos compradores ***********************/
 
-function inserir_comprador($conexao, $nome, $cidade, $estado, $endereco, $cep, $cpf, $email, $telefone) {
+function inserir_comprador($conexao, $nome, $email) {
 
     $nome = mysqli_real_escape_string($conexao, $nome);
-    $cidade = mysqli_real_escape_string($conexao, $cidade);
-    $estado = mysqli_real_escape_string($conexao, $estado);
-    $endereco = mysqli_real_escape_string($conexao, $endereco);
-    $cep = mysqli_real_escape_string($conexao, $cep);
-    $cpf = mysqli_real_escape_string($conexao, $cpf);
     $email = mysqli_real_escape_string($conexao, $email);
-    $telefone = mysqli_real_escape_string($conexao, $telefone);
 
-    $query = "INSERT INTO compradores (nome, cidade, estado, endereco, cep, cpf, email, telefone) VALUES ('{$nome}', '{$cidade}', '{$estado}', '{$endereco}', '{$cep}', '{$cpf}', '{$email}', '{$telefone}');";
+    $query = "INSERT INTO compradores (nome, email) VALUES ('{$nome}', '{$email}');";
     return mysqli_query($conexao, $query);
 }

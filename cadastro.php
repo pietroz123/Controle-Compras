@@ -3,11 +3,10 @@
 ?>
 <link type="text/css" href="css/realtime-validation.css" rel="stylesheet">
 
-<form action="scripts/cadastrar.php" method="post" id="form-cadastro" autocomplete="off">
+<!-- <form action="scripts/cadastrar.php" method="post" id="form-cadastro" autocomplete="off">
     <h1>Formulario de Cadastro</h1>
     <div class="grid grid-cadastro">
         <div class="row">
-            <!-- col col-sm col-md col-lg col-xl -->
             <div class="col-sm-1 col-md-2">Nome</div>
             <div class="col-sm-5 col-md"><input type="text" name="nome" class="form-control" placeholder="Digite o seu primeiro nome" required></div>
         </div>
@@ -76,7 +75,7 @@
             <button type="submit" name="submit" class="btn btn-cyan btn-block">cadastrar</button>
         </div>
     </div>
-</form>
+</form> -->
 
 <form action="scripts/cadastrar.php" method="post" id="form-cadastro" autocomplete="off">
     
