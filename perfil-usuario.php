@@ -23,7 +23,7 @@
                 
                 <div class="container">
 
-                    <form action="scripts/alterar-dados-perfil.php" method="post">
+                    <form action="scripts/alterar-dados-perfil.php" method="post" id="form-perfil">
 
                         <!-- Dados gerais -->
                         <div class="row">
@@ -31,7 +31,7 @@
                                 <div class="mb-3">
                                     <h6 class="titulo-dados">Dados gerais</h6>
                                     <hr>
-                                    <a class="btn btn-light botao-pequeno mt-1" href="#!"><i class="fas fa-edit"></i> editar</a>
+                                    <a class="btn btn-light botao-pequeno mt-1 btn-editar" href="#!"><i class="fas fa-edit"></i> editar</a>
                                 </div>
                                 <div class="row">
                                     <div class="container">
@@ -39,19 +39,19 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col">
+                            <div class="col dados">
 
                                 <label for="nome-usuario" class="font-small font-weight-bold">Nome</label>
                                 <input class="form-control" type="text" name="nome" id="nome-usuario" value="<?= $usuario['Nome']; ?>" disabled>
 
                                 <label for="cpf-usuario" class="font-small font-weight-bold">CPF</label>
-                                <input class="form-control" type="text" name="cpf" id="cpf-usuario" value="<?= $usuario['CPF']; ?>" disabled>
+                                <input class="form-control" type="text" name="cpf" id="cpf-usuario" value="<?= $usuario['CPF']; ?>" disabled editable>
 
                                 <label for="email-usuario" class="font-small font-weight-bold">E-Mail</label>
-                                <input class="form-control" type="email" name="email" id="email-usuario" value="<?= $usuario['Email']; ?>" disabled>
+                                <input class="form-control" type="email" name="email" id="email-usuario" value="<?= $usuario['Email']; ?>" disabled editable>
 
                                 <label for="telefone-usuario" class="font-small font-weight-bold">Telefone</label>
-                                <input class="form-control" type="text" name="telefone" id="telefone-usuario" value="<?= $usuario['Telefone']; ?>" disabled>
+                                <input class="form-control" type="text" name="telefone" id="telefone-usuario" value="<?= $usuario['Telefone']; ?>" disabled editable>
 
                             </div>
                         </div>
@@ -64,31 +64,23 @@
                                 <div class="mb-3">
                                     <h6 class="titulo-dados">Dados endereço</h6>
                                     <hr>
-                                    <a class="btn btn-light botao-pequeno mt-1" href="#!"><i class="fas fa-edit"></i> editar</a>
+                                    <a class="btn btn-light botao-pequeno mt-1 btn-editar" href="#!"><i class="fas fa-edit"></i> editar</a>
                                 </div>
                             </div>
-                            <div class="col">
+                            <div class="col dados">
 
                                 <label for="cep-usuario" class="font-small font-weight-bold">CEP</label>
-                                <input class="form-control" type="text" name="cep" id="cep-usuario" value="<?= $usuario['CEP']; ?>" disabled>
+                                <input class="form-control" type="text" name="cep" id="cep-usuario" value="<?= $usuario['CEP']; ?>" disabled editable>
 
                                 <label for="cidade-usuario" class="font-small font-weight-bold">Cidade</label>
-                                <input class="form-control" type="text" name="cidade" id="cidade-usuario" value="<?= $usuario['Cidade']; ?>" disabled>
+                                <input class="form-control" type="text" name="cidade" id="cidade-usuario" value="<?= $usuario['Cidade']; ?>" disabled editable>
 
                                 <label for="estado-usuario" class="font-small font-weight-bold">Estado</label>
-                                <input class="form-control" type="text" name="estado" id="estado-usuario" value="<?= $usuario['Estado']; ?>" disabled>
+                                <input class="form-control" type="text" name="estado" id="estado-usuario" value="<?= $usuario['Estado']; ?>" disabled editable>
 
                                 <label for="endereco-usuario" class="font-small font-weight-bold">Endereço</label>
-                                <input class="form-control" type="text" name="endereco" id="endereco-usuario" value="<?= $usuario['Endereco']; ?>" disabled>
+                                <input class="form-control" type="text" name="endereco" id="endereco-usuario" value="<?= $usuario['Endereco']; ?>" disabled editable>
 
-                            </div>
-                        </div>
-
-                        <hr>
-
-                        <div class="row">
-                            <div class="col">
-                                <button class="btn btn-success float-right" type="submit" name="submit-alteracoes">realizar alterações</button>
                             </div>
                         </div>
 
@@ -250,9 +242,60 @@
         $("#cep-usuario").mask('00000-000');                  /* Formata o CEP */
         $('#telefone-usuario').mask('(00) 00000-0000');       /* Formata o telefone */
 
+
+
                 
     });
 
+
+    // =======================================================
+    // Edição do perfil do usuário
+    // =======================================================
+
+    $(document).on('click', '.btn-editar', function() {
+
+        // Deixa todos os campos disponiveis para edição
+        var dados = $(this).parent().parent().parent().children('.dados');
+        $(dados).children('input[editable]').each(function() {
+            $(this).removeAttr('disabled');
+        });
+
+        // Modifica o ícone de editar para cancelar
+        $(this).removeClass('btn-light btn-editar');
+        $(this).addClass('btn-danger btn-cancelar');
+        $(this).html('<i class="fas fa-times"></i> cancelar');
+        
+
+        // Adiciona botão de alteração ao form
+        if( !($('.alterar').length) ) {
+            $('#form-perfil').append('<div class="alterar"><hr><div class="row"><div class="col"><button class="btn btn-success float-right" type="submit" name="submit-alteracoes">realizar alterações</button></div></div></div>');
+        }
+        
+
+    });
+
+    $(document).on('click', '.btn-cancelar', function() {
+
+        // Deixa todos os campos indisponiveis para edição
+        var dados = $(this).parent().parent().parent().children('.dados');
+        $(dados).children('input[editable]').each(function() {
+            this.setAttribute('disabled', '');
+        });
+
+        // Modifica o ícone de cancelar para editar
+        $(this).removeClass('btn-danger btn-cancelar');
+        $(this).addClass('btn-light btn-editar');
+        $(this).html('<i class="fas fa-edit"></i> editar');
+
+        // Se existe apenas um botao de edição, então remova a div com o botão de alteração
+        if ( $('.btn-cancelar').length == 0 ) {
+            $('.alterar').remove();
+        }
+        
+
+    });
+
+    
 
     /* ===========================================================================================================
     ===================================== PREENCHE MODAL MEMBROS GRUPO COM AJAX ==================================
