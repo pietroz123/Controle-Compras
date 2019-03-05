@@ -205,6 +205,15 @@
             modal.find('#criar-username').val(username);
         });
 
+
+        // =======================================================
+        // Máscaras
+        // =======================================================
+
+        $("#cpf-usuario").mask('000.000.000-00');             /* Formata o CPF */
+        $("#cep-usuario").mask('00000-000');                  /* Formata o CEP */
+        $('#telefone-usuario').mask('(00) 00000-0000');       /* Formata o telefone */
+
                 
     });
 
