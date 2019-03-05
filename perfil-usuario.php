@@ -280,22 +280,24 @@
                 $('#estado-usuario').val('...');
                 $('#endereco-usuario').val('...');
 
-                //Consulta o webservice viacep.com.br/
-                $.getJSON("https://viacep.com.br/ws/"+ cep +"/json/?callback=?", function(dados) {
+                setTimeout(function() {
+                    //Consulta o webservice viacep.com.br/
+                    $.getJSON("https://viacep.com.br/ws/"+ cep +"/json/?callback=?", function(dados) {
 
-                    if (!("erro" in dados)) {
-                        //Atualiza os campos com os valores da consulta.
-                        $("#endereco-usuario").val(dados.logradouro);
-                        $("#cidade-usuario").val(dados.localidade);
-                        $("#estado-usuario").val(dados.uf);
-                    }
-                    else {
-                        //CEP pesquisado não foi encontrado.
-                        limpa_formulario_cep();
-                        alert("CEP não encontrado.");
-                    }
+                        if (!("erro" in dados)) {
+                            //Atualiza os campos com os valores da consulta.
+                            $("#endereco-usuario").val(dados.logradouro);
+                            $("#cidade-usuario").val(dados.localidade);
+                            $("#estado-usuario").val(dados.uf);
+                        }
+                        else {
+                            //CEP pesquisado não foi encontrado.
+                            limpa_formulario_cep();
+                            alert("CEP não encontrado.");
+                        }
 
-                });
+                    });
+                }, 1500);
 
             }
 
