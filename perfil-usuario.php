@@ -81,10 +81,10 @@
                 <div class="row">
                     <div class="col-sm col-md col-lg">Grupos</div>
                     <div class="col-sm-2 col-md-3 col-lg-2">
-                        <button class="btn default-color botao-pequeno btn-criar-grupo btn-block" style="float: right;" data-toggle="modal" data-target="#modal-criar-grupo" data-username="<?= $usuario['Usuario']; ?>">criar grupo</button>
+                        <button class="btn default-color botao-pequeno btn-criar-grupo" style="float: right;" data-toggle="modal" data-target="#modal-criar-grupo" data-username="<?= $usuario['Usuario']; ?>">criar grupo</button>
                         <div class="adicional" style="display: none; float: left;"></div>
                     </div>
-                    <div class="col-sm-2 col-md-5 col-lg-3"><button class="btn default-color botao-pequeno btn-recarregar-grupos btn-block" username-usuario="<?= $usuario['Usuario'] ?>"><i class="fas fa-sync-alt" id="icone-recarregar"></i> recarregar grupos</button></div>
+                    <div class="col-sm-2 col-md-5 col-lg-3"><button class="btn default-color botao-pequeno btn-recarregar-grupos" username-usuario="<?= $usuario['Usuario'] ?>"><i class="fas fa-sync-alt" id="icone-recarregar"></i> recarregar grupos</button></div>
                 </div>
             </div>
 
