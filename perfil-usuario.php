@@ -98,15 +98,15 @@
 
         <div class="card z-depth-2 mt-3" id="cartao-grupos-usuario">
             
-            <div class="card-header default-color-dark white-text">
-                <div class="row">
-                    <div class="col-sm col-md col-lg">Grupos</div>
-                    <div class="col-sm-2 col-md-3 col-lg-2">
-                        <button class="btn default-color botao-pequeno btn-criar-grupo" style="float: right;" data-toggle="modal" data-target="#modal-criar-grupo" data-username="<?= $usuario['Usuario']; ?>">criar grupo</button>
-                        <div class="adicional" style="display: none; float: left;"></div>
-                    </div>
-                    <div class="col-sm-2 col-md-5 col-lg-3"><button class="btn default-color botao-pequeno btn-recarregar-grupos" username-usuario="<?= $usuario['Usuario'] ?>"><i class="fas fa-sync-alt" id="icone-recarregar"></i> recarregar grupos</button></div>
+            <div class="card-header default-color-dark white-text d-flex justify-content-around flex-sm-row flex-column">
+                
+                <div class="mr-auto">Grupos</div>
+                <div class="float-right">
+                    <button class="btn default-color botao-pequeno btn-criar-grupo float-right btn-block mr-2" data-toggle="modal" data-target="#modal-criar-grupo" data-username="<?= $usuario['Usuario']; ?>">criar grupo</button>
+                    <div class="adicional" style="display: none; float: left;"></div>
                 </div>
+                <div class="float-right"><button class="btn default-color botao-pequeno btn-recarregar-grupos btn-block" username-usuario="<?= $usuario['Usuario'] ?>"><i class="fas fa-sync-alt" id="icone-recarregar"></i> recarregar grupos</button></div>
+            
             </div>
 
             <div class="card-body">
@@ -175,6 +175,10 @@
         var url = window.location.href;
         var id = url.substring(url.lastIndexOf("#") + 1);
         
+
+        // =======================================================
+        // Script para adicionar a flecha de criar novo grupo
+        // =======================================================
         if (id == "cartao-grupos-usuario") {
 
             // Scroll até a tabela de compras
@@ -207,15 +211,22 @@
 
         }
 
+
+        // =======================================================
+        // Design responsivo botões criar e recarregar
+        // =======================================================
         $(window).resize(function() {
-            if ($(window).width() <= 500) {
-                $('.btn-criar-grupo').addClass("btn-block mt-2");
-                $('.btn-recarregar-grupos').addClass("btn-block mt-2");
+            if ($(window).width() <= 576) {
+                $('.btn-criar-grupo').removeClass("mr-2");
+                $('.btn-criar-grupo').addClass("mt-2");
+                $('.btn-recarregar-grupos').addClass("mt-2");
             } else {
-                $('.btn-criar-grupo').removeClass("btn-block mt-2");
-                $('.btn-recarregar-grupos').removeClass("btn-block mt-2");
+                $('.btn-criar-grupo').addClass("mr-2");
+                $('.btn-criar-grupo').removeClass("mt-2");
+                $('.btn-recarregar-grupos').removeClass("mt-2");
             }
         });
+
 
         $('#modal-criar-grupo').on('show.bs.modal', function(event) {
             // Recupera as informacoes do botao
