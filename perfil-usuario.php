@@ -243,6 +243,65 @@
         $('#telefone-usuario').mask('(00) 00000-0000');       /* Formata o telefone */
 
 
+        // =======================================================
+        // Preenchimento automatico do endereco via CEP
+        // =======================================================
+
+        // Via JSON:
+        // {
+        //     "cep": "01001-000",
+        //     "logradouro": "Praça da Sé",
+        //     "complemento": "lado ímpar",
+        //     "bairro": "Sé",
+        //     "localidade": "São Paulo",
+        //     "uf": "SP",
+        //     "unidade": "",
+        //     "ibge": "3550308",
+        //     "gia": "1004"
+        // }
+
+        function limpa_formulario_cep() {
+            // Limpa valores do formulário de cep.
+            $('#cidade-usuario').val('');
+            $('#estado-usuario').val('');
+            $('#endereco-usuario').val('');
+        }
+
+        $('#cep-usuario').blur(function() {            
+
+            // Nova variável "cep" somente com dígitos.
+            var cep = $(this).val().replace(/\D/g, '');
+
+            // Verifica se o CEP não é vazio
+            if (cep != "") {
+
+                // Loading enquanto procura o CEP
+                $('#cidade-usuario').val('...');
+                $('#estado-usuario').val('...');
+                $('#endereco-usuario').val('...');
+
+                //Consulta o webservice viacep.com.br/
+                $.getJSON("https://viacep.com.br/ws/"+ cep +"/json/?callback=?", function(dados) {
+
+                    if (!("erro" in dados)) {
+                        //Atualiza os campos com os valores da consulta.
+                        $("#endereco-usuario").val(dados.logradouro);
+                        $("#cidade-usuario").val(dados.localidade);
+                        $("#estado-usuario").val(dados.uf);
+                    }
+                    else {
+                        //CEP pesquisado não foi encontrado.
+                        limpa_formulario_cep();
+                        alert("CEP não encontrado.");
+                    }
+
+                });
+
+            }
+
+        });
+
+
 
                 
     });
