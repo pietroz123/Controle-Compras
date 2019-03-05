@@ -23,51 +23,59 @@
                 
                 <div class="container">
 
-                    <div class="row">
-                        <div class="col col-sm-3">Usuário</div>
-                        <div class="col">
+                    <form action="scripts/alterar-dados-perfil.php" method="post">
 
-                            <label for="nome-usuario" class="font-small font-weight-bold">Nome</label>
-                            <input class="form-control" type="text" name="nome" id="nome-usuario" value="<?= $usuario['Nome']; ?>" disabled>
+                        <!-- Dados gerais -->
+                        <div class="row">
+                            <div class="col col-sm-3">Dados Gerais</div>
+                            <div class="col">
 
-                            <label for="cpf-usuario" class="font-small font-weight-bold">CPF</label>
-                            <input class="form-control" type="text" name="cpf" id="cpf-usuario" value="<?= $usuario['CPF']; ?>">
+                                <label for="nome-usuario" class="font-small font-weight-bold">Nome</label>
+                                <input class="form-control" type="text" name="nome" id="nome-usuario" value="<?= $usuario['Nome']; ?>" disabled>
 
-                            <label for="email-usuario" class="font-small font-weight-bold">E-Mail</label>
-                            <input class="form-control" type="email" name="email" id="email-usuario" value="<?= $usuario['Email']; ?>">
+                                <label for="cpf-usuario" class="font-small font-weight-bold">CPF</label>
+                                <input class="form-control" type="text" name="cpf" id="cpf-usuario" value="<?= $usuario['CPF']; ?>">
 
-                            <label for="telefone-usuario" class="font-small font-weight-bold">Telefone</label>
-                            <input class="form-control" type="text" name="telefone" id="telefone-usuario" value="<?= $usuario['Telefone']; ?>">
+                                <label for="email-usuario" class="font-small font-weight-bold">E-Mail</label>
+                                <input class="form-control" type="email" name="email" id="email-usuario" value="<?= $usuario['Email']; ?>">
 
+                                <label for="telefone-usuario" class="font-small font-weight-bold">Telefone</label>
+                                <input class="form-control" type="text" name="telefone" id="telefone-usuario" value="<?= $usuario['Telefone']; ?>">
+
+                            </div>
                         </div>
-                    </div>
 
-                    <hr>
+                        <hr>
 
-                    <div class="row mt-4">
-                        <div class="col col-sm-3">Endereço</div>
-                        <div class="col">
+                        <!-- Dados endereço -->
+                        <div class="row mt-4">
+                            <div class="col col-sm-3">Dados de Endereço</div>
+                            <div class="col">
 
-                            <label for="cidade-usuario" class="font-small font-weight-bold">Cidade</label>
-                            <input class="form-control" type="text" name="cidade" id="cidade-usuario" value="<?= $usuario['Cidade']; ?>">
+                                <label for="cep-usuario" class="font-small font-weight-bold">CEP</label>
+                                <input class="form-control" type="text" name="cep" id="cep-usuario" value="<?= $usuario['CEP']; ?>">
 
-                            <label for="estado-usuario" class="font-small font-weight-bold">Estado</label>
-                            <input class="form-control" type="text" name="estado" id="estado-usuario" value="<?= $usuario['Estado']; ?>">
+                                <label for="cidade-usuario" class="font-small font-weight-bold">Cidade</label>
+                                <input class="form-control" type="text" name="cidade" id="cidade-usuario" value="<?= $usuario['Cidade']; ?>">
 
-                            <label for="cep-usuario" class="font-small font-weight-bold">CEP</label>
-                            <input class="form-control" type="text" name="cep" id="cep-usuario" value="<?= $usuario['CEP']; ?>">
+                                <label for="estado-usuario" class="font-small font-weight-bold">Estado</label>
+                                <input class="form-control" type="text" name="estado" id="estado-usuario" value="<?= $usuario['Estado']; ?>">
 
-                            <label for="endereco-usuario" class="font-small font-weight-bold">Endereço</label>
-                            <input class="form-control" type="text" name="endereco" id="endereco-usuario" value="<?= $usuario['Endereco']; ?>">
+                                <label for="endereco-usuario" class="font-small font-weight-bold">Endereço</label>
+                                <input class="form-control" type="text" name="endereco" id="endereco-usuario" value="<?= $usuario['Endereco']; ?>">
 
+                            </div>
                         </div>
-                    </div>
 
-                    <hr>
+                        <hr>
 
-                    <div class="row">
-                        <div class="col"><button class="btn btn-success float-right">realizar alterações</button></div>
-                    </div>
+                        <div class="row">
+                            <div class="col">
+                                <button class="btn btn-success float-right" type="submit" name="submit-alteracoes">realizar alterações</button>
+                            </div>
+                        </div>
+
+                    </form>
 
 
                 </div>
