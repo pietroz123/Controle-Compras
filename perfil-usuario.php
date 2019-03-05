@@ -29,7 +29,9 @@
                         <div class="row">
                             <div class="col-12 col-sm-12 col-md-4 col-lg-3">
                                 <div class="mb-3">
-                                    <h6>Dados gerais</h6>
+                                    <h6 class="titulo-dados">Dados gerais</h6>
+                                    <hr>
+                                    <a class="btn btn-light botao-pequeno mt-1" href="#!"><i class="fas fa-edit"></i> editar</a>
                                 </div>
                                 <div class="row">
                                     <div class="container">
@@ -43,13 +45,13 @@
                                 <input class="form-control" type="text" name="nome" id="nome-usuario" value="<?= $usuario['Nome']; ?>" disabled>
 
                                 <label for="cpf-usuario" class="font-small font-weight-bold">CPF</label>
-                                <input class="form-control" type="text" name="cpf" id="cpf-usuario" value="<?= $usuario['CPF']; ?>">
+                                <input class="form-control" type="text" name="cpf" id="cpf-usuario" value="<?= $usuario['CPF']; ?>" disabled>
 
                                 <label for="email-usuario" class="font-small font-weight-bold">E-Mail</label>
-                                <input class="form-control" type="email" name="email" id="email-usuario" value="<?= $usuario['Email']; ?>">
+                                <input class="form-control" type="email" name="email" id="email-usuario" value="<?= $usuario['Email']; ?>" disabled>
 
                                 <label for="telefone-usuario" class="font-small font-weight-bold">Telefone</label>
-                                <input class="form-control" type="text" name="telefone" id="telefone-usuario" value="<?= $usuario['Telefone']; ?>">
+                                <input class="form-control" type="text" name="telefone" id="telefone-usuario" value="<?= $usuario['Telefone']; ?>" disabled>
 
                             </div>
                         </div>
@@ -60,22 +62,24 @@
                         <div class="row mt-4">
                             <div class="col-12 col-sm-12 col-md-4 col-lg-3">
                                 <div class="mb-3">
-                                    <h6>Dados endereço</h6>
+                                    <h6 class="titulo-dados">Dados endereço</h6>
+                                    <hr>
+                                    <a class="btn btn-light botao-pequeno mt-1" href="#!"><i class="fas fa-edit"></i> editar</a>
                                 </div>
                             </div>
                             <div class="col">
 
                                 <label for="cep-usuario" class="font-small font-weight-bold">CEP</label>
-                                <input class="form-control" type="text" name="cep" id="cep-usuario" value="<?= $usuario['CEP']; ?>">
+                                <input class="form-control" type="text" name="cep" id="cep-usuario" value="<?= $usuario['CEP']; ?>" disabled>
 
                                 <label for="cidade-usuario" class="font-small font-weight-bold">Cidade</label>
-                                <input class="form-control" type="text" name="cidade" id="cidade-usuario" value="<?= $usuario['Cidade']; ?>">
+                                <input class="form-control" type="text" name="cidade" id="cidade-usuario" value="<?= $usuario['Cidade']; ?>" disabled>
 
                                 <label for="estado-usuario" class="font-small font-weight-bold">Estado</label>
-                                <input class="form-control" type="text" name="estado" id="estado-usuario" value="<?= $usuario['Estado']; ?>">
+                                <input class="form-control" type="text" name="estado" id="estado-usuario" value="<?= $usuario['Estado']; ?>" disabled>
 
                                 <label for="endereco-usuario" class="font-small font-weight-bold">Endereço</label>
-                                <input class="form-control" type="text" name="endereco" id="endereco-usuario" value="<?= $usuario['Endereco']; ?>">
+                                <input class="form-control" type="text" name="endereco" id="endereco-usuario" value="<?= $usuario['Endereco']; ?>" disabled>
 
                             </div>
                         </div>

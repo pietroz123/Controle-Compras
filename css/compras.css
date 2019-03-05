@@ -271,6 +271,14 @@ p.texto-dados {
 }
 
 
+.titulo-dados {
+    font-style: italic;
+}
+.titulo-dados + hr {
+    margin: 0;
+    border-top: 2px solid black;
+}
+
 /* ==========================================================
    ================= INFORMAÇÕES GRUPOS =====================
    ========================================================== */
