@@ -16,88 +16,120 @@
     <h2 class="titulo-perfil">Perfil de <?= $usuario['Nome']; ?></h2>
 
     <div class="grid dados-perfil">
-        <div class="row">
-            <div class="col col-md-5 mb-3">
-                <div class="card z-depth-2">
-                    <div class="card-header default-color white-text">Dados Pessoais</div>
-                    <div class="card-body">
-                        <h5 class="nome-perfil"><?= $usuario['Nome']; ?></h5>
-                        <p class="texto-dados"><?= $usuario['Telefone']; ?></p>
-                        <p class="texto-dados"><?= $usuario['CPF']; ?></p>
-                        <p class="texto-dados"><?= $usuario['Email']; ?></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col col-md-7 mb-3">
-                <div class="card z-depth-2">
-                    <div class="card-header default-color white-text">Endereço</div>
-                    <div class="card-body">
-                        <h5 class="nome-perfil"><?= $usuario['Nome']; ?></h5>
-                        <p class="texto-dados"><?= $usuario['Endereco']; ?></p>
-                        <p class="texto-dados"><?php echo $usuario['Cidade'] . ' - ' . $usuario['Estado'] ?></p>
-                        <p class="texto-dados"><?= $usuario['CEP']; ?></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <div class="card z-depth-2" id="cartao-grupos-usuario">
-                    
-                    <div class="card-header default-color-dark white-text">
-                        <div class="row">
-                            <div class="col-sm col-md col-lg">Grupos</div>
-                            <div class="col-sm-2 col-md-3 col-lg-2">
-                                <button class="btn default-color botao-pequeno btn-criar-grupo btn-block" style="float: right;" data-toggle="modal" data-target="#modal-criar-grupo" data-username="<?= $usuario['Usuario']; ?>">criar grupo</button>
-                                <div class="adicional" style="display: none; float: left;"></div>
-                            </div>
-                            <div class="col-sm-2 col-md-5 col-lg-3"><button class="btn default-color botao-pequeno btn-recarregar-grupos btn-block" username-usuario="<?= $usuario['Usuario'] ?>"><i class="fas fa-sync-alt" id="icone-recarregar"></i> recarregar grupos</button></div>
+
+        <div class="card z-depth-2">
+            <div class="card-header default-color white-text">Dados Pessoais</div>
+            <div class="card-body">
+                
+                <div class="container">
+
+                    <div class="row">
+                        <div class="col col-sm-3">Usuário</div>
+                        <div class="col">
+
+                            <label for="nome-usuario" class="font-small font-weight-bold">Nome</label>
+                            <input class="form-control" type="text" name="nome" id="nome-usuario" value="<?= $usuario['Nome']; ?>" disabled>
+
+                            <label for="cpf-usuario" class="font-small font-weight-bold">CPF</label>
+                            <input class="form-control" type="text" name="cpf" id="cpf-usuario" value="<?= $usuario['CPF']; ?>">
+
+                            <label for="email-usuario" class="font-small font-weight-bold">E-Mail</label>
+                            <input class="form-control" type="email" name="email" id="email-usuario" value="<?= $usuario['Email']; ?>">
+
+                            <label for="telefone-usuario" class="font-small font-weight-bold">Telefone</label>
+                            <input class="form-control" type="text" name="telefone" id="telefone-usuario" value="<?= $usuario['Telefone']; ?>">
+
                         </div>
                     </div>
 
-                    <div class="card-body">
-                        <div class="container" id="container-tabela-grupos">
-                            <?php
-                                $grupos = recuperar_grupos($conexao, $usuario['Usuario']);
-                                if (count($grupos) > 0) {
-                            ?>
-                                <table class="table table-hover table-grupos" id="tabela-grupos">
-                                    <thead style="font-weight: bold;">
-                                        <tr>
-                                            <th class="thead-grupos">Nome</th>
-                                            <th class="thead-grupos">Data Criação</th>
-                                            <th class="thead-grupos">Número Membros</th>
-                                            <th class="thead-grupos">Visualizar</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="grupos-usuario">
+                    <hr>
 
-                                    <?php foreach ($grupos AS $grupo) { ?>
-                                        <tr>
-                                            <td><?= $grupo['Nome']; ?></td>
-                                            <td><?= date("d/m/Y h:m", strtotime($grupo['Data_Criacao'])); ?></td>
-                                            <td><?= $grupo['Numero_Membros']; ?></td>
-                                            <td>
-                                                <button class="btn btn-info botao-pequeno btn-membros" id="<?= $grupo['ID']; ?>" username="<?= $usuario['Usuario']; ?>">Membros</button>
-                                            </td>
-                                        </tr>
-                                    <?php } ?>
+                    <div class="row mt-4">
+                        <div class="col col-sm-3">Endereço</div>
+                        <div class="col">
 
-                                    </tbody>
-                            <?php
-                                }
-                                else {
-                            ?>
-                                    <div class="alert alert-danger" role="alert">Você não está em nenhum grupo</div>
-                            <?php
-                                }
-                            ?>
-                            </table>
+                            <label for="cidade-usuario" class="font-small font-weight-bold">Cidade</label>
+                            <input class="form-control" type="text" name="cidade" id="cidade-usuario" value="<?= $usuario['Cidade']; ?>">
+
+                            <label for="estado-usuario" class="font-small font-weight-bold">Estado</label>
+                            <input class="form-control" type="text" name="estado" id="estado-usuario" value="<?= $usuario['Estado']; ?>">
+
+                            <label for="cep-usuario" class="font-small font-weight-bold">CEP</label>
+                            <input class="form-control" type="text" name="cep" id="cep-usuario" value="<?= $usuario['CEP']; ?>">
+
+                            <label for="endereco-usuario" class="font-small font-weight-bold">Endereço</label>
+                            <input class="form-control" type="text" name="endereco" id="endereco-usuario" value="<?= $usuario['Endereco']; ?>">
+
                         </div>
                     </div>
+
+                    <hr>
+
+                    <div class="row">
+                        <div class="col"><button class="btn btn-success float-right">realizar alterações</button></div>
+                    </div>
+
+
+                </div>
+                
+            </div>
+        </div>
+
+        <div class="card z-depth-2 mt-3" id="cartao-grupos-usuario">
+            
+            <div class="card-header default-color-dark white-text">
+                <div class="row">
+                    <div class="col-sm col-md col-lg">Grupos</div>
+                    <div class="col-sm-2 col-md-3 col-lg-2">
+                        <button class="btn default-color botao-pequeno btn-criar-grupo btn-block" style="float: right;" data-toggle="modal" data-target="#modal-criar-grupo" data-username="<?= $usuario['Usuario']; ?>">criar grupo</button>
+                        <div class="adicional" style="display: none; float: left;"></div>
+                    </div>
+                    <div class="col-sm-2 col-md-5 col-lg-3"><button class="btn default-color botao-pequeno btn-recarregar-grupos btn-block" username-usuario="<?= $usuario['Usuario'] ?>"><i class="fas fa-sync-alt" id="icone-recarregar"></i> recarregar grupos</button></div>
+                </div>
+            </div>
+
+            <div class="card-body">
+                <div class="container" id="container-tabela-grupos">
+                    <?php
+                        $grupos = recuperar_grupos($conexao, $usuario['Usuario']);
+                        if (count($grupos) > 0) {
+                    ?>
+                        <table class="table table-hover table-grupos" id="tabela-grupos">
+                            <thead style="font-weight: bold;">
+                                <tr>
+                                    <th class="thead-grupos">Nome</th>
+                                    <th class="thead-grupos">Data Criação</th>
+                                    <th class="thead-grupos">Número Membros</th>
+                                    <th class="thead-grupos">Visualizar</th>
+                                </tr>
+                            </thead>
+                            <tbody id="grupos-usuario">
+
+                            <?php foreach ($grupos AS $grupo) { ?>
+                                <tr>
+                                    <td><?= $grupo['Nome']; ?></td>
+                                    <td><?= date("d/m/Y h:m", strtotime($grupo['Data_Criacao'])); ?></td>
+                                    <td><?= $grupo['Numero_Membros']; ?></td>
+                                    <td>
+                                        <button class="btn btn-info botao-pequeno btn-membros" id="<?= $grupo['ID']; ?>" username="<?= $usuario['Usuario']; ?>">Membros</button>
+                                    </td>
+                                </tr>
+                            <?php } ?>
+
+                            </tbody>
+                    <?php
+                        }
+                        else {
+                    ?>
+                            <div class="alert alert-danger" role="alert">Você não está em nenhum grupo</div>
+                    <?php
+                        }
+                    ?>
+                    </table>
                 </div>
             </div>
         </div>
+
     </div>
 
     <!-- Modal para membros do Grupo -->
