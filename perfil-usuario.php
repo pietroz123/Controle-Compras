@@ -27,7 +27,16 @@
 
                         <!-- Dados gerais -->
                         <div class="row">
-                            <div class="col col-sm-3">Dados Gerais</div>
+                            <div class="col-12 col-sm-12 col-md-4 col-lg-3">
+                                <div class="mb-3">
+                                    <h6>Dados gerais</h6>
+                                </div>
+                                <div class="row">
+                                    <div class="container">
+                                        <img src="img/gitlab.png" class="responsive rounded-circle grey" alt="">
+                                    </div>
+                                </div>
+                            </div>
                             <div class="col">
 
                                 <label for="nome-usuario" class="font-small font-weight-bold">Nome</label>
@@ -49,7 +58,11 @@
 
                         <!-- Dados endereço -->
                         <div class="row mt-4">
-                            <div class="col col-sm-3">Dados de Endereço</div>
+                            <div class="col-12 col-sm-12 col-md-4 col-lg-3">
+                                <div class="mb-3">
+                                    <h6>Dados endereço</h6>
+                                </div>
+                            </div>
                             <div class="col">
 
                                 <label for="cep-usuario" class="font-small font-weight-bold">CEP</label>
