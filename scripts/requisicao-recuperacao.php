@@ -96,14 +96,10 @@
                 <head>
                     <meta charset='utf-8' />
                     <meta name='viewport' content='width=device-width, initial-scale=1'>
+                    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet'>
+                    <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet'>
+                    <link href='https://fonts.googleapis.com/css?family=Courgette' rel='stylesheet'>        
                     <style>
-            
-                        @import url('https://fonts.googleapis.com/css?family=Roboto+Slab');
-            
-                        @import url('https://fonts.googleapis.com/css?family=Oswald');
-            
-                        @import url('https://fonts.googleapis.com/css?family=Courgette');
-            
                         body {
                             background-color: #f2f2f2;
                         }
