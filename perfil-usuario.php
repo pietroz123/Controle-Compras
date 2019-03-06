@@ -26,7 +26,7 @@
                     <form action="scripts/alterar-dados-perfil.php" method="post" id="form-perfil">
 
                         <!-- Dados gerais -->
-                        <div class="row">
+                        <div class="row dados-gerais">
                             <div class="col-12 col-sm-12 col-md-4 col-lg-3">
                                 <div class="mb-3">
                                     <h6 class="titulo-dados">Dados gerais</h6>
@@ -34,8 +34,8 @@
                                     <a class="btn btn-light botao-pequeno mt-1 btn-editar" href="#!"><i class="fas fa-edit"></i> editar</a>
                                 </div>
                                 <div class="row">
-                                    <div class="container">
-                                        <img src="img/gitlab.png" class="responsive rounded-circle grey" alt="">
+                                    <div class="container imagem-perfil">
+                                        <img src="img/gitlab.png" class="responsive rounded-circle grey" alt="Imagem perfil">
                                     </div>
                                 </div>
                             </div>
@@ -59,7 +59,7 @@
                         <hr>
 
                         <!-- Dados endereço -->
-                        <div class="row mt-4">
+                        <div class="row mt-4 dados-endereco">
                             <div class="col-12 col-sm-12 col-md-4 col-lg-3">
                                 <div class="mb-3">
                                     <h6 class="titulo-dados">Dados endereço</h6>
@@ -325,8 +325,12 @@
         $(this).removeClass('btn-light btn-editar');
         $(this).addClass('btn-danger btn-cancelar');
         $(this).html('<i class="fas fa-times"></i> cancelar');
-        
 
+        // Adiciona botao de editar imagem de perfil, caso sejam dados gerais
+        if (dados.parent().hasClass('dados-gerais')) {
+            $('.imagem-perfil').append('<div class="texto-imagem"><a class="btn btn-editar-imagem botao-pequeno"><i class="far fa-edit"></i> Editar</a></div>');
+        }
+        
         // Adiciona botão de alteração ao form
         if( !($('.alterar').length) ) {
             $('#form-perfil').append('<div class="alterar"><hr><div class="row"><div class="col"><button class="btn btn-success float-right" type="submit" name="submit-alteracoes">realizar alterações</button></div></div></div>');
@@ -347,6 +351,11 @@
         $(this).removeClass('btn-danger btn-cancelar');
         $(this).addClass('btn-light btn-editar');
         $(this).html('<i class="fas fa-edit"></i> editar');
+
+        // Remove botao de editar imagem de perfil, caso sejam dados gerais
+        if (dados.parent().hasClass('dados-gerais')) {
+            $('.texto-imagem').remove();
+        }
 
         // Se existe apenas um botao de edição, então remova a div com o botão de alteração
         if ( $('.btn-cancelar').length == 0 ) {

@@ -216,6 +216,15 @@ body > .container {
     height: auto;
 }
 
+.texto-imagem {
+    color: white;
+    background-color: rgba(133, 133, 133, 0.623);
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 
 /* ==========================================================
    =================== TABELA DE COMPRAS ====================
