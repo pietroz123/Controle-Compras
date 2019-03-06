@@ -128,7 +128,7 @@
                             margin-bottom: 15px;
                         }
                         footer {
-                            font-family: 'Comic Sans MS', cursive, sans-serif;
+                            font-family: 'Trebuchet MS', Helvetica, sans-serif;
                             font-style: italic;
             
                             position: fixed;
