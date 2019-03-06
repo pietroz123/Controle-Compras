@@ -260,6 +260,18 @@
         //     "gia": "1004"
         // }
 
+        // Implementação do delay para o keyup
+        function delay(callback, ms) {
+            var timer = 0;
+            return function() {
+                var context = this, args = arguments;
+                clearTimeout(timer);
+                timer = setTimeout(function () {
+                callback.apply(context, args);
+                }, ms || 0);
+            };
+        }
+
         function limpa_formulario_cep() {
             // Limpa valores do formulário de cep.
             $('#cidade-usuario').val('');
@@ -267,7 +279,7 @@
             $('#endereco-usuario').val('');
         }
 
-        $('#cep-usuario').blur(function() {            
+        $('#cep-usuario').keyup(delay(function() {            
 
             // Nova variável "cep" somente com dígitos.
             var cep = $(this).val().replace(/\D/g, '');
@@ -301,7 +313,7 @@
 
             }
 
-        });
+        }, 2000));
 
 
 
