@@ -95,16 +95,13 @@
             <html>
                 <head>
                     <meta charset='utf-8' />
-                    <meta name='viewport' content='width=device-width, initial-scale=1'>
-                    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet'>
-                    <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet'>
-                    <link href='https://fonts.googleapis.com/css?family=Courgette' rel='stylesheet'>        
+                    <meta name='viewport' content='width=device-width, initial-scale=1'>      
                     <style>
                         body {
                             background-color: #f2f2f2;
                         }
                         h1 {
-                            font-family: 'Oswald', sans-serif;
+                            font-family: Impact, Charcoal, sans-serif;
                             letter-spacing: 1.2px;
                             
                             position: fixed;
@@ -121,7 +118,7 @@
                             border: 3px solid black;
                         }
                         .texto-email {
-                            font-family: 'Roboto Slab', serif;
+                            font-family: 'Trebuchet MS', Helvetica, sans-serif;
             
                             margin: 120px 30px;
                             text-align: justify;
@@ -131,7 +128,8 @@
                             margin-bottom: 15px;
                         }
                         footer {
-                            font-family: 'Courgette', cursive;
+                            font-family: 'Comic Sans MS', cursive, sans-serif;
+                            font-style: italic;
             
                             position: fixed;
                             left: 0;
