@@ -19,6 +19,7 @@
         <script src="js/select2.js"></script>
         <script src="js/jquery.mask.js"></script>
         <script src="js/bootstrap-confirmation.js"></script>
+        <script src="js/cropper.js"></script>
 
         <script src="js/main.js"></script>
 

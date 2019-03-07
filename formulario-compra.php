@@ -67,7 +67,7 @@
                     </div>
                 </div>
                 <hr>
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col-lg-4">Imagem (Opcional)</div>
                     <div class="col-lg-8">
                         <input class="form-control-file" type="file" id="input-imagem" name="imagem" data-multiple-caption="{numero} arquivos selecionados" multiple>
@@ -76,7 +76,39 @@
                             <span>Selecione uma imagem</span>
                         </label>
                     </div>
+                </div> -->
+
+
+
+                <button type="button" class="btn btn-light" data-toggle="modal" data-target="#modal-upload-imagem">faça o upload da nota fiscal</button>
+                <div class="modal fade" id="modal-upload-imagem">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Faça upload da Nota Fiscal</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            </div>
+                            <div class="modal-body">
+                                <input class="form-control-file" type="file" id="input-imagem" name="imagem" data-multiple-caption="{numero} arquivos selecionados" multiple>
+                                <label for="input-imagem">
+                                    <i class="far fa-file-image"></i>
+                                    <span>Selecione uma imagem</span>
+                                </label>
+                                <input type="button" id="btnCrop" value="Crop" />
+                                <input type="button" id="btnRestore" value="Restore" />
+                                <canvas id="canvas">
+                                    Your browser does not support the HTML5 canvas element.
+                                </canvas>
+                            </div>
+                            <div class="modal-footer">
+                                ...
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
+
+
                 <hr>
             </div>
             
@@ -109,6 +141,30 @@
                 label.innerHTML = labelVal;
         });
     });
+
+
+    // =======================================================
+    // Para uso do Cropper.js
+    // =======================================================
+
+    var canvas  = $("#canvas"),
+    context = canvas.get(0).getContext("2d"),
+    $result = $('#result');
+
+    $('#input-imagem').on( 'change', function(){
+        if (this.files && this.files[0]) {
+            if ( this.files[0].type.match(/^image\//) ) {
+                alert("Imagem "+this.files[0].name+" selecionada");
+            }
+            else {
+                alert("Invalid file type! Please select an image file.");
+            }
+        }
+        else {
+            alert('No file(s) selected.');
+        }
+    });
+
 
     
 
