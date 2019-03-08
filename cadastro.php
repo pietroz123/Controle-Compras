@@ -140,6 +140,24 @@
                 <label for="senha-rep">Repita a senha</label>
             </div>
             
+            <div class="container">
+                <div class="row mb-4">
+                    <h5 style="font-family: 'Oswald', sans-serif;">Selecione um ícone (clique no ícone para trocar)</h5>
+                    <hr style="border-top: 3px solid black; margin: 0; width: 100%;">
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <canvas id='canvas-icones' class="mr-4"></canvas>
+                    </div>
+                    <div class="col">
+                        <div id="resultado" style="height: 200px; width: 200px;" class="mt-3"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Input hidden com a última imagem selecionada -->
+            <input type="hidden" name="icone-selecionado" value="">
+
         </div>
         <div class="row">
             <div class="col">
@@ -156,6 +174,7 @@
     include $_SERVER['DOCUMENT_ROOT'].'/rodape.php';
 ?>
 
+<script type="text/javascript" src="js/random-icons.js"></script>
 <script type="text/javascript" src="js/awesomplete.js"></script>
 <script type="text/javascript" src="js/realtime-validation.js"></script>
 <script>

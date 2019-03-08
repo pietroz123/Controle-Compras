@@ -1,4 +1,20 @@
 
+/* =======================================================
+   Fontes
+   ======================================================= */
+   
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab');
+@import url('https://fonts.googleapis.com/css?family=Signika');
+@import url('https://fonts.googleapis.com/css?family=Slabo+27px');
+@import url('https://fonts.googleapis.com/css?family=Oswald');
+@import url('https://fonts.googleapis.com/css?family=Merienda');
+@import url('https://fonts.googleapis.com/css?family=Neucha');
+@import url('https://fonts.googleapis.com/css?family=Merriweather');
+@import url('https://fonts.googleapis.com/css?family=Lato');
+@import url('https://fonts.googleapis.com/css?family=Lora');
+@import url('https://fonts.googleapis.com/css?family=Courgette');
+
+
 /* !Para print_r dentro de pre */
 pre {
     text-align: left;
@@ -465,4 +481,17 @@ label[for=input-imagem] span {
 /* Limit image width to avoid overflow the container */
 img {
     max-width: 100%; /* This rule is very important, please do not ignore this! */
+}
+
+
+/* =======================================================
+   Ícones
+   ======================================================= */
+
+#canvas-icones {
+    height: 200px;
+    width: 200px;
+    border-style: groove;
+    border-width: 7px;
+    border-color: grey;
 }

@@ -20,6 +20,21 @@
     $senha_cadastro         = $_POST['senha'];
     $senha_rep_cadastro     = $_POST['senha-rep'];
 
+    if (isset($_POST['icone-selecionado'])) {
+
+        $icone = $_POST['icone-selecionado'];
+        
+        // Mantem apenas a string da imagem
+        $icone = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $icone));
+        $nome_icone = $username . ".png";
+        
+        // Destino do imagem
+        $destino = "../img/user-icons/" . $nome_icone;
+    
+        // Salva a imagem
+        file_put_contents($destino, $icone);
+    }
+
 
     // Verifica se existem campos em branco
     if (empty($nome) || empty($username) || empty($email_cadastro) || empty($senha_cadastro) || empty($senha_rep_cadastro)) {
@@ -36,7 +51,7 @@
     }
 
     // Cria o usuario
-    if (criar_usuario($conexao, $nome, $username, $email_cadastro, $senha_cadastro)) {
+    if (criar_usuario($conexao, $nome, $username, $email_cadastro, $senha_cadastro, $nome_icone)) {
         $_SESSION['success'] = "Cadastrado com sucesso. Favor esperar a confirmação do cadastro.";
         header("Location: ../index.php");
         die();

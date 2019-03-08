@@ -24,7 +24,7 @@ function buscar_usuario_id($conexao, $id_usuario) {
     return $usuario;
 }
 
-function criar_usuario($conexao, $nome, $username, $email, $senha) {
+function criar_usuario($conexao, $nome, $username, $email, $senha, $nome_icone) {
 
     $nome = mysqli_real_escape_string($conexao, $nome);
 
@@ -38,10 +38,11 @@ function criar_usuario($conexao, $nome, $username, $email, $senha) {
     $username = mysqli_real_escape_string($conexao, $username);
     $email = mysqli_real_escape_string($conexao, $email);
     $senha = mysqli_real_escape_string($conexao, $senha);
+    $nome_icone = mysqli_real_escape_string($conexao, $nome_icone);
 
     // Insere o usuario
     $hash_senha = password_hash($senha, PASSWORD_DEFAULT);
-    $query = "INSERT INTO usuarios (usuario, email, senha) VALUES ('$username', '$email', '$hash_senha');";
+    $query = "INSERT INTO usuarios (usuario, email, senha, icone) VALUES ('$username', '$email', '$hash_senha', '$nome_icone');";
     $resultado = mysqli_query($conexao, $query);
     return $resultado;
 }
