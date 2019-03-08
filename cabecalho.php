@@ -59,7 +59,7 @@
                     ?>
                         <a href="perfil-usuario.php" id="icone-usuario">
                             <span class="rounded-circle">
-                                <img src="img/user-icons/<?= $_SESSION['login-username']; ?>.png" class="imagem-usuario">
+                                <img src="scripts/icone.php?icone=<?= $_SESSION['login-username']; ?>" class="imagem-usuario">
                             </span>
                         </a>
                     <?php

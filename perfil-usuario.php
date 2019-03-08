@@ -35,7 +35,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="container imagem-perfil">
-                                        <img src="img/user-icons/<?= $_SESSION['login-username']; ?>.png" style="height: 200px; width: 240px;" class="" alt="Imagem perfil">
+                                        <img src="scripts/icone.php?icone=<?= $_SESSION['login-username']; ?>" style="height: 200px; width: 240px;" class="" alt="Imagem perfil">
                                     </div>
                                 </div>
                             </div>
@@ -459,7 +459,7 @@
         if (!usuario.id) {
             return usuario.text;
         }
-        var baseUrl = "/img/user-icons";        
+        var baseUrl = "/img/user-icons";
         var $usuario = $(
             '<span><img src="' + baseUrl + '/' + usuario.text + '.png" class="img-usuario" style="height: 30px; width: 30px;"> ' + usuario.text + '</span>'
         );
