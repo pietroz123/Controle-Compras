@@ -459,9 +459,8 @@
         if (!usuario.id) {
             return usuario.text;
         }
-        var baseUrl = "/img/user-icons";
         var $usuario = $(
-            '<span><img src="' + baseUrl + '/' + usuario.text + '.png" class="img-usuario" style="height: 30px; width: 30px;"> ' + usuario.text + '</span>'
+            '<span><img src="scripts/icone.php?icone=' + usuario.text + '" class="img-usuario" style="height: 30px; width: 30px;"> ' + usuario.text + '</span>'
         );
         return $usuario;
     };
