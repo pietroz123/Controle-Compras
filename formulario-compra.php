@@ -177,7 +177,7 @@
                 $('.btn-cortar').click(function() {
                     
                     // Recupera a imagem em base64
-                    var croppedImageDataURL = cropper.getCroppedCanvas().toDataURL("image/png");
+                    var croppedImageDataURL = cropper.getCroppedCanvas().toDataURL("image/jpeg");
                     $('input[type="hidden"][name="imagem-cortada"]').val(croppedImageDataURL);
                     
                     // Adiciona a imagem cortada ao canvas
