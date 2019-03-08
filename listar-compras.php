@@ -167,9 +167,12 @@
 
 <script>
 
-    // Inicializa a tabela de dados
-    $(document).ready(function () {
 
+    // =======================================================
+    // Função para reinicializar a DataTable
+    // =======================================================
+
+    function inicializaDataTable() {
         $('#tabela-compras').DataTable({
             "language": {
                 "lengthMenu": "Mostrar _MENU_ itens por página",
@@ -187,9 +190,18 @@
                     "next":       "Próximo",
                     "previous":   "Anterior"
                 }
-            }
+            },
+            "order": [[ 1, "desc" ]]    // Ordena por Data
         });
         $('.dataTables_length').addClass('bs-select');
+    }
+
+    
+
+    // Inicializa a tabela de dados
+    $(document).ready(function () {
+
+        inicializaDataTable();
     });
 
     // Preenche o modal-detalhes-compra utilizando AJAX
@@ -252,26 +264,7 @@
                 $('#compras-datatable').html(retorno);
                 
                 // Reinicializa a datatable
-                $('#tabela-compras').DataTable({
-                    "language": {
-                        "lengthMenu": "Mostrar _MENU_ itens por página",
-                        "zeroRecords": "Nenhum item encontrado - desculpa",
-                        "info": "Mostrando página _PAGE_ de _PAGES_",
-                        "infoEmpty": "Nenhum item encontrado",
-                        "infoFiltered": "(filtrado a partir de _MAX_ itens)",
-                        "search": "Buscar:",
-                        "emptyTable":     "Nenhum dado disponível na tabela",
-                        "loadingRecords": "Carregando...",
-                        "processing":     "Processando...",
-                        "paginate": {
-                            "first":      "Primeiro",
-                            "last":       "Último",
-                            "next":       "Próximo",
-                            "previous":   "Anterior"
-                        }
-                    }
-                });
-                $('.dataTables_length').addClass('bs-select');
+                inicializaDataTable();
 
                 // Scroll até a tabela de compras
                 $('html, body').animate({
@@ -305,26 +298,7 @@
                 $('#compras-datatable').html(retorno);
                 
                 // Reinicializa a datatable
-                $('#tabela-compras').DataTable({
-                    "language": {
-                        "lengthMenu": "Mostrar _MENU_ itens por página",
-                        "zeroRecords": "Nenhum item encontrado - desculpa",
-                        "info": "Mostrando página _PAGE_ de _PAGES_",
-                        "infoEmpty": "Nenhum item encontrado",
-                        "infoFiltered": "(filtrado a partir de _MAX_ itens)",
-                        "search": "Buscar:",
-                        "emptyTable":     "Nenhum dado disponível na tabela",
-                        "loadingRecords": "Carregando...",
-                        "processing":     "Processando...",
-                        "paginate": {
-                            "first":      "Primeiro",
-                            "last":       "Último",
-                            "next":       "Próximo",
-                            "previous":   "Anterior"
-                        }
-                    }
-                });
-                $('.dataTables_length').addClass('bs-select');
+                inicializaDataTable();
 
                 // Scroll até a tabela de compras
                 $('html, body').animate({
