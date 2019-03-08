@@ -81,8 +81,15 @@
                 </div> -->
 
 
-
-                <button type="button" class="btn btn-light" data-toggle="modal" data-target="#modal-upload-imagem">faça o upload da nota fiscal</button>
+                <div class="list-inline">
+                    <div class="list-inline-item"><button type="button" class="btn btn-light" data-toggle="modal" data-target="#modal-upload-imagem">faça o upload da nota fiscal</button></div>
+                    <div class="list-inline-item">
+                        <div class="status-upload mb-0 font-small text-danger">
+                            <i class="fas fa-times-circle"></i> Nenhuma imagem selecionada
+                        </div>
+                    </div>
+                </div>
+                
                 <div class="modal fade" id="modal-upload-imagem">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
@@ -176,6 +183,11 @@
                     // Adiciona a imagem cortada ao canvas
                     $('#canvas').html('<img src="'+croppedImageDataURL+'" alt="Imagem cortada">');
                     arquivo = croppedImageDataURL;
+
+                    // Muda para imagem selecionada
+                    $('.status-upload').removeClass('text-danger');
+                    $('.status-upload').addClass('text-success');
+                    $('.status-upload').html('<i class="fas fa-check-circle"></i> Imagem selecionada');
                 });
 
             }
