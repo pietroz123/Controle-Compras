@@ -147,6 +147,57 @@
             </div>
         </div>
 
+        <div class="card z-depth-2 mt-3" id="cartao-convites-usuario">
+            
+            <div class="card-header default-color-dark white-text d-flex justify-content-around flex-sm-row flex-column">
+                
+                <div class="mr-auto">Convites</div>
+            
+            </div>
+
+            <div class="card-body">
+                <div class="container" id="container-convites-grupos">
+                    <?php
+                        $grupos = array();
+                        if (count($grupos) > 0) {
+                    ?>
+                        <table class="table table-hover table-grupos" id="tabela-grupos">
+                            <thead style="font-weight: bold;">
+                                <tr>
+                                    <th class="thead-grupos">Nome</th>
+                                    <th class="thead-grupos">Criador</th>
+                                    <th class="thead-grupos">Info.</th>
+                                    <th class="thead-grupos">Aceitar</th>
+                                    <th class="thead-grupos">Rejeitar</th>
+                                </tr>
+                            </thead>
+                            <tbody id="convites-usuario">
+
+                            <?php foreach ($grupos AS $grupo) { ?>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            <?php } ?>
+
+                            </tbody>
+                    <?php
+                        }
+                        else {
+                    ?>
+                            <div class="alert alert-info" role="alert">No momento não existem convites.</div>
+                    <?php
+                        }
+                    ?>
+                    </table>
+                </div>
+            </div>
+            
+        </div>
+
     </div>
 
     <!-- Modal para membros do Grupo -->
