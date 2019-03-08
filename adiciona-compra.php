@@ -30,14 +30,12 @@
     $imagem_erro        = $_FILES['imagem']['error'];
     $imagem_tipo        = $_FILES['imagem']['type'];
 
-    $imagem_cortada     = $_POST['imagem-cortada'];
+    // Inicializa o novo nome com 'null'
+    $novo_nome = '';
 
-    if (empty($imagem_cortada)) {
+    if (isset($_POST['imagem-cortada']) && !empty($_POST['imagem-cortada'])) {
 
-        $_SESSION['info'] = "Nenhuma imagem selecionada.";
-
-    }
-    else {
+        $imagem_cortada     = $_POST['imagem-cortada'];
 
         // Recupera a extensão do arquivo (para verificar se é JPG ou PNG)
         $extensao = explode('.', $imagem_nome); // Divide a string e pega apenas a parte a partir do '.'
@@ -50,19 +48,21 @@
         
         // Destino do imagem
         $destino = "../private/uploads/compras/" . $novo_nome;
-
+    
+        // Salva a imagem
         file_put_contents($destino, $imagem_cortada);
         $novo_destino = comprimir($destino, "../private/uploads/compras/" . $novo_nome, 20);
         move_uploaded_file($destino, $novo_destino);
-
-        $_SESSION['success'] = "Imagem salva com sucesso.";
     
+        $_SESSION['success'] = "Imagem salva com sucesso.";
+
+    }
+    else {
+        $_SESSION['info'] = "Nenhuma imagem selecionada.";
     }
 
 
     // Sem Cropper JS
-    // // Inicializa o novo nome com 'null'
-    // $novo_nome = '';
     
     // // Recupera a extensão do arquivo (para verificar se é JPG ou PNG)
     // $extensao = explode('.', $imagem_nome); // Divide a string e pega apenas a parte a partir do '.'
