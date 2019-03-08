@@ -45,13 +45,13 @@
                                 <input class="form-control" type="text" name="nome" id="nome-usuario" value="<?= $usuario['Nome']; ?>" disabled>
 
                                 <label for="cpf-usuario" class="font-small font-weight-bold">CPF</label>
-                                <input class="form-control" type="text" name="cpf" id="cpf-usuario" value="<?= $usuario['CPF']; ?>" disabled editable>
+                                <input class="form-control" type="tel" name="cpf" id="cpf-usuario" value="<?= $usuario['CPF']; ?>" disabled editable>
 
                                 <label for="email-usuario" class="font-small font-weight-bold">E-Mail</label>
                                 <input class="form-control" type="email" name="email" id="email-usuario" value="<?= $usuario['Email']; ?>" disabled editable>
 
                                 <label for="telefone-usuario" class="font-small font-weight-bold">Telefone</label>
-                                <input class="form-control" type="text" name="telefone" id="telefone-usuario" value="<?= $usuario['Telefone']; ?>" disabled editable>
+                                <input class="form-control" type="tel" name="telefone" id="telefone-usuario" value="<?= $usuario['Telefone']; ?>" disabled editable>
 
                             </div>
                         </div>
@@ -70,7 +70,7 @@
                             <div class="col dados">
 
                                 <label for="cep-usuario" class="font-small font-weight-bold">CEP</label>
-                                <input class="form-control" type="text" name="cep" id="cep-usuario" value="<?= $usuario['CEP']; ?>" disabled editable>
+                                <input class="form-control" type="tel" name="cep" id="cep-usuario" value="<?= $usuario['CEP']; ?>" disabled editable>
 
                                 <label for="cidade-usuario" class="font-small font-weight-bold">Cidade</label>
                                 <input class="form-control" type="text" name="cidade" id="cidade-usuario" value="<?= $usuario['Cidade']; ?>" disabled editable>

@@ -32,7 +32,7 @@
                 <hr>
                 <div class="row">
                     <div class="col-lg-4">Valor</div>
-                    <div class="col-lg-8"><input class="form-control" type="number" name="valor" min="0" step="0.01"></div>
+                    <div class="col-lg-8"><input id="input-valor" class="form-control" type="tel" name="valor" min="0" step="0.01"></div>
                 </div>
                 <hr>
                 <div class="row">
@@ -126,6 +126,16 @@
 <?php include $_SERVER['DOCUMENT_ROOT'].'/rodape.php'; ?>
 
 <script>
+
+    $(document).ready(function() {
+
+        // =======================================================
+        // Mascaras
+        // =======================================================
+
+        $('#input-valor').mask('000000000000000.00', {reverse: true});
+
+    });
 
 
     // =======================================================
