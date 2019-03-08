@@ -2,7 +2,7 @@
 /* =======================================================
    Fontes
    ======================================================= */
-   
+
 @import url('https://fonts.googleapis.com/css?family=Roboto+Slab');
 @import url('https://fonts.googleapis.com/css?family=Signika');
 @import url('https://fonts.googleapis.com/css?family=Slabo+27px');
@@ -494,4 +494,10 @@ img {
     border-style: groove;
     border-width: 7px;
     border-color: grey;
+}
+.imagem-perfil img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
 }

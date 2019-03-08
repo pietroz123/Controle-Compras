@@ -58,8 +58,8 @@
                         if (usuario_esta_logado()) {
                     ?>
                         <a href="perfil-usuario.php" id="icone-usuario">
-                            <span class="badge badge-light rounded-circle">
-                                <img src="img/usuario.png" class="imagem-usuario">
+                            <span class="rounded-circle">
+                                <img src="img/user-icons/<?= $_SESSION['login-username']; ?>.png" class="imagem-usuario">
                             </span>
                         </a>
                     <?php

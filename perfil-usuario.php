@@ -35,7 +35,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="container imagem-perfil">
-                                        <img src="img/gitlab.png" class="responsive rounded-circle grey" alt="Imagem perfil">
+                                        <img src="img/user-icons/<?= $_SESSION['login-username']; ?>.png" style="height: 200px; width: 240px;" class="" alt="Imagem perfil">
                                     </div>
                                 </div>
                             </div>
