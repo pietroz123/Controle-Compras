@@ -128,24 +128,26 @@
     var cropper;
 
     $('#input-imagem').on( 'change', function(e){
+
         if (this.files && this.files[0]) {
             var arquivos = this.files;
             var arquivo = arquivos[0];
             if ( arquivo.type.match(/^image\//) ) {
 
                 // Cria o elemento da imagem
-                $('#canvas').append('<img id="imagem-nota" alt="Imagem nota">');
+                $('#canvas').html('<img id="imagem-nota" alt="Imagem nota">');
 
                 var imagem = document.getElementById("imagem-nota");
                 $('#imagem-nota').attr("src", window.URL.createObjectURL(arquivo));
 
                 // Cria o Cropper
                 cropper = new Cropper(imagem, {
-                    aspectRatio: NaN
+                    aspectRatio: NaN,
+                    zoomable: false
                 });
 
                 // Adiciona o botao para cortar
-                $('#modal-upload-imagem .modal-footer').append('<input type="button" class="btn btn-light btn-cortar" value="Cortar">');
+                $('#modal-upload-imagem .modal-footer').html('<input type="button" class="btn btn-light btn-cortar" value="Cortar">');
 
 
                 // Adiciona o nome do arquivo ao label do input
