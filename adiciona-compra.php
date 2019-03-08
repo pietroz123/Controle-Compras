@@ -41,8 +41,8 @@
         $extensao = explode('.', $imagem_nome); // Divide a string e pega apenas a parte a partir do '.'
         $ext = strtolower(end($extensao));      // Converte tudo pra letra minuscula e pega apenas depois do '.'
 
-        list(, $imagem_cortada)      = explode(',', $imagem_cortada);
-        $imagem_cortada = base64_decode($imagem_cortada);
+        // Mantem apenas a string da imagem
+        $imagem_cortada = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $imagem_cortada));
         
         $novo_nome = uniqid('') . "-" . $observacoes . "-" . $data . "." . $ext;
         
