@@ -455,6 +455,18 @@
     ========================================= UTILIZA O PLUGIN select2 ===========================================
     ============================================================================================================== */
     
+    function formatarUsuario (usuario) {
+        if (!usuario.id) {
+            return usuario.text;
+        }
+        var baseUrl = "/img";
+        var $usuario = $(
+            // '<span><img src="' + baseUrl + '/' + usuario.element.value.toLowerCase() + '.png" class="img-flag" /> ' + usuario.text + '</span>'
+            '<span><img src="' + baseUrl + '/users.png" class="img-usuario rounded-circle" style="height: 30px; width: 30px;"> ' + usuario.text + '</span>'
+        );
+        return $usuario;
+    };
+
     $('.input-usuario').select2({
         ajax: {
             url: "scripts/busca-usuario.php",
@@ -473,7 +485,8 @@
                 };
             },
             cache: true
-        }
+        },
+        templateResult: formatarUsuario
     });
 
 
