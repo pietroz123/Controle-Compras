@@ -457,6 +457,7 @@ label[for=input-imagem] span {
 	outline: -webkit-focus-ring-color auto 5px;
 }
 
+
 /* =======================================================
    Cropper
    ======================================================= */
@@ -464,12 +465,4 @@ label[for=input-imagem] span {
 /* Limit image width to avoid overflow the container */
 img {
     max-width: 100%; /* This rule is very important, please do not ignore this! */
-}
-
-#canvas {
-    height: 400px;
-    width: 100%;
-    background-color: #ffffff;
-    cursor: default;
-    border: 1px solid black;
 }

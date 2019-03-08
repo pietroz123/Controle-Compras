@@ -30,47 +30,78 @@
     $imagem_erro        = $_FILES['imagem']['error'];
     $imagem_tipo        = $_FILES['imagem']['type'];
 
-    // Inicializa o novo nome com 'null'
-    $novo_nome = '';
+    $imagem_cortada     = $_POST['imagem-cortada'];
 
-    // Recupera a extensão do arquivo (para verificar se é JPG ou PNG)
-    $extensao = explode('.', $imagem_nome); // Divide a string e pega apenas a parte a partir do '.'
-    $ext = strtolower(end($extensao));      // Converte tudo pra letra minuscula e pega apenas depois do '.'
+    if (empty($imagem_cortada)) {
 
-    // Extensões permitidas
-    $permitido = array('jpg', 'jpeg', 'png');
-
-    // Verifica se uma imagem foi enviada
-    if (is_uploaded_file($_FILES['imagem']['tmp_name'])) {
-        // Verifica se a extensão é uma imagem
-        if (in_array($ext, $permitido)) {
-            // Verifica se não houve erros
-            if ($imagem_erro === 0) {
-                
-                $novo_nome = uniqid('') . "-" . $observacoes . "-" . $data . "." . $ext;
-                
-                // Destino do imagem
-                $destino = "../private/uploads/compras/" . $novo_nome;
-
-                // Armazena a imagem
-                move_uploaded_file($imagem_nome_tmp, $destino);
-
-                $novo_destino = comprimir($destino, "../private/uploads/compras/" . $novo_nome, 20);
-                move_uploaded_file($destino, $novo_destino);
-        
-                $_SESSION['success'] = "Imagem salva com sucesso.";
-            }
-            else { // Erro no upload da imagem
-                $_SESSION['danger'] = "Ocorreu um erro no upload da imagem!"; 
-            }
-        }
-        else { // Não está nas extensões permitidas
-            $_SESSION['danger'] = "Essa extensão não é permitida!";
-        }
-    }
-    else { // $novo_nome é vazio
         $_SESSION['info'] = "Nenhuma imagem selecionada.";
+
     }
+    else {
+
+        // Recupera a extensão do arquivo (para verificar se é JPG ou PNG)
+        $extensao = explode('.', $imagem_nome); // Divide a string e pega apenas a parte a partir do '.'
+        $ext = strtolower(end($extensao));      // Converte tudo pra letra minuscula e pega apenas depois do '.'
+
+        list(, $imagem_cortada)      = explode(',', $imagem_cortada);
+        $imagem_cortada = base64_decode($imagem_cortada);
+        
+        $novo_nome = uniqid('') . "-" . $observacoes . "-" . $data . "." . $ext;
+        
+        // Destino do imagem
+        $destino = "../private/uploads/compras/" . $novo_nome;
+
+        file_put_contents($destino, $imagem_cortada);
+        $novo_destino = comprimir($destino, "../private/uploads/compras/" . $novo_nome, 20);
+        move_uploaded_file($destino, $novo_destino);
+
+        $_SESSION['success'] = "Imagem salva com sucesso.";
+    
+    }
+
+
+    // Sem Cropper JS
+    // // Inicializa o novo nome com 'null'
+    // $novo_nome = '';
+    
+    // // Recupera a extensão do arquivo (para verificar se é JPG ou PNG)
+    // $extensao = explode('.', $imagem_nome); // Divide a string e pega apenas a parte a partir do '.'
+    // $ext = strtolower(end($extensao));      // Converte tudo pra letra minuscula e pega apenas depois do '.'
+    
+    // // Extensões permitidas
+    // $permitido = array('jpg', 'jpeg', 'png');
+    
+    // // Verifica se uma imagem foi enviada
+    // if (is_uploaded_file($_FILES['imagem']['tmp_name'])) {
+    //     // Verifica se a extensão é uma imagem
+    //     if (in_array($ext, $permitido)) {
+    //         // Verifica se não houve erros
+    //         if ($imagem_erro === 0) {
+                
+    //             $novo_nome = uniqid('') . "-" . $observacoes . "-" . $data . "." . $ext;
+                
+    //             // Destino do imagem
+    //             $destino = "../private/uploads/compras/" . $novo_nome;
+
+    //             // Armazena a imagem
+    //             move_uploaded_file($imagem_nome_tmp, $destino);
+
+    //             $novo_destino = comprimir($destino, "../private/uploads/compras/" . $novo_nome, 20);
+    //             move_uploaded_file($destino, $novo_destino);
+        
+    //             $_SESSION['success'] = "Imagem salva com sucesso.";
+    //         }
+    //         else { // Erro no upload da imagem
+    //             $_SESSION['danger'] = "Ocorreu um erro no upload da imagem!"; 
+    //         }
+    //     }
+    //     else { // Não está nas extensões permitidas
+    //         $_SESSION['danger'] = "Essa extensão não é permitida!";
+    //     }
+    // }
+    // else { // $novo_nome é vazio
+    //     $_SESSION['info'] = "Nenhuma imagem selecionada.";
+    // }
 
 
     mostra_alerta("danger");
