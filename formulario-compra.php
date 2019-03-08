@@ -94,14 +94,12 @@
                                     <i class="far fa-file-image"></i>
                                     <span>Selecione uma imagem</span>
                                 </label>
-                                <input type="button" id="btnCrop" value="Crop" />
-                                <input type="button" id="btnRestore" value="Restore" />
-                                <canvas id="canvas">
-                                    Your browser does not support the HTML5 canvas element.
-                                </canvas>
+                                <div id="canvas">
+                                    <img id="imagem-nota" alt="Imagem nota">
+                                </div>
                             </div>
                             <div class="modal-footer">
-                                ...
+                                
                             </div>
                         </div>
                     </div>
@@ -120,41 +118,78 @@
 
 <script>
 
-    // https://tympanus.net/codrops/2015/09/15/styling-customizing-file-inputs-smart-way/
-    var inputs = $('#input-imagem');
-    Array.prototype.forEach.call( inputs, function( input )
-    {
-        var label	 = input.nextElementSibling,
-            labelVal = label.innerHTML;
+    // // https://tympanus.net/codrops/2015/09/15/styling-customizing-file-inputs-smart-way/
+    // var input = $('#input-imagem');
+    // Array.prototype.forEach.call( input, function( input )
+    // {
+    //     var label	 = input.nextElementSibling,
+    //         labelVal = label.innerHTML;
 
-        input.addEventListener( 'change', function( e )
-        {
-            var fileName = '';
-            if( this.files && this.files.length > 1 )
-                fileName = ( this.getAttribute( 'data-multiple-caption' ) || '' ).replace( '{numero}', this.files.length );
-            else
-                fileName = e.target.value.split( '\\' ).pop();
+    //     input.addEventListener( 'change', function( e )
+    //     {
+    //         var fileName = '';
+    //         if( this.files && this.files.length > 1 && this.files[0].type.match(/^image\//))
+    //             fileName = ( this.getAttribute( 'data-multiple-caption' ) || '' ).replace( '{numero}', this.files.length );
+    //         else
+    //             fileName = e.target.value.split( '\\' ).pop();
 
-            if( fileName )
-                label.querySelector( 'span' ).innerHTML = fileName;
-            else
-                label.innerHTML = labelVal;
-        });
-    });
+    //         if( fileName )
+    //             label.querySelector( 'span' ).innerHTML = fileName;
+    //         else
+    //             label.innerHTML = labelVal;
+    //     });
+    // });
 
 
     // =======================================================
     // Para uso do Cropper.js
     // =======================================================
 
-    var canvas  = $("#canvas"),
-    context = canvas.get(0).getContext("2d"),
-    $result = $('#result');
+    var canvas = $('#canvas');
 
-    $('#input-imagem').on( 'change', function(){
+    $('#input-imagem').on( 'change', function(e){
         if (this.files && this.files[0]) {
-            if ( this.files[0].type.match(/^image\//) ) {
-                alert("Imagem "+this.files[0].name+" selecionada");
+            var arquivos = this.files;
+            var arquivo = arquivos[0];
+            if ( arquivo.type.match(/^image\//) ) {
+
+                var imagem = document.getElementById("imagem-nota");
+                $('#imagem-nota').attr("src", window.URL.createObjectURL(arquivo));
+
+                // Cria o Cropper
+                var cropper = new Cropper(imagem, {
+                    aspectRatio: NaN
+                });
+
+                // Adiciona o botao para cortar
+                $('#modal-upload-imagem .modal-footer').append('<input type="button" class="btn btn-light btn-cortar" value="Cortar">');
+
+                var label	 = $('#input-imagem').siblings('label');
+                var labelVal = label.val();
+                
+
+                // Adiciona o nome do arquivo ao label do input
+                var fileName = '';
+                if( this.files && this.files.length > 1 )
+                    fileName = ( this.getAttribute( 'data-multiple-caption' ) || '' ).replace( '{numero}', this.files.length );
+                else
+                    fileName = e.target.value.split( '\\' ).pop();
+
+                if( fileName )
+                    label.children('span').text(fileName);
+                else
+                    label.innerHTML = labelVal;
+
+
+                // Coloca a imagem cortada no canvas
+                $('.btn-cortar').click(function() {
+                    // Get a string base 64 data url
+                    var croppedImageDataURL = cropper.getCroppedCanvas().toDataURL("image/png");
+                    $('#canvas').html('<img src="'+croppedImageDataURL+'" alt="Imagem cortada">');
+                    arquivo = croppedImageDataURL;
+                });
+
+
             }
             else {
                 alert("Invalid file type! Please select an image file.");
@@ -164,8 +199,6 @@
             alert('No file(s) selected.');
         }
     });
-
-
     
 
 
