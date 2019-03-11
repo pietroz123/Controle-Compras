@@ -13,7 +13,7 @@
     if (count($usuarios_temp) > 0) {
 ?>
 
-<table class="table table-hover" id="tabela-requisicoes" style="width: 110%; margin-left: -35px;">
+<table class="table table-hover table-sm" id="tabela-requisicoes">
     <thead class="thead-dark">
         <th class="t-nome-usuario">Nome</th>
         <th class="t-sobrenome-usuario">Criado Em</th>
