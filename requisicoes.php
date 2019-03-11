@@ -1,6 +1,6 @@
 <?php
     include $_SERVER['DOCUMENT_ROOT'].'/cabecalho.php';
-    include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes-usuarios.php';
 ?>
 
 <?php
@@ -8,12 +8,7 @@
     mostra_alerta("success");
     mostra_alerta("danger");
 
-    $usuarios_temp = listar($conexao, 
-        "SELECT u.ID AS ID_Usuario, c.Nome, u.Usuario, u.Email, u.Criado_Em
-        FROM usuarios AS u
-        JOIN compradores AS c
-        ON u.Email = c.Email
-        WHERE u.autenticado = 0;");
+    $usuarios_temp = recuperar_usuarios_temp($conexao);
 
     if (count($usuarios_temp) > 0) {
 ?>
@@ -25,6 +20,7 @@
         <th class="t-username-usuario">Usuário</th>
         <th class="t-email-usuario">E-mail</th>
         <th class="t-adicionar-usuario">Adicionar</th>
+        <th class="t-rejeitar-usuario">Rejeitar</th>
     </thead>
 
     <tbody>
@@ -40,6 +36,12 @@
                 <form action="scripts/adiciona-usuario-temp.php" method="post">
                     <input type="hidden" name="id" value="<?= $usuario_temp['ID_Usuario'] ?>">
                     <button class="btn btn-primary botao-pequeno">adicionar</button>
+                </form>
+            </td>
+            <td class="t-rejeitar-usuario">
+                <form action="scripts/rejeitar-usuario-temp.php" method="post">
+                    <input type="hidden" name="email" value="<?= $usuario_temp['Email'] ?>">
+                    <button class="btn btn-danger botao-pequeno">rejeitar</button>
                 </form>
             </td>
         </tr>

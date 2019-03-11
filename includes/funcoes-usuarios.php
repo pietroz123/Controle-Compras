@@ -16,7 +16,7 @@ function buscar_usuario($conexao, $email_username) {
 // Busca pelo ID
 function buscar_usuario_id($conexao, $id_usuario) {
 
-    $email_username = mysqli_real_escape_string($conexao, $id_usuario);
+    $id_usuario = mysqli_real_escape_string($conexao, $id_usuario);
 
     $query = "SELECT * FROM usuarios WHERE id = {$id_usuario};";
     $resultado = mysqli_query($conexao, $query);
@@ -111,6 +111,23 @@ function compras_permitidas($conexao, $username, $email) {
 
 /******************************* Funcoes usuarios temporarios *******************************/
 
+function recuperar_usuarios_temp($conexao) {
+
+    $sql = "SELECT u.ID AS ID_Usuario, c.Nome, u.Usuario, u.Email, u.Criado_Em
+            FROM usuarios AS u
+            JOIN compradores AS c
+            ON u.Email = c.Email
+            WHERE u.autenticado = 0;";
+
+    $usuarios_temp = array();
+    $resultado = mysqli_query($conexao, $sql);
+    while ($usuario = mysqli_fetch_assoc($resultado)) {
+        array_push($usuarios_temp, $usuario);
+    }
+    return $usuarios_temp;
+
+}
+
 function buscar_usuario_temp($conexao, $id) {
 
     $id = mysqli_real_escape_string($conexao, $id);
@@ -128,4 +145,15 @@ function adicionar_usuario_definitivo($conexao, $id) {
     $query = "UPDATE usuarios SET Autenticado = 1 WHERE id = {$id}";
     $resultado = mysqli_query($conexao, $query);
     return $resultado;
+}
+
+function remover_usuario_temp($conexao, $email) {
+
+    $email = mysqli_real_escape_string($conexao, $email);
+    
+    // Remove o usuario (Obs: ON DELETE CASCADE remove na tabela `usuarios` também)
+    $query = "DELETE FROM compradores WHERE Email = '{$email}'";
+    $resultado = mysqli_query($conexao, $query);
+    return $resultado;
+
 }

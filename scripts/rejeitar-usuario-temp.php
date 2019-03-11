@@ -14,20 +14,19 @@
         session_start();
     }
 
+    if (isset($_POST['email'])) {
 
-    if (isset($_POST['id'])) {
-
-        // Recebe o ID da requisicao POST
-        $id_usuario_temp = $_POST['id'];
-        if (adicionar_usuario_definitivo($conexao, $id_usuario_temp)) {
+        // Recebe o Email da requisicao POST
+        $email_usuario_temp = $_POST['email'];
+        if (remover_usuario_temp($conexao, $email_usuario_temp)) {
             
-            $_SESSION['success'] = "Usuário adicionado com sucesso.";
+            $_SESSION['success'] = "Requisição removida com sucesso.";
             header("Location: ../requisicoes.php");
             die();
     
         } else {
             
-            $_SESSION['danger'] = "Erro na adição do usuário.";
+            $_SESSION['danger'] = "Erro na remoção da requisição.";
             header("Location: ../requisicoes.php");
             die();
         
