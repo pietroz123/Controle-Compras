@@ -1,6 +1,7 @@
 <?php 
     include $_SERVER['DOCUMENT_ROOT'].'/cabecalho.php';
     include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes-grupos.php';
 ?>
 
 <?php
@@ -32,8 +33,9 @@
                             <option class="text-muted">Selecione uma Opção</option>
                             <option value="0" selected>Todos</option>
                             <?php 
-                                $compradores = listar($conexao, "SELECT * FROM compradores");
-                                foreach ($compradores as $comprador) :
+                                $ids_compradores = recupera_ids_compradores_grupos($conexao, $_SESSION['login-username'], $_SESSION['login-email']);
+                                foreach ($ids_compradores as $id_comprador) :
+                                    $comprador = buscar_comprador($conexao, $id_comprador['Comprador_ID']);
                             ?>
                                     <option value="<?= $comprador['ID']; ?>"><?= $comprador['Nome']; ?></option>
                             <?php

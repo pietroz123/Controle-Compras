@@ -1,6 +1,7 @@
 <?php 
     include $_SERVER['DOCUMENT_ROOT'].'/cabecalho.php'; 
     include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes-usuarios.php';
 ?>
 
 <?php
@@ -38,8 +39,8 @@
     <tbody>
     <?php
 
-        if ($id_comprador == 0) {
-            $compras = listar($conexao, "SELECT cmp.*, cmpd.Nome AS Nome_Comprador FROM compras AS cmp JOIN compradores AS cmpd ON cmp.Comprador_ID = cmpd.ID WHERE observacoes LIKE '%{$palavraChave}%' AND data >= '{$dataInicio}' AND data <= '{$dataFim}' ORDER BY year(data), month(data), day(data);");    
+        if ($id_comprador == 0) {   // Se foi selecionada a opção TODOS
+            $compras = compras_permitidas($conexao, $_SESSION['login-username'], $_SESSION['login-email']);
         }
         else {
             $compras = listar($conexao, "SELECT cmp.*, cmpd.Nome AS Nome_Comprador FROM compras AS cmp JOIN compradores AS cmpd ON cmp.Comprador_ID = cmpd.ID WHERE observacoes LIKE '%{$palavraChave}%' AND data >= '{$dataInicio}' AND data <= '{$dataFim}' AND Comprador_ID = {$id_comprador} ORDER BY year(data), month(data), day(data);");
