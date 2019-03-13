@@ -621,7 +621,7 @@
                 id_grupo: id_grupo,
                 usuario: username
             },
-            success: function(retorno) { 
+            success: function(retorno) {
                 if (retorno.quantidade == 0) {
                     $.post('scripts/remover-grupo.php', {
                         remover_grupo: "sim",

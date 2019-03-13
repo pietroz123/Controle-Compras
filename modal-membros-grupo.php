@@ -2,7 +2,8 @@
     if (isset($_POST['id_grupo'])) {
 
 
-        include $_SERVER['DOCUMENT_ROOT'].'/database/conexao.php';        
+        include $_SERVER['DOCUMENT_ROOT'].'/database/conexao.php';
+        include $_SERVER['DOCUMENT_ROOT'].'/config/sessao.php';        
         include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes-grupos.php';
         include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes-usuarios.php';
 
@@ -34,6 +35,18 @@
 
             $username = $_POST['usuario'];
             
+            // =======================================================
+            // Promove outro ADMIN
+            // Critério: Membro mais antigo do grupo
+            // =======================================================
+
+            if (isAdmin($conexao, $id_grupo, $username)) {
+                if (promove_admin($conexao, $id_grupo)) {
+                    // Saiu do grupo com sucesso
+                }
+            }
+
+            // Sai do grupo
             remover_membro($conexao, $id_grupo, $username);
 
             $membros = recuperar_membros($conexao, $id_grupo);
@@ -129,16 +142,6 @@
             ?>
         </div>
         <div class="modal-footer">
-            <?php
-                if (isAdmin($conexao, $grupo['ID'], $_POST['username'])) {
-            ?>
-                <form action="scripts/remover-grupo.php" method="post">
-                    <input type="hidden" name="id" value="<?= $grupo['ID']; ?>">
-                    <button type="submit" name="submit-remover-grupo" class="btn red darken-4 float-right">remover grupo</button>
-                </form>
-            <?php
-                }
-            ?>
             <button class="btn red darken-4 btn-sair-grupo float-left" id-grupo="<?= $grupo['ID']; ?>" username-usuario="<?= $_POST['username']; ?>">sair do grupo</button>
         </div>
     </div>

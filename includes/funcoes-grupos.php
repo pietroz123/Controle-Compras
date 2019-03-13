@@ -158,3 +158,48 @@ function isAdmin($conexao, $id_grupo, $username) {
             return false;
     }
 }
+
+
+
+function admins($conexao, $id_grupo) {
+    $sql = "SELECT *
+            FROM grupo_usuarios gu
+            WHERE gu.ID_Grupo = $id_grupo
+            AND gu.Admin = 1";
+    $resultado = mysqli_query($conexao, $sql);
+
+    $admins = array();
+    while ($admin = mysqli_fetch_assoc($resultado)) {
+        array_push($admins, $admin);
+    }
+    return $admins;
+}
+
+// Promove outro ADMIN
+// Critério: Membro mais antigo do grupo
+function promove_admin($conexao, $id_grupo) {
+
+    // Verifica se o número atual de Admins é zero
+    if ( count(admins($conexao, $id_grupo)) == 1 ) {
+
+        // Procura membro mais antigo que não é admin
+        $procura = "SELECT gu.Username
+                    FROM grupo_usuarios gu
+                    WHERE gu.ID_Grupo = $id_grupo AND gu.Admin = 0
+                    ORDER BY gu.Membro_Desde ASC
+                    LIMIT 1";
+        $resultado = mysqli_query($conexao, $procura);
+        $membro = mysqli_fetch_assoc($resultado);
+        $membro_username = $membro['Username'];
+
+        // Promove o membro para admin
+        $promove = "UPDATE grupo_usuarios gu
+                    SET gu.Admin = 1
+                    WHERE gu.Username = '$membro_username'";
+        return mysqli_query($conexao, $promove);
+
+    }
+
+
+
+}
