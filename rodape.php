@@ -5,7 +5,7 @@
 
         <footer class="footer black">
             <div class="container">
-                <p class="text-muted">&copy; Pietro Zuntini Bonfim, 2018</p>
+                <p class="text-muted white-text">&copy; Pietro Zuntini Bonfim, 2018</p>
             </div>
         </footer>
 
