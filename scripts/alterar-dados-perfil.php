@@ -6,9 +6,7 @@ if (isset($_POST['submit-alteracoes'])) {
 
     
     // Recupera o email da sessão
-    if (!isset($_SESSION) || !is_array($_SESSION)) {
-        session_start();
-    }
+    include $_SERVER['DOCUMENT_ROOT'].'/config/sessao.php';
     $email_sessao   = $_SESSION['login-email'];
 
     

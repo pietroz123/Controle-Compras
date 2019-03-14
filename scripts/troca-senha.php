@@ -5,9 +5,7 @@
 <?php
 
     // Inicia a sessao
-    if (!isset($_SESSION) || !is_array($_SESSION)) {
-        session_start();
-    }
+    include $_SERVER['DOCUMENT_ROOT'].'/config/sessao.php';
 
     // Verifica se o botão de submit foi pressionado
     if (!isset($_POST['submit-troca-senha'])) {

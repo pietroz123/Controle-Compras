@@ -10,10 +10,7 @@
 
 <?php
 
-    if (!isset($_SESSION) || !is_array($_SESSION)) {
-        session_start();
-    }
-
+    include $_SERVER['DOCUMENT_ROOT'].'/config/sessao.php';
 
     if (isset($_POST['id'])) {
 

@@ -1,8 +1,6 @@
 <?php
 
-if (!isset($_SESSION) || !is_array($_SESSION)) {
-    session_start();
-}
+include $_SERVER['DOCUMENT_ROOT'].'/config/sessao.php';
 
 // Mostra um alerta ao usuario, tanto de sucesso quanto de fracasso
 function mostra_alerta($tipo) {

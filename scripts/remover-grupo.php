@@ -22,9 +22,7 @@
 
 
     // Inicia a SESSAO
-    if (!isset($_SESSION) || !is_array($_SESSION)) {
-        session_start();
-    }
+    include $_SERVER['DOCUMENT_ROOT'].'/config/sessao.php';
 
     remover_grupo($conexao, $_POST['id']);
 

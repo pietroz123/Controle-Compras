@@ -3,10 +3,7 @@
 
     if (isset($_POST['busca']) && $_POST['busca'] == 'sim') {
 
-        if (!isset($_SESSION) || !is_array($_SESSION)) {
-            session_start();
-        }
-
+        include $_SERVER['DOCUMENT_ROOT'].'/config/sessao.php';
         include $_SERVER['DOCUMENT_ROOT'].'/database/conexao.php';
 
         $usuario = strip_tags($_POST['texto']);

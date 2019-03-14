@@ -6,9 +6,7 @@
 
 <?php
 
-    if (!isset($_SESSION) || !is_array($_SESSION)) {
-        session_start();
-    }
+    include $_SERVER['DOCUMENT_ROOT'].'/config/sessao.php';
 
     $email_nome_usuario = $_POST['autenticacao'];
     $senha_usuario = $_POST['senha'];
