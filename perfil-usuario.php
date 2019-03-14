@@ -168,7 +168,7 @@
 
 
     // =======================================================
-    // Função para criar o SELECT 2
+    // Funções dos grupos
     // =======================================================
 
     function formatarUsuario (usuario) {
@@ -205,6 +205,25 @@
         });
     }
 
+    function atualizaModalGrupos() {
+
+        // Atualiza o html da pagina
+        $('#membros-grupo').html(retorno);
+                    
+        // Recupera informações do numero de membros na pagina
+        var numero_membros = $("#numero").text();
+        var nome_grupo = $('.titulo-membros').text();
+        var td = $('td:contains("'+nome_grupo+'")');
+        var tr = td.parent();
+        var td_numero = tr.children('.numero-membros-grupo');
+
+        // Atualiza o numero de membros na visualização
+        td_numero.text(numero_membros);
+
+        // Cria o input select2
+        criaSelect2();
+    }
+
 
     // =======================================================
     // Ao carregar a página
@@ -221,7 +240,7 @@
         // =======================================================
         // Script para adicionar a flecha de criar novo grupo
         // =======================================================
-        
+
         if (id == "cartao-grupos-usuario") {
 
             // Scroll até a tabela de compras
@@ -509,21 +528,9 @@
                     dataType: "html",
                     success: function(retorno) {
                         
-                        // Atualiza o html da pagina
-                        $('#membros-grupo').html(retorno);
-                        
-                        // Recupera informações do numero de membros na pagina
-                        var numero_membros = $("#numero").text();
-                        var nome_grupo = $('.titulo-membros').text();
-                        var td = $('td:contains("'+nome_grupo+'")');
-                        var tr = td.parent();
-                        var td_numero = tr.children('.numero-membros-grupo');
+                        // Atualiza as informações dos grupos
+                        atualizaModalGrupos();
 
-                        // Atualiza o numero de membros na visualização
-                        td_numero.text(numero_membros);
-
-                        // Cria o input select2
-                        criaSelect2();
                     }
                 });
             },
@@ -562,21 +569,9 @@
                 dataType: "html",
                 success: function(retorno) {
 
-                    // Atualiza o html da pagina
-                    $('#membros-grupo').html(retorno);
-                    
-                    // Recupera informações do numero de membros na pagina
-                    var numero_membros = $("#numero").text();
-                    var nome_grupo = $('.titulo-membros').text();
-                    var td = $('td:contains("'+nome_grupo+'")');
-                    var tr = td.parent();
-                    var td_numero = tr.children('.numero-membros-grupo');
+                    // Atualiza as informações dos grupos
+                    atualizaModalGrupos();
 
-                    // Atualiza o numero de membros na visualização
-                    td_numero.text(numero_membros);
-
-                    // Cria o input select2
-                    criaSelect2();
                 }
             });
         }
