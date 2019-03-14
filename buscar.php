@@ -45,11 +45,11 @@
                     </li>
                 </div>
 
-            </ul>
+            </ul><br>
                 
             <button class="btn btn-success btn-block" type="submit">Buscar</button>
         </div>
-    </div><br><br>
+    </div>
 </form>
 
 
