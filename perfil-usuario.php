@@ -124,9 +124,9 @@
 
                             <?php foreach ($grupos AS $grupo) { ?>
                                 <tr>
-                                    <td><?= $grupo['Nome']; ?></td>
-                                    <td><?= date("d/m/Y h:m", strtotime($grupo['Data_Criacao'])); ?></td>
-                                    <td><?= $grupo['Numero_Membros']; ?></td>
+                                    <td class="nome-grupo"><?= $grupo['Nome']; ?></td>
+                                    <td class="data-criacao-grupo"><?= date("d/m/Y h:m", strtotime($grupo['Data_Criacao'])); ?></td>
+                                    <td class="numero-membros-grupo"><?= $grupo['Numero_Membros']; ?></td>
                                     <td>
                                         <button class="btn btn-info botao-pequeno btn-membros" id="<?= $grupo['ID']; ?>" username="<?= $usuario['Usuario']; ?>">Membros</button>
                                     </td>
@@ -166,7 +166,53 @@
 
 <script>
 
+
+    // =======================================================
+    // Função para criar o SELECT 2
+    // =======================================================
+
+    function formatarUsuario (usuario) {
+        if (!usuario.id) {
+            return usuario.text;
+        }
+        var $usuario = $(
+            '<span><img src="scripts/icone.php?icone=' + usuario.text + '" class="img-usuario" style="height: 30px; width: 30px;"> ' + usuario.text + '</span>'
+        );
+        return $usuario;
+    };
+
+    function criaSelect2() {
+        $('.input-usuario').select2({
+            ajax: {
+                url: "scripts/busca-usuario.php",
+                type: "post",
+                dataType: "json",
+                delay: 250,
+                data: function(params) {
+                    return {
+                        busca: "sim",
+                        texto: params.term
+                    };
+                },
+                processResults: function(data) {
+                    return {
+                        results: data
+                    };
+                },
+                cache: true
+            },
+            templateResult: formatarUsuario
+        });
+    }
+
+
+    // =======================================================
+    // Ao carregar a página
+    // =======================================================
+
     $(document).ready(function() {
+
+        criaSelect2();
 
         var url = window.location.href;
         var id = url.substring(url.lastIndexOf("#") + 1);
@@ -175,6 +221,7 @@
         // =======================================================
         // Script para adicionar a flecha de criar novo grupo
         // =======================================================
+        
         if (id == "cartao-grupos-usuario") {
 
             // Scroll até a tabela de compras
@@ -397,26 +444,9 @@
             success: function(data) {
                 $("#membros-grupo").html(data);
                 $("#modal-membros-grupo").modal("show");
-                $('.input-usuario').select2({
-                    ajax: {
-                        url: "scripts/busca-usuario.php",
-                        type: "post",
-                        dataType: "json",
-                        delay: 250,
-                        data: function(params) {
-                            return {
-                                busca: "sim",
-                                texto: params.term
-                            };
-                        },
-                        processResults: function(data) {
-                            return {
-                                results: data
-                            };
-                        },
-                        cache: true
-                    }
-                });
+                
+                // Cria o input select2
+                criaSelect2();
             }
         });
     });
@@ -450,43 +480,6 @@
     });
 
 
-    /* ===========================================================================================================
-    ===================================== REALIZA BUSCA POR USERNAMES NO BD ======================================
-    ========================================= UTILIZA O PLUGIN select2 ===========================================
-    ============================================================================================================== */
-    
-    function formatarUsuario (usuario) {
-        if (!usuario.id) {
-            return usuario.text;
-        }
-        var $usuario = $(
-            '<span><img src="scripts/icone.php?icone=' + usuario.text + '" class="img-usuario" style="height: 30px; width: 30px;"> ' + usuario.text + '</span>'
-        );
-        return $usuario;
-    };
-
-    $('.input-usuario').select2({
-        ajax: {
-            url: "scripts/busca-usuario.php",
-            type: "post",
-            dataType: "json",
-            delay: 250,
-            data: function(params) {
-                return {
-                    busca: "sim",
-                    texto: params.term
-                };
-            },
-            processResults: function(data) {
-                return {
-                    results: data
-                };
-            },
-            cache: true
-        },
-        templateResult: formatarUsuario
-    });
-
 
     /* ===========================================================================================================
     ===================================== REALIZA REMOÇÃO DE UM MEMBRO NO GRUPO ==================================
@@ -516,27 +509,21 @@
                     dataType: "html",
                     success: function(retorno) {
                         
+                        // Atualiza o html da pagina
                         $('#membros-grupo').html(retorno);
-                        $('.input-usuario').select2({
-                            ajax: {
-                                url: "scripts/busca-usuario.php",
-                                type: "post",
-                                dataType: "json",
-                                delay: 250,
-                                data: function(params) {
-                                    return {
-                                        busca: "sim",
-                                        texto: params.term
-                                    };
-                                },
-                                processResults: function(data) {
-                                    return {
-                                        results: data
-                                    };
-                                },
-                                cache: true
-                            }
-                        });
+                        
+                        // Recupera informações do numero de membros na pagina
+                        var numero_membros = $("#numero").text();
+                        var nome_grupo = $('.titulo-membros').text();
+                        var td = $('td:contains("'+nome_grupo+'")');
+                        var tr = td.parent();
+                        var td_numero = tr.children('.numero-membros-grupo');
+
+                        // Atualiza o numero de membros na visualização
+                        td_numero.text(numero_membros);
+
+                        // Cria o input select2
+                        criaSelect2();
                     }
                 });
             },
@@ -574,27 +561,22 @@
                 },
                 dataType: "html",
                 success: function(retorno) {
+
+                    // Atualiza o html da pagina
                     $('#membros-grupo').html(retorno);
-                    $('.input-usuario').select2({
-                        ajax: {
-                            url: "scripts/busca-usuario.php",
-                            type: "post",
-                            dataType: "json",
-                            delay: 250,
-                            data: function(params) {
-                                return {
-                                    busca: "sim",
-                                    texto: params.term
-                                };
-                            },
-                            processResults: function(data) {
-                                return {
-                                    results: data
-                                };
-                            },
-                            cache: true
-                        }
-                    });
+                    
+                    // Recupera informações do numero de membros na pagina
+                    var numero_membros = $("#numero").text();
+                    var nome_grupo = $('.titulo-membros').text();
+                    var td = $('td:contains("'+nome_grupo+'")');
+                    var tr = td.parent();
+                    var td_numero = tr.children('.numero-membros-grupo');
+
+                    // Atualiza o numero de membros na visualização
+                    td_numero.text(numero_membros);
+
+                    // Cria o input select2
+                    criaSelect2();
                 }
             });
         }
