@@ -83,7 +83,7 @@ body h1 {
 }
 
 /* ==========================================================
-   ========================= INPUT ==========================
+   ========================= MISCS ==========================
    ========================================================== */
 
 input {
@@ -96,6 +96,12 @@ button:not(.close) {
     letter-spacing: 1.2px;
     border: 2px solid lightgrey;
     border-radius: 15px;
+}
+
+.alert {
+    font-weight: bold;
+    font-family: 'Lora', serif;
+    border-width: medium;
 }
 
 
