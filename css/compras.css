@@ -28,7 +28,26 @@ body {
     /* font-family: 'Lora', serif; */
     /* font-family: 'Courgette', cursive; */
 
+    display: grid;
+    grid-template: 
+        "header header header header" 5em
+        "main main main main" 100%
+        "footer footer footer footer" auto
+        / 1fr 5fr 2fr 1fr;
+    min-height: 100vh;
+
 }
+
+#barra-navegacao {
+    grid-area: header;
+}
+.container {
+    grid-area: main;
+}
+.footer {
+    grid-area: footer;
+}
+
 
 /* !Para print_r dentro de pre */
 pre {
@@ -39,24 +58,13 @@ pre {
     background-color: white;
 }
 
-/* ==========================================================
-   ========================== HTML ==========================
-   ========================================================== */
-
-html {
-    position: relative;
-    min-height: 100%;
-    /* overflow-x: hidden; */
-}
 
 /* ==========================================================
    ========================== BODY ==========================
    ========================================================== */
 
 body {
-    /* margin: 50px 60px; */
-    margin-top: 50px;
-    margin-bottom: 60px;
+    margin-top: 100px;
     background-color: aliceblue;
 }
 body h1 {
@@ -70,7 +78,6 @@ body h1 {
    ========================================================== */
 
 .conteudo-principal {
-    padding: 40px 15px;
     text-align: center;
     font-family: 'Roboto Slab', serif;
 }
@@ -120,17 +127,8 @@ button:not(.close) {
 
 .footer {
     font-family: 'Roboto Slab', serif;
-    position: absolute;
-    bottom: 0;
-    /* Deixa o footer "infinito" */
-    right: 0px;
-    left: 0px;
-    /* Set the fixed height of the footer here */
-    height: 60px;
     background-color: #222;
-}
-body > .container {
-    padding: 60px 0px 0;
+    margin-top: 30px;
 }
 .container .text-muted { /* Coloca o texto do footer no meio */
     margin: 20px 0;
