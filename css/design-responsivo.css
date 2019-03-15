@@ -4,8 +4,8 @@
 }
 
 @media only screen and (max-width: 550px) {
-    body {
-        margin-top: 70px;
+    .footer {
+        margin-top: 100px;
     }
     body h1 {
         font-size: 25px;
