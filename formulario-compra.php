@@ -23,24 +23,24 @@
                 <div class="row">
                     <div class="col-lg-4">Observações</div>
                     <div class="col-lg-8">
-                        <select class="form-control" id="select2-observacoes" name="observacoes-select" style="width: 100%;"></select>
+                        <select class="form-control" id="select2-observacoes" name="observacoes-select" style="width: 100%;" required></select>
                         <input class="form-control" id="input-observacoes" type="hidden" name="observacoes">
                     </div>
                 </div>
                 <hr>
                 <div class="row">
                     <div class="col-lg-4">Data</div>
-                    <div class="col-lg-8"><input class="form-control" type="date" name="data"></div>
+                    <div class="col-lg-8"><input class="form-control" type="date" name="data" required></div>
                 </div>
                 <hr>
                 <div class="row">
                     <div class="col-lg-4">Valor</div>
-                    <div class="col-lg-8"><input id="input-valor" class="form-control" type="tel" name="valor" min="0" step="0.01"></div>
+                    <div class="col-lg-8"><input id="input-valor" class="form-control" type="tel" name="valor" min="0" step="0.01" required></div>
                 </div>
                 <hr>
                 <div class="row">
                     <div class="col-lg-4">Desconto</div>
-                    <div class="col-lg-8"><input class="form-control" type="number" name="desconto" min="0" step="0.01" value="0"></div>
+                    <div class="col-lg-8"><input class="form-control" type="number" name="desconto" min="0" step="0.01" value="0" required></div>
                 </div>
                 <hr>
                 <div class="row">
@@ -55,8 +55,8 @@
                 <div class="row">
                     <div class="col-lg-4">Comprador</div>
                     <div class="col-lg-8">
-                        <select class="custom-select" name="comprador-id" id="comprador-id">
-                            <option class="text-muted">Selecione uma Opção</option>
+                        <select class="form-control" name="comprador-id" id="comprador-id" required>
+                            <option class="text-muted" value="">Selecione uma Opção</option>
                             <?php
                                 foreach ($ids_compradores as $ids_comprador) {
                                     $comprador = buscar_comprador($conexao, $ids_comprador['Comprador_ID']);
