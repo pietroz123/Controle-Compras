@@ -22,7 +22,10 @@
             
                 <div class="row">
                     <div class="col-lg-4">Observações</div>
-                    <div class="col-lg-8"><input class="form-control" type="text" name="observacoes"></div>
+                    <div class="col-lg-8">
+                        <select class="form-control" id="select2-observacoes" name="observacoes-select" style="width: 100%;"></select>
+                        <input class="form-control" id="input-observacoes" type="hidden" name="observacoes">
+                    </div>
                 </div>
                 <hr>
                 <div class="row">
@@ -67,18 +70,6 @@
                     </div>
                 </div>
                 <hr>
-
-                <!-- Sem Cropper JS -->
-                <!-- <div class="row">
-                    <div class="col-lg-4">Imagem (Opcional)</div>
-                    <div class="col-lg-8">
-                        <input class="form-control-file" type="file" id="input-imagem" name="imagem" data-multiple-caption="{numero} arquivos selecionados" multiple>
-                        <label for="input-imagem">
-                            <i class="far fa-file-image"></i>
-                            <span>Selecione uma imagem</span>
-                        </label>
-                    </div>
-                </div> -->
 
 
                 <div class="list-inline">
@@ -134,6 +125,61 @@
         // =======================================================
 
         $('#input-valor').mask('000000000000000.00', {reverse: true});
+
+
+        // =======================================================
+        // Realiza a busca por observações já existentes
+        // =======================================================
+
+        $('#select2-observacoes').select2({
+            placeholder: 'Digite o nome do produto',
+            minimumInputLength: 4,
+            ajax: {
+                url: "scripts/busca-observacao.php",
+                type: "post",
+                dataType: "json",
+                delay: 250,
+                data: function(params) {
+                    return {
+                        busca: "sim",
+                        texto: params.term
+                    };
+                },
+                processResults: function(data) {
+                    return {
+                        results: data
+                    };
+                },
+                cache: true
+            },
+            allowClear: true,
+            // Permite observações novas
+            tags: true,
+            createTag: function (params) {
+                return {
+                id: params.term,
+                text: params.term,
+                newOption: true
+                }
+            },
+            templateResult: function (data) {
+                var $result = $("<span></span>");
+
+                $result.text(data.text);
+
+                if (data.newOption) {
+                $result.append(" <em>(novo)</em>");
+                }
+
+                return $result;
+            }
+        });
+
+        $('#select2-observacoes').change(function() {
+            // var selecionado = $('#select2-observacoes').select2('data')[0].text;
+            var selecionado = $('.select2-selection__rendered').attr('title');
+            $('#input-observacoes').val(selecionado);            
+        });
 
     });
 
