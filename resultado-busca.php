@@ -41,7 +41,7 @@
     <?php
 
         if ($id_comprador == 0) {   // Se foi selecionada a opção TODOS
-            $compras = compras_permitidas($conexao, $_SESSION['login-username'], $_SESSION['login-email']);
+            $compras = compras_permitidas_like($conexao, $_SESSION['login-username'], $_SESSION['login-email'], $palavraChave);
         }
         else {
             $compras = listar($conexao, "SELECT cmp.*, cmpd.Nome AS Nome_Comprador FROM compras AS cmp JOIN compradores AS cmpd ON cmp.Comprador_ID = cmpd.ID WHERE observacoes LIKE '%{$palavraChave}%' AND data >= '{$dataInicio}' AND data <= '{$dataFim}' AND Comprador_ID = {$id_comprador} ORDER BY year(data), month(data), day(data) DESC");
