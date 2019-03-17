@@ -4,25 +4,54 @@
         <!-- Div container -->
 
         <footer class="footer">
-            <div class="container mt-2 d-flex justify-content-between flex-column flex-sm-row">
-                <div class="footer-copyright flex-center">
-                    <p class="text-muted white-text">&copy; Pietro Zuntini Bonfim, 2018</p>
+
+            <!-- Container -->
+            <div class="container-fluid pt-4 pb-2 px-5 grey lighten-3">
+
+                <!-- Titulo -->
+                <div class="row mb-4">
+                    <div class="col">
+                        <div class="titulo-site">Controle de Compras</div>
+                    </div>
                 </div>
-                <div class="pt-2 icones-redes flex-center">
-                    <!-- Gitlab -->
-                    <a class="gitlab-ic">
-                        <img src="img/gitlab.png" class="small-icon" alt="">
-                    </a>
-                    <!-- Github -->
-                    <a class="github-ic">
-                        <img src="img/github.png" class="small-icon" alt="">
-                    </a>
-                    <!-- Linkedin -->
-                    <a class="linkedin-ic">
-                        <img src="img/linkedin.png" class="small-icon" alt="">
-                    </a>
+                
+                <!-- Navegacao -->
+                <div class="row">
+                    <div class="col"><a class="footer-nav-link" href="#!">Home</a></div>
+                    <div class="col"><a class="footer-nav-link" href="#!">Adicionar Compra</a></div>
+                    <div class="col"><a class="footer-nav-link" href="#!">Compras</a></div>
+                    <div class="col"><a class="footer-nav-link" href="#!">Buscar</a></div>
+                    <div class="col"><a class="footer-nav-link" href="#!">Requisições</a></div>
                 </div>
+
+                <hr class="mt-4 mb-3">
+
+                <!-- Copyright e Redes Sociais -->
+                <div class="row py-2">
+                    <div class="col">
+                        <div class="footer-copyright"><b>&copy; 2018</b>: Pietro Zuntini Bonfim</div>
+                    </div>
+                    <div class="col">
+                        <div class="float-right">
+                            <!-- Gitlab -->
+                            <a href="https://gitlab.com/pietroz123" class="gitlab-ic black-text">
+                                <i class="fab fa-gitlab fa-2x"></i>
+                            </a>
+                            <!-- Github -->
+                            <a href="https://github.com/pietroz123" class="github-ic black-text ml-1">
+                                <i class="fab fa-github fa-2x"></i>
+                            </a>
+                            <!-- Linkedin -->
+                            <a href="https://www.linkedin.com/in/pietro-zuntini-b23506140/" class="linkedin-ic black-text ml-1">
+                                <i class="fab fa-linkedin fa-2x"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
+            <!-- Container -->
+
         </footer>
 
         <!-- Scripts (Javascript) -->
