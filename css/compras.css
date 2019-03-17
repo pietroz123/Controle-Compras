@@ -93,10 +93,10 @@ body h1 {
    ========================= MISCS ==========================
    ========================================================== */
 
+/* Inputs e Buttons */
 input {
     margin-bottom: 10px;
 }
-
 button:not(.close) {
     font-family: 'Oswald', sans-serif;
     font-weight: bold;
@@ -104,21 +104,29 @@ button:not(.close) {
     border: 2px solid lightgrey;
     border-radius: 15px;
 }
+input[type="radio"]:checked+label {font-weight:bold;}
 
+/* Alertas */
 .alert {
     font-weight: bold;
     font-family: 'Lora', serif;
     border-width: medium;
 }
 
+/* Icones */
 .small-icon {
     height: 40px;
     width: 40px;
 }
-
 .medium-icon {
     height: 70px;
     width: 70px;
+}
+
+/* Select2 */
+.select2-selection { 
+    height: 2.5em !important;
+    padding-top: 4px;
 }
 
 /* ==========================================================
@@ -234,6 +242,15 @@ button:not(.close) {
 
 .modal-body, .modal-footer {
     font-family: 'Roboto Slab', serif;
+}
+
+
+/* =======================================================
+   FORMULÁRIO DE ADIÇÃO DE COMPRA
+   ======================================================= */
+
+.opcao-pagamento {
+    margin-right: 10px;
 }
 
 

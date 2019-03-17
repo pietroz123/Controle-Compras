@@ -21,40 +21,82 @@
                 <!-- Existem 5 tipos de tamanho: xs sm md lg xl -->
             
                 <div class="row">
-                    <div class="col-lg-4">Observações</div>
-                    <div class="col-lg-8">
+                    <div class="col-lg">
+                        <label for="input-observacoes" class="font-small font-weight-bold">Observações</label>
                         <select class="form-control" id="select2-observacoes" name="observacoes-select" style="width: 100%;" required></select>
                         <input class="form-control" id="input-observacoes" type="hidden" name="observacoes">
                     </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="col-lg-4">Data</div>
-                    <div class="col-lg-8"><input class="form-control" type="date" name="data" required></div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="col-lg-4">Valor</div>
-                    <div class="col-lg-8"><input id="input-valor" class="form-control" type="tel" name="valor" min="0" step="0.01" required></div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="col-lg-4">Desconto</div>
-                    <div class="col-lg-8"><input class="form-control" type="number" name="desconto" min="0" step="0.01" value="0" required></div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="col-lg-4">Forma de Pagamento</div>
-                    <div class="col-lg-8">
-                        <input type="radio" name="forma-pagamento" value="cartao" checked> Cartão<br>
-                        <input type="radio" name="forma-pagamento" value="boleto"> Boleto<br>
-                        <input type="radio" name="forma-pagamento" value="dinheiro"> Dinheiro<br>
+                    <div class="col-lg">
+                        <label for="input-data" class="font-small font-weight-bold">Data</label>
+                        <input id="input-data" class="form-control" type="date" name="data" required>
                     </div>
                 </div>
                 <hr>
                 <div class="row">
-                    <div class="col-lg-4">Comprador</div>
-                    <div class="col-lg-8">
+                    <div class="col-lg">
+                        <label for="input-valor" class="font-small font-weight-bold">Valor</label>
+                        <input id="input-valor" class="form-control" type="tel" name="valor" min="0" step="0.01" required>
+                    </div>
+                    <div class="col-lg">
+                        <label for="input-desconto" class="font-small font-weight-bold">Desconto</label>
+                        <input id="input-desconto" class="form-control" type="number" name="desconto" min="0" step="0.01" value="0" required>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-lg">
+                        <div class="d-flex justify-content-start">
+                            <div class="opcao-pagamento">
+                                <input type="radio" name="forma-pagamento" id="cartao" value="cartao" checked><label class="ml-1" for="cartao">Cartão</label>
+                            </div>
+                            <div class="opcao-pagamento">
+                                <input type="radio" name="forma-pagamento" id="boleto" value="boleto"><label class="ml-1" for="boleto">Boleto</label>
+                            </div>                            
+                            <div class="opcao-pagamento">
+                                <input type="radio" name="forma-pagamento" id="dinheiro" value="dinheiro"><label class="ml-1" for="dinheiro">Dinheiro</label>
+                            </div>                            
+                        </div>
+                    </div>
+                    <div class="col-lg">
+                        <div class="list-inline">
+                            <div class="list-inline-item"><button type="button" class="btn btn-light" data-toggle="modal" data-target="#modal-upload-imagem">faça o upload da nota fiscal</button></div>
+                            <div class="list-inline-item">
+                                <div class="status-upload mb-0 font-small text-danger">
+                                    <i class="fas fa-times-circle"></i> Nenhuma imagem selecionada
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <div class="modal fade" id="modal-upload-imagem">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Faça upload da Nota Fiscal</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <input class="form-control-file" type="file" id="input-imagem" name="imagem" data-multiple-caption="{numero} arquivos selecionados" multiple>
+                                        <label for="input-imagem">
+                                            <i class="far fa-file-image"></i>
+                                            <span>Selecione uma imagem</span>
+                                        </label>
+                                        <div id="canvas">
+
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="hidden" name="imagem-cortada" value="">
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-lg">
+                        <label for="comprador-id" class="font-small font-weight-bold">Comprador</label>
                         <select class="form-control" name="comprador-id" id="comprador-id" required>
                             <option class="text-muted" value="">Selecione uma Opção</option>
                             <?php
@@ -69,44 +111,6 @@
                         </select>
                     </div>
                 </div>
-                <hr>
-
-
-                <div class="list-inline">
-                    <div class="list-inline-item"><button type="button" class="btn btn-light" data-toggle="modal" data-target="#modal-upload-imagem">faça o upload da nota fiscal</button></div>
-                    <div class="list-inline-item">
-                        <div class="status-upload mb-0 font-small text-danger">
-                            <i class="fas fa-times-circle"></i> Nenhuma imagem selecionada
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="modal fade" id="modal-upload-imagem">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title">Faça upload da Nota Fiscal</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            </div>
-                            <div class="modal-body">
-                                <input class="form-control-file" type="file" id="input-imagem" name="imagem" data-multiple-caption="{numero} arquivos selecionados" multiple>
-                                <label for="input-imagem">
-                                    <i class="far fa-file-image"></i>
-                                    <span>Selecione uma imagem</span>
-                                </label>
-                                <div id="canvas">
-
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <input type="hidden" name="imagem-cortada" value="">
-
-
                 <hr>
             </div>
             
