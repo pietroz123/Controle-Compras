@@ -6,43 +6,43 @@
         <footer class="footer">
 
             <!-- Container -->
-            <div class="container-fluid pt-4 pb-2 px-5 grey lighten-3">
+            <div class="container pt-4 pb-2 px-5 bg-dark">
 
                 <!-- Titulo -->
                 <div class="row mb-4">
                     <div class="col">
-                        <div class="titulo-site">Controle de Compras</div>
+                        <div class="titulo-site white-text">Controle de Compras</div>
                     </div>
                 </div>
                 
                 <!-- Navegacao -->
-                <div class="row">
-                    <div class="col"><a class="footer-nav-link" href="#!">Home</a></div>
-                    <div class="col"><a class="footer-nav-link" href="#!">Adicionar Compra</a></div>
-                    <div class="col"><a class="footer-nav-link" href="#!">Compras</a></div>
-                    <div class="col"><a class="footer-nav-link" href="#!">Buscar</a></div>
-                    <div class="col"><a class="footer-nav-link" href="#!">Requisições</a></div>
-                </div>
+                <nav class="row nav-footer">
+                    <div class="col-sm-12 col-md text-center"><a class="footer-nav-link white-text" href="#!">Home</a></div>
+                    <div class="col-sm-12 col-md text-center"><a class="footer-nav-link white-text" href="#!">Adicionar Compra</a></div>
+                    <div class="col-sm-12 col-md text-center"><a class="footer-nav-link white-text" href="#!">Compras</a></div>
+                    <div class="col-sm-12 col-md text-center"><a class="footer-nav-link white-text" href="#!">Buscar</a></div>
+                    <div class="col-sm-12 col-md text-center"><a class="footer-nav-link white-text" href="#!">Requisições</a></div>
+                </nav>
 
                 <hr class="mt-4 mb-3">
 
                 <!-- Copyright e Redes Sociais -->
-                <div class="row py-2">
-                    <div class="col">
+                <div class="row py-2 white-text">
+                    <div class="col-sm-12 col-md">
                         <div class="footer-copyright"><b>&copy; 2018</b>: Pietro Zuntini Bonfim</div>
                     </div>
-                    <div class="col">
-                        <div class="float-right">
+                    <div class="col-sm-12 col-md">
+                        <div class="icones-redes">
                             <!-- Gitlab -->
-                            <a href="https://gitlab.com/pietroz123" class="gitlab-ic black-text">
+                            <a href="https://gitlab.com/pietroz123" class="gitlab-ic white-text">
                                 <i class="fab fa-gitlab fa-2x"></i>
                             </a>
                             <!-- Github -->
-                            <a href="https://github.com/pietroz123" class="github-ic black-text ml-1">
+                            <a href="https://github.com/pietroz123" class="github-ic white-text ml-3">
                                 <i class="fab fa-github fa-2x"></i>
                             </a>
                             <!-- Linkedin -->
-                            <a href="https://www.linkedin.com/in/pietro-zuntini-b23506140/" class="linkedin-ic black-text ml-1">
+                            <a href="https://www.linkedin.com/in/pietro-zuntini-b23506140/" class="linkedin-ic white-text ml-3">
                                 <i class="fab fa-linkedin fa-2x"></i>
                             </a>
                         </div>

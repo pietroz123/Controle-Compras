@@ -155,11 +155,13 @@ input[type="radio"]:checked+label {font-weight:bold;}
 
 .footer-nav-link {
     color: black;
-    font-family: 'Patua One', cursive;
+    font-family: 'Roboto Slab', serif;
+    font-size: 16px !important;
     font-size: large;
 }
 .footer-nav-link:hover {
-    color: grey;
+    /* color: rgba(255, 255, 255, 0.75);
+    background-color: #eceff1 !important; */
 }
 
 .footer-copyright {
@@ -167,9 +169,12 @@ input[type="radio"]:checked+label {font-weight:bold;}
 }
 
 .footer hr {
-    border-top: 2px solid #000;
+    border-top: 3px solid white;
 }
 
+.icones-redes {
+    text-align: right;
+}
 
 /* ==========================================================
    ====================== GRID SYSTEM =======================
@@ -575,11 +580,4 @@ img {
     margin-left: auto;
     margin-right: auto;
     width: 40%;
-}
-
-.icones-redes {
-    border: 3px solid grey;
-    border-radius: 40px;
-    padding: 5px 10px;
-    background-color: white;
 }
