@@ -17,11 +17,11 @@
                 
                 <!-- Navegacao -->
                 <nav class="nav-footer d-flex justify-content-around flex-column flex-md-row">
-                    <div class="text-center footer-nav-item"><a class="footer-nav-link white-text" href="#!">Home</a></div>
-                    <div class="text-center footer-nav-item"><a class="footer-nav-link white-text" href="#!">Adicionar Compra</a></div>
-                    <div class="text-center footer-nav-item"><a class="footer-nav-link white-text" href="#!">Compras</a></div>
-                    <div class="text-center footer-nav-item"><a class="footer-nav-link white-text" href="#!">Buscar</a></div>
-                    <div class="text-center footer-nav-item"><a class="footer-nav-link white-text" href="#!">Requisições</a></div>
+                    <a class="text-center footer-nav-item" href="#!">Home</a></a>
+                    <a class="text-center footer-nav-item" href="#!">Adicionar Compra</a></a>
+                    <a class="text-center footer-nav-item" href="#!">Compras</a></a>
+                    <a class="text-center footer-nav-item" href="#!">Buscar</a></a>
+                    <a class="text-center footer-nav-item" href="#!">Requisições</a></a>
                 </nav>
 
                 <hr class="mt-4 mb-3">
