@@ -16,12 +16,12 @@
                 </div>
                 
                 <!-- Navegacao -->
-                <nav class="row nav-footer">
-                    <div class="col-sm-12 col-md text-center"><a class="footer-nav-link white-text" href="#!">Home</a></div>
-                    <div class="col-sm-12 col-md text-center"><a class="footer-nav-link white-text" href="#!">Adicionar Compra</a></div>
-                    <div class="col-sm-12 col-md text-center"><a class="footer-nav-link white-text" href="#!">Compras</a></div>
-                    <div class="col-sm-12 col-md text-center"><a class="footer-nav-link white-text" href="#!">Buscar</a></div>
-                    <div class="col-sm-12 col-md text-center"><a class="footer-nav-link white-text" href="#!">Requisições</a></div>
+                <nav class="nav-footer d-flex justify-content-around flex-column flex-md-row">
+                    <div class="text-center footer-nav-item"><a class="footer-nav-link white-text" href="#!">Home</a></div>
+                    <div class="text-center footer-nav-item"><a class="footer-nav-link white-text" href="#!">Adicionar Compra</a></div>
+                    <div class="text-center footer-nav-item"><a class="footer-nav-link white-text" href="#!">Compras</a></div>
+                    <div class="text-center footer-nav-item"><a class="footer-nav-link white-text" href="#!">Buscar</a></div>
+                    <div class="text-center footer-nav-item"><a class="footer-nav-link white-text" href="#!">Requisições</a></div>
                 </nav>
 
                 <hr class="mt-4 mb-3">

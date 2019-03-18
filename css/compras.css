@@ -159,9 +159,15 @@ input[type="radio"]:checked+label {font-weight:bold;}
     font-size: 16px !important;
     font-size: large;
 }
+.footer-nav-item:hover {
+    color: rgba(255, 255, 255, 0.75);
+    background-color: #eceff1 !important;
+}
+.footer-nav-item:hover > .footer-nav-link {
+    color: black !important;
+}
 .footer-nav-link:hover {
-    /* color: rgba(255, 255, 255, 0.75);
-    background-color: #eceff1 !important; */
+    font-weight: bold;
 }
 
 .footer-copyright {
