@@ -26,7 +26,7 @@
                         <select class="form-control" id="select2-observacoes" name="observacoes-select" style="width: 100%;" required></select>
                         <input class="form-control" id="input-observacoes" type="hidden" name="observacoes">
                     </div>
-                    <div class="col-lg">
+                    <div class="col-lg mt-3 mt-lg-0">
                         <label for="input-data" class="font-small font-weight-bold">Data</label>
                         <input id="input-data" class="form-control" type="date" name="data" required>
                     </div>
@@ -44,8 +44,8 @@
                 </div>
                 <hr>
                 <div class="row">
-                    <div class="col-lg">
-                        <div class="d-flex justify-content-start">
+                    <div class="col-lg mb-3 mb-lg-0">
+                        <div class="d-flex justify-content-between">
                             <div class="opcao-pagamento">
                                 <input type="radio" name="forma-pagamento" id="cartao" value="cartao" checked><label class="ml-1" for="cartao">Cartão</label>
                             </div>
