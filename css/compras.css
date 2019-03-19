@@ -163,6 +163,11 @@ input[type="radio"]:checked+label {font-weight:bold;}
     background-color: #eceff1 !important;
     font-weight: bold;
 }
+.footer-nav-item.active {
+    color: black;
+    background-color: #eceff1 !important;
+    font-weight: bold;
+}
 
 .footer-copyright {
     font-family: 'Courgette', cursive;

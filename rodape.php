@@ -17,17 +17,17 @@
                 
                 <!-- Navegacao -->
                 <nav class="nav-footer d-flex justify-content-around flex-column flex-md-row">
-                    <a class="text-center footer-nav-item" href="/index.php">Home</a>
+                    <a class="text-center footer-nav-item" href="index.php">Home</a>
                     <?php
                         if (usuario_esta_logado()) {
                     ?>
-                        <a class="text-center footer-nav-item" href="/formulario-compra.php">Adicionar Compra</a>
-                        <a class="text-center footer-nav-item" href="/listar-compras.php">Compras</a>
-                        <a class="text-center footer-nav-item" href="/buscar.php">Buscar</a>
+                        <a class="text-center footer-nav-item" href="formulario-compra.php">Adicionar Compra</a>
+                        <a class="text-center footer-nav-item" href="listar-compras.php">Compras</a>
+                        <a class="text-center footer-nav-item" href="buscar.php">Buscar</a>
                         <?php
                             if (admin()) {
                         ?>
-                            <a class="text-center footer-nav-item" href="/requisicoes.php">Requisições</a>
+                            <a class="text-center footer-nav-item" href="requisicoes.php">Requisições</a>
                         <?php
                             }
                         ?>
