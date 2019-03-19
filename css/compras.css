@@ -45,9 +45,6 @@ body {
 #barra-navegacao {
     grid-area: header;
 }
-.container {
-    grid-area: main;
-}
 .footer {
     grid-area: footer;
 }
@@ -82,6 +79,7 @@ body h1 {
    ========================================================== */
 
 .conteudo-principal {
+    grid-area: main;
     text-align: center;
     font-family: 'Roboto Slab', serif;
 }

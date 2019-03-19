@@ -45,6 +45,7 @@
                 <hr>
                 <div class="row">
                     <div class="col-lg mb-3 mb-lg-0">
+                        <div class="font-small font-weight-bold mb-2">Forma de Pagamento</div>
                         <div class="d-flex justify-content-between">
                             <div class="opcao-pagamento">
                                 <input type="radio" name="forma-pagamento" id="cartao" value="cartao" checked><label class="ml-1" for="cartao">Cartão</label>

@@ -127,5 +127,5 @@
 
         </nav>
 
-        <div class="container">
-            <div class="conteudo-principal">
+        <div class="conteudo-principal">
+            <div class="container">
