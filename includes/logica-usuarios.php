@@ -1,6 +1,6 @@
 <?php
 
-include $_SERVER['DOCUMENT_ROOT'].'/config/sessao.php';
+include '../config/sessao.php';
 
 // Mostra um alerta ao usuario, tanto de sucesso quanto de fracasso
 function mostra_alerta($tipo) {

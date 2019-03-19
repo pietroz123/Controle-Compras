@@ -1,7 +1,7 @@
 <?php 
-    include $_SERVER['DOCUMENT_ROOT'].'/cabecalho.php'; 
-    include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes.php';
-    include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes-grupos.php';
+    include 'cabecalho.php'; 
+    include 'includes/funcoes.php';
+    include 'includes/funcoes-grupos.php';
 ?>
 
 <?php
@@ -118,7 +118,7 @@
 
         </form>
 
-<?php include $_SERVER['DOCUMENT_ROOT'].'/rodape.php'; ?>
+<?php include 'rodape.php'; ?>
 
 <script>
 
