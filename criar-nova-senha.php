@@ -3,7 +3,7 @@
 ?>
 
 <?php
-    mostra_alerta("danger");
+    mostra_alertas();
 ?>
 
 <?php

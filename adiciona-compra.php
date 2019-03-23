@@ -104,9 +104,7 @@
     // }
 
 
-    mostra_alerta("danger");
-    mostra_alerta("success");
-    mostra_alerta("info");
+    mostra_alertas();
 ?>
 
 <!-- Abre conexão e verifica possível erro -->

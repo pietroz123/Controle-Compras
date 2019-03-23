@@ -4,8 +4,7 @@
 ?>
 
 <?php
-    mostra_alerta("success");
-    mostra_alerta("danger");
+    mostra_alertas();
 ?>
 
     <h1>Bem Vindo ao Controle de Compras</h1>

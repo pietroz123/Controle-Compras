@@ -14,10 +14,17 @@ function mostra_alerta($tipo) {
     }
 }
 
+// Wrapper com todos os alertas
+function mostra_alertas() {
+    mostra_alerta('info');
+    mostra_alerta('success');
+    mostra_alerta('danger');
+}
+
 // Verifica se o usuario esta logado e, caso contrario, o redireciona para a pagina principal
 function verifica_usuario() {
     if (!usuario_esta_logado()) {
-        $_SESSION['danger'] = "Você não tem acesso a essa funcionalidade.";
+        $_SESSION['danger'] = "Você não tem acesso a essa funcionalidade. Nível de acesso: USUÁRIO LOGADO.";
         header("Location: ../index.php");
         // echo("<script>location.href = '../index.php'</script>");
         die();
@@ -57,4 +64,14 @@ function logout() {
 // Retorna se o usuario atual e o admin
 function admin() {
     return isset($_SESSION['admin']);
+}
+
+// Verifica se o usuario esta logado e, caso contrario, o redireciona para a pagina principal
+function verifica_admin() {
+    if (!admin()) {
+        $_SESSION['danger'] = "Você não tem acesso a essa funcionalidade. Nível de acesso: ADMIN.";
+        header("Location: ../index.php");
+        // echo("<script>location.href = '../index.php'</script>");
+        die();
+    }
 }

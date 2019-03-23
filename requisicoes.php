@@ -5,8 +5,8 @@
 
 <?php
     verifica_usuario();
-    mostra_alerta("success");
-    mostra_alerta("danger");
+    verifica_admin();
+    mostra_alertas();
 
     $usuarios_temp = recuperar_usuarios_temp($conexao);
 

@@ -7,8 +7,7 @@
 
 <?php
     verifica_usuario();
-    mostra_alerta("success");
-    mostra_alerta("danger");
+    mostra_alertas();
 
     // // Recupera todas as informações do usuário
     // $comprador_usuario = join_usuario_comprador($conexao, $_SESSION['login-email']);

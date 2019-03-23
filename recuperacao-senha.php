@@ -3,8 +3,7 @@
 ?>
 
 <?php
-    mostra_alerta("danger");
-    mostra_alerta("success");
+    mostra_alertas();
 ?>
 
     <h1>Formulário de troca de senha</h1>

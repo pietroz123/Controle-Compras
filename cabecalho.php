@@ -92,6 +92,9 @@
                                 <li class="nav-item">
                                     <a class="nav-link" onmouseover="this.classList.add('nav-hover-bg')" onmouseout="this.classList.remove('nav-hover-bg')" href="requisicoes.php">Requisições</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" onmouseover="this.classList.add('nav-hover-bg')" onmouseout="this.classList.remove('nav-hover-bg')" href="backups.php">Backups</a>
+                                </li>
                             <?php
                                 }
                             ?>

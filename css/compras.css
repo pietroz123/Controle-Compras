@@ -15,6 +15,20 @@
 @import url('https://fonts.googleapis.com/css?family=Courgette');
 @import url('https://fonts.googleapis.com/css?family=Patua+One');
 @import url('https://fonts.googleapis.com/css?family=Lobster');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab');
+@import url('https://fonts.googleapis.com/css?family=Signika');
+@import url('https://fonts.googleapis.com/css?family=Slabo+27px');
+@import url('https://fonts.googleapis.com/css?family=Oswald');
+@import url('https://fonts.googleapis.com/css?family=Merienda');
+@import url('https://fonts.googleapis.com/css?family=Neucha');
+@import url('https://fonts.googleapis.com/css?family=Merriweather');
+@import url('https://fonts.googleapis.com/css?family=Lato');
+@import url('https://fonts.googleapis.com/css?family=Lora');
+@import url('https://fonts.googleapis.com/css?family=Courgette');
+@import url('https://fonts.googleapis.com/css?family=Markazi+Text');
+@import url('https://fonts.googleapis.com/css?family=PT+Serif');
+@import url('https://fonts.googleapis.com/css?family=Bitter');
+@import url('https://fonts.googleapis.com/css?family=Bree+Serif');
 
 
 body {
@@ -29,8 +43,15 @@ body {
     /* font-family: 'Lato', sans-serif; */
     /* font-family: 'Lora', serif; */
     /* font-family: 'Courgette', cursive; */
-    /* font-family: 'Patua One', cursive; */
-    /* font-family: 'Lobster', cursive; */
+    /* font-family: 'Markazi Text', serif; */
+    /* font-family: 'PT Serif', serif; */
+    /* font-family: 'Bitter', serif; */
+    /* font-family: 'Bree Serif', serif; */
+
+}
+
+
+body {
 
     display: grid;
     grid-template: 
@@ -583,4 +604,36 @@ img {
     margin-left: auto;
     margin-right: auto;
     width: 40%;
+}
+
+
+/* =======================================================
+   Pagina de backups
+   ======================================================= */
+
+#titulo-informacoes {
+    font-size: 32px;
+    letter-spacing: 2.48px;
+    font-family: 'Oswald', sans-serif;
+}
+.cartao-informacao {
+    height: 175px;
+    padding: 40px;
+    background-color: #2E2E2E;
+    color: white;
+    border: 0.5px solid rgb(26, 0, 0, 0.5);
+
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    flex-grow: 1;
+}
+.cartao-informacao-titulo {
+    font-family: 'Merienda', cursive;
+    font-size: 18px;
+}
+.cartao-informacao-desc {
+    font-family: 'Bitter', serif;
+    font-size: 35px;
 }
