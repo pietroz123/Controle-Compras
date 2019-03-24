@@ -105,7 +105,7 @@ body h1 {
     font-family: 'Roboto Slab', serif;
 }
 
-.conteudo-principal p {
+.bem-vindo-index {
     text-align: justify;
     font-family: 'Slabo 27px', serif;
     font-size: 25px;
@@ -631,4 +631,26 @@ img {
 .cartao-informacao-desc {
     font-family: 'Bitter', serif;
     font-size: 35px;
+}
+
+#resultado-backup {
+    border: 3px solid lightgrey;
+    border-radius: 10px;
+}
+
+.opcao-backup-intro {
+    font-family: 'Markazi Text', serif;
+    font-size: 26px;
+}
+.opcao-backup-titulo {
+    font-family: 'Markazi Text', serif;
+    font-size: 26px;
+}
+.opcao-backup {
+    font-family: 'Bree Serif', serif;
+}
+
+.custom-checkbox 
+.custom-control-input:checked ~ .custom-control-label::before {
+    background-color: black !important;
 }

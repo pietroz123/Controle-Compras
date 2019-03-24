@@ -415,7 +415,7 @@ error_reporting(E_ALL);
 set_time_limit(900); // 15 minutes
 
 if (php_sapi_name() != "cli") {
-    echo '<div style="font-family: monospace;">';
+    echo '<div style="font-family: monospace;" class="text-left p-3">';
 }
 
 $backupDatabase = new Backup_Database(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME, CHARSET);

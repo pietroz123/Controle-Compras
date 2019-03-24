@@ -12,9 +12,9 @@
 
         <h1>Bem Vindo ao Controle de Compras</h1>
 
-        <p>Este projeto corresponde à uma integração entre <mark>PHP</mark> e <mark>MySQL</mark> para gerenciar um Banco de Dados cujo objetivo é armazenar minhas compras pessoais, além de seus respectivos compradores.</p>
+        <p class="bem-vindo-index">Este projeto corresponde à uma integração entre <mark>PHP</mark> e <mark>MySQL</mark> para gerenciar um Banco de Dados cujo objetivo é armazenar minhas compras pessoais, além de seus respectivos compradores.</p>
 
-        <p>O Sistema de Gestão de Bancos de Dados utilizado é o MySQL versão <mark>8.0.12-standard</mark>.</p>
+        <p class="bem-vindo-index">O Sistema de Gestão de Bancos de Dados utilizado é o MySQL versão <mark>8.0.12-standard</mark>.</p>
 
         <div class="alert alert-warning">Efetue o login ou o cadastro à partir do Menu de Navegação.</div>
         
@@ -124,7 +124,73 @@
                 </div>
 
                 <div class="elegant-color p-3" id="backups">
-                    <button class="btn btn-success botao botao-pequeno mb-4" type="submit">realizar backup</button>
+
+                    <!-- Realizar Backup -->
+                    <!-- <form action="backup/myphp-backup.php"> -->
+                        <button class="btn btn-success botao botao-pequeno mb-4 btn-backup">clique aqui para realizar backup</button>
+                        <div id="resultado-backup" class="bg-white mb-3" style="display: none;">
+                            <div class="container p-2">
+                                <div class="row">
+                                    <div class="col opcao-backup-intro text-uppercase"><p>Realizar Backup de:</p></div>
+                                </div>
+
+                                <hr>
+
+                                <div class="row mb-3">
+                                    <div class="col opcao-backup-titulo">TABELAS:</div>
+                                    <div class="col opcao-backup-titulo">INFORMAÇÕES:</div>
+                                </div>
+
+                                <div class="row" id="tabelas-backup">
+                                    <div class="col d-flex flex-column text-left ml-4">
+                                        <div class="custom-control custom-checkbox chk-tabelas opcao-backup">
+                                            <input type="checkbox" class="custom-control-input" name="chk-tb[]" id="chk-todas">
+                                            <label class="custom-control-label" for="chk-todas">Todas</label>
+                                        </div>
+                                        <?php
+                                            $show = "SHOW TABLES";
+                                            $resultado = mysqli_query($conexao, $show);
+                                            $tables = array();
+                                            while ($table = mysqli_fetch_assoc($resultado)) {
+                                        ?>
+                                                <div class="custom-control custom-checkbox chk-tabelas opcao-backup">
+                                                    <input type="checkbox" class="custom-control-input" name="chk-tb[]" id="chk-<?= $table['Tables_in_my_controle_compras'] ?>">
+                                                    <label class="custom-control-label" for="chk-<?= $table['Tables_in_my_controle_compras'] ?>"><?= strtoupper($table['Tables_in_my_controle_compras']) ?></label>
+                                                </div>
+                                        <?php
+                                            }
+                                        ?>
+                                    </div>
+                                    <div class="col d-flex flex-column text-left ml-4">
+                                        <div class="custom-control custom-checkbox chk-informacoes opcao-backup">
+                                            <input type="checkbox" class="custom-control-input" name="chk-info[]" id="chk-dados">
+                                            <label class="custom-control-label" for="chk-dados">Dados</label>
+                                        </div>
+                                        <div class="custom-control custom-checkbox chk-informacoes opcao-backup">
+                                            <input type="checkbox" class="custom-control-input" name="chk-info[]" id="chk-estrutura">
+                                            <label class="custom-control-label" for="chk-estrutura">Estrutura</label>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <hr>
+
+                                <!-- Botão de OK -->
+                                <div class="row">
+                                    <div class="col">
+                                        <button class="btn btn-success float-right" id="btn-ok-backup" type="submit" name="submit-backup">ok</button>
+                                        <button class="btn btn-danger float-right" id="btn-cancelar-backup">cancelar</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    <!-- </form> -->
+
+
+
                     <h4 class="white-text text-left py-2">Ultimos Backups</h4>
                     
                     <div id="ultimos-backups" class="bg-light py-4">
@@ -164,6 +230,7 @@
                                 <hr>
                     
                         <?php
+                                $i++;
                             }
                             if ($i == 0) {
                         ?>
@@ -187,3 +254,46 @@
 
 
 <?php include $_SERVER['DOCUMENT_ROOT'].'/rodape.php'; ?>
+
+
+<script>
+
+    $(document).ready(function() {
+
+        // =======================================================
+        // Botão Realizar Backup
+        // =======================================================
+
+        $('.btn-backup').click(function() {
+            $(this).toggle();
+            $('#resultado-backup').toggle();
+        });
+
+        $('#btn-cancelar-backup').click(function() {
+            $('.btn-backup').toggle();
+            $('#resultado-backup').toggle();
+        });
+
+        $('#btn-ok-backup').click(function() {
+            $.ajax({
+                url: 'backup/myphp-backup.php',
+                method: 'POST',
+                data: {
+                    
+                },
+                success: function(retorno) {
+                    console.log('Success');
+                    console.log(retorno);
+                    $('#resultado-backup').html(retorno);
+                },
+                error: function(retorno) {
+                    console.log('Error');
+                    console.log(retorno);
+                }
+            });
+        });
+
+
+    });
+
+</script>
