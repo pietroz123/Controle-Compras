@@ -146,6 +146,71 @@
             </div>
         </div>
 
+        <div class="card z-depth-2 mt-3" id="cartao-requisicoes">
+            
+            <div class="card-header default-color-dark white-text">Requisições</div>
+
+            <div class="card-body">
+                
+                <div class="container">
+                    <?php
+                    
+                        if (admin()) {
+                    
+                            $usuarios_temp = recuperar_usuarios_temp($conexao);
+                    
+                            if (count($usuarios_temp) > 0) {
+                    ?>
+                    
+                                <table class="table table-hover" id="tabela-requisicoes">
+                                    <thead>
+                                        <th class="font-weight-bold t-nome-usuario">Nome</th>
+                                        <th class="font-weight-bold t-sobrenome-usuario">Criado Em</th>
+                                        <th class="font-weight-bold t-username-usuario">Usuário</th>
+                                        <th class="font-weight-bold t-email-usuario">E-mail</th>
+                                        <th class="font-weight-bold">Operações</th>
+                                    </thead>
+                    
+                                    <tbody>
+                                    <?php    
+                                        foreach ($usuarios_temp as $usuario_temp) {
+                                    ?>
+                                        <tr>
+                                            <td class="t-nome-usuario"><?= $usuario_temp['Nome'] ?></td>
+                                            <td class="t-sobrenome-usuario"><?= $usuario_temp['Criado_Em'] ?></td>
+                                            <td class="t-username-usuario"><?= $usuario_temp['Usuario'] ?></td>
+                                            <td class="t-email-usuario"><?= $usuario_temp['Email'] ?></td>
+                                            <td>
+                                                <form action="scripts/adiciona-usuario-temp.php" method="post">
+                                                    <input type="hidden" name="id" value="<?= $usuario_temp['ID_Usuario'] ?>">
+                                                    <button class="btn btn-primary botao-pequeno">adicionar</button>
+                                                </form>
+                                                <form action="scripts/rejeitar-usuario-temp.php" method="post">
+                                                    <input type="hidden" name="email" value="<?= $usuario_temp['Email'] ?>">
+                                                    <button class="btn btn-danger botao-pequeno">rejeitar</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    <?php
+                                        }
+                                    ?>
+                                    </tbody>
+                                </table>
+                    
+                        <?php
+                            }
+                            else {
+                        ?>
+                                <div class="alert alert-info" role="alert">Não existem requisições no momento.</div>
+                    <?php
+                            }
+                        }
+                    ?>
+                </div>
+
+            </div>
+        </div>
+
     </div>
 
     <!-- Modal para membros do Grupo -->

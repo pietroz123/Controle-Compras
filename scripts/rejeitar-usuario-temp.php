@@ -19,13 +19,13 @@
         if (remover_usuario_temp($conexao, $email_usuario_temp)) {
             
             $_SESSION['success'] = "Requisição removida com sucesso.";
-            header("Location: ../requisicoes.php");
+            header("Location: ../perfil-usuario.php");
             die();
     
         } else {
             
             $_SESSION['danger'] = "Erro na remoção da requisição.";
-            header("Location: ../requisicoes.php");
+            header("Location: ../perfil-usuario.php");
             die();
         
         }

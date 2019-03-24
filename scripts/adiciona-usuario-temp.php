@@ -19,13 +19,13 @@
         if (adicionar_usuario_definitivo($conexao, $id_usuario_temp)) {
             
             $_SESSION['success'] = "Usuário adicionado com sucesso.";
-            header("Location: ../requisicoes.php");
+            header("Location: ../perfil-usuario.php");
             die();
     
         } else {
             
             $_SESSION['danger'] = "Erro na adição do usuário.";
-            header("Location: ../requisicoes.php");
+            header("Location: ../perfil-usuario.php");
             die();
         
         }
