@@ -142,10 +142,12 @@
                                 </div>
 
                                 <div class="row" id="tabelas-backup">
-                                    <div class="col d-flex flex-column text-left ml-4">
+
+                                    <!-- Checkboxes das Tabelas -->
+                                    <form class="col d-flex flex-column text-left ml-4" id="formTabelas">
                                         <div class="custom-control custom-checkbox chk-tabelas opcao-backup">
-                                            <input type="checkbox" class="custom-control-input" name="chk-tb[]" id="chk-todas">
-                                            <label class="custom-control-label" for="chk-todas">Todas</label>
+                                            <input type="checkbox" class="custom-control-input" name="chk_tb" id="chk_tb_todas">
+                                            <label class="custom-control-label" for="chk_tb_todas">Todas</label>
                                         </div>
                                         <?php
                                             $show = "SHOW TABLES";
@@ -154,23 +156,31 @@
                                             while ($table = mysqli_fetch_assoc($resultado)) {
                                         ?>
                                                 <div class="custom-control custom-checkbox chk-tabelas opcao-backup">
-                                                    <input type="checkbox" class="custom-control-input" name="chk-tb[]" id="chk-<?= $table['Tables_in_my_controle_compras'] ?>">
+                                                    <input type="checkbox" class="custom-control-input" name="chk_tb" id="chk-<?= $table['Tables_in_my_controle_compras'] ?>">
                                                     <label class="custom-control-label" for="chk-<?= $table['Tables_in_my_controle_compras'] ?>"><?= strtoupper($table['Tables_in_my_controle_compras']) ?></label>
                                                 </div>
                                         <?php
                                             }
                                         ?>
-                                    </div>
-                                    <div class="col d-flex flex-column text-left ml-4">
+                                    </form>
+                                    <!-- Checkboxes das Tabelas -->
+
+                                    <!-- Checkboxes das Opções -->
+                                    <form class="col d-flex flex-column text-left ml-4" id="formOpcoes">
                                         <div class="custom-control custom-checkbox chk-informacoes opcao-backup">
-                                            <input type="checkbox" class="custom-control-input" name="chk-info[]" id="chk-dados">
+                                            <input type="checkbox" class="custom-control-input" name="chk_info" id="chk_info_todas">
+                                            <label class="custom-control-label" for="chk_info_todas">Todas</label>
+                                        </div>
+                                        <div class="custom-control custom-checkbox chk-informacoes opcao-backup">
+                                            <input type="checkbox" class="custom-control-input" name="chk_info" id="chk-dados">
                                             <label class="custom-control-label" for="chk-dados">Dados</label>
                                         </div>
                                         <div class="custom-control custom-checkbox chk-informacoes opcao-backup">
-                                            <input type="checkbox" class="custom-control-input" name="chk-info[]" id="chk-estrutura">
+                                            <input type="checkbox" class="custom-control-input" name="chk_info" id="chk-estrutura">
                                             <label class="custom-control-label" for="chk-estrutura">Estrutura</label>
                                         </div>
-                                    </div>
+                                    </form>
+                                    <!-- Checkboxes das Opções -->
 
                                 </div>
 
@@ -265,13 +275,11 @@
         // =======================================================
 
         $('.btn-backup').click(function() {
-            $(this).toggle();
-            $('#resultado-backup').toggle();
+            $('#resultado-backup').slideDown();
         });
 
         $('#btn-cancelar-backup').click(function() {
-            $('.btn-backup').toggle();
-            $('#resultado-backup').toggle();
+            $('#resultado-backup').slideUp();
         });
 
         $('#btn-ok-backup').click(function() {
@@ -292,6 +300,79 @@
                 }
             });
         });
+
+        
+
+        // ============================================================
+        // Verificação das Checkbox - Javascript & JQuery Jon Ducket
+        // ============================================================
+
+        // Helper function to add an event listener
+        function addEvent (el, event, callback) {
+            if ('addEventListener' in el) {                  // If addEventListener works
+                el.addEventListener(event, callback, false);   // Use it
+            } else {                                         // Otherwise
+                el['e' + event + callback] = callback;         // CreateIE fallback
+                el[event + callback] = function () {
+                el['e' + event + callback](window.event);
+                };
+                el.attachEvent('on' + event, el[event + callback]);
+            }
+        }
+
+        // Para o form das Tabelas
+
+        var formTabelas = document.getElementById('formTabelas');
+        var elementosTabelas = formTabelas.elements;
+        var opcoesTabelas = elementosTabelas.chk_tb;
+        var inputTodasTabelas = document.getElementById('chk_tb_todas');
+
+        function updateAllTabelas() {
+            for (let i = 0; i < opcoesTabelas.length; i++) {
+                opcoesTabelas[i].checked = inputTodasTabelas.checked;
+            }
+        }
+        addEvent(inputTodasTabelas, 'change', updateAllTabelas);
+
+        function clearAllOptionsTabelas(e) {
+            var target = e.target || e.srcElement;
+            if (!target.checked) {
+                inputTodasTabelas.checked = false;
+            }
+        }
+        for (let i = 0; i < opcoesTabelas.length; i++) {
+            addEvent(opcoesTabelas[i], 'change', clearAllOptionsTabelas);
+            
+        }
+
+
+        // Para o form das Opcoes
+
+        var formOpcoes = document.getElementById('formOpcoes');
+        var elementosOpcoes = formOpcoes.elements;
+        var opcoesOpcoes = elementosOpcoes.chk_info;
+        var inputTodasOpcoes = document.getElementById('chk_info_todas');
+
+        function updateAllOpcoes() {
+            for (let i = 0; i < opcoesOpcoes.length; i++) {
+                opcoesOpcoes[i].checked = inputTodasOpcoes.checked;
+            }
+        }
+        addEvent(inputTodasOpcoes, 'change', updateAllOpcoes);
+
+        function clearAllOptionsOpcoes(e) {
+            var target = e.target || e.srcElement;
+            if (!target.checked) {
+                inputTodasOpcoes.checked = false;
+            }
+        }
+        for (let i = 0; i < opcoesOpcoes.length; i++) {
+            addEvent(opcoesOpcoes[i], 'change', clearAllOptionsOpcoes);
+            
+        }
+        
+        
+        
 
 
     });
