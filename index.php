@@ -134,17 +134,11 @@
                                     <div class="col opcao-backup-intro text-uppercase"><p>Realizar Backup de:</p></div>
                                 </div>
 
-                                <hr>
-
-                                <div class="row mb-3">
-                                    <div class="col opcao-backup-titulo">TABELAS:</div>
-                                    <div class="col opcao-backup-titulo">INFORMAÇÕES:</div>
-                                </div>
-
                                 <div class="row" id="tabelas-backup">
 
                                     <!-- Checkboxes das Tabelas -->
                                     <form class="col d-flex flex-column text-left ml-4" id="formTabelas">
+                                        <div class="opcao-backup-titulo">TABELAS:</div>
                                         <div class="custom-control custom-checkbox chk-tabelas opcao-backup">
                                             <input type="checkbox" class="custom-control-input" name="chk_tb" id="chk_tb_todas" value="todas">
                                             <label class="custom-control-label" for="chk_tb_todas">Todas</label>
@@ -167,6 +161,7 @@
 
                                     <!-- Checkboxes das Opções -->
                                     <form class="col d-flex flex-column text-left ml-4" id="formOpcoes">
+                                        <div class="opcao-backup-titulo">INFORMAÇÕES:</div>
                                         <div class="custom-control custom-checkbox chk-informacoes opcao-backup">
                                             <input type="checkbox" class="custom-control-input" name="chk_info" id="chk_info_todas" value="todas">
                                             <label class="custom-control-label" for="chk_info_todas">Todas</label>
@@ -396,6 +391,7 @@
         $('#progresso-backup').remove();
         // Reseta o conteudo do resultado-backup
         $('#resultado-backup').html(opcoesBackup);
+        $('#resultado-backup').toggle();
 
     });
 
