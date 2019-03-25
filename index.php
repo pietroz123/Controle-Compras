@@ -146,7 +146,7 @@
                                     <!-- Checkboxes das Tabelas -->
                                     <form class="col d-flex flex-column text-left ml-4" id="formTabelas">
                                         <div class="custom-control custom-checkbox chk-tabelas opcao-backup">
-                                            <input type="checkbox" class="custom-control-input" name="chk_tb" id="chk_tb_todas">
+                                            <input type="checkbox" class="custom-control-input" name="chk_tb" id="chk_tb_todas" value="todas">
                                             <label class="custom-control-label" for="chk_tb_todas">Todas</label>
                                         </div>
                                         <?php
@@ -156,7 +156,7 @@
                                             while ($table = mysqli_fetch_assoc($resultado)) {
                                         ?>
                                                 <div class="custom-control custom-checkbox chk-tabelas opcao-backup">
-                                                    <input type="checkbox" class="custom-control-input" name="chk_tb" id="chk-<?= $table['Tables_in_my_controle_compras'] ?>">
+                                                    <input type="checkbox" class="custom-control-input" name="chk_tb" id="chk-<?= $table['Tables_in_my_controle_compras'] ?>" value="<?= $table['Tables_in_my_controle_compras'] ?>">
                                                     <label class="custom-control-label" for="chk-<?= $table['Tables_in_my_controle_compras'] ?>"><?= strtoupper($table['Tables_in_my_controle_compras']) ?></label>
                                                 </div>
                                         <?php
@@ -168,15 +168,15 @@
                                     <!-- Checkboxes das Opções -->
                                     <form class="col d-flex flex-column text-left ml-4" id="formOpcoes">
                                         <div class="custom-control custom-checkbox chk-informacoes opcao-backup">
-                                            <input type="checkbox" class="custom-control-input" name="chk_info" id="chk_info_todas">
+                                            <input type="checkbox" class="custom-control-input" name="chk_info" id="chk_info_todas" value="todas">
                                             <label class="custom-control-label" for="chk_info_todas">Todas</label>
                                         </div>
                                         <div class="custom-control custom-checkbox chk-informacoes opcao-backup">
-                                            <input type="checkbox" class="custom-control-input" name="chk_info" id="chk-dados">
+                                            <input type="checkbox" class="custom-control-input" name="chk_info" id="chk-dados" value="dados">
                                             <label class="custom-control-label" for="chk-dados">Dados</label>
                                         </div>
                                         <div class="custom-control custom-checkbox chk-informacoes opcao-backup">
-                                            <input type="checkbox" class="custom-control-input" name="chk_info" id="chk-estrutura">
+                                            <input type="checkbox" class="custom-control-input" name="chk_info" id="chk-estrutura" value="estrutura">
                                             <label class="custom-control-label" for="chk-estrutura">Estrutura</label>
                                         </div>
                                     </form>
@@ -283,11 +283,29 @@
         });
 
         $('#btn-ok-backup').click(function() {
+
+            var tabelas = [];
+            $.each($("input[name='chk_tb']:checked"), function() {
+                tabelas.push($(this).val());
+            });
+
+            console.log(tabelas);
+
+            var opcoes = [];
+            $.each($("input[name='chk_info']:checked"), function() {
+                opcoes.push($(this).val());
+            });
+
+            console.log(opcoes);
+            return;
+
             $.ajax({
                 url: 'backup/myphp-backup.php',
                 method: 'POST',
                 data: {
-                    
+                    backup: "sim",
+                    tabelas: tabelas,
+                    opcoes: opcoes
                 },
                 success: function(retorno) {
                     console.log('Success');
@@ -301,7 +319,7 @@
             });
         });
 
-        
+
 
         // ============================================================
         // Verificação das Checkbox - Javascript & JQuery Jon Ducket
