@@ -211,6 +211,39 @@
     }
 ?>
 
+<button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#centralModalLg">Large Modal</button>
+
+<?php
+
+$nome_arquivo = 'backup/backups/myphp-backup-my_controle_compras-20190325_034403.sql';
+$conteudo = file_get_contents($nome_arquivo);
+
+?>
+
+<div class="modal fade" id="centralModalLg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <!--Content-->
+        <div class="modal-content">
+            <!--Header-->
+            <div class="modal-header">
+                <h6 class="modal-title w-100" id="myModalLabel"><?= $nome_arquivo ?></h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <!--Body-->
+            <div class="modal-body">
+                <pre class="prettyprint lang-sql p-4"><?= $conteudo ?></pre>
+            </div>
+            <!--Footer-->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary waves-effect waves-light" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+        <!--/.Content-->
+    </div>
+</div>
+
 
 <?php include $_SERVER['DOCUMENT_ROOT'].'/rodape.php'; ?>
 
