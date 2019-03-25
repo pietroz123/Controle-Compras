@@ -398,6 +398,34 @@
 
     });
 
+    // Remover
+    $(document).on('click', '#btn-remover-backup', function() {
+
+        var nomeArquivo = $(this).attr('nome-arquivo');
+
+        $('[data-toggle=confirmation]').confirmation({
+            rootSelector: '[data-toggle=confirmation]',
+            onConfirm: function() {
+                // Caso o usuário pressione 'Sim'
+                
+                // 1) Script de remoção do arquivo
+                
+                
+                // 2) Mostra toastr de remoção concluida
+
+
+                // 3) Atualiza os backups
+                $('#ultimos-backups').load('backup/recupera-backups.php');
+            },
+            onCancel: function() {
+                // Caso o usuário pressione 'Não'
+            }
+            // Outras opções
+        });
+        
+
+    });
+
 
 
 </script>
