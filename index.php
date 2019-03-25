@@ -303,13 +303,12 @@
                     opcoes: opcoes
                 },
                 success: function(retorno) {
-                    console.log('Success');
-                    console.log(retorno);
                     $('#resultado-backup').html(retorno);
+                    toastr.success('Backup realizado com sucesso!', '', {
+                        positionClass: "toast-top-right"
+                    });
                 },
                 error: function(retorno) {
-                    console.log('Error');
-                    console.log(retorno);
                 }
             });
         });

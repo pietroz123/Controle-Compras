@@ -447,7 +447,7 @@ if (isset($_POST['backup']) && $_POST['backup'] == "sim") {
     set_time_limit(900); // 15 minutes
     
     if (php_sapi_name() != "cli") {
-        echo '<div style="font-family: monospace;" class="text-left p-3">';
+        echo '<div style="font-family: monospace;" class="text-left p-3" id="progresso-backup">';
     }
     
     $backupDatabase = new Backup_Database(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME, CHARSET);

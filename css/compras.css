@@ -15,16 +15,6 @@
 @import url('https://fonts.googleapis.com/css?family=Courgette');
 @import url('https://fonts.googleapis.com/css?family=Patua+One');
 @import url('https://fonts.googleapis.com/css?family=Lobster');
-@import url('https://fonts.googleapis.com/css?family=Roboto+Slab');
-@import url('https://fonts.googleapis.com/css?family=Signika');
-@import url('https://fonts.googleapis.com/css?family=Slabo+27px');
-@import url('https://fonts.googleapis.com/css?family=Oswald');
-@import url('https://fonts.googleapis.com/css?family=Merienda');
-@import url('https://fonts.googleapis.com/css?family=Neucha');
-@import url('https://fonts.googleapis.com/css?family=Merriweather');
-@import url('https://fonts.googleapis.com/css?family=Lato');
-@import url('https://fonts.googleapis.com/css?family=Lora');
-@import url('https://fonts.googleapis.com/css?family=Courgette');
 @import url('https://fonts.googleapis.com/css?family=Markazi+Text');
 @import url('https://fonts.googleapis.com/css?family=PT+Serif');
 @import url('https://fonts.googleapis.com/css?family=Bitter');
@@ -650,7 +640,19 @@ img {
     font-family: 'Bree Serif', serif;
 }
 
+/* =======================================================
+   Override Custom Checkbox MDBootstrap
+   ======================================================= */
+
 .custom-checkbox 
 .custom-control-input:checked ~ .custom-control-label::before {
     background-color: black !important;
+}
+
+/* =======================================================
+   Override Toastr.js
+   ======================================================= */
+
+#toast-container > div {
+    opacity: 1 !important;
 }

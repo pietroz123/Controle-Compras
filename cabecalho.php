@@ -13,29 +13,24 @@
         
         <!-- CSSs -->
         <link rel="shortcut icon" href="img/shopping.png" type="image/x-icon">
-        <link type="text/css" href="css/bootstrap4.css" rel="stylesheet">
-        <link type="text/css" href="css/mdb.css" rel="stylesheet">
-        <link type="text/css" href="css/datatables.css" rel="stylesheet">
-        <link type="text/css" href="css/awesomplete.css" rel="stylesheet">
-        <link type="text/css" href="css/select2.css" rel="stylesheet">
-        <link type="text/css" href="css/bounce-arrow.css" rel="stylesheet">
-        <link type="text/css" href="css/cropper.css" rel="stylesheet">
+        <link type="text/css" href="css/bootstrap.css" rel="stylesheet">                                                            <!-- Bootstrap -->
+        <link type="text/css" href="css/mdb.css" rel="stylesheet">                                                                  <!-- MDBootstrap -->
+        <link type="text/css" href="css/datatables.css" rel="stylesheet">                                                           <!-- MDBootstrap / Datatables -->
+        <link type="text/css" href="css/awesomplete.css" rel="stylesheet">                                                          <!-- Awesomplete -->
+        <link type="text/css" href="css/select2.css" rel="stylesheet">                                                              <!-- Select2 -->
+        <link type="text/css" href="css/bounce-arrow.css" rel="stylesheet">                                                         <!-- Bounce-Arrow -->
+        <link type="text/css" href="css/cropper.css" rel="stylesheet">                                                              <!-- Cropper -->
+        <link type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css" rel="stylesheet">        <!-- Toastr -->
         
-        <link type="text/css" href="css/compras.css" rel="stylesheet">
-        <link type="text/css" href="css/design-responsivo.css" rel="stylesheet">
+        <link type="text/css" href="css/compras.css" rel="stylesheet">                                                              <!-- CSS Site -->
+        <link type="text/css" href="css/design-responsivo.css" rel="stylesheet">                                                    <!-- Design Responsivo Site -->
         
         <!-- Viewport -->
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
         
-        <!-- Fontes de Texto -->
-        <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
-        <link href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
-
         <!-- Icones -->
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" 
+        integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
     </head>
 

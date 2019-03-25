@@ -67,16 +67,17 @@
         </footer>
 
         <!-- Scripts (Javascript) -->
-        <script src="js/jquery-latest.js"></script>
-        <script src="js/jquery-ui.js"></script>
-        <script src="js/popper.min.js"></script>
-        <script src="js/bootstrap.js"></script>
-        <script src="js/mdb.js"></script>
-        <script src="js/datatables.js"></script>
-        <script src="js/select2.js"></script>
-        <script src="js/jquery.mask.js"></script>
-        <script src="js/bootstrap-confirmation.js"></script>
-        <script src="js/cropper.js"></script>
+        <script src="js/jquery-latest.js"></script>                                                         <!-- JQuery -->
+        <script src="js/jquery-ui.js"></script>                                                             <!-- JQuery UI -->
+        <script src="js/popper.min.js"></script>                                                            <!-- Popper -->
+        <script src="js/bootstrap.js"></script>                                                             <!-- Boostrap -->
+        <script src="js/mdb.js"></script>                                                                   <!-- MDBootstrap -->
+        <script src="js/datatables.js"></script>                                                            <!-- MDBootstrap / Datatables -->
+        <script src="js/select2.js"></script>                                                               <!-- Select2 -->
+        <script src="js/jquery.mask.js"></script>                                                           <!-- JQuery Masks -->
+        <script src="js/bootstrap-confirmation.js"></script>                                                <!-- Boostrap Confirmation -->
+        <script src="js/cropper.js"></script>                                                               <!-- Cropper -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>        <!-- Toastr -->
 
         <script src="js/main.js"></script>
 
