@@ -23,7 +23,7 @@ if ( (isset($_POST['visualizar']) && $_POST['visualizar'] == "sim") && (isset($_
             </div>
             <!--Footer-->
             <div class="modal-footer">
-                <a href="<?= $_SERVER['DOCUMENT_ROOT'] ?>/backup/backups/<?= $nome_arquivo ?>" class="btn btn-default botao waves-effect waves-light">download</a>
+                <a href="<?= $nome_arquivo ?>" class="btn btn-default botao waves-effect waves-light" download>download</a>
                 <button type="button" class="btn btn-danger waves-effect waves-light" data-dismiss="modal">fechar</button>
             </div>
         </div>
