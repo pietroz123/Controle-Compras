@@ -458,7 +458,7 @@ if ( isset($_POST['backup']) && $_POST['backup'] == "sim" && (isset($_POST['tabe
     $output = $backupDatabase->getOutput();
     
     if (php_sapi_name() != "cli") {
-        echo '</div>';
+        echo '<hr><button class="btn btn-danger botao-pequeno" id="btn-fechar-progresso">fechar</button></div>';
     }
 
 }

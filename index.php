@@ -268,124 +268,136 @@
 
 <script>
 
-    $(document).ready(function() {
+    // Salva as opcoes do backup para utilizacao posterior
+    var opcoesBackup = $('#resultado-backup').html();
 
-        // =======================================================
-        // Botão Realizar Backup
-        // =======================================================
+    
+    // =======================================================
+    // Botão Realizar Backup
+    // =======================================================
 
-        $('.btn-backup').click(function() {
-            $('#resultado-backup').slideDown();
+
+    $(document).on('click', '.btn-backup', function() {
+        $('#resultado-backup').slideDown();
+    });
+
+    $(document).on('click', '#btn-cancelar-backup', function() {
+        $('#resultado-backup').slideUp();
+    });
+
+    $(document).on('click', '#btn-ok-backup', function() {
+
+        var tabelas = [];
+        $.each($("input[name='chk_tb']:checked"), function() {
+            tabelas.push($(this).val());
         });
 
-        $('#btn-cancelar-backup').click(function() {
-            $('#resultado-backup').slideUp();
+        var opcoes = [];
+        $.each($("input[name='chk_info']:checked"), function() {
+            opcoes.push($(this).val());
         });
 
-        $('#btn-ok-backup').click(function() {
-
-            var tabelas = [];
-            $.each($("input[name='chk_tb']:checked"), function() {
-                tabelas.push($(this).val());
-            });
-
-            var opcoes = [];
-            $.each($("input[name='chk_info']:checked"), function() {
-                opcoes.push($(this).val());
-            });
-
-            $.ajax({
-                url: 'backup/myphp-backup.php',
-                method: 'POST',
-                data: {
-                    backup: "sim",
-                    tabelas: tabelas,
-                    opcoes: opcoes
-                },
-                success: function(retorno) {
-                    $('#resultado-backup').html(retorno);
-                    toastr.success('Backup realizado com sucesso!', '', {
-                        positionClass: "toast-top-right"
-                    });
-                },
-                error: function(retorno) {
-                }
-            });
+        $.ajax({
+            url: 'backup/myphp-backup.php',
+            method: 'POST',
+            data: {
+                backup: "sim",
+                tabelas: tabelas,
+                opcoes: opcoes
+            },
+            success: function(retorno) {
+                $('#resultado-backup').html(retorno);
+                toastr.success('Backup realizado com sucesso!', '', {
+                    positionClass: "toast-top-right"
+                });
+            },
+            error: function(retorno) {
+            }
         });
+    });
 
 
 
-        // ============================================================
-        // Verificação das Checkbox - Javascript & JQuery Jon Ducket
-        // ============================================================
+    // ============================================================
+    // Verificação das Checkbox - Javascript & JQuery Jon Ducket
+    // ============================================================
 
-        // Helper function to add an event listener
-        function addEvent (el, event, callback) {
-            if ('addEventListener' in el) {                  // If addEventListener works
-                el.addEventListener(event, callback, false);   // Use it
-            } else {                                         // Otherwise
-                el['e' + event + callback] = callback;         // CreateIE fallback
-                el[event + callback] = function () {
-                el['e' + event + callback](window.event);
-                };
-                el.attachEvent('on' + event, el[event + callback]);
-            }
+    // Helper function to add an event listener
+    function addEvent (el, event, callback) {
+        if ('addEventListener' in el) {                  // If addEventListener works
+            el.addEventListener(event, callback, false);   // Use it
+        } else {                                         // Otherwise
+            el['e' + event + callback] = callback;         // CreateIE fallback
+            el[event + callback] = function () {
+            el['e' + event + callback](window.event);
+            };
+            el.attachEvent('on' + event, el[event + callback]);
         }
+    }
 
-        // Para o form das Tabelas
+    // Para o form das Tabelas
 
-        var formTabelas = document.getElementById('formTabelas');
-        var elementosTabelas = formTabelas.elements;
-        var opcoesTabelas = elementosTabelas.chk_tb;
-        var inputTodasTabelas = document.getElementById('chk_tb_todas');
+    var formTabelas = document.getElementById('formTabelas');
+    var elementosTabelas = formTabelas.elements;
+    var opcoesTabelas = elementosTabelas.chk_tb;
+    var inputTodasTabelas = document.getElementById('chk_tb_todas');
 
-        function updateAllTabelas() {
-            for (let i = 0; i < opcoesTabelas.length; i++) {
-                opcoesTabelas[i].checked = inputTodasTabelas.checked;
-            }
-        }
-        addEvent(inputTodasTabelas, 'change', updateAllTabelas);
-
-        function clearAllOptionsTabelas(e) {
-            var target = e.target || e.srcElement;
-            if (!target.checked) {
-                inputTodasTabelas.checked = false;
-            }
-        }
+    function updateAllTabelas() {
         for (let i = 0; i < opcoesTabelas.length; i++) {
-            addEvent(opcoesTabelas[i], 'change', clearAllOptionsTabelas);
-            
+            opcoesTabelas[i].checked = inputTodasTabelas.checked;
         }
+    }
+    addEvent(inputTodasTabelas, 'change', updateAllTabelas);
 
-
-        // Para o form das Opcoes
-
-        var formOpcoes = document.getElementById('formOpcoes');
-        var elementosOpcoes = formOpcoes.elements;
-        var opcoesOpcoes = elementosOpcoes.chk_info;
-        var inputTodasOpcoes = document.getElementById('chk_info_todas');
-
-        function updateAllOpcoes() {
-            for (let i = 0; i < opcoesOpcoes.length; i++) {
-                opcoesOpcoes[i].checked = inputTodasOpcoes.checked;
-            }
+    function clearAllOptionsTabelas(e) {
+        var target = e.target || e.srcElement;
+        if (!target.checked) {
+            inputTodasTabelas.checked = false;
         }
-        addEvent(inputTodasOpcoes, 'change', updateAllOpcoes);
+    }
+    for (let i = 0; i < opcoesTabelas.length; i++) {
+        addEvent(opcoesTabelas[i], 'change', clearAllOptionsTabelas);
+        
+    }
 
-        function clearAllOptionsOpcoes(e) {
-            var target = e.target || e.srcElement;
-            if (!target.checked) {
-                inputTodasOpcoes.checked = false;
-            }
-        }
+
+    // Para o form das Opcoes
+
+    var formOpcoes = document.getElementById('formOpcoes');
+    var elementosOpcoes = formOpcoes.elements;
+    var opcoesOpcoes = elementosOpcoes.chk_info;
+    var inputTodasOpcoes = document.getElementById('chk_info_todas');
+
+    function updateAllOpcoes() {
         for (let i = 0; i < opcoesOpcoes.length; i++) {
-            addEvent(opcoesOpcoes[i], 'change', clearAllOptionsOpcoes);
-            
+            opcoesOpcoes[i].checked = inputTodasOpcoes.checked;
         }
-        
-        
-        
+    }
+    addEvent(inputTodasOpcoes, 'change', updateAllOpcoes);
 
+    function clearAllOptionsOpcoes(e) {
+        var target = e.target || e.srcElement;
+        if (!target.checked) {
+            inputTodasOpcoes.checked = false;
+        }
+    }
+    for (let i = 0; i < opcoesOpcoes.length; i++) {
+        addEvent(opcoesOpcoes[i], 'change', clearAllOptionsOpcoes);
+        
+    }
+
+
+
+
+    // =======================================================
+    // Botao de fechar progresso do backup
+    // =======================================================
+
+    $(document).on('click', '#btn-fechar-progresso', function() {
+
+        $('#progresso-backup').remove();
+        // Reseta o conteudo do resultado-backup
+        $('#resultado-backup').html(opcoesBackup);
 
     });
 
