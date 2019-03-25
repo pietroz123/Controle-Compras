@@ -24,8 +24,8 @@
                 </article>
             </div>
             <div class="col-12 col-md-3 d-flex justify-content-center flex-row flex-md-column">
-                <button class="btn btn-info botao botao-pequeno" style="max-width: 10em;" nome-arquivo="<?= explode("/", $nome)[1] ?>">visualizar</button>
-                <button class="btn btn-danger botao botao-pequeno" style="max-width: 10em;" nome-arquivo="<?= explode("/", $nome)[1] ?>">remover</button>
+                <button class="btn btn-info botao botao-pequeno" style="max-width: 10em;" nome-arquivo="<?= explode("/", $nome)[1] ?>" id="btn-visualizar-backup">visualizar</button>
+                <button class="btn btn-danger botao botao-pequeno" style="max-width: 10em;" nome-arquivo="<?= explode("/", $nome)[1] ?>" id="btn-remover-backup">remover</button>
             </div>
         </div>
         <hr>
