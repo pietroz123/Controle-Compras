@@ -289,15 +289,10 @@
                 tabelas.push($(this).val());
             });
 
-            console.log(tabelas);
-
             var opcoes = [];
             $.each($("input[name='chk_info']:checked"), function() {
                 opcoes.push($(this).val());
             });
-
-            console.log(opcoes);
-            return;
 
             $.ajax({
                 url: 'backup/myphp-backup.php',
