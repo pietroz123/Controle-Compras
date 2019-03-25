@@ -223,18 +223,16 @@
                         ?>
                         
                                 <div class="row">
-                                    <div class="col-sm-12 mb-3">
+                                    <div class="col mb-3">
                                         <article class="arquivo">
                                             <div><?= $nome ?></div>
                                             <div class="font-small font-weight-bold"><?= $data_criacao ?></div>
                                             <div class="font-small font-weight-bold"><?= $tamanho ?></div>
                                         </article>
                                     </div>
-                                    <div class="col">
-                                        <article class="operacoes d-flex justify-content-center">
-                                            <button class="btn btn-info botao botao-pequeno">visualizar</button>
-                                            <button class="btn btn-danger botao botao-pequeno">remover</button>
-                                        </article>
+                                    <div class="col-12 col-md-3 d-flex justify-content-center flex-row flex-md-column">
+                                        <button class="btn btn-info botao botao-pequeno" style="max-width: 10em;">visualizar</button>
+                                        <button class="btn btn-danger botao botao-pequeno" style="max-width: 10em;">remover</button>
                                     </div>
                                 </div>
                                 <hr>
