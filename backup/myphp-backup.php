@@ -6,7 +6,7 @@
  */  
  
 
-if (isset($_POST['backup']) && $_POST['backup'] == "sim") {
+if ( isset($_POST['backup']) && $_POST['backup'] == "sim" && (isset($_POST['tabelas']) && isset($_POST['opcoes'])) ) {
 
     $tabelas = $_POST['tabelas'];
     $opcoes = $_POST['opcoes'];
