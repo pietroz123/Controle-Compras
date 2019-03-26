@@ -115,7 +115,7 @@
                         <article class="cartao-informacao">
                             <b class="cartao-informacao-titulo">Número de Backups</b>
                             <div class="cartao-informacao-desc"><?= $nBackups ?></div>
-                            <a href="#cartao-backups" class="botao botao-pequeno btn btn-light">visualizar</a>
+                            <a href="index.php#cartao-backups" class="botao botao-pequeno btn btn-light">visualizar</a>
                         </article>
 
                     <?php
@@ -248,7 +248,7 @@
                             <!-- Preenchido com JQuery -->
                         </div>
                         <!-- ultimos-backups -->
-                        
+
                         <!-- Modal Backup Arquivo -->
                         <div class="modal fade" id="modal-backup-arquivo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
                             <!-- Preenchido com AJAX -->

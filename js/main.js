@@ -7,5 +7,28 @@ $(document).ready(function() {
     var urlPagina = window.location.pathname.split('/')[1];
     $('.navbar-nav > li > a[href="'+urlPagina+'"]').parent().addClass('active special-color');
     $('.footer-nav-item[href="'+urlPagina+'"]').addClass('active');
+
+
+    // =======================================================
+    // Efeito de Scroll
+    // =======================================================
+
+    var url = window.location.href;
+    var id = url.substring(url.lastIndexOf("#") + 1);
+    
+
+    // =======================================================
+    // Script para adicionar a flecha de criar novo grupo
+    // =======================================================
+
+    if (id == "cartao-grupos-usuario" || id == "cartao-requisicoes" || id == "cartao-backups" || id == "container-tabela-grupos" || id == "tabela-compras") {
+
+        // Scroll até a tabela de compras
+        $('html, body').animate({
+            scrollTop: $("#" + id).offset().top - 200
+        }, 1500);
+
+
+    }
     
 });
