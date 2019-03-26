@@ -640,6 +640,13 @@ img {
     font-family: 'Bree Serif', serif;
 }
 
+article.cartao-informacao {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 /* =======================================================
    Override Custom Checkbox MDBootstrap
    ======================================================= */

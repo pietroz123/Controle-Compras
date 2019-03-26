@@ -46,68 +46,112 @@
                 <section id="informacoes" class="d-flex align-content-center flex-wrap">
 
                     <?php
-                        // Recupera o número de usuários
-                        $sql = "SELECT * FROM `usuarios`";
-                        $resultado = mysqli_query($conexao, $sql);
-                        $nUsuarios = mysqli_num_rows($resultado); 
-
+                        if (admin()) {
                     ?>
-                    <article class="cartao-informacao">
-                        <b class="cartao-informacao-titulo">Número de Usuários</b>
-                        <div class="cartao-informacao-desc"><?= $nUsuarios; ?></div>
-                        <a href="#!" class="botao botao-pequeno btn btn-light">visualizar</a>
-                    </article>
+
+                        <!--
+                        =======================================================
+                        Nível: Administrador
+                        =======================================================
+                        -->
+
+                        <?php
+                            // Recupera o número de usuários
+                            $sql = "SELECT * FROM `usuarios`";
+                            $resultado = mysqli_query($conexao, $sql);
+                            $nUsuarios = mysqli_num_rows($resultado); 
+
+                        ?>
+                        <article class="cartao-informacao">
+                            <b class="cartao-informacao-titulo">Número de Usuários</b>
+                            <div class="cartao-informacao-desc"><?= $nUsuarios; ?></div>
+                        </article>
+
+                        <?php
+                            // Recupera o número de compras
+                            $sql = "SELECT * FROM `compras`";
+                            $resultado = mysqli_query($conexao, $sql);
+                            $nCompras = mysqli_num_rows($resultado); 
+                            
+                        ?>
+                        <article class="cartao-informacao">
+                            <b class="cartao-informacao-titulo">Número de Compras</b>
+                            <div class="cartao-informacao-desc"><?= $nCompras; ?></div>
+                        </article>
+
+                        <?php
+                            // Recupera o número de grupos
+                            $sql = "SELECT * FROM `grupos`";
+                            $resultado = mysqli_query($conexao, $sql);
+                            $nGrupos = mysqli_num_rows($resultado); 
+                            
+                        ?>
+                        <article class="cartao-informacao">
+                            <b class="cartao-informacao-titulo">Número de Grupos</b>
+                            <div class="cartao-informacao-desc"><?= $nGrupos; ?></div>
+                        </article>
+
+                        <?php
+                            // Recupera o número de usuários não autenticados
+                            $sql = "SELECT * FROM `usuarios` WHERE `Autenticado` = 0";
+                            $resultado = mysqli_query($conexao, $sql);
+                            $nRequisicoes = mysqli_num_rows($resultado); 
+                            
+                        ?>
+                        <article class="cartao-informacao">
+                            <b class="cartao-informacao-titulo">Número de Requisições</b>
+                            <div class="cartao-informacao-desc"><?= $nRequisicoes; ?></div>
+                            <a href="perfil-usuario.php#cartao-requisicoes" class="botao botao-pequeno btn btn-light">visualizar</a>
+                        </article>
+
+                        <?php
+                            // Recupera o número de backups
+                            $nBackups = 0;
+                            foreach (glob("backup/backups/*.sql") as $filename) {
+                                $nBackups++;
+                            }
+                            
+                        ?>
+                        <article class="cartao-informacao">
+                            <b class="cartao-informacao-titulo">Número de Backups</b>
+                            <div class="cartao-informacao-desc"><?= $nBackups ?></div>
+                            <a href="#cartao-backups" class="botao botao-pequeno btn btn-light">visualizar</a>
+                        </article>
 
                     <?php
-                        // Recupera o número de grupos
-                        $sql = "SELECT * FROM `grupos`";
+                        }
+                    ?>
+
+                    <!--
+                    =======================================================
+                    Nível: Usuário                    
+                    =======================================================
+                    -->
+
+                    <?php
+                        // Recupera o número de grupos do usuário
+                        $sql = "SELECT * FROM grupo_usuarios gu WHERE gu.Username = '{$_SESSION['login-username']}'";
                         $resultado = mysqli_query($conexao, $sql);
                         $nGrupos = mysqli_num_rows($resultado); 
                         
                     ?>
                     <article class="cartao-informacao">
-                        <b class="cartao-informacao-titulo">Número de Grupos</b>
+                        <b class="cartao-informacao-titulo">Meus Grupos</b>
                         <div class="cartao-informacao-desc"><?= $nGrupos; ?></div>
-                        <a href="perfil-usuario.php#cartao-grupos-usuario" class="botao botao-pequeno btn btn-light">visualizar</a>
-                    </article>
-
-                    <?php
-                        // Recupera o número de usuários não autenticados
-                        $sql = "SELECT * FROM `usuarios` WHERE `Autenticado` = 0";
-                        $resultado = mysqli_query($conexao, $sql);
-                        $nRequisicoes = mysqli_num_rows($resultado); 
-                        
-                    ?>
-                    <article class="cartao-informacao">
-                        <b class="cartao-informacao-titulo">Número de Requisições</b>
-                        <div class="cartao-informacao-desc"><?= $nRequisicoes; ?></div>
-                        <a href="perfil-usuario.php#cartao-requisicoes" class="botao botao-pequeno btn btn-light">visualizar</a>
+                        <a href="perfil-usuario.php#container-tabela-grupos" class="botao botao-pequeno btn btn-light">visualizar</a>
                     </article>
 
                     <?php
                         // Recupera o número de compras
-                        $sql = "SELECT * FROM `compras`";
+                        $sql = "SELECT * FROM `compras` WHERE `comprador_id` = {$_SESSION['login-id-comprador']}";
                         $resultado = mysqli_query($conexao, $sql);
                         $nCompras = mysqli_num_rows($resultado); 
                         
                     ?>
                     <article class="cartao-informacao">
-                        <b class="cartao-informacao-titulo">Número de Compras</b>
+                        <b class="cartao-informacao-titulo">Minhas Compras</b>
                         <div class="cartao-informacao-desc"><?= $nCompras; ?></div>
                         <a href="listar-compras.php#tabela-compras" class="botao botao-pequeno btn btn-light">visualizar</a>
-                    </article>
-
-                    <?php
-                        // Recupera o número de backups
-                        // $sql = "SELECT * FROM `usuarios`";
-                        // $resultado = mysqli_query($conexao, $sql);
-                        // $nUsuarios = mysqli_num_rows($resultado); 
-                        
-                    ?>
-                    <article class="cartao-informacao">
-                        <b class="cartao-informacao-titulo">Número de Backups</b>
-                        <div class="cartao-informacao-desc">0</div>
-                        <a href="#!" class="botao botao-pequeno btn btn-light">visualizar</a>
                     </article>
                 
                 </section>
@@ -115,107 +159,113 @@
             </div>
         </div>
 
-
-        <div class="card mt-5" id="cartao-backups">
-            <div class="card-body p-2">
-                
-                <div class="card-header elegant-color-dark py-4 white-text text-uppercase">
-                    <div class="card-title" id="titulo-informacoes">Backup</div>
-                </div>
-
-                <div class="elegant-color p-3" id="backups">
-
-                    <!-- Realizar Backup -->
-                    <!-- <form action="backup/myphp-backup.php"> -->
-                        <button class="btn btn-success botao botao-pequeno mb-4 btn-backup">clique aqui para realizar backup</button>
-                        <div id="resultado-backup" class="bg-white mb-3" style="display: none;">
-                            <div class="container p-2">
-                                <div class="row">
-                                    <div class="col opcao-backup-intro text-uppercase"><p>Realizar Backup de:</p></div>
-                                </div>
-
-                                <div class="row" id="tabelas-backup">
-
-                                    <!-- Checkboxes das Tabelas -->
-                                    <form class="col d-flex flex-column text-left ml-4" id="formTabelas">
-                                        <div class="opcao-backup-titulo">TABELAS:</div>
-                                        <div class="custom-control custom-checkbox chk-tabelas opcao-backup">
-                                            <input type="checkbox" class="custom-control-input" name="chk_tb" id="chk_tb_todas" value="todas">
-                                            <label class="custom-control-label" for="chk_tb_todas">Todas</label>
-                                        </div>
-                                        <?php
-                                            $show = "SHOW TABLES";
-                                            $resultado = mysqli_query($conexao, $show);
-                                            $tables = array();
-                                            while ($table = mysqli_fetch_assoc($resultado)) {
-                                        ?>
-                                                <div class="custom-control custom-checkbox chk-tabelas opcao-backup">
-                                                    <input type="checkbox" class="custom-control-input" name="chk_tb" id="chk-<?= $table['Tables_in_my_controle_compras'] ?>" value="<?= $table['Tables_in_my_controle_compras'] ?>">
-                                                    <label class="custom-control-label" for="chk-<?= $table['Tables_in_my_controle_compras'] ?>"><?= strtoupper($table['Tables_in_my_controle_compras']) ?></label>
-                                                </div>
-                                        <?php
-                                            }
-                                        ?>
-                                    </form>
-                                    <!-- Checkboxes das Tabelas -->
-
-                                    <!-- Checkboxes das Opções -->
-                                    <form class="col d-flex flex-column text-left ml-4" id="formOpcoes">
-                                        <div class="opcao-backup-titulo">INFORMAÇÕES:</div>
-                                        <div class="custom-control custom-checkbox chk-informacoes opcao-backup">
-                                            <input type="checkbox" class="custom-control-input" name="chk_info" id="chk_info_todas" value="todas">
-                                            <label class="custom-control-label" for="chk_info_todas">Todas</label>
-                                        </div>
-                                        <div class="custom-control custom-checkbox chk-informacoes opcao-backup">
-                                            <input type="checkbox" class="custom-control-input" name="chk_info" id="chk-dados" value="dados">
-                                            <label class="custom-control-label" for="chk-dados">Dados</label>
-                                        </div>
-                                        <div class="custom-control custom-checkbox chk-informacoes opcao-backup">
-                                            <input type="checkbox" class="custom-control-input" name="chk_info" id="chk-estrutura" value="estrutura">
-                                            <label class="custom-control-label" for="chk-estrutura">Estrutura</label>
-                                        </div>
-                                    </form>
-                                    <!-- Checkboxes das Opções -->
-
-                                </div>
-
-                                <hr>
-
-                                <!-- Botão de OK -->
-                                <div class="row">
-                                    <div class="col">
-                                        <button class="btn btn-success float-right" id="btn-ok-backup" type="submit" name="submit-backup">ok</button>
-                                        <button class="btn btn-danger float-right" id="btn-cancelar-backup">cancelar</button>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-                    <!-- </form> -->
-
-
-
-                    <h4 class="white-text text-left py-2">Ultimos Backups</h4>
+        <?php
+            if (admin()) {
+        ?>
+            <div class="card mt-5" id="cartao-backups">
+                <div class="card-body p-2">
                     
-                    <div id="ultimos-backups" class="bg-light py-4">
-                        <!-- Preenchido com JQuery -->
+                    <div class="card-header elegant-color-dark py-4 white-text text-uppercase">
+                        <div class="card-title" id="titulo-informacoes">Backup</div>
                     </div>
-                    <!-- ultimos-backups -->
-                    
-                </div>
 
+                    <div class="elegant-color p-3" id="backups">
+
+                        <!-- Realizar Backup -->
+                        <!-- <form action="backup/myphp-backup.php"> -->
+                            <button class="btn btn-success botao botao-pequeno mb-4 btn-backup">clique aqui para realizar backup</button>
+                            <div id="resultado-backup" class="bg-white mb-3" style="display: none;">
+                                <div class="container p-2">
+                                    <div class="row">
+                                        <div class="col opcao-backup-intro text-uppercase"><p>Realizar Backup de:</p></div>
+                                    </div>
+
+                                    <div class="row" id="tabelas-backup">
+
+                                        <!-- Checkboxes das Tabelas -->
+                                        <form class="col d-flex flex-column text-left ml-4" id="formTabelas">
+                                            <div class="opcao-backup-titulo">TABELAS:</div>
+                                            <div class="custom-control custom-checkbox chk-tabelas opcao-backup">
+                                                <input type="checkbox" class="custom-control-input" name="chk_tb" id="chk_tb_todas" value="todas">
+                                                <label class="custom-control-label" for="chk_tb_todas">Todas</label>
+                                            </div>
+                                            <?php
+                                                $show = "SHOW TABLES";
+                                                $resultado = mysqli_query($conexao, $show);
+                                                $tables = array();
+                                                while ($table = mysqli_fetch_assoc($resultado)) {
+                                            ?>
+                                                    <div class="custom-control custom-checkbox chk-tabelas opcao-backup">
+                                                        <input type="checkbox" class="custom-control-input" name="chk_tb" id="chk-<?= $table['Tables_in_my_controle_compras'] ?>" value="<?= $table['Tables_in_my_controle_compras'] ?>">
+                                                        <label class="custom-control-label" for="chk-<?= $table['Tables_in_my_controle_compras'] ?>"><?= strtoupper($table['Tables_in_my_controle_compras']) ?></label>
+                                                    </div>
+                                            <?php
+                                                }
+                                            ?>
+                                        </form>
+                                        <!-- Checkboxes das Tabelas -->
+
+                                        <!-- Checkboxes das Opções -->
+                                        <form class="col d-flex flex-column text-left ml-4" id="formOpcoes">
+                                            <div class="opcao-backup-titulo">INFORMAÇÕES:</div>
+                                            <div class="custom-control custom-checkbox chk-informacoes opcao-backup">
+                                                <input type="checkbox" class="custom-control-input" name="chk_info" id="chk_info_todas" value="todas">
+                                                <label class="custom-control-label" for="chk_info_todas">Todas</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox chk-informacoes opcao-backup">
+                                                <input type="checkbox" class="custom-control-input" name="chk_info" id="chk-dados" value="dados">
+                                                <label class="custom-control-label" for="chk-dados">Dados</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox chk-informacoes opcao-backup">
+                                                <input type="checkbox" class="custom-control-input" name="chk_info" id="chk-estrutura" value="estrutura">
+                                                <label class="custom-control-label" for="chk-estrutura">Estrutura</label>
+                                            </div>
+                                        </form>
+                                        <!-- Checkboxes das Opções -->
+
+                                    </div>
+
+                                    <hr>
+
+                                    <!-- Botão de OK -->
+                                    <div class="row">
+                                        <div class="col">
+                                            <button class="btn btn-success float-right" id="btn-ok-backup" type="submit" name="submit-backup">ok</button>
+                                            <button class="btn btn-danger float-right" id="btn-cancelar-backup">cancelar</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        <!-- </form> -->
+
+
+
+                        <h4 class="white-text text-left py-2">Ultimos Backups</h4>
+                        
+                        <div id="ultimos-backups" class="bg-light py-4">
+                            <!-- Preenchido com JQuery -->
+                        </div>
+                        <!-- ultimos-backups -->
+                        
+                        <!-- Modal Backup Arquivo -->
+                        <div class="modal fade" id="modal-backup-arquivo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
+                            <!-- Preenchido com AJAX -->
+                        </div>
+                        
+                    </div>
+
+                </div>
             </div>
-        </div>
+        <?php
+            }
+        ?>
 
 <?php
     }
 ?>
 
-<!-- Modal Backup Arquivo -->
-<div class="modal fade" id="modal-backup-arquivo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
-    <!-- Preenchido com AJAX -->
-</div>
 
 
 <?php include $_SERVER['DOCUMENT_ROOT'].'/rodape.php'; ?>
