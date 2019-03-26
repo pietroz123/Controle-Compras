@@ -124,7 +124,7 @@
                             <?php foreach ($grupos AS $grupo) { ?>
                                 <tr>
                                     <td class="nome-grupo"><?= $grupo['Nome']; ?></td>
-                                    <td class="data-criacao-grupo"><?= date("d/m/Y h:m", strtotime($grupo['Data_Criacao'])); ?></td>
+                                    <td class="data-criacao-grupo"><?= date("d/m/Y H:i", strtotime($grupo['Data_Criacao'])); ?></td>
                                     <td class="numero-membros-grupo"><?= $grupo['Numero_Membros']; ?></td>
                                     <td>
                                         <button class="btn btn-info botao-pequeno btn-membros" id="<?= $grupo['ID']; ?>" username="<?= $usuario['Usuario']; ?>">Membros</button>
