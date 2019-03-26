@@ -399,7 +399,7 @@
     });
 
     // Remover
-    $(document).on('click', '#btn-remover-backup', function() {
+    $(document).on('mouseover', '#btn-remover-backup', function() {
 
         var nomeArquivo = $(this).attr('nome-arquivo');
 
@@ -409,13 +409,33 @@
                 // Caso o usuário pressione 'Sim'
                 
                 // 1) Script de remoção do arquivo
+                $.ajax({
+                    url: 'backup/remover-backup.php',
+                    method: 'POST',
+                    data: {
+                        remover: "sim",
+                        nome_arquivo: nomeArquivo
+                    },
+                    success: function(retorno) {
+
+                        // 2) Mostra toastr de remoção concluida
+                        toastr.success('Remoção do arquivo com sucesso!', '', {
+                            positionClass: "toast-top-right"
+                        });
+
+                        // 3) Atualiza os backups
+                        $('#ultimos-backups').load('backup/recupera-backups.php');
+
+                    },
+                    error: function(retorno) {
+                        console.log('Error');
+                        console.log(retorno);
+                    }
+                });
                 
                 
-                // 2) Mostra toastr de remoção concluida
 
 
-                // 3) Atualiza os backups
-                $('#ultimos-backups').load('backup/recupera-backups.php');
             },
             onCancel: function() {
                 // Caso o usuário pressione 'Não'
