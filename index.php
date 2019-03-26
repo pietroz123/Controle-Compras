@@ -138,7 +138,17 @@
                     <article class="cartao-informacao">
                         <b class="cartao-informacao-titulo">Meus Grupos</b>
                         <div class="cartao-informacao-desc"><?= $nGrupos; ?></div>
-                        <a href="perfil-usuario.php#container-tabela-grupos" class="botao botao-pequeno btn btn-light">visualizar</a>
+                        <?php 
+                            if ($nGrupos == 0) { 
+                        ?>                            
+                                <a href="perfil-usuario.php#cartao-grupos-usuario" class="botao botao-pequeno btn btn-default">criar um grupo?</a>
+                        <?php 
+                            } else { 
+                        ?>
+                                <a href="perfil-usuario.php#container-tabela-grupos" class="botao botao-pequeno btn btn-light">visualizar</a>
+                        <?php
+                            }
+                        ?>
                     </article>
 
                     <?php
@@ -151,7 +161,17 @@
                     <article class="cartao-informacao">
                         <b class="cartao-informacao-titulo">Minhas Compras</b>
                         <div class="cartao-informacao-desc"><?= $nCompras; ?></div>
-                        <a href="listar-compras.php#tabela-compras" class="botao botao-pequeno btn btn-light">visualizar</a>
+                        <?php 
+                            if ($nCompras == 0) { 
+                        ?>                            
+                                <a href="formulario-compra.php" class="botao botao-pequeno btn btn-default">adicionar uma compra?</a>
+                        <?php 
+                            } else { 
+                        ?>
+                                <a href="listar-compras.php#tabela-compras" class="botao botao-pequeno btn btn-light">visualizar</a>
+                        <?php
+                            }
+                        ?>
                     </article>
                 
                 </section>

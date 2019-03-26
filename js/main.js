@@ -17,11 +17,7 @@ $(document).ready(function() {
     var id = url.substring(url.lastIndexOf("#") + 1);
     
 
-    // =======================================================
-    // Script para adicionar a flecha de criar novo grupo
-    // =======================================================
-
-    if (id == "cartao-grupos-usuario" || id == "cartao-requisicoes" || id == "cartao-backups" || id == "container-tabela-grupos" || id == "tabela-compras") {
+    if (id == "cartao-grupos-usuario" || id == "cartao-requisicoes" || id == "cartao-backups" || id == "container-tabela-grupos" || id == "tabela-compras" || id == "cartao-grupos-usuario") {
 
         // Scroll até a tabela de compras
         $('html, body').animate({

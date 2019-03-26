@@ -254,11 +254,6 @@
 
         if (id == "cartao-grupos-usuario") {
 
-            // Scroll até a tabela de compras
-            $('html, body').animate({
-                scrollTop: $("#" + id).offset().top - 120
-            }, 1500);
-
             // Cria um efeito
             $(".btn-criar-grupo").effect( "shake", "slow" );
 
