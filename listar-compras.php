@@ -23,7 +23,7 @@
 
 ?>
 
-<h1 style="text-align: left;">Grupos</h1>
+<h1 style="text-align: left;" class="titulo-site">Grupos</h1>
 <div class="mensagem-alerta">
     <div>Selecione as compras que deseja visualizar:</div>
 </div>
@@ -102,7 +102,7 @@
 </div>
 
 <hr>
-<h1 style="margin-top: 40px;">Lista de Compras</h1>
+<h1 style="margin-top: 40px;" class="titulo-site">Lista de Compras</h1>
 
 <!-- Tabela com as compras -->
 <!-- <div style="overflow-x: auto;"> -->

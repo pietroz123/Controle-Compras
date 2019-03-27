@@ -1,12 +1,9 @@
 <?php 
     include $_SERVER['DOCUMENT_ROOT'].'/cabecalho.php'; 
     include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes-usuarios.php';
-?>
 
-<?php
     mostra_alertas();
-?>
-<?php
+    
     if (!usuario_esta_logado()) {
 ?>
 

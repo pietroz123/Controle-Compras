@@ -11,7 +11,7 @@
     $ids_compradores = recupera_ids_compradores_grupos($conexao, $_SESSION['login-username'], $_SESSION['login-email']);
 ?>
 
-        <h1>Formulário de Adição de Compra</h1>
+        <h1 class="titulo-site">Formulário de Adição de Compra</h1>
 
         <!-- Formulario compra -->
         <form action="adiciona-compra.php" method="post" enctype="multipart/form-data" id="formulario-compra" class="grey lighten-3 p-5">        

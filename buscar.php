@@ -2,9 +2,7 @@
     include $_SERVER['DOCUMENT_ROOT'].'/cabecalho.php';
     include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes.php';
     include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes-grupos.php';
-?>
-
-<?php
+    
     verifica_usuario();
 ?>
 

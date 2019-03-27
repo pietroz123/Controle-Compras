@@ -2,14 +2,10 @@
     include $_SERVER['DOCUMENT_ROOT'].'/cabecalho.php'; 
     include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes.php';
     include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes-usuarios.php';
-?>
 
-<?php
     verifica_usuario();
-?>
 
-<!-- Recebe os dados da pesquisa -->
-<?php
+    // Recebe os dados da pesquisa
 
     $palavraChave = $_GET['texto'];
     $dataInicio = $_GET['dataInicio'];
@@ -18,6 +14,8 @@
     $soma = 0;
 
 ?>
+
+<h1 class="titulo-site">Resultado da Busca</h1>
 
 <table class="table table-hover" id="tabela-compras">
     
