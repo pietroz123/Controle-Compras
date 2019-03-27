@@ -300,6 +300,10 @@ input[type="radio"]:checked+label {font-weight:bold;}
     margin-right: 10px;
 }
 
+#formulario-compra {
+    border: 6px solid #6c757d1a; border-radius: 10px;
+}
+
 
 /* ==========================================================
    ============== FORMULÁRIO RECUPERAÇÃO DE SENHA ===========
