@@ -13,6 +13,7 @@
 
         <h1>Formulário de Adição de Compra</h1>
 
+        <!-- Formulario compra -->
         <form action="adiciona-compra.php" method="post" enctype="multipart/form-data">        
             
             <div class="grid">
@@ -26,12 +27,19 @@
                         <select class="form-control" id="select2-observacoes" name="observacoes-select" style="width: 100%;" required></select>
                         <input class="form-control" id="input-observacoes" type="hidden" name="observacoes">
                     </div>
+                </div>
+
+                <hr>
+
+                <div class="row">
                     <div class="col-lg mt-3 mt-lg-0">
                         <label for="input-data" class="font-small font-weight-bold">Data</label>
                         <input id="input-data" class="form-control" type="date" name="data" required>
                     </div>
                 </div>
+                
                 <hr>
+
                 <div class="row">
                     <div class="col-lg">
                         <label for="input-valor" class="font-small font-weight-bold">Valor</label>
@@ -42,22 +50,32 @@
                         <input id="input-desconto" class="form-control" type="number" name="desconto" min="0" step="0.01" value="0" required>
                     </div>
                 </div>
+
                 <hr>
+
                 <div class="row">
                     <div class="col-lg mb-3 mb-lg-0">
                         <div class="font-small font-weight-bold mb-2">Forma de Pagamento</div>
-                        <div class="d-flex justify-content-between">
-                            <div class="opcao-pagamento">
-                                <input type="radio" name="forma-pagamento" id="cartao" value="cartao" checked><label class="ml-1" for="cartao">Cartão</label>
+                        <div class="d-flex justify-content-between flex-column">
+                            <div class="opcao-pagamento custom-control custom-radio">
+                                <input type="radio" class="custom-control-input" name="forma-pagamento" id="cartao" value="cartao" checked>
+                                <label class="custom-control-label" for="cartao">Cartão</label>
                             </div>
-                            <div class="opcao-pagamento">
-                                <input type="radio" name="forma-pagamento" id="boleto" value="boleto"><label class="ml-1" for="boleto">Boleto</label>
+                            <div class="opcao-pagamento custom-control custom-radio">
+                                <input type="radio" class="custom-control-input" name="forma-pagamento" id="boleto" value="boleto">
+                                <label class="custom-control-label" for="boleto">Boleto</label>
                             </div>                            
-                            <div class="opcao-pagamento">
-                                <input type="radio" name="forma-pagamento" id="dinheiro" value="dinheiro"><label class="ml-1" for="dinheiro">Dinheiro</label>
-                            </div>                            
+                            <div class="opcao-pagamento custom-control custom-radio">
+                                <input type="radio" class="custom-control-input" name="forma-pagamento" id="dinheiro" value="dinheiro">
+                                <label class="custom-control-label" for="dinheiro">Dinheiro</label>
+                            </div>
                         </div>
                     </div>
+                </div>
+
+                <hr>
+
+                <div class="row">
                     <div class="col-lg">
                         <div class="list-inline">
                             <div class="list-inline-item"><button type="button" class="btn btn-light" data-toggle="modal" data-target="#modal-upload-imagem">faça o upload da nota fiscal</button></div>
@@ -94,7 +112,9 @@
                         <input type="hidden" name="imagem-cortada" value="">
                     </div>
                 </div>
+
                 <hr>
+
                 <div class="row">
                     <div class="col-lg">
                         <label for="comprador-id" class="font-small font-weight-bold">Comprador</label>
@@ -112,8 +132,11 @@
                         </select>
                     </div>
                 </div>
+
                 <hr>
+
             </div>
+            <!-- Formulario compra -->
             
             <div><button type="submit" name="submit-form-compra" id="btn-adicionar" class="btn btn-primary btn-block align-content-center">Adicionar</button></div>
 
