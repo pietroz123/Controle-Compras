@@ -280,86 +280,6 @@
         }
 
 
-        // =======================================================
-        // Máscaras
-        // =======================================================
-
-        $("#cpf-usuario").mask('000.000.000-00');             /* Formata o CPF */
-        $("#cep-usuario").mask('00000-000');                  /* Formata o CEP */
-        $('#telefone-usuario').mask('(00) 00000-0000');       /* Formata o telefone */
-
-
-        // =======================================================
-        // Preenchimento automatico do endereco via CEP
-        // =======================================================
-
-        // Via JSON:
-        // {
-        //     "cep": "01001-000",
-        //     "logradouro": "Praça da Sé",
-        //     "complemento": "lado ímpar",
-        //     "bairro": "Sé",
-        //     "localidade": "São Paulo",
-        //     "uf": "SP",
-        //     "unidade": "",
-        //     "ibge": "3550308",
-        //     "gia": "1004"
-        // }
-
-        // Implementação do delay para o keyup
-        function delay(callback, ms) {
-            var timer = 0;
-            return function() {
-                var context = this, args = arguments;
-                clearTimeout(timer);
-                timer = setTimeout(function () {
-                callback.apply(context, args);
-                }, ms || 0);
-            };
-        }
-
-        function limpa_formulario_cep() {
-            // Limpa valores do formulário de cep.
-            $('#cidade-usuario').val('');
-            $('#estado-usuario').val('');
-            $('#endereco-usuario').val('');
-        }
-
-        $('#cep-usuario').keyup(delay(function() {            
-
-            // Nova variável "cep" somente com dígitos.
-            var cep = $(this).val().replace(/\D/g, '');
-
-            // Verifica se o CEP não é vazio
-            if (cep != "") {
-
-                // Loading enquanto procura o CEP
-                $('#cidade-usuario').val('...');
-                $('#estado-usuario').val('...');
-                $('#endereco-usuario').val('...');
-
-                setTimeout(function() {
-                    //Consulta o webservice viacep.com.br/
-                    $.getJSON("https://viacep.com.br/ws/"+ cep +"/json/?callback=?", function(dados) {
-
-                        if (!("erro" in dados)) {
-                            //Atualiza os campos com os valores da consulta.
-                            $("#endereco-usuario").val(dados.logradouro);
-                            $("#cidade-usuario").val(dados.localidade);
-                            $("#estado-usuario").val(dados.uf);
-                        }
-                        else {
-                            //CEP pesquisado não foi encontrado.
-                            limpa_formulario_cep();
-                            alert("CEP não encontrado.");
-                        }
-
-                    });
-                }, 1500);
-
-            }
-
-        }, 2000));
 
 
 
@@ -368,13 +288,110 @@
 
 
     // =======================================================
+    // Máscaras
+    // =======================================================
+
+    $("#cpf-usuario").mask('000.000.000-00');             /* Formata o CPF */
+    $("#cep-usuario").mask('00000-000');                  /* Formata o CEP */
+    $('#telefone-usuario').mask('(00) 00000-0000');       /* Formata o telefone */
+
+
+    // =======================================================
+    // Preenchimento automatico do endereco via CEP
+    // =======================================================
+
+    // Via JSON:
+    // {
+    //     "cep": "01001-000",
+    //     "logradouro": "Praça da Sé",
+    //     "complemento": "lado ímpar",
+    //     "bairro": "Sé",
+    //     "localidade": "São Paulo",
+    //     "uf": "SP",
+    //     "unidade": "",
+    //     "ibge": "3550308",
+    //     "gia": "1004"
+    // }
+
+    // Implementação do delay para o keyup
+    function delay(callback, ms) {
+        var timer = 0;
+        return function() {
+            var context = this, args = arguments;
+            clearTimeout(timer);
+            timer = setTimeout(function () {
+            callback.apply(context, args);
+            }, ms || 0);
+        };
+    }
+
+    function limpa_formulario_cep() {
+        // Limpa valores do formulário de cep.
+        $('#cidade-usuario').val('');
+        $('#estado-usuario').val('');
+        $('#endereco-usuario').val('');
+    }
+
+    $(document).on('keyup', '#cep-usuario', delay(function() {
+
+        // Nova variável "cep" somente com dígitos.
+        var cep = $(this).val().replace(/\D/g, '');
+
+        // Verifica se o CEP não é vazio
+        if (cep != "") {
+
+            // Loading enquanto procura o CEP
+            $('#cidade-usuario').val('...');
+            $('#estado-usuario').val('...');
+            $('#endereco-usuario').val('...');
+
+            setTimeout(function() {
+                //Consulta o webservice viacep.com.br/
+                $.getJSON("https://viacep.com.br/ws/"+ cep +"/json/?callback=?", function(dados) {
+
+                    if (!("erro" in dados)) {
+                        //Atualiza os campos com os valores da consulta.
+                        $("#endereco-usuario").val(dados.logradouro);
+                        $("#cidade-usuario").val(dados.localidade);
+                        $("#estado-usuario").val(dados.uf);
+                    }
+                    else {
+                        //CEP pesquisado não foi encontrado.
+                        limpa_formulario_cep();
+                        alert("CEP não encontrado.");
+                    }
+
+                });
+            }, 1500);
+
+        }
+
+    }, 2000));
+
+
+    // =======================================================
     // Edição do perfil do usuário
     // =======================================================
 
+    // Variáveis para salvar os dados antes da edicao
+    var dadosGerais;
+    var dadosEndereco;
+
+    // Botão de EDITAR
     $(document).on('click', '.btn-editar', function() {
 
-        // Deixa todos os campos disponiveis para edição
+        // Recupera os dados
         var dados = $(this).parent().parent().parent().children('.dados');
+
+
+        // Salva os dados para caso o usuário cancele a operação
+        if (dados.parent().hasClass('dados-gerais'))
+            dadosGerais = dados.html();
+        else
+            dadosEndereco = dados.html();
+        
+        
+        // Deixa todos os campos disponiveis para edição
         $(dados).children('input[editable]').each(function() {
             $(this).removeAttr('disabled');
         });
@@ -397,10 +414,15 @@
 
     });
 
+
+    // Botão de CANCELAR
     $(document).on('click', '.btn-cancelar', function() {
 
-        // Deixa todos os campos indisponiveis para edição
+        // Recupera os dados
         var dados = $(this).parent().parent().parent().children('.dados');
+
+
+        // Deixa todos os campos indisponiveis para edição
         $(dados).children('input[editable]').each(function() {
             this.setAttribute('disabled', '');
         });
@@ -419,8 +441,13 @@
         if ( $('.btn-cancelar').length == 0 ) {
             $('.alterar').remove();
         }
-        
 
+        // Recupera as informações prévias
+        if (dados.parent().hasClass('dados-gerais'))
+            dados.html(dadosGerais);
+        else
+            dados.html(dadosEndereco);
+    
     });
 
 
