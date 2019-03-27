@@ -80,6 +80,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>                <!-- Toastr -->
         <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>      <!-- Code Prettify -->
         <script src="js/code-prettify/lang-sql.js"></script>                                                        <!-- Code Prettify / SQL -->
+        <script src="js/jquery.canvasjs.min.js"></script>                                                           <!-- JQuery Canvas -->
 
         <script src="js/main.js"></script>
 
