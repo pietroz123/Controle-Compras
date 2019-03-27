@@ -30,7 +30,7 @@
     } else {
 ?>
 
-        <h3 class="text-left">Bem Vindo de Volta, <?= $_SESSION['login-nome'] ?></h3>
+        <h3 class="text-left titulo-site">Bem Vindo de Volta, <?= $_SESSION['login-nome'] ?></h3>
         <hr class="mb-5">
 
         <div class="alert alert-info">Logado como <?= usuario_logado(); ?></div>

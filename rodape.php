@@ -11,7 +11,7 @@
                 <!-- Titulo -->
                 <div class="row mb-4">
                     <div class="col">
-                        <div class="titulo-site white-text">Controle de Compras</div>
+                        <div class="titulo-site-footer white-text">Controle de Compras</div>
                     </div>
                 </div>
                 
