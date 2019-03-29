@@ -21,10 +21,17 @@ if ( isset($_POST['backup']) && $_POST['backup'] == "sim" && (isset($_POST['tabe
     /**
      * Define database parameters here
      */
-    define("DB_USER", 'root');
-    define("DB_PASSWORD", '');
-    define("DB_NAME", 'my_controle_compras');
-    define("DB_HOST", 'localhost');
+
+    $config     = parse_ini_file("../../private/config_compras.ini");
+    $username   = $config['usuario'];
+    $senha      = $config['senha'];
+    $banco      = $config['banco'];
+    $servidor   = $config['servidor'];
+
+    define("DB_USER", $username);
+    define("DB_PASSWORD", $senha);
+    define("DB_NAME", $banco);
+    define("DB_HOST", $servidor);
     define("BACKUP_DIR", 'backups');
 
     //define("TABLES", '*');                        // Full backup    
