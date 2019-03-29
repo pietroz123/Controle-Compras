@@ -213,8 +213,8 @@
                                                 while ($table = mysqli_fetch_assoc($resultado)) {
                                             ?>
                                                     <div class="custom-control custom-checkbox chk-tabelas opcao-backup">
-                                                        <input type="checkbox" class="custom-control-input" name="chk_tb" id="chk-<?= $table['Tables_in_my_controle_compras'] ?>" value="<?= $table['Tables_in_'.$banco] ?>">
-                                                        <label class="custom-control-label" for="chk-<?= $table['Tables_in_'.$banco] ?>"><?= strtoupper($table['Tables_in_my_controle_compras']) ?></label>
+                                                        <input type="checkbox" class="custom-control-input" name="chk_tb" id="chk-<?= $table['Tables_in_'.$banco] ?>" value="<?= $table['Tables_in_'.$banco] ?>">
+                                                        <label class="custom-control-label" for="chk-<?= $table['Tables_in_'.$banco] ?>"><?= strtoupper($table['Tables_in_'.$banco]) ?></label>
                                                     </div>
                                             <?php
                                                 }
