@@ -276,43 +276,9 @@
                 </div>
             </div>
 
-            <style>
-            img {
-                margin: 5px;
-                transition: all 1s;
-            }
-            img:hover{
-                transform: scale(1.1)
-            }
-        </style>
-
-        <div class="container">
-            <div class="d-flex flex-wrap justify-content-center align-items-stretch">
-
-            <?php
-
-                $nomeZip = "backup-imagens-".date("d-m-Y-His").".zip";
-                
-                $zip = new ZipArchive;
-                $zip->open($nomeZip, ZipArchive::CREATE);
-
-                $numFotos = 0;
-                foreach ( glob('img/teste/*.*') as $imgName ) {
-            ?>
-                    <a href='#!'><img class="img-thumbnail flex-shrink-0 z-depth-1" style="max-width: 200px;" border='0' src='<?= $imgName ?>'></a>
-            <?php
-                    $zip->addFile($imgName);
-                    $numFotos++;
-                }
-
-                $zip->close();
-            
-                echo "<br>Numero de fotos: ".$numFotos;
-            ?>
-
-            </div>
-        </div>
-
+            <form action="backup/backup-imagens.php">
+                <button class="btn btn-default" id="btn-backup-imagens">fazer backup das notas fiscais</button>
+            </form>
 
         <?php
             }
@@ -341,7 +307,7 @@
 
     
     // =======================================================
-    // Botão Realizar Backup
+    // Botão Realizar Backup Arquivos
     // =======================================================
 
 
