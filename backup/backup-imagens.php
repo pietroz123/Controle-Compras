@@ -6,7 +6,7 @@
     $zip->open($nomeZip, ZipArchive::CREATE);
 
     $numFotos = 0;
-    foreach ( glob('../img/teste/*.*') as $imgName ) {
+    foreach ( glob('../../private/uploads/compras/*.*') as $imgName ) {
         $zip->addFile($imgName);
         $numFotos++;
     }
