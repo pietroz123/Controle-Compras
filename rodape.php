@@ -21,16 +21,10 @@
                     <?php
                         if (usuario_esta_logado()) {
                     ?>
+                        <a class="text-center footer-nav-item" href="perfil-usuario.php">Meu Perfil</a>
                         <a class="text-center footer-nav-item" href="formulario-compra.php">Adicionar Compra</a>
                         <a class="text-center footer-nav-item" href="listar-compras.php">Compras</a>
                         <a class="text-center footer-nav-item" href="buscar.php">Buscar</a>
-                        <?php
-                            if (admin()) {
-                        ?>
-                            <a class="text-center footer-nav-item" href="requisicoes.php">Requisições</a>
-                        <?php
-                            }
-                        ?>
                     <?php
                         }
                     ?>

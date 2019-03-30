@@ -292,6 +292,12 @@
                                 foreach (glob('../private/uploads/compras/*.*') as $arquivo) {
                                     $contImg++;
                                 }
+                                if ($contImg == 0) {
+                            ?>
+                                <div class="col"><div class="alert alert-info">Nenhuma imagem disponível para download</div></div>
+                            <?php
+                                }
+                                else {
                             ?>
                                 <div class="col text-white d-flex justify-content-center flex-column align-items-center">Número de imagens disponíveis: <?= $contImg ?></div>
                                 <div class="col">
@@ -300,6 +306,9 @@
                                         <button type="submit" name="submit-download-imagens" class="btn btn-default" id="btn-backup-imagens">fazer backup das notas fiscais</button>
                                     </form>
                                 </div>
+                            <?php
+                                }
+                            ?>
                             </div>
                         </div>
 

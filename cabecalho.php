@@ -12,7 +12,6 @@
         <meta charset="utf-8">
         
         <!-- CSSs -->
-        <link rel="shortcut icon" href="img/shopping.png" type="image/x-icon">
         <link type="text/css" href="css/bootstrap.css" rel="stylesheet">                                                            <!-- Bootstrap -->
         <link type="text/css" href="css/mdb.css" rel="stylesheet">                                                                  <!-- MDBootstrap -->
         <link type="text/css" href="css/datatables.css" rel="stylesheet">                                                           <!-- MDBootstrap / Datatables -->
@@ -29,6 +28,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
         
         <!-- Icones -->
+        <link rel="shortcut icon" href="img/shopping.png" type="image/x-icon">
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" 
         integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
