@@ -2,7 +2,7 @@
 
 if ( isset($_POST['submit-download-imagens']) ) {
 
-
+    date_default_timezone_set('America/Sao_Paulo');
     $nomeZip = "backup-imagens-".date("d-m-Y-His").".zip";
     
     $zip = new ZipArchive;
