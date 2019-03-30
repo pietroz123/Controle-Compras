@@ -276,9 +276,25 @@
                 </div>
             </div>
 
-            <form action="backup/backup-imagens.php">
-                <button class="btn btn-default" id="btn-backup-imagens">fazer backup das notas fiscais</button>
-            </form>
+            <div class="card mt-5" id="cartao-backup-images">
+                <div class="card-body p-2">
+                    
+                    <div class="card-header elegant-color-dark py-4 white-text text-uppercase">
+                        <div class="card-title" id="titulo-informacoes">Backup imagens</div>
+                    </div>
+
+                    <div class="elegant-color p-3" id="backup-imagens">
+
+                        <!-- Realizar Backup -->
+                        <form action="backup/backup-imagens.php" method="POST">
+                            <button type="submit" name="submit-download-imagens" class="btn btn-default" id="btn-backup-imagens">fazer backup das notas fiscais</button>
+                        </form>
+                        
+                    </div>
+
+                </div>
+            </div>
+
 
         <?php
             }
