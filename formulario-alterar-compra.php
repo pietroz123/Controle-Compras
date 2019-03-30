@@ -74,7 +74,7 @@
 
             <hr>
                         
-            <button type="submit" class="btn btn-warning btn-block" onclick="return confirm('Deseja prosseguir com a alteração?');">Alterar</button>
+            <button type="submit" name="submit-alterar" class="btn btn-warning btn-block" onclick="return confirm('Deseja prosseguir com a alteração?');">Alterar</button>
 
         </form>
 
