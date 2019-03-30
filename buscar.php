@@ -45,7 +45,7 @@
 
             </ul><br>
                 
-            <button class="btn btn-success btn-block" type="submit">Buscar</button>
+            <button class="btn btn-success btn-block" type="submit" name="submit-buscar" value="true">Buscar</button>
         </div>
     </div>
 </form>

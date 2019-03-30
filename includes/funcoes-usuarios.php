@@ -108,7 +108,7 @@ function compras_permitidas($conexao, $username, $email) {
     return $compras;
 }
 
-function compras_permitidas_like($conexao, $username, $email, $palavra_chave) {
+function compras_permitidas_like($conexao, $username, $email, $palavra_chave, $dataInicio, $dataFim) {
     $palavra_chave = mysqli_real_escape_string($conexao, $palavra_chave);
     $sql = "SELECT cmp.*, cmpd.Nome AS Nome_Comprador
             FROM compras AS cmp
@@ -136,6 +136,7 @@ function compras_permitidas_like($conexao, $username, $email, $palavra_chave) {
                 )
             )
             AND cmp.Observacoes LIKE '%".$palavra_chave."%'
+            AND data >= '{$dataInicio}' AND data <= '{$dataFim}' 
             ORDER BY year(data), month(data), day(data);";
     
     $compras = array();
