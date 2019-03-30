@@ -43,7 +43,7 @@ if (isset($_POST['username'])) {
     }
     else {
         
-        $retorno .= '<div class="alert alert-danger" role="alert">Você não está em nenhum grupo</div>';
+        $retorno .= '<div class="alert alert-info" role="alert">Você não está em nenhum grupo.</div>';
     }
 
     $retorno .= '</table>';

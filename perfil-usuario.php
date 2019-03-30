@@ -137,7 +137,7 @@
                         }
                         else {
                     ?>
-                            <div class="alert alert-danger" role="alert">Você não está em nenhum grupo</div>
+                            <div class="alert alert-info" role="alert">Você não está em nenhum grupo.</div>
                     <?php
                         }
                     ?>

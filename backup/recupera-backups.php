@@ -2,6 +2,8 @@
 
 <?php
 
+    date_default_timezone_set('America/Sao_Paulo');
+
     function human_filesize($bytes, $decimals = 2) {
         $sz = 'BKMGTP';
         $factor = floor((strlen($bytes) - 1) / 3);
@@ -11,7 +13,7 @@
     $i = 0;
     foreach (glob("../../private/backups/banco/*.sql") as $filename) {
         $nome = basename($filename);
-        $data_criacao = date("d/m/Y H:i:s", filectime($filename));
+        $data_criacao = date("d/m/Y H:i:s", filemtime($filename));
         $tamanho = human_filesize(filesize($filename));
 ?>
 

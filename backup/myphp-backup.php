@@ -4,6 +4,8 @@
  *      Arquivo com autoria de 'Daniel López Azaña <daniloaz@gmail.com>'
  *      Modificado por Pietro Zuntini Bonfim 
  */  
+
+date_default_timezone_set('America/Sao_Paulo');
  
 
 if ( isset($_POST['backup']) && $_POST['backup'] == "sim" && (isset($_POST['tabelas']) && isset($_POST['opcoes'])) ) {
@@ -136,7 +138,7 @@ if ( isset($_POST['backup']) && $_POST['backup'] == "sim" && (isset($_POST['tabe
             $this->charset                 = $charset;
             $this->conn                    = $this->initializeDatabase();
             $this->backupDir               = BACKUP_DIR ? BACKUP_DIR : '.';
-            $this->backupFile              = 'myphp-backup-'.$this->dbName.'-'.date("Ymd_His", time()).'.sql';
+            $this->backupFile              = 'myphp-backup-'.$this->dbName.'-'.date("d-m-Y-His", time()).'.sql';
             $this->gzipBackupFile          = defined('GZIP_BACKUP_FILE') ? GZIP_BACKUP_FILE : true;
             $this->disableForeignKeyChecks = defined('DISABLE_FOREIGN_KEY_CHECKS') ? DISABLE_FOREIGN_KEY_CHECKS : true;
             $this->batchSize               = defined('BATCH_SIZE') ? BATCH_SIZE : 1000; // default 1000 rows
