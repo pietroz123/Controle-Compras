@@ -3,9 +3,7 @@
     include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes-usuarios.php';
     include $_SERVER['DOCUMENT_ROOT'].'/includes/logica-usuarios.php';
     include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes.php';
-?>
 
-<?php
 
     if (!isset($_POST['submit'])) {
         $_SESSION['danger'] = "Você não deu submit!";

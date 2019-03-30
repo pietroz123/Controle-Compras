@@ -1,8 +1,5 @@
 <?php
     include $_SERVER['DOCUMENT_ROOT'].'/database/conexao.php';
-?>
-
-<?php
 
     // Inicia a sessao
     include $_SERVER['DOCUMENT_ROOT'].'/config/sessao.php';

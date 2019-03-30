@@ -20,7 +20,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-cyan btn-block">login</button>
+                    <button type="submit" name="submit-login" class="btn btn-cyan btn-block">login</button>
                 </div>
             </form>
         </div>
