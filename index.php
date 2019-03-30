@@ -183,14 +183,14 @@
                 <div class="card-body p-2">
                     
                     <div class="card-header elegant-color-dark py-4 white-text text-uppercase">
-                        <div class="card-title" id="titulo-informacoes">Backup</div>
+                        <div class="card-title" id="titulo-informacoes">Backup de arquivos do banco</div>
                     </div>
 
                     <div class="elegant-color p-3" id="backups">
 
                         <!-- Realizar Backup -->
                         <!-- <form action="backup/myphp-backup.php"> -->
-                            <button class="btn btn-success botao botao-pequeno mb-4 btn-backup">clique aqui para realizar backup</button>
+                            <button class="btn btn-success botao mb-4 btn-backup">clique aqui para realizar backup</button>
                             <div id="resultado-backup" class="bg-white mb-3" style="display: none;">
                                 <div class="container p-2">
                                     <div class="row">
@@ -280,15 +280,29 @@
                 <div class="card-body p-2">
                     
                     <div class="card-header elegant-color-dark py-4 white-text text-uppercase">
-                        <div class="card-title" id="titulo-informacoes">Backup imagens</div>
+                        <div class="card-title" id="titulo-informacoes">Backup de imagens</div>
                     </div>
 
                     <div class="elegant-color p-3" id="backup-imagens">
+                        
+                        <div class="container">
+                            <div class="row">
+                            <?php
+                                $contImg = 0;
+                                foreach (glob('../private/uploads/compras/*.*') as $arquivo) {
+                                    $contImg++;
+                                }
+                            ?>
+                                <div class="col text-white d-flex justify-content-center flex-column align-items-center">Número de imagens disponíveis: <?= $contImg ?></div>
+                                <div class="col">
+                                    <!-- Realizar Backup -->
+                                    <form action="backup/backup-imagens.php" method="POST">
+                                        <button type="submit" name="submit-download-imagens" class="btn btn-default" id="btn-backup-imagens">fazer backup das notas fiscais</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
 
-                        <!-- Realizar Backup -->
-                        <form action="backup/backup-imagens.php" method="POST">
-                            <button type="submit" name="submit-download-imagens" class="btn btn-default" id="btn-backup-imagens">fazer backup das notas fiscais</button>
-                        </form>
                         
                     </div>
 
