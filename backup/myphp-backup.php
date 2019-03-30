@@ -32,7 +32,7 @@ if ( isset($_POST['backup']) && $_POST['backup'] == "sim" && (isset($_POST['tabe
     define("DB_PASSWORD", $senha);
     define("DB_NAME", $banco);
     define("DB_HOST", $servidor);
-    define("BACKUP_DIR", 'backups');
+    define("BACKUP_DIR", '../../private/backups/banco');
 
     //define("TABLES", '*');                        // Full backup    
     //define("TABLES", 'table1, table2, table3');   // Partial backup

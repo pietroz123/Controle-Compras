@@ -2,8 +2,9 @@
 
 if ( (isset($_POST['visualizar']) && $_POST['visualizar'] == "sim") && (isset($_POST['nomeArquivo'])) ) {
 
-    $nome_arquivo = "backups/" . $_POST['nomeArquivo'];
-    $conteudo = file_get_contents($nome_arquivo);
+    $nome_arquivo = $_POST['nomeArquivo'];
+    $nome = "../../private/backups/banco/" . $nome_arquivo;
+    $conteudo = file_get_contents($nome);
 
 ?>
 
@@ -23,7 +24,10 @@ if ( (isset($_POST['visualizar']) && $_POST['visualizar'] == "sim") && (isset($_
             </div>
             <!--Footer-->
             <div class="modal-footer">
-                <a href="<?= $nome_arquivo ?>" class="btn btn-default botao waves-effect waves-light" download>download</a>
+                <form action="../backup/download-arquivo.php" method="post">
+                    <input type="hidden" name="nome-arquivo" value="<?= $nome_arquivo ?>">
+                    <button type="submit" name="submit-download" class="btn btn-default waves-effect waves-light">download</button>
+                </form>
                 <button type="button" class="btn btn-danger waves-effect waves-light" data-dismiss="modal">fechar</button>
             </div>
         </div>

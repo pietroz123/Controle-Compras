@@ -9,8 +9,8 @@
     }
 
     $i = 0;
-    foreach (glob("backups/*.sql") as $filename) {
-        $nome = $filename;
+    foreach (glob("../../private/backups/banco/*.sql") as $filename) {
+        $nome = basename($filename);
         $data_criacao = date("d/m/Y H:i:s", filectime($filename));
         $tamanho = human_filesize(filesize($filename));
 ?>
@@ -24,8 +24,8 @@
                 </article>
             </div>
             <div class="col-12 col-md-3 d-flex justify-content-center flex-row flex-md-column">
-                <button class="btn btn-info botao botao-pequeno" style="max-width: 10em;" nome-arquivo="<?= explode("/", $nome)[1] ?>" id="btn-visualizar-backup">visualizar</button>
-                <button class="btn btn-danger botao botao-pequeno" style="max-width: 10em;" nome-arquivo="<?= explode("/", $nome)[1] ?>" id="btn-remover-backup" data-toggle="confirmation" data-title="Tem certeza?">remover</button>
+                <button class="btn btn-info botao botao-pequeno" style="max-width: 10em;" nome-arquivo="<?= $nome ?>" id="btn-visualizar-backup">visualizar</button>
+                <button class="btn btn-danger botao botao-pequeno" style="max-width: 10em;" nome-arquivo="<?= $nome ?>" id="btn-remover-backup" data-toggle="confirmation" data-title="Tem certeza?">remover</button>
             </div>
         </div>
         <hr>

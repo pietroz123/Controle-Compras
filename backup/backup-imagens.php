@@ -1,6 +1,6 @@
 <?php
 
-    $nomeZip = "backups/backup-imagens-".date("d-m-Y-His").".zip";
+    $nomeZip = "../../private/backups/compras/backup-imagens-".date("d-m-Y-His").".zip";
     
     $zip = new ZipArchive;
     $zip->open($nomeZip, ZipArchive::CREATE);

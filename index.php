@@ -488,6 +488,7 @@
                         remover: "sim",
                         nome_arquivo: nomeArquivo
                     },
+                    dataType: "json",
                     success: function(retorno) {
 
                         // 2) Mostra toastr de remoção concluida
@@ -500,8 +501,11 @@
 
                     },
                     error: function(retorno) {
-                        console.log('Error');
-                        console.log(retorno);
+
+                        // 1) Mostra mensagem de erro
+                        toastr.error('Erro na remoção do arquivo: '+retorno.responseText, '', {
+                            positionClass: "toast-top-right"
+                        });
                     }
                 });
                 
