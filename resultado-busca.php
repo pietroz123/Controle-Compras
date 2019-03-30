@@ -87,7 +87,7 @@
 
     </table><br>
 
-    <div class="box p-3 mb-2 bg-info text-white">
+    <div class="box p-3 mb-2 bg-info text-white bold">
         SOMA = <?= $soma; ?>
     </div>
 
