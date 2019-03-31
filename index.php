@@ -1,5 +1,123 @@
-<?php 
-    include $_SERVER['DOCUMENT_ROOT'].'/cabecalho.php'; 
+<?php
+    ob_start();
+    date_default_timezone_set('America/Sao_Paulo');
+    include $_SERVER['DOCUMENT_ROOT'].'/includes/logica-usuarios.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/database/conexao.php';
+?>
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <title>Minhas Compras</title>
+        <meta charset="utf-8">
+        
+        <!-- CSSs -->
+        <link type="text/css" href="css/bootstrap.css" rel="stylesheet">                                                            <!-- Bootstrap -->
+        <link type="text/css" href="css/mdb.css" rel="stylesheet">                                                                  <!-- MDBootstrap -->
+        <link type="text/css" href="css/datatables.css" rel="stylesheet">                                                           <!-- MDBootstrap / Datatables -->
+        <link type="text/css" href="css/awesomplete.css" rel="stylesheet">                                                          <!-- Awesomplete -->
+        <link type="text/css" href="css/select2.css" rel="stylesheet">                                                              <!-- Select2 -->
+        <link type="text/css" href="css/bounce-arrow.css" rel="stylesheet">                                                         <!-- Bounce-Arrow -->
+        <link type="text/css" href="css/cropper.css" rel="stylesheet">                                                              <!-- Cropper -->
+        <link type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css" rel="stylesheet">        <!-- Toastr -->
+        
+        <link type="text/css" href="css/compras.css" rel="stylesheet">                                                              <!-- CSS Site -->
+        <link type="text/css" href="css/design-responsivo.css" rel="stylesheet">                                                    <!-- Design Responsivo Site -->
+        
+        <!-- Viewport -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        
+        <!-- Icones -->
+        <link rel="shortcut icon" href="img/shopping.png" type="image/x-icon">
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" 
+        integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+    </head>
+
+    <body>
+
+        <!-- Modal de Login e Cadastro -->
+        <?php
+            if (!usuario_esta_logado()) {
+                include 'modal-login.php';
+            }
+        ?>
+
+        <!-- Menu de navegação: no Bootstrap é a classe navbar -->
+        <!-- https://www.youtube.com/watch?v=23bpce-5s8I -->
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top" id="barra-navegacao">
+                
+            <div class="container">
+                <div class="navbar-header">
+                    <?php
+                        if (usuario_esta_logado()) {
+                    ?>
+                        <a href="perfil-usuario.php" id="icone-usuario">
+                            <span class="rounded-circle">
+                                <img src="scripts/icone.php?icone=<?= $_SESSION['login-username']; ?>" class="imagem-usuario">
+                            </span>
+                        </a>
+                    <?php
+                        }
+                    ?>
+                    <a class="navbar-brand" href="index.php"><strong>Home</strong></a>
+                </div>
+                
+                <button class="navbar-toggler">
+                    <span class="navbar-toggler-icon" data-toggle="collapse" data-target="#navbarMenu"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="navbarMenu">
+                    <?php
+                        if (usuario_esta_logado()) {
+                    ?>
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" onmouseover="this.classList.add('nav-hover-bg')" onmouseout="this.classList.remove('nav-hover-bg')" href="formulario-compra.php">Adicionar Compra</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" onmouseover="this.classList.add('nav-hover-bg')" onmouseout="this.classList.remove('nav-hover-bg')" href="listar-compras.php">Compras</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" onmouseover="this.classList.add('nav-hover-bg')" onmouseout="this.classList.remove('nav-hover-bg')" href="buscar.php">Buscar</a>
+                            </li>
+                        </ul>
+                    <?php
+                        }
+                    ?>
+                    <hr style="background-color: white">
+                    <?php
+                        if (!usuario_esta_logado()) {
+                    ?>
+                        <ul class="navbar-nav links-login-signin">
+                            <li class="nav-item">
+                                <button class="btn white black-text botao-pequeno" id="btn-login" data-toggle="modal" data-target="#modal-login">login</button>
+                            </li>
+                            <li class="nav-item">
+                                <a href="cadastro.php" id="btn-cadastrar" class="btn btn-indigo botao-pequeno">cadastrar</a>
+                            </li>
+                        </ul>
+                    <?php
+                        } else {
+                    ?>
+                        <ul class="navbar-nav links-logout">
+                            <li class="nav-item">
+                                <a href="scripts/logout.php" id="btn-logout" class="nav-link btn btn-unique botao-pequeno" style="font-weight: bold; padding-left: 15px; padding-right: 15px;">logout</a>
+                            </li>
+                        </ul>
+                    <?php
+                        }
+                    ?>
+                </div>
+            </div>
+
+        </nav>
+
+        <div class="conteudo-principal" id="main-principal">
+            <div class="container" style="min-height: 80vh;">
+
+<?php
     include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes-usuarios.php';
 
     mostra_alertas();
@@ -327,9 +445,137 @@
     }
 ?>
 
+            </div>
+            <!-- Div container -->
+
+            <?php
+                if (!usuario_esta_logado()) {
+            ?>
+
+            <section id="recursos" class="elegant-color white-text p-5">
+
+                <h4 class="mb-5 titulo-recursos">Recursos</h4>
+        
+                <div class="d-flex justify-content-center align-items-center align-items-md-baseline flex-column flex-md-row">
+                    <div class="recurso">
+                        <div class="container">
+                            <div class="recurso-icone"><i class="fas fa-shopping-bag fa-3x"></i></i></div>
+                            <div class="recurso-texto mt-3"><p>Armazene suas compras</p></div>
+                        </div>
+                    </div>
+                    
+                    <div class="recurso">
+                        <div class="container">
+                            <div class="recurso-icone"><i class="fas fa-users fa-3x"></i></div>
+                            <div class="recurso-texto mt-3"><p>Crie grupos e visualize as compras de seus amigos e familiares</p></div>
+                        </div>
+                    </div>
+                    
+                    <div class="recurso">
+                        <div class="container">
+                            <div class="recurso-icone"><i class="fas fa-chart-bar fa-3x"></i></div>
+                            <div class="recurso-texto mt-3"><p>Gere relatórios</p></div>
+                        </div>
+                    </div>
+                    
+                    <div class="recurso">
+                        <div class="container">
+                            <div class="recurso-icone"><i class="fas fa-search fa-3x"></i></div>
+                            <div class="recurso-texto mt-3"><p>Realize buscas pelas suas compras</p></div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+            <!-- section.recursos -->
+
+            <?php
+                }
+            ?>
 
 
-<?php include $_SERVER['DOCUMENT_ROOT'].'/rodape.php'; ?>
+        </div>
+        <!-- Div conteudo-principal -->
+
+
+        <footer class="footer" id="footer-principal">
+
+            <!-- Container -->
+            <div class="container pt-4 pb-2 px-5 bg-dark">
+
+                <!-- Titulo -->
+                <div class="row mb-4">
+                    <div class="col">
+                        <div class="titulo-site-footer white-text">Controle de Compras</div>
+                    </div>
+                </div>
+                
+                <!-- Navegacao -->
+                <nav class="nav-footer d-flex justify-content-around flex-column flex-md-row">
+                    <a class="text-center footer-nav-item" href="index.php">Home</a>
+                    <?php
+                        if (usuario_esta_logado()) {
+                    ?>
+                        <a class="text-center footer-nav-item" href="perfil-usuario.php">Meu Perfil</a>
+                        <a class="text-center footer-nav-item" href="formulario-compra.php">Adicionar Compra</a>
+                        <a class="text-center footer-nav-item" href="listar-compras.php">Compras</a>
+                        <a class="text-center footer-nav-item" href="buscar.php">Buscar</a>
+                    <?php
+                        }
+                    ?>
+                </nav>
+
+                <hr class="mt-4 mb-3">
+
+                <!-- Copyright e Redes Sociais -->
+                <div class="row py-2 white-text">
+                    <div class="col-sm-12 col-md">
+                        <div class="footer-copyright"><b>&copy; 2018</b>: Pietro Zuntini Bonfim</div>
+                    </div>
+                    <div class="col-sm-12 col-md">
+                        <div class="icones-redes">
+                            <!-- Gitlab -->
+                            <a href="https://gitlab.com/pietroz123" class="gitlab-ic white-text">
+                                <i class="fab fa-gitlab fa-2x"></i>
+                            </a>
+                            <!-- Github -->
+                            <a href="https://github.com/pietroz123" class="github-ic white-text ml-3">
+                                <i class="fab fa-github fa-2x"></i>
+                            </a>
+                            <!-- Linkedin -->
+                            <a href="https://www.linkedin.com/in/pietro-zuntini-b23506140/" class="linkedin-ic white-text ml-3">
+                                <i class="fab fa-linkedin fa-2x"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- Container -->
+
+        </footer>
+
+        <!-- Scripts (Javascript) -->
+        <script src="js/jquery-latest.js"></script>                                                                 <!-- JQuery -->
+        <script src="js/jquery-ui.js"></script>                                                                     <!-- JQuery UI -->
+        <script src="js/popper.min.js"></script>                                                                    <!-- Popper -->
+        <script src="js/bootstrap.js"></script>                                                                     <!-- Boostrap -->
+        <script src="js/mdb.js"></script>                                                                           <!-- MDBootstrap -->
+        <script src="js/datatables.js"></script>                                                                    <!-- MDBootstrap / Datatables -->
+        <script src="js/select2.js"></script>                                                                       <!-- Select2 -->
+        <script src="js/jquery.mask.js"></script>                                                                   <!-- JQuery Masks -->
+        <script src="js/bootstrap-confirmation.js"></script>                                                        <!-- Boostrap Confirmation -->
+        <script src="js/cropper.js"></script>                                                                       <!-- Cropper -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>                <!-- Toastr -->
+        <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>      <!-- Code Prettify -->
+        <script src="js/code-prettify/lang-sql.js"></script>                                                        <!-- Code Prettify / SQL -->
+
+        <script src="js/main.js"></script>
+
+
+    </body>
+
+</html>
 
 
 <script>

@@ -3,7 +3,7 @@
         </div>
         <!-- Div container -->
 
-        <footer class="footer">
+        <footer class="footer" id="footer-principal">
 
             <!-- Container -->
             <div class="container pt-4 pb-2 px-5 bg-dark">
