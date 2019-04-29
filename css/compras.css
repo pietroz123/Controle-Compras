@@ -152,6 +152,19 @@ input[type="radio"]:checked+label {font-weight:bold;}
     padding-top: 4px;
 }
 
+#input-obs {
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    height: 38px;
+    padding: 15px;
+}
+.ui-autocomplete {
+    font-family: 'Roboto Slab', serif;
+    font-size: 90%;
+}
+
 /* ==========================================================
    ==================== RODAPE DA PAGINA ====================
    ========================================================== */

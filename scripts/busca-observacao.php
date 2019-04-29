@@ -70,7 +70,7 @@ function string_or_usuarios($usuarios) {
 
             $string_usuarios = string_or_usuarios($usuarios);
 
-            $sql = "SELECT DISTINCT `Observacoes` FROM `compras` c WHERE `Observacoes` LIKE ? AND c.Comprador_ID IN (
+            $sql = "SELECT DISTINCT c.Observacoes FROM compras c WHERE c.Observacoes LIKE ? AND c.Comprador_ID IN (
                         SELECT c.ID
                         FROM compradores c
                         JOIN usuarios u on c.Email = u.Email
@@ -78,7 +78,7 @@ function string_or_usuarios($usuarios) {
                     )";
         }
         else {
-            $sql = "SELECT DISTINCT `Observacoes` FROM `compras` c WHERE `Observacoes` LIKE ? AND c.Comprador_ID IN (
+            $sql = "SELECT DISTINCT c.Observacoes FROM compras c WHERE c.Observacoes LIKE ? AND c.Comprador_ID IN (
                         SELECT c.ID
                         FROM compradores c
                         JOIN usuarios u on c.Email = u.Email
@@ -99,13 +99,8 @@ function string_or_usuarios($usuarios) {
             $retorno = array();
             $resultado = mysqli_stmt_get_result($stmt);
 
-            $i = 0;
-            while ($observacao = mysqli_fetch_assoc($resultado)) {
-                $retorno[] = array(
-                    'id'    => $i,
-                    'text'  => $observacao['Observacoes']
-                );
-                $i++;
+            while ($compra = mysqli_fetch_assoc($resultado)) {
+                array_push($retorno, $compra['Observacoes']);
             }
 
             echo json_encode($retorno);

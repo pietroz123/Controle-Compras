@@ -23,9 +23,8 @@
             
                 <div class="row">
                     <div class="col-lg">
-                        <label for="input-observacoes" class="font-small font-weight-bold">Observações</label>
-                        <select class="form-control" id="select2-observacoes" name="observacoes-select" style="width: 100%;" required></select>
-                        <input class="form-control" id="input-observacoes" type="hidden" name="observacoes">
+                        <label for="input-obs" class="font-small font-weight-bold">Observações</label>
+                        <input type="text" list="observacoes" id="input-obs" name="observacoes" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Digite o nome do produto">                        
                     </div>
                 </div>
 
@@ -159,54 +158,37 @@
         // Realiza a busca por observações já existentes
         // =======================================================
 
-        $('#select2-observacoes').select2({
-            placeholder: 'Digite o nome do produto',
-            minimumInputLength: 4,
-            ajax: {
-                url: "scripts/busca-observacao.php",
-                type: "post",
-                dataType: "json",
-                delay: 250,
-                data: function(params) {
-                    return {
+        $('#input-obs').keyup(function() {
+        
+            var obs = $(this).val();
+
+            if (obs.length >= 4) {
+                $.ajax({
+                    url: 'scripts/busca-observacao.php',
+                    method: 'POST',
+                    data: {
                         busca: "sim",
-                        texto: params.term
-                    };
-                },
-                processResults: function(data) {
-                    return {
-                        results: data
-                    };
-                },
-                cache: true
-            },
-            allowClear: true,
-            // Permite observações novas
-            tags: true,
-            createTag: function (params) {
-                return {
-                id: params.term,
-                text: params.term,
-                newOption: true
-                }
-            },
-            templateResult: function (data) {
-                var $result = $("<span></span>");
+                        texto: obs
+                    },
+                    datatype: 'html',
+                    success: function(retorno) {
 
-                $result.text(data.text);
+                        var json = JSON.parse(retorno);
+                        $('#input-obs').autocomplete({
+                            minLength: 4,
+                            source: json
+                        });
 
-                if (data.newOption) {
-                $result.append(" <em>(novo)</em>");
-                }
+                        $(this).focus();
 
-                return $result;
-            }
-        });
+                    },
+                    error: function(retorno) {
+                        console.log('Error');
+                        console.log(retorno);
+                    }
+                });
+            }            
 
-        $('#select2-observacoes').change(function() {
-            // var selecionado = $('#select2-observacoes').select2('data')[0].text;
-            var selecionado = $('.select2-selection__rendered').attr('title');
-            $('#input-observacoes').val(selecionado);            
         });
 
     });
