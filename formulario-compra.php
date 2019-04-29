@@ -158,6 +158,7 @@
         // Realiza a busca por observações já existentes
         // =======================================================
 
+        $('#input-obs').autocomplete();
         $('#input-obs').keyup(function() {
         
             var obs = $(this).val();
