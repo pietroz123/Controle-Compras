@@ -198,6 +198,8 @@
                 success: function(retorno) {
                     console.log('Success');
                     console.log(retorno);
+
+                    $('#select-subcategorias').attr('multiple', 'multiple');
                     $('#select-subcategorias').html(retorno);
                     $('#select-subcategorias').select2({
                         placeholder: "Subcategorias"
