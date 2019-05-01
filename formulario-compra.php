@@ -2,6 +2,7 @@
     include $_SERVER['DOCUMENT_ROOT'].'/cabecalho.php'; 
     include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes.php';
     include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes-grupos.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes-categorias.php';
 ?>
 
 <?php
@@ -25,6 +26,27 @@
                     <div class="col-lg">
                         <label for="input-obs" class="font-small font-weight-bold">Observações</label>
                         <input type="text" list="observacoes" id="input-obs" name="observacoes" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Digite o nome do produto">                        
+                    </div>
+                </div>
+
+                <hr>
+
+                <div class="row">
+                    <div class="col-lg">
+                        <label for="input-obs" class="font-small font-weight-bold">Categorias</label>
+                        <select name="categoria" id="select-categorias" class="form-control" style="width: 100%;">
+                            <option></option>
+                            <?php
+                                foreach ($categorias = recuperar_categorias($conexao) as $categoria)
+                                    echo '<option value="'.$categoria['ID_Categoria'].'">'.$categoria['Nome_Categoria'].'</option>';
+                            ?>
+                        </select>
+                    </div>
+                    <div class="col-lg mt-2 mt-md-0">
+                        <label for="input-obs" class="font-small font-weight-bold">Subcategorias</label>
+                        <select name="subcategorias[]" id="select-subcategorias" class="form-control" style="width: 100%;">
+                            
+                        </select>
                     </div>
                 </div>
 
@@ -152,6 +174,42 @@
         // =======================================================
 
         $('#input-valor').mask('000000000000000.00', {reverse: true});
+
+
+        // =======================================================
+        // SELECTS
+        // =======================================================
+
+        $('#select-categorias').select2({
+            placeholder: "Categorias"
+        });
+
+        $('#select-categorias').change(function() {
+            var cat = $(this).val();
+            console.log(cat);
+            
+            $.ajax({
+                url: 'scripts/recuperar-subcategorias.php',
+                method: 'POST',
+                data: {
+                    categoria: cat
+                },
+                datatype: 'html',
+                success: function(retorno) {
+                    console.log('Success');
+                    console.log(retorno);
+                    $('#select-subcategorias').html(retorno);
+                    $('#select-subcategorias').select2({
+                        placeholder: "Subcategorias"
+                    });
+                },
+                error: function(retorno) {
+                    console.log('Error');
+                    console.log(retorno);
+                }
+            });
+
+        });
 
 
         // =======================================================

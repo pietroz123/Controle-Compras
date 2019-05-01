@@ -151,6 +151,13 @@ input[type="radio"]:checked+label {font-weight:bold;}
     height: 2.5em !important;
     padding-top: 4px;
 }
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    padding-left: 15px;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__rendered {
+    margin-top: -2px;
+    padding-left: 15px;
+}
 
 #input-obs {
     width: 100%;
