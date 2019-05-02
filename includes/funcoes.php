@@ -16,7 +16,7 @@ function listar($conexao, $query) {
 // ========================= INSERT =================================
 // ==================================================================
 
-function inserir_compra($conexao, $valor, $data, $observacoes, $desconto, $forma_pagamento, $comprador_id, $imagem) {
+function inserir_compra($conexao, $valor, $data, $observacoes, $desconto, $forma_pagamento, $comprador_id, $imagem, $categoria, $subcategorias) {
     
     $valor = mysqli_real_escape_string($conexao, $valor);
     $data = mysqli_real_escape_string($conexao, $data);
@@ -26,8 +26,30 @@ function inserir_compra($conexao, $valor, $data, $observacoes, $desconto, $forma
     $comprador_id = mysqli_real_escape_string($conexao, $comprador_id);
     $imagem = mysqli_real_escape_string($conexao, $imagem);
 
+    // Insere a compra
     $query = "INSERT INTO compras (valor, data, observacoes, desconto, forma_pagamento, comprador_id, imagem) VALUES ({$valor}, '{$data}', '{$observacoes}', {$desconto}, '{$forma_pagamento}', {$comprador_id}, '{$imagem}');";
-    return mysqli_query($conexao, $query);
+    $resultado = mysqli_query($conexao, $query);
+    if ($resultado) {
+        // Insere as categorias e subcategorias
+        $id_compra = mysqli_insert_id($conexao);
+        $sql = "INSERT INTO compra_categorias (ID_Compra, ID_Categoria) VALUES ($id_compra, $categoria);";
+        if (mysqli_query($conexao, $sql)) {
+            foreach ($subcategorias as $subcategoria) {
+                $sql = "INSERT INTO compra_cat_subcat (ID_Compra, ID_Categoria, ID_Subcategoria) VALUES ($id_compra, $categoria, $subcategoria);";
+                $resultado = mysqli_query($conexao, $sql);
+                if ($resultado)
+                    continue;   
+                else
+                    return false;
+            }
+            if ($resultado)
+                return true;
+            else
+                return false;
+        }
+    }
+    else
+        return false;
 }
 
 
