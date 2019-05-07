@@ -10,8 +10,12 @@
     if (isset($_GET['submit-buscar']) && $_GET['submit-buscar'] == "true") {
 
         $palavraChave = $_GET['texto'];
-        $dataInicio = $_GET['dataInicio'];
-        $dataFim = $_GET['dataFim'];
+        $datas = $_GET['data-range'];
+
+        $datas = explode(' - ', $datas);
+        $dataInicio = implode('-', array_reverse(explode('/', $datas[0])));
+        $dataFim    = implode('-', array_reverse(explode('/', $datas[1])));
+
         $id_comprador = $_GET['comprador'];
         $soma = 0;
 

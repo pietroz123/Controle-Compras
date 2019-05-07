@@ -27,12 +27,9 @@
                         <div class="col"><h4 class="white-text text-left py-2">Data</h4></div>
                     </div>
                     <div class="row">
-                        <div class="col"><h5 class="white-text text-left py-2">De:</h5></div>
-                        <div class="col-12"><input class="form-control" type="date" name="dataInicio" value="<?= date('Y-m').'-01' ?>"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col"><h5 class="white-text text-left py-2">Até:</h5></div>
-                        <div class="col-12"><input class="form-control" type="date" name="dataFim" value="<?= date('Y-m-d'); ?>"></div>
+                        <div class="col">
+                            <input type="text" name="data-range" id="data-range" class="form-control" placeholder="Selecione o intervalo de datas" readonly>
+                        </div>
                     </div>
                     <hr class="white">
                     <div class="row">
@@ -68,3 +65,25 @@
 
 
 <?php include $_SERVER['DOCUMENT_ROOT'].'/rodape.php'; ?>
+
+<script>
+
+    $(document).ready(function() {
+
+        // =======================================================
+        // Datepicker
+        // =======================================================
+
+        $('#data-range').datepicker({
+            language: 'pt-BR',
+            range: true,
+            toggleSelected: false,
+            multipleDatesSeparator: ' - ',
+            maxDate: new Date(),
+            autoClose: true,
+            position: 'bottom center'
+        });
+        
+    });
+
+</script>

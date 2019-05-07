@@ -64,7 +64,7 @@
                 <div class="row">
                     <div class="col-lg">
                         <label for="input-valor" class="font-small font-weight-bold">Valor</label>
-                        <input id="input-valor" class="form-control" type="tel" name="valor" min="0" step="0.01" required>
+                        <input id="input-valor" class="form-control" type="tel" name="valor" min="0" step="0.01" placeholder="Digite o valor da compra" required>
                     </div>
                     <div class="col-lg">
                         <label for="input-desconto" class="font-small font-weight-bold">Desconto</label>
