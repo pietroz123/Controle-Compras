@@ -24,7 +24,7 @@
     $subcategorias      = $_POST['subcategorias'];
 
 
-    $data = date('Y-m-d', strtotime($data));
+    $data = implode('-', array_reverse(explode('/', $data)));
 
 
     // Variáveis da imagem

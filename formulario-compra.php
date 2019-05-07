@@ -222,7 +222,8 @@
             language: 'pt-BR',
             position: 'bottom center',
             autoClose: true,
-            todayButton: new Date()
+            todayButton: new Date(),
+            maxDate: new Date()
         });
 
 
