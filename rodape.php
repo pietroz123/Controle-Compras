@@ -72,6 +72,8 @@
         <script src="js/bootstrap-confirmation.js"></script>                                                        <!-- Boostrap Confirmation -->
         <script src="js/cropper.js"></script>                                                                       <!-- Cropper -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>                <!-- Toastr -->
+        <script src="js/datepicker.js"></script>                                                                    <!-- Air Datepicker -->
+        <script src="js/datepicker.pt-BR.js"></script>                                                              <!-- Air Datepicker PT-BR -->
         <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>      <!-- Code Prettify -->
         <script src="js/code-prettify/lang-sql.js"></script>                                                        <!-- Code Prettify / SQL -->
 

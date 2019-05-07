@@ -55,7 +55,7 @@
                 <div class="row">
                     <div class="col-lg mt-3 mt-lg-0">
                         <label for="input-data" class="font-small font-weight-bold">Data</label>
-                        <input id="input-data" class="form-control" type="date" name="data" required>
+                        <input type="text" id="input-data" name="data" class="form-control" value="<?= date('d/m/Y'); ?>" required readonly>
                     </div>
                 </div>
                 
@@ -211,6 +211,18 @@
                 }
             });
 
+        });
+
+
+        // =======================================================
+        // Datepicker
+        // =======================================================
+
+        $('#input-data').datepicker({
+            language: 'pt-BR',
+            position: 'bottom center',
+            autoClose: true,
+            todayButton: new Date()
         });
 
 

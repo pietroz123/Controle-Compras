@@ -178,6 +178,12 @@ input[type="radio"]:checked+label {font-weight:bold;}
     font-size: 90%;
 }
 
+/* Datepicker */
+.datepicker--day-name {
+    color: #CC0000 !important;
+    font-weight: bold;
+}
+
 /* ==========================================================
    ==================== RODAPE DA PAGINA ====================
    ========================================================== */

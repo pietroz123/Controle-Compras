@@ -20,7 +20,8 @@
         <link type="text/css" href="css/bounce-arrow.css" rel="stylesheet">                                                         <!-- Bounce-Arrow -->
         <link type="text/css" href="css/cropper.css" rel="stylesheet">                                                              <!-- Cropper -->
         <link type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css" rel="stylesheet">        <!-- Toastr -->
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">                                        <!-- JQuery UI -->
+        <link type="text/css" href="css/datepicker.css" rel="stylesheet">                                                           <!-- Air Datepicker -->
+        <link type="text/css" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet">                        <!-- JQuery UI -->
         
         <link type="text/css" href="css/compras.css" rel="stylesheet">                                                              <!-- CSS Site -->
         <link type="text/css" href="css/design-responsivo.css" rel="stylesheet">                                                    <!-- Design Responsivo Site -->

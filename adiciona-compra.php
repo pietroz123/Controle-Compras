@@ -22,7 +22,10 @@
     $comprador_id       = $_POST['comprador-id'];
     $categoria          = $_POST['categoria'];
     $subcategorias      = $_POST['subcategorias'];
-    
+
+
+    $data = date('Y-m-d', strtotime($data));
+
 
     // Variáveis da imagem
     $imagem             = $_FILES['imagem'];
