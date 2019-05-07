@@ -8,7 +8,7 @@
 
 <form action="resultado-busca.php">
     <div class="card mt-5" id="cartao-busca">
-        <div class="card-body p-2">
+        <div class="card-body p-2 z-depth-2">
             
             <div class="card-header elegant-color-dark py-4 white-text text-uppercase">
                 <div class="card-title" id="titulo-informacoes">Buscar</div>
@@ -16,7 +16,6 @@
 
             <div class="elegant-color p-4 text-left" id="busca">
 
-                <!-- Realizar Backup -->
                 <div class="container white-text">
                     <div class="row">
                         <div class="col"><h4 class="white-text text-left py-2">Palavra/frase chave</h4></div>
@@ -50,11 +49,14 @@
                             </select>
                         </div>
                     </div>
+                    <hr class="white">
                 </div>
 
-                <hr class="white">
                     
-                <button class="btn btn-default" type="submit" name="submit-buscar" value="true">realizar busca</button>
+                <div class="d-flex justify-content-center align-content-center">
+
+                    <button class="btn btn-default w-25" type="submit" name="submit-buscar" value="true">realizar busca</button>
+                </div>
                     
                 
             </div>
