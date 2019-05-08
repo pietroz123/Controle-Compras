@@ -776,3 +776,12 @@ li.L1,li.L3,li.L5,li.L7,li.L9 { }
     font-family: 'Bitter', serif;
     text-transform: uppercase;
 }
+
+
+/* =======================================================
+   CATEGORIAS e SUBCATEGORIAS
+   ======================================================= */
+
+.img-cat {
+    width: 24px;
+}

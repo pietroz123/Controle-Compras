@@ -180,8 +180,21 @@
         // SELECTS
         // =======================================================
 
+        function formatCat (cat) {
+            if (!cat.id) {
+                return cat.text;
+            }
+            var baseUrl = "/img/icones-cat-subcat/categorias/sem";
+            
+            var $cat = $(
+                '<span><img src="' + baseUrl + '/' + cat.text.toLowerCase() + '.png" class="img-cat float-right" /> ' + cat.text + '</span>'
+            );
+            return $cat;
+        };
+
         $('#select-categorias').select2({
-            placeholder: "Categorias"
+            placeholder: "Categorias",
+            templateResult: formatCat
         });
 
         $('#select-categorias').change(function() {
