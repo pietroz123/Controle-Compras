@@ -852,7 +852,7 @@ S2.define('select2/results',[
 
   Results.prototype.render = function () {
     var $results = $(
-      '<ul class="select2-results__options" role="tree"></ul>'
+      '<ul class="select2-results__options custom-scrollbar" role="tree"></ul>'
     );
 
     if (this.options.get('multiple')) {
