@@ -817,3 +817,56 @@ li.L1,li.L3,li.L5,li.L7,li.L9 { }
 .img-cat {
     width: 24px;
 }
+
+
+/* =======================================================
+   NOTIFICAÇÕES
+   ======================================================= */
+
+.notificacao {
+    color: white;
+    position: relative;
+    margin-right: 10px;
+}
+
+.notificacao .badge-notificacao {
+    position: absolute;
+    top: 1px;
+    right: 2px;
+    padding: 0px 7px;
+    border-radius: 50%;
+    background: red;
+    color: white;
+    font-size: 13px;
+}
+
+.li-notificacao {
+    position: relative;
+}
+
+.notificacoes-box.active {
+    opacity: 1;
+    -webkit-transform-origin: right top 0;
+    -webkit-transform: scale(1);
+    transform-origin: right top 0;
+    transform: scale(1);
+}
+
+.notificacoes-box {
+    background: white;
+    width: 320px;
+    position: absolute;
+    top: 40px;
+    right: 10px;
+    border-radius: 3px;
+    padding: 20px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26) !important;
+    -webkit-transition: all .2s ease;
+    transition: all .2s ease;
+    opacity: 0;
+    -webkit-transform-origin: right top 0;
+    -webkit-transform: scale(0);
+    transform-origin: right top 0;
+    transform: scale(0);
+}

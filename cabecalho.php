@@ -104,6 +104,15 @@
                         } else {
                     ?>
                         <ul class="navbar-nav links-logout">
+                            <li class="nav-item li-notificacao">
+                                <a href="#!" class="nav-link notificacao">
+                                    <span><i class="fas fa-bell fa-lg"></i></span>
+                                    <span class="badge-notificacao">3</span>
+                                </a>
+                                <div class="notificacoes-box active">
+                                    
+                                </div>
+                            </li>
                             <li class="nav-item">
                                 <a href="scripts/logout.php" id="btn-logout" class="nav-link btn btn-unique botao-pequeno" style="font-weight: bold; padding-left: 15px; padding-right: 15px;">logout</a>
                             </li>
