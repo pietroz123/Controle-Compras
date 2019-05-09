@@ -109,7 +109,7 @@
                                     <span><i class="fas fa-bell fa-lg"></i></span>
                                     <span class="badge-notificacao">3</span>
                                 </a>
-                                <div class="notificacoes-box">
+                                <div class="notificacoes-box custom-scrollbar-darker">
                                     <div class="notif clearfix">
                                         <div class="float-left">
                                             <img src="img/group.png" class="notif-icon">
