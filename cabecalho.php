@@ -110,7 +110,9 @@
                                     <span class="badge-notificacao">3</span>
                                 </a>
                                 <div class="notificacoes-box active">
-                                    
+                                    <div class="note">
+                                        Bianca (@BiancaGs) te convidou para o grupo Amor.
+                                    </div>
                                 </div>
                             </li>
                             <li class="nav-item">

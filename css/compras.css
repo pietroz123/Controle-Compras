@@ -853,20 +853,43 @@ li.L1,li.L3,li.L5,li.L7,li.L9 { }
 }
 
 .notificacoes-box {
+    font-family: 'Bree Serif', serif !important;
+    font-size: 15px;
+    z-index: 1;
     background: white;
-    width: 320px;
+    width: 285px;
     position: absolute;
-    top: 40px;
-    right: 10px;
+    top: 46px;
+    right: -1px;
     border-radius: 3px;
     padding: 20px;
-    overflow: hidden;
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26) !important;
-    -webkit-transition: all .2s ease;
-    transition: all .2s ease;
+    overflow: inherit;
+    box-shadow: 0 1px 50px 0 rgba(0, 0, 0, 0.26) !important;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
     opacity: 0;
     -webkit-transform-origin: right top 0;
     -webkit-transform: scale(0);
     transform-origin: right top 0;
     transform: scale(0);
+}
+.notificacoes-box.active {
+    opacity: 1;
+    -webkit-transform-origin: right top 0;
+    -webkit-transform: scale(1);
+    transform-origin: right top 0;
+    transform: scale(1);
+}
+.notificacoes-box:after {
+    bottom: 100%;
+    left: 89%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-bottom-color: white;
+    border-width: 8px;
+    margin-left: -8px;
 }
