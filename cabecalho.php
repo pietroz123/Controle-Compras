@@ -109,7 +109,7 @@
                                     <span><i class="fas fa-bell fa-lg"></i></span>
                                     <span class="badge-notificacao">3</span>
                                 </a>
-                                <div class="notificacoes-box active">
+                                <div class="notificacoes-box">
                                     <div class="notif clearfix">
                                         <div class="float-left">
                                             <i class="fas fa-users fa-3x"></i>
