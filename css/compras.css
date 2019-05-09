@@ -895,6 +895,8 @@ li.L1,li.L3,li.L5,li.L7,li.L9 { }
     padding: 5px;
 }
 .notif-icon {
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
+    margin-left: 8px;
+    margin-top: 4px;
 }

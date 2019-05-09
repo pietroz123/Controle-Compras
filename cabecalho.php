@@ -112,7 +112,7 @@
                                 <div class="notificacoes-box">
                                     <div class="notif clearfix">
                                         <div class="float-left">
-                                            <i class="fas fa-users fa-3x"></i>
+                                            <img src="img/group.png" class="notif-icon">
                                         </div>
                                         <div class="float-right">
                                             <span class="notif-text"><b>Alice (@AliceGs)</b> te convidou para o grupo <b>Família</b>.</span>
