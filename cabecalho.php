@@ -109,9 +109,26 @@
                                     <span><i class="fas fa-bell fa-lg"></i></span>
                                     <span class="badge-notificacao">3</span>
                                 </a>
-                                <div class="notificacoes-box">
-                                    <div class="note">
-                                        Bianca (@BiancaGs) te convidou para o grupo Amor.
+                                <div class="notificacoes-box active">
+                                    <div class="notif clearfix">
+                                        <div class="float-left">
+                                            <i class="fas fa-users fa-3x"></i>
+                                        </div>
+                                        <div class="float-right">
+                                            <span class="notif-text"><b>Alice (@AliceGs)</b> te convidou para o grupo <b>Família</b>.</span>
+                                            <div class="notif-time">13:45</div>
+                                            <div>
+                                                <span class="float-left">Deseja aceitar?</span>
+                                                <div class="float-right">
+                                                    <a href="#!">
+                                                        <span class="badge badge-pill badge-primary">Sim</span>
+                                                    </a>
+                                                    <a href="#!">
+                                                        <span class="badge badge-pill badge-danger">Não</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </li>
