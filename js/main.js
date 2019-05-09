@@ -26,5 +26,24 @@ $(document).ready(function() {
 
 
     }
+
+    $(document).on('click', '.notificacao-icone', function(e) {
+
+        e.stopPropagation();
+    
+        abrirNotificacoes();
+    });
     
 });
+
+// Função para abrir as notificações
+function abrirNotificacoes() {
+    var delay = $('.notificacoes-box').index() * 50 + 'ms';
+    $('.notificacoes-box').css({
+        '-webkit-transition-delay': delay,
+        '-moz-transition-delay': delay,
+        '-o-transition-delay': delay,
+        'transition-delay': delay
+    });
+    $(".notificacoes-box").toggleClass("active");
+}

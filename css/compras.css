@@ -823,13 +823,13 @@ li.L1,li.L3,li.L5,li.L7,li.L9 { }
    NOTIFICAÇÕES
    ======================================================= */
 
-.notificacao {
+.notificacao-icone {
     color: white;
     position: relative;
     margin-right: 10px;
 }
 
-.notificacao .badge-notificacao {
+.notificacao-icone .badge-notificacao {
     position: absolute;
     top: 1px;
     right: 2px;
