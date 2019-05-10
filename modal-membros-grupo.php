@@ -89,11 +89,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php 
+                        <?php
+                            // Loop pelos membros do grupo 
                             foreach ($membros as $membro) {
                         ?>
                         <tr>
                             <td>
+                                <!-- Imagem do usuário, nome e indicação de admin (caso aplicável) -->
                                 <i class="fas fa-user mr-2 float-left"></i><?= $membro['Nome']; ?>
                             <?php
                                 if (isAdmin($conexao, $grupo['ID'], $membro['Usuario'])) {
@@ -103,8 +105,12 @@
                                 }
                             ?>
                             </td>
-                            <td><?= date("d/m/Y h:m", strtotime($membro['Membro_Desde'])); ?></td>
+                            <td>
+                                <!-- Data de ingresso no grupo -->
+                                <?= date("d/m/Y h:m", strtotime($membro['Membro_Desde'])); ?>
+                            </td>
                     <?php
+                        // Caso o usuário logado seja o Admin do grupo, permite a remoção dos membros
                         if (isAdmin($conexao, $grupo['ID'], $_POST['username']) && $membro['Usuario'] != $_POST['username']) {
                     ?>
                             <td class="text-right"><button class="btn black botao-pequeno btn-remover-membro" id-grupo="<?= $grupo['ID']; ?>" username-usuario="<?= $_POST['username']; ?>" username-membro="<?= $membro['Usuario']; ?>" data-toggle="confirmation" data-singleton="true"><i class="fas fa-times"></i></button></td>
@@ -119,6 +125,7 @@
                 </table>
             </div>
             <?php
+                // Permite a adição de novos membros apenas caso o usuário logado seja o Admin do grupo
                 if (isAdmin($conexao, $grupo['ID'], $_POST['username'])) {
             ?>
                 <hr>

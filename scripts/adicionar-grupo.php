@@ -49,9 +49,9 @@
                         $id_grupo = mysqli_stmt_insert_id($stmt);
 
 
-                        // Insere o usuário logado no grupo
+                        // Insere o usuário logado no grupo como Admin do grupo e o autoriza
                         
-                        $sql = "INSERT INTO grupo_usuarios (id_grupo, username, admin) VALUES (?, ?, 1)";
+                        $sql = "INSERT INTO grupo_usuarios (id_grupo, username, admin, autorizado, membro_desde) VALUES (?, ?, 1, 1, ?)";
                         $stmt = mysqli_stmt_init($conexao);
                         
                         if (!mysqli_stmt_prepare($stmt, $sql)) {
@@ -60,7 +60,7 @@
                             die();
                         
                         } else {
-                            mysqli_stmt_bind_param($stmt, "is", $id_grupo, $_SESSION['login-username']);
+                            mysqli_stmt_bind_param($stmt, "iss", $id_grupo, $_SESSION['login-username'], date("Y-m-d H:i:s"));
                             mysqli_stmt_execute($stmt);
                             // Sucesso
                         }

@@ -39,7 +39,7 @@ $(document).ready(function() {
     // Recupera as notificações em tempo real
     // =======================================================
 
-    carregarNotificacoes();
+    // carregarNotificacoes();
     
 });
 

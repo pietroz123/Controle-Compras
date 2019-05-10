@@ -116,7 +116,7 @@
                                         </div>
                                         <div class="float-right">
                                             <span class="notif-text"><b>Alice (@AliceGs)</b> te convidou para o grupo <b>Família</b>.</span>
-                                            <div class="notif-time">13:45</div>
+                                            <div class="notif-time"><?= date("H:i") ?></div>
                                             <div>
                                                 <span class="float-left">Deseja aceitar?</span>
                                                 <div class="float-right">
