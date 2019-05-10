@@ -33,6 +33,13 @@ $(document).ready(function() {
     
         abrirNotificacoes();
     });
+
+
+    // =======================================================
+    // Recupera as notificações em tempo real
+    // =======================================================
+
+    carregarNotificacoes();
     
 });
 
@@ -46,4 +53,27 @@ function abrirNotificacoes() {
         'transition-delay': delay
     });
     $(".notificacoes-box").toggleClass("active");
+}
+
+function carregarNotificacoes() {
+
+    $.ajax({
+        url: '../scripts/recuperar-notificacoes.php',
+        method: 'POST',
+        data: {
+            requisicao: "carregar-notificacoes"
+        },
+        datatype: 'html',
+        success: function(retorno) {
+            console.log('Success');
+            console.log(retorno);
+        },
+        error: function(retorno) {
+            console.log('Error');
+            console.log(retorno);
+        }
+    });
+
+    
+
 }
