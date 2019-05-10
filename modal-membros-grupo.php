@@ -88,19 +88,26 @@
                             <th></th>
                         </tr>
                     </thead>
+
+                    <!--
+                    =======================================================
+                    MEMBROS DO GRUPO
+                    =======================================================
+                    -->
+                    
                     <tbody>
-                        <?php
-                            // Loop pelos membros do grupo 
-                            foreach ($membros as $membro) {
-                        ?>
+                    <?php
+                        // Loop pelos membros do grupo
+                        foreach ($membros as $membro) {
+                    ?>
                         <tr>
                             <td>
                                 <!-- Imagem do usuário, nome e indicação de admin (caso aplicável) -->
-                                <i class="fas fa-user mr-2 float-left"></i><?= $membro['Nome']; ?>
+                                <img src="scripts/icone.php?icone=<?= $membro['Usuario']; ?>" class="smaller-icon mr-3"><?= $membro['Nome']; ?>
                             <?php
                                 if (isAdmin($conexao, $grupo['ID'], $membro['Usuario'])) {
                             ?>
-                                    <span class="badge badge-pill badge-light ml-2">ADMIN</span>
+                                    <span class="badge badge-pill badge-light float-right">ADMIN</span>
                             <?php
                                 }
                             ?>
@@ -118,12 +125,20 @@
                         }
                     ?>
                         </tr>
-                        <?php
-                            }
-                            ?>
+                    <?php
+                        }
+                    ?>
                     </tbody>
+
                 </table>
             </div>
+            
+            <!--
+            =======================================================
+            ADIÇÃO DE NOVOS MEMBROS
+            =======================================================
+            -->
+
             <?php
                 // Permite a adição de novos membros apenas caso o usuário logado seja o Admin do grupo
                 if (isAdmin($conexao, $grupo['ID'], $_POST['username'])) {
@@ -147,6 +162,7 @@
             <?php
                 }
             ?>
+
         </div>
         <div class="modal-footer">
             <button class="btn red darken-4 btn-sair-grupo float-left" id-grupo="<?= $grupo['ID']; ?>" username-usuario="<?= $_POST['username']; ?>">sair do grupo</button>
