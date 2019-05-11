@@ -56,7 +56,7 @@ $(document).on('click', '.notificacao-icone', function(e) {
 // Sim
 $(document).on('click', '.btn-aceitar-notificacao', function(e) {
     $.ajax({
-        url: '../scripts/logica-notificacoes.php',
+        url: '../includes/logica-notificacoes.php',
         method: 'POST',
         data: {
             requisicao: "aceitar-notificacao"
@@ -75,7 +75,7 @@ $(document).on('click', '.btn-aceitar-notificacao', function(e) {
 // Não
 $(document).on('click', '.btn-rejeitar-notificacao', function(e) {
     $.ajax({
-        url: '../scripts/logica-notificacoes.php',
+        url: '../includes/logica-notificacoes.php',
         method: 'POST',
         data: {
             requisicao: "rejeitar-notificacao"
@@ -107,7 +107,7 @@ function toggleNotificacoes() {
 function carregarNotificacoes() {
 
     $.ajax({
-        url: '../scripts/recuperar-notificacoes.php',
+        url: '../includes/logica-notificacoes.php',
         method: 'POST',
         data: {
             requisicao: "carregar-notificacoes"
