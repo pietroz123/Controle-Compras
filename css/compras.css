@@ -947,3 +947,15 @@ li.L1,li.L3,li.L5,li.L7,li.L9 { }
     margin-left: 9px;
     margin-top: 6px;
 }
+
+#container-tabela-grupos h6, #container-convites-grupos h6 {
+    font-weight: 700;
+}
+#container-tabela-grupos h6::after, #container-convites-grupos h6::after {
+    content: '';
+    width: 130px;
+    height: 3px;
+    background: #707070;
+    display: block;
+    margin: 10px 0;
+}

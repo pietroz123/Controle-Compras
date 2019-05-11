@@ -3,6 +3,7 @@
     include $_SERVER['DOCUMENT_ROOT'].'/database/conexao.php';
     include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes-usuarios.php';
 
+    date_default_timezone_set('America/Sao_Paulo');    
 
     // Inicia a sessao
     include $_SERVER['DOCUMENT_ROOT'].'/config/sessao.php';

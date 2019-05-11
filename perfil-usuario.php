@@ -2,6 +2,7 @@
     include $_SERVER['DOCUMENT_ROOT'].'/cabecalho.php';
     include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes-usuarios.php';
     include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes-grupos.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes-notificacoes.php';
 ?>
 
 <?php
@@ -106,6 +107,7 @@
 
             <div class="card-body">
                 <div class="container" id="container-tabela-grupos">
+                    <h6 class="mb-3">Meus Grupos</h6>
                     <?php
                         $grupos = recuperar_grupos($conexao, $usuario['Usuario']);
                         if (count($grupos) > 0) {
@@ -142,6 +144,13 @@
                         }
                     ?>
                     </table>
+                </div>
+                <div class="container" id="container-convites-grupos">
+                    <h6 class="mb-3">Convites</h6>
+                    <?php
+                    $retorno = recuperar_notificacoes($conexao);
+                    echo $retorno['html'];
+                    ?>
                 </div>
             </div>
         </div>

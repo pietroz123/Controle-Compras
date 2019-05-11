@@ -61,13 +61,14 @@ function recuperar_grupo($conexao, $id) {
     return $grupo;
 }
 
-// Recupera todos os grupos aos quais um determinado usuário pertence
+// Recupera todos os grupos aos quais um determinado usuário pertence e autorizou
 function recuperar_grupos($conexao, $usuario) {
-    $sql = "SELECT grupos.*
-            FROM grupos
-            JOIN grupo_usuarios
-            ON grupos.ID = grupo_usuarios.ID_Grupo
-            WHERE grupo_usuarios.Username = '$usuario'";
+    $sql = "SELECT g.*
+            FROM grupos g
+            JOIN grupo_usuarios gu
+            ON g.ID = gu.ID_Grupo
+            WHERE gu.Username = '$usuario'
+            AND gu.Autorizado = 1";
     
     $grupos = array();
     $resultado = mysqli_query($conexao, $sql);
