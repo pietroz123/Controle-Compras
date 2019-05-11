@@ -52,10 +52,10 @@ function recuperar_notificacoes($conexao) {
                         <div>
                             <span class="float-left">Deseja aceitar?</span>
                             <div class="float-right">
-                                <a href="#!">
+                                <a role="button" class="btn-aceitar-notificacao">
                                     <span class="badge badge-pill badge-primary">Sim</span>
                                 </a>
-                                <a href="#!">
+                                <a role="button" class="btn-rejeitar-notificacao">
                                     <span class="badge badge-pill badge-danger">Não</span>
                                 </a>
                             </div>

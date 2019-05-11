@@ -114,7 +114,6 @@ function carregarNotificacoes() {
         },
         datatype: 'json',
         success: function(retorno) {
-            console.log('Success');
             var json = $.parseJSON(retorno);
 
             $('.badge-notificacao').text(json.qtd);
