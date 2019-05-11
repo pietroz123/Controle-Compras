@@ -47,13 +47,6 @@ $(document).on('click', '.notificacao-icone', function(e) {
     e.stopPropagation();
     toggleNotificacoes();
 });
-// Pára a propagação do clique dentro da caixa de notificações
-$(document).on('click', '.notificacoes-box', function(e) {
-    e.stopPropagation();
-});
-$(document).click(function() {
-    toggleNotificacoes();
-});
 
 
 // Função para abrir as notificações
