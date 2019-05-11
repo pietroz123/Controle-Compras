@@ -26,7 +26,7 @@ if (isset($_POST['requisicao'])) {
             $retorno['qtd'] = 0;
             
             if (!mysqli_stmt_prepare($stmt, $sql)) {
-                $retorno['html'] .= '<div class="alert alert-danger">Ocorreu um erro ao recuperar as notificações de grupos.</dia>';
+                $retorno['html'] .= '<div class="alert alert-danger">Ocorreu um erro ao recuperar as notificações de grupos.</div>';
                 echo json_encode($retorno);
                 die();
             } else {
@@ -54,6 +54,7 @@ if (isset($_POST['requisicao'])) {
                     // Quando
                     $convidado_em = $notificacao['Convidado_Em'];
 
+                    // Notificações
                     $retorno['html'] .= '
                         <div class="notif clearfix">
                             <div class="float-left">
@@ -75,6 +76,11 @@ if (isset($_POST['requisicao'])) {
                                 </div>
                             </div>
                         </div>';
+                }
+
+                // Caso não existam notificações
+                if ($retorno['qtd'] == 0) {
+                    $retorno['html'] .= '<div class="alert alert-info">Nenhuma notificação no momento.</div>';
                 }
                 
                 echo json_encode($retorno);
