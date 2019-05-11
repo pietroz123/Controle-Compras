@@ -43,6 +43,11 @@ $(document).ready(function() {
     
 });
 
+// Recarrega as notificações a cada 2 segundos
+setInterval(function() {
+    carregarNotificacoes();
+}, 2000);
+
 // Função para abrir as notificações
 function abrirNotificacoes() {
     var delay = $('.notificacoes-box').index() * 50 + 'ms';
