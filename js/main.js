@@ -63,11 +63,13 @@ function carregarNotificacoes() {
         data: {
             requisicao: "carregar-notificacoes"
         },
-        datatype: 'html',
+        datatype: 'json',
         success: function(retorno) {
             console.log('Success');
-            console.log(retorno);
-            $('.notificacoes-box').html(retorno);
+            var json = $.parseJSON(retorno);
+
+            $('.badge-notificacao').text(json.qtd);
+            $('.notificacoes-box').html(json.html);
         },
         error: function(retorno) {
             console.log('Error');

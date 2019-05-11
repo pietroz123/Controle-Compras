@@ -21,11 +21,13 @@ if (isset($_POST['requisicao'])) {
             $sql = "SELECT * FROM grupo_usuarios WHERE Autorizado = 0 AND username = ?";
             $stmt = mysqli_stmt_init($conexao);
 
-            $retorno = '';
+            $retorno = array();
+            $retorno['html'] = '';
+            $retorno['qtd'] = 0;
             
             if (!mysqli_stmt_prepare($stmt, $sql)) {
-                $retorno .= '<div class="alert alert-danger">Ocorreu um erro ao recuperar as notificações de grupos.</dia>';
-                echo $retorno;
+                $retorno['html'] .= '<div class="alert alert-danger">Ocorreu um erro ao recuperar as notificações de grupos.</dia>';
+                echo json_encode($retorno);
                 die();
             } else {
                 mysqli_stmt_bind_param($stmt, "s", $_SESSION['login-username']);
@@ -34,12 +36,10 @@ if (isset($_POST['requisicao'])) {
                 $resultado = mysqli_stmt_get_result($stmt);
                 $notificacoes = array();
 
-                $count = 0;
-
                 while ($notificacao = mysqli_fetch_assoc($resultado)) {
 
                     // Incrementa o número de notificações
-                    $count++;
+                    $retorno['qtd']++;
                     
                     // Quem convidou
                     $convidado_por = join_usuario_comprador_username($conexao, $notificacao['Convidado_Por']);
@@ -54,30 +54,31 @@ if (isset($_POST['requisicao'])) {
                     // Quando
                     $convidado_em = $notificacao['Convidado_Em'];
 
-                    $retorno .= '<div class="notif clearfix">
-                                    <div class="float-left">
-                                        <img src="img/group.png" class="notif-icon">
-                                    </div>
+                    $retorno['html'] .= '
+                        <div class="notif clearfix">
+                            <div class="float-left">
+                                <img src="img/group.png" class="notif-icon">
+                            </div>
+                            <div class="float-right">
+                                <span class="notif-text"><b>'.$convidado_por_nome.'(<a href="#!">@'.$convidado_por_username.'</a>)</b> te convidou para o grupo <b>'.$nome_grupo.'</b>.</span>
+                                <div class="notif-time">'.date("d/m/Y H:i", strtotime($convidado_em)).'</div>
+                                <div>
+                                    <span class="float-left">Deseja aceitar?</span>
                                     <div class="float-right">
-                                        <span class="notif-text"><b>'.$convidado_por_nome.'(<a href="#!">@'.$convidado_por_username.'</a>)</b> te convidou para o grupo <b>'.$nome_grupo.'</b>.</span>
-                                        <div class="notif-time">'.date("d/m/Y H:i", strtotime($convidado_em)).'</div>
-                                        <div>
-                                            <span class="float-left">Deseja aceitar?</span>
-                                            <div class="float-right">
-                                                <a href="#!">
-                                                    <span class="badge badge-pill badge-primary">Sim</span>
-                                                </a>
-                                                <a href="#!">
-                                                    <span class="badge badge-pill badge-danger">Não</span>
-                                                </a>
-                                            </div>
-                                        </div>
+                                        <a href="#!">
+                                            <span class="badge badge-pill badge-primary">Sim</span>
+                                        </a>
+                                        <a href="#!">
+                                            <span class="badge badge-pill badge-danger">Não</span>
+                                        </a>
                                     </div>
-                                </div>';
+                                </div>
+                            </div>
+                        </div>';
                 }
                 
-                echo $retorno;
-	            die();
+                echo json_encode($retorno);
+                die();
             }
             
             break;
