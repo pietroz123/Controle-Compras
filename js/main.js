@@ -45,12 +45,19 @@ setInterval(function() {
 // Para abrir a caixa de notificações
 $(document).on('click', '.notificacao-icone', function(e) {
     e.stopPropagation();
-    abrirNotificacoes();
+    toggleNotificacoes();
 });
+// Pára a propagação do clique dentro da caixa de notificações
+$(document).on('click', '.notificacoes-box', function(e) {
+    e.stopPropagation();
+});
+$(document).click(function() {
+    toggleNotificacoes();
+})
 
 
 // Função para abrir as notificações
-function abrirNotificacoes() {
+function toggleNotificacoes() {
     var delay = $('.notificacoes-box').index() * 50 + 'ms';
     $('.notificacoes-box').css({
         '-webkit-transition-delay': delay,
