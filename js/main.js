@@ -53,7 +53,7 @@ $(document).on('click', '.notificacoes-box', function(e) {
 });
 $(document).click(function() {
     toggleNotificacoes();
-})
+});
 
 
 // Função para abrir as notificações
