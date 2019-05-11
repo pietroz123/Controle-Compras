@@ -26,27 +26,28 @@ $(document).ready(function() {
 
 
     }
-
-    $(document).on('click', '.notificacao-icone', function(e) {
-
-        e.stopPropagation();
     
-        abrirNotificacoes();
-    });
-
-
     // =======================================================
     // Recupera as notificações em tempo real
     // =======================================================
-
+    
     carregarNotificacoes();
     
 });
+
 
 // Recarrega as notificações a cada 2 segundos
 setInterval(function() {
     carregarNotificacoes();
 }, 2000);
+
+
+// Para abrir a caixa de notificações
+$(document).on('click', '.notificacao-icone', function(e) {
+    e.stopPropagation();
+    abrirNotificacoes();
+});
+
 
 // Função para abrir as notificações
 function abrirNotificacoes() {
