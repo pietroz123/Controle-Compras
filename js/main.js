@@ -49,6 +49,49 @@ $(document).on('click', '.notificacao-icone', function(e) {
 });
 
 
+// =======================================================
+// RESPOSTAS PARA SIM E NÃO DAS NOTIFICAÇÕES
+// =======================================================
+
+// Sim
+$(document).on('click', '.btn-aceitar-notificacao', function(e) {
+    $.ajax({
+        url: '../scripts/logica-notificacoes.php',
+        method: 'POST',
+        data: {
+            requisicao: "aceitar-notificacao"
+        },
+        success: function(retorno) {
+            console.log('Success');
+            console.log(retorno);
+        },
+        error: function(retorno) {
+            console.log('Error');
+            console.log(retorno);
+        }
+    });
+});
+
+// Não
+$(document).on('click', '.btn-rejeitar-notificacao', function(e) {
+    $.ajax({
+        url: '../scripts/logica-notificacoes.php',
+        method: 'POST',
+        data: {
+            requisicao: "rejeitar-notificacao"
+        },
+        success: function(retorno) {
+            console.log('Success');
+            console.log(retorno);
+        },
+        error: function(retorno) {
+            console.log('Error');
+            console.log(retorno);
+        }
+    });
+});
+
+
 // Função para abrir as notificações
 function toggleNotificacoes() {
     var delay = $('.notificacoes-box').index() * 50 + 'ms';

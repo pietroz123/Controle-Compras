@@ -25,6 +25,20 @@ if (isset($_POST['requisicao'])) {
             
             break;
         
+        // Caso o usuário deseje aceitar a notificação
+        case 'aceitar-notificacao':
+            # code...
+            die();
+            
+            break;
+
+        // Caso o usuário deseje rejeitar a notificação
+        case 'rejeitar-notificacao':
+            # code...
+            die();
+            
+            break;
+        
         default:
             # code...
             break;
