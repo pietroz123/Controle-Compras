@@ -79,7 +79,7 @@ function recuperar_grupos($conexao, $usuario) {
 
 // Recupera todos os membros de um grupo com determinado ID
 function recuperar_membros($conexao, $id_grupo) {
-    $sql = "SELECT c.Nome, u.ID AS ID_Usuario, u.Usuario, gu.Membro_Desde, gu.Admin
+    $sql = "SELECT c.Nome, u.ID AS ID_Usuario, u.Usuario, gu.Membro_Desde, gu.Admin, gu.Autorizado
             FROM usuarios AS u
             JOIN grupo_usuarios AS gu
             ON u.Usuario = gu.Username

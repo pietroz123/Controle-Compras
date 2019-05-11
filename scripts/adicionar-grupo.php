@@ -51,7 +51,7 @@
 
                         // Insere o usuário logado no grupo como Admin do grupo e o autoriza
                         
-                        $sql = "INSERT INTO grupo_usuarios (id_grupo, username, admin, autorizado, membro_desde) VALUES (?, ?, 1, 1, ?)";
+                        $sql = "INSERT INTO grupo_usuarios (id_grupo, username, admin, autorizado, membro_desde, convidado_por) VALUES (?, ?, 1, 1, ?, ?)";
                         $stmt = mysqli_stmt_init($conexao);
                         
                         if (!mysqli_stmt_prepare($stmt, $sql)) {
@@ -60,7 +60,7 @@
                             die();
                         
                         } else {
-                            mysqli_stmt_bind_param($stmt, "iss", $id_grupo, $_SESSION['login-username'], date("Y-m-d H:i:s"));
+                            mysqli_stmt_bind_param($stmt, "isss", $id_grupo, $_SESSION['login-username'], date("Y-m-d H:i:s"), $_SESSION['login-username']);
                             mysqli_stmt_execute($stmt);
                             // Sucesso
                         }
@@ -71,7 +71,7 @@
                         foreach ($ids_usuarios as $id_usuario) {
                             $usuario = buscar_usuario_id($conexao, $id_usuario);
 
-                            $sql = "INSERT INTO grupo_usuarios (id_grupo, username) VALUES (?, ?)";
+                            $sql = "INSERT INTO grupo_usuarios (id_grupo, username, convidado_por) VALUES (?, ?, ?)";
                             $stmt = mysqli_stmt_init($conexao);
                             
                             if (!mysqli_stmt_prepare($stmt, $sql)) {
@@ -80,7 +80,7 @@
                                 die();
                             
                             } else {
-                                mysqli_stmt_bind_param($stmt, "is", $id_grupo, $usuario['Usuario']);
+                                mysqli_stmt_bind_param($stmt, "iss", $id_grupo, $usuario['Usuario'], $_SESSION['login-username']);
                                 mysqli_stmt_execute($stmt);
                                 // Sucesso
                             }

@@ -105,16 +105,23 @@
                                 <!-- Imagem do usuário, nome e indicação de admin (caso aplicável) -->
                                 <img src="scripts/icone.php?icone=<?= $membro['Usuario']; ?>" class="smaller-icon mr-3"><?= $membro['Nome']; ?>
                             <?php
+
+                                // Caso o usuário atual seja um admin, coloca um badge de ADMIN
                                 if (isAdmin($conexao, $grupo['ID'], $membro['Usuario'])) {
-                            ?>
-                                    <span class="badge badge-pill badge-light float-right">ADMIN</span>
-                            <?php
+                                    echo '<span class="badge badge-pill badge-light float-right">ADMIN</span>';
                                 }
-                            ?>
+                                ?>
                             </td>
                             <td>
-                                <!-- Data de ingresso no grupo -->
-                                <?= date("d/m/Y h:m", strtotime($membro['Membro_Desde'])); ?>
+                            <?php
+                                // Caso o usuário atual não autorizou sua entrada ainda, coloca um badge de pendência
+                                if ($membro['Autorizado'] == false) {
+                                    echo '<span class="badge badge-pill badge-success">AUTORIZAÇÃO PENDENTE</span>';
+                                }
+                                else {
+                                    echo date("d/m/Y H:i", strtotime($membro['Membro_Desde']));
+                                }
+                            ?>
                             </td>
                     <?php
                         // Caso o usuário logado seja o Admin do grupo, permite a remoção dos membros

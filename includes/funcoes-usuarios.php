@@ -47,6 +47,7 @@ function criar_usuario($conexao, $nome, $username, $email, $senha, $nome_icone) 
     return $resultado;
 }
 
+// Selecionar tanto as informações da tabela Comprador quanto da tabela Usuário
 function join_usuario_comprador($conexao, $email) {
     $sql = "SELECT * FROM usuarios JOIN compradores ON usuarios.Email = compradores.Email WHERE usuarios.Email = ?";
     $stmt = mysqli_stmt_init($conexao);
@@ -56,6 +57,29 @@ function join_usuario_comprador($conexao, $email) {
         die();
     } else {
         mysqli_stmt_bind_param($stmt, "s", $email);
+        mysqli_stmt_execute($stmt);
+
+        $resultado = mysqli_stmt_get_result($stmt);
+        $usuario = mysqli_fetch_assoc($resultado);
+        if ($usuario == null) {
+            $_SESSION['danger'] = "Usuário inexistente.";
+            header("Location: ../index.php");
+            die();
+        }
+        else {
+            return $usuario;
+        }
+    }
+}
+function join_usuario_comprador_username($conexao, $username) {
+    $sql = "SELECT * FROM usuarios JOIN compradores ON usuarios.Email = compradores.Email WHERE usuarios.Usuario = ?";
+    $stmt = mysqli_stmt_init($conexao);
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        $_SESSION['danger'] = "Ocorreu um erro ao buscar as informações do usuário.";
+        header("Location: ../index.php");
+        die();
+    } else {
+        mysqli_stmt_bind_param($stmt, "s", $username);
         mysqli_stmt_execute($stmt);
 
         $resultado = mysqli_stmt_get_result($stmt);

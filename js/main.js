@@ -39,7 +39,7 @@ $(document).ready(function() {
     // Recupera as notificações em tempo real
     // =======================================================
 
-    // carregarNotificacoes();
+    carregarNotificacoes();
     
 });
 
@@ -67,6 +67,7 @@ function carregarNotificacoes() {
         success: function(retorno) {
             console.log('Success');
             console.log(retorno);
+            $('.notificacoes-box').html(retorno);
         },
         error: function(retorno) {
             console.log('Error');
