@@ -124,7 +124,7 @@ input {
 input:hover {
     cursor: pointer;
 }
-button:not(.close):not(.btn-notificacao), .botao {
+button:not(.close):not(.btn-notificacao):not(.navbar-toggler), .botao {
     font-family: 'Oswald', sans-serif;
     font-weight: bold;
     letter-spacing: 1.2px;
