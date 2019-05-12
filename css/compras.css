@@ -904,7 +904,7 @@ li.L1,li.L3,li.L5,li.L7,li.L9 { }
     top: 46px;
     right: -1px;
     border-radius: 3px;
-    padding: 20px;
+    padding: 14px 12px 0px 14px;
     overflow: inherit;
     box-shadow: 0 1px 50px 0 rgba(0, 0, 0, 0.26) !important;
     -webkit-transition: all 0.2s ease;
@@ -936,14 +936,6 @@ li.L1,li.L3,li.L5,li.L7,li.L9 { }
     margin-left: -8px;
 }
 
-.notif {
-    border-top: 1px solid #707070;
-    border-bottom: 1px solid #707070;
-    padding: 5px;
-}
-.notif:hover {
-    background-color: #eeeeee;
-}
 .notif-icon {
     width: 40px;
     height: 40px;
@@ -973,4 +965,47 @@ li.L1,li.L3,li.L5,li.L7,li.L9 { }
     background: #707070;
     display: block;
     margin: 10px 0;
+}
+#convites .notification {
+    font-size: 14px;
+}
+
+
+/* https://codepen.io/walesmd/pen/zysbv */
+.notification {
+    position: relative;
+    margin: 1em;
+    background: #F9F9F9;
+    padding: 1em 1em 2em 2em;
+    border-left: 4px solid #DDD;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.125);
+}
+.notification:hover {
+    background-color: #eeeeee;
+}
+.notification:before {
+    position: absolute;
+    top: 50%;
+    margin-top: -17px;
+    left: -17px;
+    background-color: #DDD;
+    color: #FFF;
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    text-align: center;
+    line-height: 30px;
+    font-weight: bold;
+    font-family: Georgia;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.5);
+}
+  
+.group {
+    border-color: #00695c;
+}
+.group:before {
+    background-color: #00695c;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f0c0";
 }

@@ -147,10 +147,15 @@
                 </div>
                 <div class="container" id="container-convites-grupos">
                     <h6 class="mb-3">Convites</h6>
-                    <?php
-                    $retorno = recuperar_notificacoes($conexao);
-                    echo $retorno['html'];
-                    ?>
+                    
+                    <!-- Seção de convites -->
+                    <section id="convites">
+                        <?php
+                        $retorno = recuperar_notificacoes($conexao);
+                        echo $retorno['html'];
+                        ?>
+                    </section>
+
                 </div>
             </div>
         </div>

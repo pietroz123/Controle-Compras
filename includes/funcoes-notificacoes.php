@@ -44,27 +44,22 @@ function recuperar_notificacoes($conexao) {
             // Notificações
             $retorno['html'] .= '
                 <div class="notif clearfix">
-                    <div class="float-left">
-                        <img src="img/group.png" class="notif-icon">
-                    </div>
-                    <div class="float-right">
+                    <div class="notification group">
                         <span class="notif-text"><b>'.$convidado_por_nome.'(<a href="#!">@'.$convidado_por_username.'</a>)</b> te convidou para o grupo <b>'.$nome_grupo.'</b>.</span>
                         <div class="notif-time">'.date("d/m/Y H:i", strtotime($convidado_em)).'</div>
-                        <div>
-                            <span class="float-left">Deseja aceitar?</span>
-                            <div class="float-right">
-                                <div class="btns-decisao">
-                                    <form action="includes/logica-notificacoes.php" method="POST">
-                                        <input type="hidden" name="requisicao" value="aceitar-notificacao">
-                                        <input type="hidden" name="id_grupo" value="'.$notificacao['ID_Grupo'].'">
-                                        <button type="submit" class="btn-notificacao"><span class="badge badge-pill badge-primary">Sim</span></button>
-                                    </form>
-                                    <form action="includes/logica-notificacoes.php" method="POST">
-                                        <input type="hidden" name="requisicao" value="rejeitar-notificacao">
-                                        <input type="hidden" name="id_grupo" value="'.$notificacao['ID_Grupo'].'">
-                                        <button type="submit" class="btn-notificacao"><span class="badge badge-pill badge-danger">Não</span></button>
-                                    </form>
-                                </div>
+                        <span class="float-left">Deseja aceitar?</span>
+                        <div class="float-right">
+                            <div class="btns-decisao">
+                                <form action="includes/logica-notificacoes.php" method="POST">
+                                    <input type="hidden" name="requisicao" value="aceitar-notificacao">
+                                    <input type="hidden" name="id_grupo" value="'.$notificacao['ID_Grupo'].'">
+                                    <button type="submit" class="btn-notificacao"><span class="badge badge-pill badge-primary">Sim</span></button>
+                                </form>
+                                <form action="includes/logica-notificacoes.php" method="POST">
+                                    <input type="hidden" name="requisicao" value="rejeitar-notificacao">
+                                    <input type="hidden" name="id_grupo" value="'.$notificacao['ID_Grupo'].'">
+                                    <button type="submit" class="btn-notificacao"><span class="badge badge-pill badge-danger">Não</span></button>
+                                </form>
                             </div>
                         </div>
                     </div>
