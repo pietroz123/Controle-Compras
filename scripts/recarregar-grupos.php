@@ -14,6 +14,7 @@ if (isset($_POST['username'])) {
     if (count($grupos) > 0) {
 
         $retorno = '
+        <h6 class="mb-3">Meus Grupos</h6>
         <table class="table table-hover table-grupos" id="tabela-grupos">
             <thead style="font-weight: bold;">
                 <tr>
@@ -43,7 +44,7 @@ if (isset($_POST['username'])) {
     }
     else {
         
-        $retorno .= '<div class="alert alert-info" role="alert">Você não está em nenhum grupo.</div>';
+        $retorno .= '<h6 class="mb-3">Meus Grupos</h6><div class="alert alert-info" role="alert">Você não está em nenhum grupo.</div>';
     }
 
     $retorno .= '</table>';
