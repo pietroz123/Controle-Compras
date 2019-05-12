@@ -165,7 +165,7 @@
                         <?php 
                             } else { 
                         ?>
-                                <a href="listar-compras.php#tabela-compras" class="botao botao-pequeno btn btn-light">visualizar</a>
+                                <a href="compras.php#tabela-compras" class="botao botao-pequeno btn btn-light">visualizar</a>
                         <?php
                             }
                         ?>

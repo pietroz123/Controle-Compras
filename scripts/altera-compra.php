@@ -19,13 +19,13 @@
         if (alterar_compra($conexao, $id, $valor, $data, $observacoes, $desconto, $forma_pagamento, $comprador_id)) {
     
             $_SESSION['success'] = "Compra (ID = '{$id}') alterada!";
-            header("Location: ../listar-compras.php");
+            header("Location: ../compras.php");
             die();
     
         } else {
     
             $_SESSION['danger'] = "Erro na alteração da compra (ID = '{$id}')!" . mysql_error($conexao);
-            header("Location: ../listar-compras.php");
+            header("Location: ../compras.php");
             die();
     
         }
