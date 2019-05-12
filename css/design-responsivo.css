@@ -27,6 +27,13 @@
     .footer-nav-item {
         padding: 10px 10px;
     }
+    .notificacoes-box {
+        right: unset;
+    }
+    .notificacoes-box::after {
+        left: unset;
+        right: 94%;
+    }
 }
 
 @media only screen and (max-width: 550px) {
@@ -119,12 +126,16 @@
     #btn-login {
         width: 100%;        
     }
+    .notificacoes-box {
+        max-width: 328px;
+    }
+    .notif-icon {
+        display: none;
+    }
 }
 
 @media only screen and (max-width: 767px) and (min-width: 550px) {
-    .nav-item {
-        margin-left: 53px;
-    }
+    
 }
 
 @media only screen and (max-width: 768px) and (min-width: 550px) {
