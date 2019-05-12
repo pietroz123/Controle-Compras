@@ -947,6 +947,8 @@ li.L1,li.L3,li.L5,li.L7,li.L9 { }
     border: none;
     background: none;
     padding: 0;
+    text-transform: uppercase;
+    font-family: 'Lato', sans-serif !important;
 }
 .btns-decisao {
     display: inline-flex;
