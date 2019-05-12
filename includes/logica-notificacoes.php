@@ -27,14 +27,38 @@ if (isset($_POST['requisicao'])) {
         
         // Caso o usuário deseje aceitar a notificação
         case 'aceitar-notificacao':
-            # code...
+            
+            // Recupera o id do grupo
+            $id_grupo = $_POST['id_grupo'];
+
+            if (aceitar_notificacao($conexao, $id_grupo)) {
+                $_SESSION['success'] = "Convite aceito com sucesso!";
+                header("Location: ../perfil-usuario.php#cartao-grupos-usuario");
+            }
+            else {
+                $_SESSION['danger'] = "Não foi possível aceitar o convite!";
+                header("Location: ../perfil-usuario.php");
+            }
+
             die();
             
             break;
 
         // Caso o usuário deseje rejeitar a notificação
         case 'rejeitar-notificacao':
-            # code...
+            
+            // Recupera o id do grupo
+            $id_grupo = $_POST['id_grupo'];
+
+            if (rejeitar_notificacao($conexao, $id_grupo)) {
+                $_SESSION['success'] = "Convite rejeitado com sucesso!";
+                header("Location: ../perfil-usuario.php");
+            }
+            else {
+                $_SESSION['danger'] = "Não foi possível rejeitar o convite!";
+                header("Location: ../perfil-usuario.php");
+            }
+
             die();
             
             break;

@@ -1,7 +1,8 @@
 <?php
 
+date_default_timezone_set('America/Sao_Paulo');
 
-
+// Recupera as notificações do usuário logado
 function recuperar_notificacoes($conexao) {
     // Recupera as notificações
     $sql = "SELECT * FROM grupo_usuarios WHERE Autorizado = 0 AND username = ?";
@@ -52,10 +53,10 @@ function recuperar_notificacoes($conexao) {
                         <div>
                             <span class="float-left">Deseja aceitar?</span>
                             <div class="float-right">
-                                <a role="button" class="btn-aceitar-notificacao">
+                                <a role="button" class="btn-aceitar-notificacao" id-grupo="'.$notificacao['ID_Grupo'].'">
                                     <span class="badge badge-pill badge-primary">Sim</span>
                                 </a>
-                                <a role="button" class="btn-rejeitar-notificacao">
+                                <a role="button" class="btn-rejeitar-notificacao" id-grupo="'.$notificacao['ID_Grupo'].'">
                                     <span class="badge badge-pill badge-danger">Não</span>
                                 </a>
                             </div>
@@ -71,4 +72,22 @@ function recuperar_notificacoes($conexao) {
     }
 
     return $retorno;
+}
+
+
+// Para aceitar um convite
+function aceitar_notificacao($conexao, $id_grupo) {
+
+    $sql = "UPDATE grupo_usuarios SET Autorizado = 1, Membro_Desde = '".date("Y-m-d H:i:s")."' WHERE ID_Grupo = {$id_grupo} AND Username = '{$_SESSION['login-username']}'";
+    return mysqli_query($conexao, $sql);
+
+}
+
+
+// Para rejeitar um convite
+function rejeitar_notificacao($conexao, $id_grupo) {
+ 
+    $sql = "DELETE FROM grupo_usuarios WHERE ID_Grupo = {$id_grupo} AND Username = '{$_SESSION['login-username']}'";
+    return mysqli_query($conexao, $sql);
+    
 }

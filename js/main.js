@@ -55,15 +55,17 @@ $(document).on('click', '.notificacao-icone', function(e) {
 
 // Sim
 $(document).on('click', '.btn-aceitar-notificacao', function(e) {
+    var id_grupo = $(this).attr('id-grupo');
+    
     $.ajax({
         url: '../includes/logica-notificacoes.php',
         method: 'POST',
         data: {
-            requisicao: "aceitar-notificacao"
+            requisicao: "aceitar-notificacao",
+            id_grupo: id_grupo
         },
         success: function(retorno) {
-            console.log('Success');
-            console.log(retorno);
+            location.href = "../perfil-usuario.php#container-tabela-grupos";
         },
         error: function(retorno) {
             console.log('Error');
@@ -74,15 +76,17 @@ $(document).on('click', '.btn-aceitar-notificacao', function(e) {
 
 // Não
 $(document).on('click', '.btn-rejeitar-notificacao', function(e) {
+    var id_grupo = $(this).attr('id-grupo');
+    
     $.ajax({
         url: '../includes/logica-notificacoes.php',
         method: 'POST',
         data: {
-            requisicao: "rejeitar-notificacao"
+            requisicao: "rejeitar-notificacao",
+            id_grupo: id_grupo
         },
         success: function(retorno) {
-            console.log('Success');
-            console.log(retorno);
+            location.href = "../perfil-usuario.php";
         },
         error: function(retorno) {
             console.log('Error');
