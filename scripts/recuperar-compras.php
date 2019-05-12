@@ -55,6 +55,7 @@
         include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes-grupos.php';
 
         $id_grupo = $_POST['id_grupo'];
+        $grupo = recuperar_grupo($conexao, $id_grupo);
 
         // Recupera os IDs dos Compradores que estão naquele grupo
         $ids_compradores = recuperar_compradores($conexao, $id_grupo);
@@ -82,10 +83,13 @@
             array_push($compras, $compra);
         }
 
-        $retorno = '';
+        $retorno = array();
+        $retorno['titulo'] = $grupo['Nome'];
+
+        $retorno['html'] = '';
         foreach ($compras as $compra) {
 
-            $retorno .= '<tr>
+            $retorno['html'] .= '<tr>
                 <td class="t-id">'.$compra['Id'].'</td>
                 <td class="t-data">'.$compra['Data'].'</td>
                 <td class="t-observacoes">'.$compra['Observacoes'].'</td>
@@ -115,5 +119,5 @@
 
         }
 
-        echo $retorno;
+        echo json_encode($retorno);
     }

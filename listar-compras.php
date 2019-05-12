@@ -186,13 +186,15 @@
             data: {
                 id_grupo: id_grupo
             },
-            success: function(retorno) {
+            dataType: "json",
+            success: function(retorno) {               
 
                 // Limpa e destrói a tabela
                 $("#tabela-compras").DataTable().clear().destroy();
 
                 // Preenche a tabela com as compras do grupo
-                $('#compras-datatable').html(retorno);
+                $('#compras-datatable').html(retorno.html);
+                $('.titulo-site').text(retorno.titulo);
                 
                 // Reinicializa a datatable
                 inicializaDataTable();
