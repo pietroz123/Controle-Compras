@@ -14,7 +14,7 @@
                 <div class="card-title" id="titulo-informacoes">Buscar</div>
             </div>
 
-            <div class="elegant-color p-4 text-left" id="busca">
+            <div class="elegant-color p-2 p-sm-4 text-left" id="busca">
 
                 <div class="container white-text">
                     <div class="row">
@@ -55,7 +55,7 @@
                     
                 <div class="d-flex justify-content-center align-content-center">
 
-                    <button class="btn btn-default w-25" type="submit" name="submit-buscar" value="true">realizar busca</button>
+                    <button class="btn btn-default" type="submit" name="submit-buscar" value="true">realizar busca</button>
                 </div>
                     
                 

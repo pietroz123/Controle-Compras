@@ -102,7 +102,7 @@
 </div>
 
 <hr>
-<h1 style="margin-top: 40px;" class="titulo-site">Lista de Compras</h1>
+<h1 style="margin-top: 40px;" class="titulo-site" id="titulo-compras">Lista de Compras</h1>
 
 <!-- Tabela com as compras -->
 <!-- <div style="overflow-x: auto;"> -->
@@ -194,7 +194,7 @@
 
                 // Preenche a tabela com as compras do grupo
                 $('#compras-datatable').html(retorno.html);
-                $('.titulo-site').text(retorno.titulo);
+                $('#titulo-compras').text(retorno.titulo);
                 
                 // Reinicializa a datatable
                 inicializaDataTable();
@@ -229,7 +229,7 @@
 
                 // Preenche a tabela com as compras do grupo
                 $('#compras-datatable').html(retorno);
-                $('.titulo-site').text("Minhas Compras");
+                $('#titulo-compras').text("Minhas Compras");
                 
                 // Reinicializa a datatable
                 inicializaDataTable();

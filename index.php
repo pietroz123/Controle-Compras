@@ -299,8 +299,8 @@
                                 }
                                 else {
                             ?>
-                                <div class="col text-white d-flex justify-content-center flex-column align-items-center">Número de imagens disponíveis: <?= $contImg ?></div>
-                                <div class="col">
+                                <div class="col-12 col-sm text-white d-flex justify-content-center flex-column align-items-center">Número de imagens disponíveis: <?= $contImg ?></div>
+                                <div class="col-12 col-sm">
                                     <!-- Realizar Backup -->
                                     <form action="backup/backup-imagens.php" method="POST">
                                         <button type="submit" name="submit-download-imagens" class="btn btn-default" id="btn-backup-imagens">fazer backup das notas fiscais</button>
