@@ -105,7 +105,7 @@
                     ?>
                         <ul class="navbar-nav links-logout">
                             <li class="nav-item li-notificacao">
-                                <a href="#!" class="nav-link notificacao-icone">
+                                <a role="button" class="nav-link notificacao-icone">
                                     <span><i class="fas fa-bell fa-lg"></i></span>
                                     <span class="badge-notificacao">3</span>
                                 </a>
