@@ -102,6 +102,9 @@ body h1 {
     text-align: center;
     font-family: 'Roboto Slab', serif;
 }
+#container-principal {
+    min-height: 80vh;
+}
 
 .bem-vindo-index {
     text-align: justify;
