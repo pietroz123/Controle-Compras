@@ -121,7 +121,7 @@ input {
 input:hover {
     cursor: pointer;
 }
-button:not(.close), .botao {
+button:not(.close):not(.btn-notificacao), .botao {
     font-family: 'Oswald', sans-serif;
     font-weight: bold;
     letter-spacing: 1.2px;
@@ -946,6 +946,15 @@ li.L1,li.L3,li.L5,li.L7,li.L9 { }
     height: 40px;
     margin-left: 9px;
     margin-top: 6px;
+}
+
+.btn-notificacao {
+    border: none;
+    background: none;
+    padding: 0;
+}
+.btns-decisao {
+    display: inline-flex;
 }
 
 #container-tabela-grupos h6, #container-convites-grupos h6 {

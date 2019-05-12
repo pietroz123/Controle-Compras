@@ -49,53 +49,6 @@ $(document).on('click', '.notificacao-icone', function(e) {
 });
 
 
-// =======================================================
-// RESPOSTAS PARA SIM E NÃO DAS NOTIFICAÇÕES
-// =======================================================
-
-// Sim
-$(document).on('click', '.btn-aceitar-notificacao', function(e) {
-    var id_grupo = $(this).attr('id-grupo');
-    
-    $.ajax({
-        url: '../includes/logica-notificacoes.php',
-        method: 'POST',
-        data: {
-            requisicao: "aceitar-notificacao",
-            id_grupo: id_grupo
-        },
-        success: function(retorno) {
-            location.href = "../perfil-usuario.php#container-tabela-grupos";
-        },
-        error: function(retorno) {
-            console.log('Error');
-            console.log(retorno);
-        }
-    });
-});
-
-// Não
-$(document).on('click', '.btn-rejeitar-notificacao', function(e) {
-    var id_grupo = $(this).attr('id-grupo');
-    
-    $.ajax({
-        url: '../includes/logica-notificacoes.php',
-        method: 'POST',
-        data: {
-            requisicao: "rejeitar-notificacao",
-            id_grupo: id_grupo
-        },
-        success: function(retorno) {
-            location.href = "../perfil-usuario.php";
-        },
-        error: function(retorno) {
-            console.log('Error');
-            console.log(retorno);
-        }
-    });
-});
-
-
 // Função para abrir as notificações
 function toggleNotificacoes() {
     var delay = $('.notificacoes-box').index() * 50 + 'ms';

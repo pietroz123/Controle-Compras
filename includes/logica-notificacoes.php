@@ -33,7 +33,7 @@ if (isset($_POST['requisicao'])) {
 
             if (aceitar_notificacao($conexao, $id_grupo)) {
                 $_SESSION['success'] = "Convite aceito com sucesso!";
-                header("Location: ../perfil-usuario.php#cartao-grupos-usuario");
+                header("Location: ../perfil-usuario.php#container-tabela-grupos");
             }
             else {
                 $_SESSION['danger'] = "Não foi possível aceitar o convite!";

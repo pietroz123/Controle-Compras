@@ -53,12 +53,18 @@ function recuperar_notificacoes($conexao) {
                         <div>
                             <span class="float-left">Deseja aceitar?</span>
                             <div class="float-right">
-                                <a role="button" class="btn-aceitar-notificacao" id-grupo="'.$notificacao['ID_Grupo'].'">
-                                    <span class="badge badge-pill badge-primary">Sim</span>
-                                </a>
-                                <a role="button" class="btn-rejeitar-notificacao" id-grupo="'.$notificacao['ID_Grupo'].'">
-                                    <span class="badge badge-pill badge-danger">Não</span>
-                                </a>
+                                <div class="btns-decisao">
+                                    <form action="includes/logica-notificacoes.php" method="POST">
+                                        <input type="hidden" name="requisicao" value="aceitar-notificacao">
+                                        <input type="hidden" name="id_grupo" value="'.$notificacao['ID_Grupo'].'">
+                                        <button type="submit" class="btn-notificacao"><span class="badge badge-pill badge-primary">Sim</span></button>
+                                    </form>
+                                    <form action="includes/logica-notificacoes.php" method="POST">
+                                        <input type="hidden" name="requisicao" value="rejeitar-notificacao">
+                                        <input type="hidden" name="id_grupo" value="'.$notificacao['ID_Grupo'].'">
+                                        <button type="submit" class="btn-notificacao"><span class="badge badge-pill badge-danger">Não</span></button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
