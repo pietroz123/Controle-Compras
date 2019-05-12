@@ -22,6 +22,7 @@
         <link type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css" rel="stylesheet">        <!-- Toastr -->
         <link type="text/css" href="css/datepicker.css" rel="stylesheet">                                                           <!-- Air Datepicker -->
         <link type="text/css" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet">                        <!-- JQuery UI -->
+        <link type="text/css" href="lib/font-awesome-animation/css/font-awesome-animation.css" rel="stylesheet">                    <!-- Font Awesome Animation -->
         
         <link type="text/css" href="css/compras.css" rel="stylesheet">                                                              <!-- CSS Site -->
         <link type="text/css" href="css/design-responsivo.css" rel="stylesheet">                                                    <!-- Design Responsivo Site -->
@@ -106,7 +107,7 @@
                         <ul class="navbar-nav links-logout">
                             <li class="nav-item li-notificacao">
                                 <a role="button" class="nav-link notificacao-icone">
-                                    <span><i class="fas fa-bell fa-lg"></i></span>
+                                    <span><i class="fas fa-bell fa-lg faa-shake animated-hover"></i></span>
                                     <span class="badge-notificacao">3</span>
                                 </a>
                                 <div class="notificacoes-box custom-scrollbar-darker">
