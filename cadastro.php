@@ -1,7 +1,7 @@
 <?php
     include $_SERVER['DOCUMENT_ROOT'].'/cabecalho.php';
 ?>
-<link type="text/css" href="css/realtime-validation.css" rel="stylesheet">
+<link type="text/css" href="lib/misc/css/realtime-validation.css" rel="stylesheet">
 
 
 <form action="scripts/cadastrar.php" method="post" id="form-cadastro" autocomplete="off">
@@ -101,9 +101,9 @@
     include $_SERVER['DOCUMENT_ROOT'].'/rodape.php';
 ?>
 
-<script type="text/javascript" src="js/random-icons.js"></script>
-<script type="text/javascript" src="js/awesomplete.js"></script>
-<script type="text/javascript" src="js/realtime-validation.js"></script>
+<script type="text/javascript" src="lib/misc/js/random-icons.js"></script>
+<script type="text/javascript" src="lib/awesomplete/js/awesomplete.js"></script>
+<script type="text/javascript" src="lib/misc/js/realtime-validation.js"></script>
 <script>
 
     /* ==============================================================================================================

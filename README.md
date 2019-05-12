@@ -16,8 +16,23 @@ O Controle de Compras é uma aplicação web que permite o armazenamento de comp
 - Módulo de Cadastro/Login
 - Módulo de Recuperação de Senha
 - Perfil do Usuário
-- Módulo de Grupos
+- Módulo de Grupos (Com sitema de Notificação e Autorização)
 - Módulo de Requisições (Para o administrador)
 - Módulo de Backup do Banco e das Imagens das Notas Fiscais
 - Módulo de Busca
 - Dashboard com Informações do Usuário
+- Módulo de Categorias e Subcategorias
+
+## Bibliotecas Utilizadas
+
+- Awesomplete
+- MDBootstrap/Bootstrap
+- Cropper JS
+- Air Datepicker
+- Select 2
+- Code-Prettify
+- Bootstrap Confirmation
+- JQuery
+- JQuery UI
+- JQuery Mask
+- Popper JS

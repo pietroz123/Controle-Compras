@@ -12,15 +12,15 @@
         <meta charset="utf-8">
         
         <!-- CSSs -->
-        <link type="text/css" href="css/bootstrap.css" rel="stylesheet">                                                            <!-- Bootstrap -->
-        <link type="text/css" href="css/mdb.css" rel="stylesheet">                                                                  <!-- MDBootstrap -->
-        <link type="text/css" href="css/datatables.css" rel="stylesheet">                                                           <!-- MDBootstrap / Datatables -->
-        <link type="text/css" href="css/awesomplete.css" rel="stylesheet">                                                          <!-- Awesomplete -->
-        <link type="text/css" href="css/select2.css" rel="stylesheet">                                                              <!-- Select2 -->
-        <link type="text/css" href="css/bounce-arrow.css" rel="stylesheet">                                                         <!-- Bounce-Arrow -->
-        <link type="text/css" href="css/cropper.css" rel="stylesheet">                                                              <!-- Cropper -->
+        <link type="text/css" href="lib/mdbootstrap/css/bootstrap.css" rel="stylesheet">                                            <!-- Bootstrap -->
+        <link type="text/css" href="lib/mdbootstrap/css/mdb.css" rel="stylesheet">                                                  <!-- MDBootstrap -->
+        <link type="text/css" href="lib/mdbootstrap/css/datatables.css" rel="stylesheet">                                           <!-- MDBootstrap / Datatables -->
+        <link type="text/css" href="lib/awesomplete/css/awesomplete.css" rel="stylesheet">                                          <!-- Awesomplete -->
+        <link type="text/css" href="lib/select2/css/select2.css" rel="stylesheet">                                                  <!-- Select2 -->
+        <link type="text/css" href="lib/misc/css/bounce-arrow.css" rel="stylesheet">                                                <!-- Bounce-Arrow -->
+        <link type="text/css" href="lib/cropper/css/cropper.css" rel="stylesheet">                                                  <!-- Cropper -->
         <link type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css" rel="stylesheet">        <!-- Toastr -->
-        <link type="text/css" href="css/datepicker.css" rel="stylesheet">                                                           <!-- Air Datepicker -->
+        <link type="text/css" href="lib/air-datepicker/css/datepicker.css" rel="stylesheet">                                        <!-- Air Datepicker -->
         <link type="text/css" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet">                        <!-- JQuery UI -->
         <link type="text/css" href="lib/font-awesome-animation/css/font-awesome-animation.css" rel="stylesheet">                    <!-- Font Awesome Animation -->
         

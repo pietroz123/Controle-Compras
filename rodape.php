@@ -61,21 +61,21 @@
         </footer>
 
         <!-- Scripts (Javascript) -->
-        <script src="js/jquery-latest.js"></script>                                                                 <!-- JQuery -->
-        <script src="js/jquery-ui.js"></script>                                                                     <!-- JQuery UI -->
-        <script src="js/popper.min.js"></script>                                                                    <!-- Popper -->
-        <script src="js/bootstrap.js"></script>                                                                     <!-- Boostrap -->
-        <script src="js/mdb.js"></script>                                                                           <!-- MDBootstrap -->
-        <script src="js/datatables.js"></script>                                                                    <!-- MDBootstrap / Datatables -->
-        <script src="js/select2.js"></script>                                                                       <!-- Select2 -->
-        <script src="js/jquery.mask.js"></script>                                                                   <!-- JQuery Masks -->
-        <script src="js/bootstrap-confirmation.js"></script>                                                        <!-- Boostrap Confirmation -->
-        <script src="js/cropper.js"></script>                                                                       <!-- Cropper -->
+        <script src="lib/jquery/js/jquery-latest.js"></script>                                                      <!-- JQuery -->
+        <script src="lib/jquery-ui/js/jquery-ui.js"></script>                                                       <!-- JQuery UI -->
+        <script src="lib/popper/js/popper.min.js"></script>                                                         <!-- Popper -->
+        <script src="lib/mdbootstrap/js/bootstrap.js"></script>                                                     <!-- Boostrap -->
+        <script src="lib/mdbootstrap/js/mdb.js"></script>                                                           <!-- MDBootstrap -->
+        <script src="lib/mdbootstrap/js/datatables.js"></script>                                                    <!-- MDBootstrap / Datatables -->
+        <script src="lib/select2/js/select2.js"></script>                                                            <!-- Select2 -->
+        <script src="lib/jquery-mask/js/jquery.mask.js"></script>                                                   <!-- JQuery Masks -->
+        <script src="lib/bootstrap-confirmation/js/bootstrap-confirmation.js"></script>                             <!-- Boostrap Confirmation -->
+        <script src="lib/cropper/js/cropper.js"></script>                                                           <!-- Cropper -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>                <!-- Toastr -->
-        <script src="js/datepicker.js"></script>                                                                    <!-- Air Datepicker -->
-        <script src="js/datepicker.pt-BR.js"></script>                                                              <!-- Air Datepicker PT-BR -->
+        <script src="lib/air-datepicker/js/datepicker.js"></script>                                                 <!-- Air Datepicker -->
+        <script src="lib/air-datepicker/js/datepicker.pt-BR.js"></script>                                           <!-- Air Datepicker PT-BR -->
         <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>      <!-- Code Prettify -->
-        <script src="js/code-prettify/lang-sql.js"></script>                                                        <!-- Code Prettify / SQL -->
+        <script src="lib/code-prettify/js/lang/lang-sql.js"></script>                                               <!-- Code Prettify / SQL -->
 
         <script src="js/main.js"></script>
 
