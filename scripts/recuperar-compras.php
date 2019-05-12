@@ -1,5 +1,6 @@
 <?php
 
+    // Caso o usuário deseje visualizar suas próprias compras
     if (isset($_POST['id_comprador'])) {
 
         include $_SERVER['DOCUMENT_ROOT'].'/database/conexao.php';
@@ -46,7 +47,8 @@
         echo $retorno;
 
     }
-
+    
+    // Caso o usuário deseje visualizar as compras de algum grupo
     if (isset($_POST['id_grupo'])) {
 
         include $_SERVER['DOCUMENT_ROOT'].'/database/conexao.php';

@@ -227,6 +227,7 @@
 
                 // Preenche a tabela com as compras do grupo
                 $('#compras-datatable').html(retorno);
+                $('.titulo-site').text("Minhas Compras");
                 
                 // Reinicializa a datatable
                 inicializaDataTable();
