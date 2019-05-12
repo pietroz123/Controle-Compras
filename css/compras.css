@@ -78,7 +78,7 @@ pre {
    ========================================================== */
 
 body {
-    margin-top: 100px;
+    margin-top: 50px;
     background-color: #fafafa;
 }
 body h1 {
@@ -958,6 +958,9 @@ li.L1,li.L3,li.L5,li.L7,li.L9 { }
 }
 .btns-decisao {
     display: inline-flex;
+}
+.btns-decisao form:first-of-type {
+    margin-right: 3px;
 }
 
 #container-tabela-grupos h6, #container-convites-grupos h6 {
