@@ -286,8 +286,8 @@
             $(".arrow").css({
                 'position': 'absolute',
                 'z-index': '1',
-                'margin-left': ((largura/2) - 10) + "px",
-                'top': '-50px'
+                'margin-left': ((largura/2) - 15) + "px",
+                'top': '-38px'
             });
 
 
