@@ -31,7 +31,7 @@ function recupera_ids_compradores_grupos($conexao, $username, $email) {
     return $ids_compradores;
 }
 
-// Seleciona todos os ids dos compradores em um determinado grupo
+// Seleciona todos os ids dos compradores em um determinado grupo que autorizaram
 function recuperar_compradores($conexao, $id_grupo) {
     $sql = "SELECT c.ID, c.Nome
             FROM compradores c
@@ -42,6 +42,7 @@ function recuperar_compradores($conexao, $id_grupo) {
                     SELECT gu.Username
                     FROM grupo_usuarios gu
                     WHERE gu.ID_Grupo = $id_grupo
+                    AND gu.Autorizado = 1           -- Apenas os que autorizaram
                 )
             )";
 
