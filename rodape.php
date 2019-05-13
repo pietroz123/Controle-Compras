@@ -1,4 +1,4 @@
-            </div>
+</div>
             <!-- Div conteudo-principal -->
         </div>
         <!-- Div container -->
@@ -25,6 +25,7 @@
                         <a class="text-center footer-nav-item" href="formulario-compra.php">Adicionar Compra</a>
                         <a class="text-center footer-nav-item" href="compras.php">Compras</a>
                         <a class="text-center footer-nav-item" href="busca.php">Buscar</a>
+                        <a class="text-center footer-nav-item" href="relatorios.php">Relatórios</a>
                     <?php
                         }
                     ?>
@@ -76,6 +77,9 @@
         <script src="lib/air-datepicker/js/datepicker.pt-BR.js"></script>                                           <!-- Air Datepicker PT-BR -->
         <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>      <!-- Code Prettify -->
         <script src="lib/code-prettify/js/lang/lang-sql.js"></script>                                               <!-- Code Prettify / SQL -->
+        <script src="lib/amcharts-v4/core.js"></script>                                                             <!-- AmCharts -->
+        <script src="lib/amcharts-v4/charts.js"></script>
+        <script src="lib/amcharts-v4/themes/animated.js"></script>
 
         <script src="js/main.js"></script>
 
