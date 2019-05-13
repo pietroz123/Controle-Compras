@@ -14,6 +14,8 @@
     $(document).ready(function() {
 
 
+        // Recupera compras
+
 
     });
 
