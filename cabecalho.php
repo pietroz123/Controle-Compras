@@ -85,6 +85,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" onmouseover="this.classList.add('nav-hover-bg')" onmouseout="this.classList.remove('nav-hover-bg')" href="busca.php">Buscar</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" onmouseover="this.classList.add('nav-hover-bg')" onmouseout="this.classList.remove('nav-hover-bg')" href="relatorios.php">Relatórios</a>
+                            </li>
                         </ul>
                     <?php
                         }
