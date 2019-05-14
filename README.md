@@ -16,9 +16,9 @@ O Controle de Compras é uma aplicação web que permite o armazenamento de comp
 - Módulo de Cadastro/Login
 - Módulo de Recuperação de Senha
 - Perfil do Usuário
-- Módulo de Grupos (Com sitema de Notificação e Autorização)
+- Módulo de Grupos (Com sistema de Notificação e Autorização)
 - Módulo de Requisições (Para o administrador)
-- Módulo de Backup do Banco e das Imagens das Notas Fiscais
+- Módulo de Backup do Banco e das Imagens das Notas Fiscais (Para o administrador)
 - Módulo de Busca
 - Dashboard com Informações do Usuário
 - Módulo de Categorias e Subcategorias
