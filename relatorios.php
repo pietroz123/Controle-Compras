@@ -111,6 +111,13 @@
                 success: function(retorno) {
                     console.log('Success');
                     console.log(retorno);
+                    retorno = $.parseJSON(retorno);
+
+                    // Loop no JSON de compras
+                    $.each(retorno, function (i, item) { 
+                        console.log(item);
+                         
+                    });
                 },
                 error: function(retorno) {
                     console.log('Error');
