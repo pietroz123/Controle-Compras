@@ -9,9 +9,7 @@
 
         <h1>Bem Vindo ao Controle de Compras</h1>
 
-        <p class="bem-vindo-index">Este projeto corresponde à uma integração entre <mark>PHP</mark> e <mark>MySQL</mark> para gerenciar um Banco de Dados cujo objetivo é armazenar minhas compras pessoais, além de seus respectivos compradores.</p>
-
-        <p class="bem-vindo-index">O Sistema de Gestão de Bancos de Dados utilizado é o MySQL versão <mark>8.0.12-standard</mark>.</p>
+        <p class="bem-vindo-index">O <mark>Controle de Compras</mark> é uma aplicação web que permite o armazenamento de <mark>compras</mark>. É possível armazenar as observações, data, valor, desconto, forma de pagamento e até a nota fiscal de uma compra. Além disso, o sistema permite associar uma compra a um <mark>comprador</mark>, que pode ser o próprio usuário ou um amigo/familiar devidamente cadastrado.</p>
 
         <div class="alert alert-warning">Efetue o login ou o cadastro à partir do Menu de Navegação.</div>
         
