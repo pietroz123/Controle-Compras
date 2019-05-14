@@ -6,6 +6,10 @@
 
     <div id="grafico-compras"></div>
 
+    <div id="compras">
+
+    </div>
+
 
 <?php include $_SERVER['DOCUMENT_ROOT'].'/rodape.php'; ?>
 
@@ -89,6 +93,31 @@
         // Caso o usuário clique em um valor, recupera os dados do dia (dia e valor total)
         bullet.events.on("hit", function(event) {
             var item = event.target.dataItem.dataContext;
+
+            var data_compra = new Date(item.date);
+            var dia = data_compra.getDate();        // Por incrível que pareça, retorna o dia de 1 a 31, e não a data
+            var mes = data_compra.getMonth() + 1;   // Note: 0=January, 1=February etc.
+            var ano = data_compra.getFullYear();
+
+            $('#compras').html('<h1 class="text-left mt-5">Compras do dia '+dia+'/'+mes+'/'+ano+'</h1>');
+
+            $.ajax({
+                url: 'scripts/recuperar-compras.php',
+                method: 'POST',
+                data: {
+                    data_compra: ano+'-'+mes+'-'+dia
+                },
+                datatype: 'json',
+                success: function(retorno) {
+                    console.log('Success');
+                    console.log(retorno);
+                },
+                error: function(retorno) {
+                    console.log('Error');
+                    console.log(retorno);
+                }
+            });
+
             console.log(item);
         });
 
@@ -175,6 +204,19 @@
         chart.scrollbarX.series.push(series);
         chart.scrollbarX.parent = chart.bottomAxesContainer;
 
+    }
+
+
+    // =======================================================
+    // Funções Auxiliares
+    // =======================================================
+
+    function GetFormattedDate() {
+        var todayTime = new Date();
+        var month = format(todayTime .getMonth() + 1);
+        var day = format(todayTime .getDate());
+        var year = format(todayTime .getFullYear());
+        return month + "/" + day + "/" + year;
     }
 
 </script>

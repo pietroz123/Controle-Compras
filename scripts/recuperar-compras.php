@@ -121,3 +121,31 @@
 
         echo json_encode($retorno);
     }
+
+    // Caso o usuário tenha clicado no gráfico de relatórios para ver as compras de determinado dia
+    if (isset($_POST['data_compra'])) {
+
+        include $_SERVER['DOCUMENT_ROOT'].'/database/conexao.php';
+        include $_SERVER['DOCUMENT_ROOT'].'/config/sessao.php';
+
+        $data_compra = $_POST['data_compra'];
+
+        $email = $_SESSION['login-email'];
+        $sql = "SELECT c.Observacoes, c.Valor, c.Desconto, c.Forma_Pagamento, c.Imagem, c.Comprador_ID
+                FROM compras c
+                WHERE c.Data = '$data_compra'
+                AND c.Comprador_ID = (
+                    SELECT co.ID
+                    FROM compradores co
+                    WHERE co.Email = '$email'
+                );";
+        
+        $compras = array();
+        $resultado = mysqli_query($conexao, $sql);
+        while ($compra = mysqli_fetch_assoc($resultado)) {
+            array_push($compras, $compra);
+        }
+
+        echo json_encode($compras);
+
+    }
