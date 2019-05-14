@@ -78,11 +78,28 @@
 
         series.tooltip.pointerOrientation = "vertical";
 
+        console.log(series);
+        
+        // Make bullets grow on hover
+        var bullet = series.bullets.push(new am4charts.CircleBullet());
+        bullet.circle.strokeWidth = 2;
+        bullet.circle.radius = 4;
+        bullet.circle.fill = am4core.color("#fff");
+
+        // Caso o usuário clique em um valor, recupera os dados do dia (dia e valor total)
+        bullet.events.on("hit", function(event) {
+            var item = event.target.dataItem.dataContext;
+            console.log(item);
+        });
+
+        var bullethover = bullet.states.create("hover");
+        bullethover.properties.scale = 1.3;
+
         chart.cursor = new am4charts.XYCursor();
         chart.cursor.snapToSeries = series;
         chart.cursor.xAxis = dateAxis;
 
-        //chart.scrollbarY = new am4core.Scrollbar();
+        // chart.scrollbarY = new am4core.Scrollbar();
         chart.scrollbarX = new am4core.Scrollbar();
 
     }

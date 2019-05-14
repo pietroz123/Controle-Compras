@@ -12,6 +12,8 @@
             case 'datas-compras':
 
                 $email = $_SESSION['login-email'];
+                
+                // Recupera a data e a soma dos valores daquela data (ordenados por ano, mês e dia e agrupados por data)
                 $sql = "SELECT c.Data, sum(c.Valor) as Valor
                         FROM compras c
                         WHERE year(c.Data) = 2019
