@@ -13,8 +13,6 @@
 
     $(document).ready(function() {
 
-        criar_grafico();
-
         // Recupera compras
         $.ajax({
             url: 'scripts/recuperar-dados-relatorios.php',
@@ -24,8 +22,10 @@
             },
             datatype: 'json',
             success: function(retorno) {
-                console.log('Success');
-                console.log(retorno);
+                var json = JSON.parse(retorno);
+
+                // Cria o gráfico de compras
+                criar_grafico_compras(json.compras);
             },
             error: function(retorno) {
                 console.log('Error');
@@ -36,7 +36,8 @@
 
     });
 
-    function criar_grafico(dados) {
+    function criar_grafico_compras(dados) {
+        
 
         // Themes begin
         am4core.useTheme(am4themes_animated);
@@ -45,13 +46,20 @@
         var chart = am4core.create("grafico-compras", am4charts.XYChart);
 
         var data = [];
-        var value = 50;
-        for(let i = 0; i < 300; i++){
-            let date = new Date();
-            date.setHours(0,0,0,0);
-            date.setDate(i);
-            value -= Math.round((Math.random() < 0.5 ? 1 : -1) * Math.random() * 10);
-            data.push({date:date, value: value});
+        for(let i = 0; i < dados.length; i++) {
+
+            // Criação da data da compra
+            var data_compra = dados[i].Data;
+            var split = data_compra.split("-");
+            var ano = parseInt(split[0]);
+            var mes = parseInt(split[1]);
+            var dia = parseInt(split[2]);
+            var date_compra = new Date(ano, mes-1, dia);
+
+            // Criação do valor da compra
+            var valor_compra = dados[i].Valor;
+
+            data.push({date:date_compra, value: valor_compra});
         }
 
         chart.data = data;

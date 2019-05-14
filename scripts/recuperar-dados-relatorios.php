@@ -3,6 +3,7 @@
     if (isset($_POST['requisicao'])) {
 
         include $_SERVER['DOCUMENT_ROOT'].'/database/conexao.php';
+        include $_SERVER['DOCUMENT_ROOT'].'/config/sessao.php';
 
         // Recupera relatórios de acordo com uma requisição
         switch ($_POST['requisicao']) {
@@ -10,7 +11,17 @@
             // Recuperar as datas e valores de compras
             case 'datas-compras':
 
-                $sql = "SELECT c.Data, c.Valor FROM compras c";
+                $email = $_SESSION['login-email'];
+                $sql = "SELECT c.Data, c.Valor
+                        FROM compras c
+                        WHERE year(c.Data) = 2019
+                        AND c.Comprador_ID = (
+                            SELECT co.ID
+                            FROM compradores co
+                            WHERE co.Email = '$email'
+                        )
+                        ORDER BY YEAR(c.Data), MONTH(c.Data), DAY(c.Data);";
+
                 $compras = array();
                 $retorno = array();
 
