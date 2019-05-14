@@ -73,6 +73,7 @@
         var series = chart.series.push(new am4charts.LineSeries());
         series.dataFields.valueY = "value";
         series.dataFields.dateX = "date";
+        series.strokeWidth = 2;
         series.tooltipText = "{value}"
 
         series.tooltip.pointerOrientation = "vertical";
