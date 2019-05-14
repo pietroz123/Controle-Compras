@@ -143,7 +143,7 @@
         margin-right: 0px;
     }
     #tabela-compras {
-        margin-left: -5% !important;
+        margin-left: -5%;
     }
 }
 
@@ -158,7 +158,7 @@
 
 @media only screen and (max-width: 1024px) and (min-width: 900px) {
     #tabela-compras {
-        margin-left: -3% !important;
+        margin-left: -3%;
     }
 }
 

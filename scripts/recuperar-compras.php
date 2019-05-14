@@ -141,7 +141,7 @@
                 );";
 
         $retorno = '';
-        $retorno .= '<table class="table table-hover" id="tabela-compras">
+        $retorno .= '<table class="table table-hover datatable-compras" id="tabela-compras">
     
             <thead class="thead-dark">
                 <tr>
