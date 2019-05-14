@@ -139,13 +139,34 @@
                     FROM compradores co
                     WHERE co.Email = '$email'
                 );";
-        
-        $compras = array();
-        $resultado = mysqli_query($conexao, $sql);
-        while ($compra = mysqli_fetch_assoc($resultado)) {
-            array_push($compras, $compra);
-        }
 
-        echo json_encode($compras);
+        $retorno = '';
+        $retorno .= '<table class="table table-hover" id="tabela-compras">
+    
+            <thead class="thead-dark">
+                <tr>
+                    <th class="th-sm">Observacoes</th>
+                    <th class="th-sm">Valor</th>
+                    <th class="th-sm">Pagamento</th>
+                </tr>
+            </thead>
+        
+            <tbody id="compras-datatable">';
+
+            // Preenche com as compras
+            $compras = array();
+            $resultado = mysqli_query($conexao, $sql);
+            while ($compra = mysqli_fetch_assoc($resultado)) {
+                array_push($compras, $compra);
+                $retorno .= '<tr>
+                    <td>'.$compra['Observacoes'].'</td>
+                    <td>'.$compra['Valor'].'</td>
+                    <td>'.$compra['Forma_Pagamento'].'</td>
+                </tr>';
+            }
+
+            $retorno .= '</tbody></table>';
+
+        echo $retorno;
 
     }

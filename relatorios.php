@@ -15,6 +15,7 @@
 
 <script>
 
+    // Recupera as compras iniciais
     $(document).ready(function() {
 
         // Recupera compras
@@ -38,7 +39,7 @@
         });
 
 
-    });
+    }); // document ready
 
     function criar_grafico_compras(dados) {
 
@@ -81,8 +82,6 @@
         series.tooltipText = "{value}"
 
         series.tooltip.pointerOrientation = "vertical";
-
-        console.log(series);
         
         // Make bullets grow on hover
         var bullet = series.bullets.push(new am4charts.CircleBullet());
@@ -90,7 +89,10 @@
         bullet.circle.radius = 4;
         bullet.circle.fill = am4core.color("#fff");
 
+        // ==============================================================================================================
         // Caso o usuário clique em um valor, recupera os dados do dia (dia e valor total)
+        // ==============================================================================================================
+
         bullet.events.on("hit", function(event) {
             var item = event.target.dataItem.dataContext;
 
@@ -99,7 +101,11 @@
             var mes = data_compra.getMonth() + 1;   // Note: 0=January, 1=February etc.
             var ano = data_compra.getFullYear();
 
-            $('#compras').html('<h1 class="text-left mt-5">Compras do dia '+dia+'/'+mes+'/'+ano+'</h1>');
+            // Zera as compras
+            $('#compras').empty();
+
+            // Mostra a data das compras
+            $('#compras').append('<h1 class="text-left mt-5">Compras do dia '+dia+'/'+mes+'/'+ano+'</h1>');
 
             $.ajax({
                 url: 'scripts/recuperar-compras.php',
@@ -107,17 +113,12 @@
                 data: {
                     data_compra: ano+'-'+mes+'-'+dia
                 },
-                datatype: 'json',
+                datatype: 'html',
                 success: function(retorno) {
-                    console.log('Success');
-                    console.log(retorno);
-                    retorno = $.parseJSON(retorno);
+                    // Tabela das compras
+                    $('#compras').append(retorno);
 
-                    // Loop no JSON de compras
-                    $.each(retorno, function (i, item) { 
-                        console.log(item);
-                         
-                    });
+                    inicializaDataTable();
                 },
                 error: function(retorno) {
                     console.log('Error');
@@ -125,8 +126,7 @@
                 }
             });
 
-            console.log(item);
-        });
+        }); // bullet hit event
 
         var bullethover = bullet.states.create("hover");
         bullethover.properties.scale = 1.3;
@@ -218,12 +218,30 @@
     // Funções Auxiliares
     // =======================================================
 
-    function GetFormattedDate() {
-        var todayTime = new Date();
-        var month = format(todayTime .getMonth() + 1);
-        var day = format(todayTime .getDate());
-        var year = format(todayTime .getFullYear());
-        return month + "/" + day + "/" + year;
+    // Função para reinicializar a DataTable
+
+    function inicializaDataTable() {
+        $('#tabela-compras').DataTable({
+            "language": {
+                "lengthMenu": "Mostrar _MENU_ itens por página",
+                "zeroRecords": "Nenhum item encontrado - desculpa",
+                "info": "Mostrando página _PAGE_ de _PAGES_",
+                "infoEmpty": "Nenhum item encontrado",
+                "infoFiltered": "(filtrado a partir de _MAX_ itens)",
+                "search": "Buscar:",
+                "emptyTable":     "Nenhum dado disponível na tabela",
+                "loadingRecords": "Carregando...",
+                "processing":     "Processando...",
+                "paginate": {
+                    "first":      "Primeiro",
+                    "last":       "Último",
+                    "next":       "Próximo",
+                    "previous":   "Anterior"
+                }
+            },
+            "order": [[ 1, "desc" ]]    // Ordena por Data
+        });
+        $('.dataTables_length').addClass('bs-select');
     }
 
 </script>
