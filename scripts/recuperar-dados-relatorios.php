@@ -20,7 +20,7 @@
                         AND c.Comprador_ID = (
                             SELECT co.ID
                             FROM compradores co
-                            WHERE co.Email = 'pietrozuntini@gmail.com'
+                            WHERE co.Email = '$email'
                         )
                         GROUP BY c.Data
                         ORDER BY YEAR(c.Data), MONTH(c.Data), DAY(c.Data);";
