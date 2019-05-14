@@ -12,14 +12,15 @@
             case 'datas-compras':
 
                 $email = $_SESSION['login-email'];
-                $sql = "SELECT c.Data, c.Valor
+                $sql = "SELECT c.Data, sum(c.Valor) as Valor
                         FROM compras c
                         WHERE year(c.Data) = 2019
                         AND c.Comprador_ID = (
                             SELECT co.ID
                             FROM compradores co
-                            WHERE co.Email = '$email'
+                            WHERE co.Email = 'pietrozuntini@gmail.com'
                         )
+                        GROUP BY c.Data
                         ORDER BY YEAR(c.Data), MONTH(c.Data), DAY(c.Data);";
 
                 $compras = array();
