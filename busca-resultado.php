@@ -76,7 +76,7 @@
                 <td class="t-remover">
                     <form action="scripts/remover-compra.php" method="post">
                         <input type="hidden" name="id" value="<?= $compra['Id'] ?>">
-                        <button class="btn btn-danger botao-pequeno" onclick="return confirm(\'Deseja prosseguir com a remoção?\');">remover</button>
+                        <button class="btn btn-danger botao-pequeno" type="submit" name="submit-remover" onclick="return confirm(\'Deseja prosseguir com a remoção?\');">remover</button>
                     </form>
                 </td>
                 <td class="t-detalhes">
