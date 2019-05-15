@@ -116,7 +116,7 @@
                             <?php
                                 // Caso o usuário atual não autorizou sua entrada ainda, coloca um badge de pendência
                                 if ($membro['Autorizado'] == false) {
-                                    echo '<span class="badge badge-pill badge-success">AUTORIZAÇÃO PENDENTE</span>';
+                                    echo '<span class="badge badge-pill badge-success">PENDENTE</span>';
                                 }
                                 else {
                                     echo date("d/m/Y H:i", strtotime($membro['Membro_Desde']));

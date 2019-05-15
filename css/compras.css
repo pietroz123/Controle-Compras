@@ -131,6 +131,9 @@ button:not(.close):not(.btn-notificacao):not(.navbar-toggler), .botao {
     border: 2px solid lightgrey;
     border-radius: 15px;
 }
+.btn-remover-membro {
+    border-radius: 50% !important;
+}
 input[type="radio"]:checked+label {font-weight:bold;}
 
 .btn-circle.btn-xl {
