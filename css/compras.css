@@ -847,7 +847,7 @@ li.L1,li.L3,li.L5,li.L7,li.L9 { }
 .recurso-icone i {
     border: 1px solid white;
     border-radius: 50%;
-    padding: 54px;
+    padding: 15px;
     background: white;
     color: black;
 }
