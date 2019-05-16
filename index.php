@@ -7,6 +7,14 @@
     if (!usuario_esta_logado()) {
 ?>
 
+        <style>
+            #container-principal {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+        </style>
+
         <h1>Bem Vindo ao Controle de Compras</h1>
 
         <p class="bem-vindo-index">O <mark>Controle de Compras</mark> é uma aplicação web que permite o armazenamento de <mark>compras</mark>. É possível armazenar as observações, data, valor, desconto, forma de pagamento e até a nota fiscal de uma compra. Além disso, o sistema permite associar uma compra a um <mark>comprador</mark>, que pode ser o próprio usuário ou um amigo/familiar devidamente cadastrado.</p>
