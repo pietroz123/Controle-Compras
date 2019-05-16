@@ -27,7 +27,7 @@
         $nome_icone = $username . ".png";
         
         // Destino do imagem
-        $destino = "../img/user-icons/" . $nome_icone;
+        $destino = "../../private/uploads/user-icons/" . $nome_icone;
     
         // Salva a imagem
         file_put_contents($destino, $icone);
