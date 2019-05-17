@@ -30,23 +30,36 @@ function inserir_compra($conexao, $valor, $data, $observacoes, $desconto, $forma
     $query = "INSERT INTO compras (valor, data, observacoes, desconto, forma_pagamento, comprador_id, imagem) VALUES ({$valor}, '{$data}', '{$observacoes}', {$desconto}, '{$forma_pagamento}', {$comprador_id}, '{$imagem}');";
     $resultado = mysqli_query($conexao, $query);
     if ($resultado) {
-        // Insere as categorias e subcategorias
-        $id_compra = mysqli_insert_id($conexao);
-        $sql = "INSERT INTO compra_categorias (ID_Compra, ID_Categoria) VALUES ($id_compra, $categoria);";
-        if (mysqli_query($conexao, $sql)) {
-            foreach ($subcategorias as $subcategoria) {
-                $sql = "INSERT INTO compra_cat_subcat (ID_Compra, ID_Categoria, ID_Subcategoria) VALUES ($id_compra, $categoria, $subcategoria);";
-                $resultado = mysqli_query($conexao, $sql);
-                if ($resultado)
-                    continue;   
-                else
-                    return false;
+
+        // Se existir uma categoria
+        if (!empty($categoria)) {
+
+            // Insere as categorias e subcategorias
+            $id_compra = mysqli_insert_id($conexao);
+            $sql = "INSERT INTO compra_categorias (ID_Compra, ID_Categoria) VALUES ($id_compra, $categoria);";
+            if (mysqli_query($conexao, $sql)) {
+
+                // Se existirem subcategorias
+                if (!empty($subcategorias)) {
+
+                    foreach ($subcategorias as $subcategoria) {
+                        $sql = "INSERT INTO compra_cat_subcat (ID_Compra, ID_Categoria, ID_Subcategoria) VALUES ($id_compra, $categoria, $subcategoria);";
+                        $resultado = mysqli_query($conexao, $sql);
+                        if ($resultado)
+                            continue;   
+                        else
+                            return false;
+                    }
+                    if ($resultado)
+                        return true;
+                    else
+                        return false;
+
+                }
             }
-            if ($resultado)
-                return true;
-            else
-                return false;
+
         }
+        return true;
     }
     else
         return false;

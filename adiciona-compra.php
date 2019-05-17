@@ -13,15 +13,23 @@
     if (isset($_POST['submit-form-compra'])) {
 
         
-    // Variáveis da compra
+    // Variáveis da compra (obrigatórias)
     $valor              = $_POST['valor'];
     $data               = $_POST['data'];
     $observacoes        = $_POST['observacoes'];
     $desconto           = $_POST['desconto'];
     $forma_pagamento    = $_POST['forma-pagamento'];
     $comprador_id       = $_POST['comprador-id'];
-    $categoria          = $_POST['categoria'];
-    $subcategorias      = $_POST['subcategorias'];
+
+    // Verifica se existem categorias e subcategorias
+    if (isset($_POST['categoria'])) {
+        $categoria = $_POST['categoria'];
+        if (isset($_POST['subcategorias']))
+            $subcategorias = $_POST['subcategorias'];
+        else
+            $subcategorias = '';
+    } else
+        $categoria = '';
 
 
     $data = implode('-', array_reverse(explode('/', $data)));
