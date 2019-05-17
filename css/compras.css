@@ -84,7 +84,6 @@ body {
 body h1 {
     font-family: 'Playfair Display', serif;
     font-weight: bold;
-    margin-bottom: 40px;
 }
 
 .titulo-site, .titulo-perfil {
@@ -1034,4 +1033,15 @@ li.L1,li.L3,li.L5,li.L7,li.L9 { }
 
 table.datatable-compras {
     margin-left: 0 !important;
+}
+
+.header-relatorios {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+#select-ano {
+    margin-left: 20px;
+    width: 100px;
 }

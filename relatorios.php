@@ -2,46 +2,87 @@
     include $_SERVER['DOCUMENT_ROOT'].'/cabecalho.php'; 
 ?>
 
-    <h1 class="titulo-site">Relatórios</h1>
+    <!-- Header com o título e o select com os anos -->
+    <div class="header-relatorios">
+        <h1 class="titulo-site">Relatórios</h1>
+        <select name="select-ano" id="select-ano" class="form-control">
+            <?php
+                $sql = "SELECT DISTINCT YEAR(c.Data) as Ano
+                FROM compras c
+                WHERE c.Comprador_ID = (
+                    SELECT co.ID
+                    FROM compradores co
+                    WHERE co.Email = '".$_SESSION['login-email']."'
+                )";
+                $resultado = mysqli_query($conexao, $sql);
+                while ($ano = mysqli_fetch_assoc($resultado))
+                    echo '<option value="'.$ano['Ano'].'">'.$ano['Ano'].'</option>';
+            ?>
+        </select>
+    </div>
 
+    <!-- Mensagem de ajuda -->
+    <div class="alert alert-info">
+        <span>Clique nas bolinhas para visualizar as compras daquele dia.</span>
+    </div>
+
+    <!-- Gráfico de compras -->
     <div id="grafico-compras"></div>
 
-    <div id="compras">
-
-    </div>
+    <!-- Div onde as compras de determinado dia irão aparecer -->
+    <div id="compras"></div>
 
 
 <?php include $_SERVER['DOCUMENT_ROOT'].'/rodape.php'; ?>
 
 <script>
 
-    // Recupera as compras iniciais
-    $(document).ready(function() {
-
-        // Recupera compras
+    function recuperaCompras(ano) {
         $.ajax({
             url: 'scripts/recuperar-dados-relatorios.php',
             method: 'POST',
             data: {
-                requisicao: "datas-compras"
+                requisicao: "datas-compras",
+                ano: ano
             },
             datatype: 'json',
             success: function(retorno) {
                 var json = JSON.parse(retorno);
 
                 // Cria o gráfico de compras
-                criar_grafico_compras(json.compras);
+                criarGraficoCompras(json.compras);
             },
             error: function(retorno) {
                 console.log('Error');
                 console.log(retorno);
             }
         });
+    }
+
+    // Recupera as compras iniciais
+    $(document).ready(function() {
+
+        var ano_inicial = $('#select-ano').val();
+
+        // Recupera compras
+        recuperaCompras(ano_inicial);
 
 
     }); // document ready
 
-    function criar_grafico_compras(dados) {
+
+    // ==========================================================
+    // Permite o usuário selecionar o ano que deseja visualizar
+    // ==========================================================
+
+    $('#select-ano').change(function() {
+        var ano = $(this).val();
+        recuperaCompras(ano);        
+    });
+
+
+
+    function criarGraficoCompras(dados) {
 
         // Themes begin
         am4core.useTheme(am4themes_animated);
@@ -140,7 +181,7 @@
 
     }
 
-    function criar_grafico_compras_v2(dados) {
+    function criarGraficoComprasV2(dados) {
 
         // Themes begin
         am4core.useTheme(am4themes_animated);
