@@ -256,6 +256,19 @@ body::-webkit-scrollbar-thumb:hover {
     font-weight: bold;
 }
 
+/* Para rotações dos ícones */
+.rotate{
+    -moz-transition: all .25s linear;
+    -webkit-transition: all .25s linear;
+    transition: all .25s linear;
+}
+.rotate.down{
+    -moz-transform:rotate(180deg);
+    -webkit-transform:rotate(180deg);
+    transform:rotate(180deg);
+}
+
+
 /* ==========================================================
    ==================== RODAPE DA PAGINA ====================
    ========================================================== */

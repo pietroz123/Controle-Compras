@@ -42,140 +42,145 @@
         <div class="card">
             <div class="card-body p-2">
 
-                <div class="card-header elegant-color-dark py-4 white-text text-uppercase">
-                    <div class="card-title" id="titulo-informacoes">Informações</div>
-                </div>
+                <a role="button" class="btn-informacoes-toggle">
+                    <div class="card-header elegant-color-dark py-4 white-text text-uppercase">
+                        <div class="card-title" id="titulo-informacoes">Informações <i class="fas fa-chevron-down rotate"></i></div>
+                    </div>
+                </a>
                 
-                <section id="informacoes" class="d-flex align-content-center flex-wrap">
+                <section id="informacoes">
+                    <div id="informacoes" class="d-flex align-content-center flex-wrap">
 
-                    <?php
-                        if (admin()) {
-                    ?>
+                        <?php
+                            if (admin()) {
+                        ?>
+
+                            <!--
+                            =======================================================
+                            Nível: Administrador
+                            =======================================================
+                            -->
+
+                            <?php
+                                // Recupera o número de usuários
+                                $sql = "SELECT * FROM `usuarios`";
+                                $resultado = mysqli_query($conexao, $sql);
+                                $nUsuarios = mysqli_num_rows($resultado); 
+
+                            ?>
+                            <article class="cartao-informacao">
+                                <b class="cartao-informacao-titulo">Número de Usuários</b>
+                                <div class="cartao-informacao-desc"><?= $nUsuarios; ?></div>
+                            </article>
+
+                            <?php
+                                // Recupera o número de compras
+                                $sql = "SELECT * FROM `compras`";
+                                $resultado = mysqli_query($conexao, $sql);
+                                $nCompras = mysqli_num_rows($resultado); 
+                                
+                            ?>
+                            <article class="cartao-informacao">
+                                <b class="cartao-informacao-titulo">Número de Compras</b>
+                                <div class="cartao-informacao-desc"><?= $nCompras; ?></div>
+                            </article>
+
+                            <?php
+                                // Recupera o número de grupos
+                                $sql = "SELECT * FROM `grupos`";
+                                $resultado = mysqli_query($conexao, $sql);
+                                $nGrupos = mysqli_num_rows($resultado); 
+                                
+                            ?>
+                            <article class="cartao-informacao">
+                                <b class="cartao-informacao-titulo">Número de Grupos</b>
+                                <div class="cartao-informacao-desc"><?= $nGrupos; ?></div>
+                            </article>
+
+                            <?php
+                                // Recupera o número de usuários não autenticados
+                                $sql = "SELECT * FROM `usuarios` WHERE `Autenticado` = 0";
+                                $resultado = mysqli_query($conexao, $sql);
+                                $nRequisicoes = mysqli_num_rows($resultado); 
+                                
+                            ?>
+                            <article class="cartao-informacao">
+                                <b class="cartao-informacao-titulo">Número de Requisições</b>
+                                <div class="cartao-informacao-desc"><?= $nRequisicoes; ?></div>
+                                <a href="perfil-usuario.php#cartao-requisicoes" class="botao botao-pequeno btn btn-light">visualizar</a>
+                            </article>
+
+                            <?php
+                                // Recupera o número de backups
+                                $nBackups = 0;
+                                foreach (glob("backup/backups/*.sql") as $filename) {
+                                    $nBackups++;
+                                }
+                                
+                            ?>
+                            <article class="cartao-informacao">
+                                <b class="cartao-informacao-titulo">Número de Backups</b>
+                                <div class="cartao-informacao-desc"><?= $nBackups ?></div>
+                                <a href="index.php#cartao-backups" class="botao botao-pequeno btn btn-light">visualizar</a>
+                            </article>
+
+                        <?php
+                            }
+                        ?>
 
                         <!--
                         =======================================================
-                        Nível: Administrador
+                        Nível: Usuário                    
                         =======================================================
                         -->
 
                         <?php
-                            // Recupera o número de usuários
-                            $sql = "SELECT * FROM `usuarios`";
-                            $resultado = mysqli_query($conexao, $sql);
-                            $nUsuarios = mysqli_num_rows($resultado); 
-
-                        ?>
-                        <article class="cartao-informacao">
-                            <b class="cartao-informacao-titulo">Número de Usuários</b>
-                            <div class="cartao-informacao-desc"><?= $nUsuarios; ?></div>
-                        </article>
-
-                        <?php
-                            // Recupera o número de compras
-                            $sql = "SELECT * FROM `compras`";
-                            $resultado = mysqli_query($conexao, $sql);
-                            $nCompras = mysqli_num_rows($resultado); 
-                            
-                        ?>
-                        <article class="cartao-informacao">
-                            <b class="cartao-informacao-titulo">Número de Compras</b>
-                            <div class="cartao-informacao-desc"><?= $nCompras; ?></div>
-                        </article>
-
-                        <?php
-                            // Recupera o número de grupos
-                            $sql = "SELECT * FROM `grupos`";
+                            // Recupera o número de grupos do usuário
+                            $sql = "SELECT * FROM grupo_usuarios gu WHERE gu.Username = '{$_SESSION['login-username']}'";
                             $resultado = mysqli_query($conexao, $sql);
                             $nGrupos = mysqli_num_rows($resultado); 
                             
                         ?>
                         <article class="cartao-informacao">
-                            <b class="cartao-informacao-titulo">Número de Grupos</b>
+                            <b class="cartao-informacao-titulo">Meus Grupos</b>
                             <div class="cartao-informacao-desc"><?= $nGrupos; ?></div>
+                            <?php 
+                                if ($nGrupos == 0) { 
+                            ?>                            
+                                    <a href="perfil-usuario.php#cartao-grupos-usuario" class="botao botao-pequeno btn btn-default">criar um grupo?</a>
+                            <?php 
+                                } else { 
+                            ?>
+                                    <a href="perfil-usuario.php#container-tabela-grupos" class="botao botao-pequeno btn btn-light">visualizar</a>
+                            <?php
+                                }
+                            ?>
                         </article>
 
                         <?php
-                            // Recupera o número de usuários não autenticados
-                            $sql = "SELECT * FROM `usuarios` WHERE `Autenticado` = 0";
+                            // Recupera o número de compras
+                            $sql = "SELECT * FROM `compras` WHERE `comprador_id` = {$_SESSION['login-id-comprador']}";
                             $resultado = mysqli_query($conexao, $sql);
-                            $nRequisicoes = mysqli_num_rows($resultado); 
+                            $nCompras = mysqli_num_rows($resultado); 
                             
                         ?>
                         <article class="cartao-informacao">
-                            <b class="cartao-informacao-titulo">Número de Requisições</b>
-                            <div class="cartao-informacao-desc"><?= $nRequisicoes; ?></div>
-                            <a href="perfil-usuario.php#cartao-requisicoes" class="botao botao-pequeno btn btn-light">visualizar</a>
+                            <b class="cartao-informacao-titulo">Minhas Compras</b>
+                            <div class="cartao-informacao-desc"><?= $nCompras; ?></div>
+                            <?php 
+                                if ($nCompras == 0) { 
+                            ?>                            
+                                    <a href="formulario-compra.php" class="botao botao-pequeno btn btn-default">adicionar uma compra?</a>
+                            <?php 
+                                } else { 
+                            ?>
+                                    <a href="compras.php#tabela-compras" class="botao botao-pequeno btn btn-light">visualizar</a>
+                            <?php
+                                }
+                            ?>
                         </article>
 
-                        <?php
-                            // Recupera o número de backups
-                            $nBackups = 0;
-                            foreach (glob("backup/backups/*.sql") as $filename) {
-                                $nBackups++;
-                            }
-                            
-                        ?>
-                        <article class="cartao-informacao">
-                            <b class="cartao-informacao-titulo">Número de Backups</b>
-                            <div class="cartao-informacao-desc"><?= $nBackups ?></div>
-                            <a href="index.php#cartao-backups" class="botao botao-pequeno btn btn-light">visualizar</a>
-                        </article>
-
-                    <?php
-                        }
-                    ?>
-
-                    <!--
-                    =======================================================
-                    Nível: Usuário                    
-                    =======================================================
-                    -->
-
-                    <?php
-                        // Recupera o número de grupos do usuário
-                        $sql = "SELECT * FROM grupo_usuarios gu WHERE gu.Username = '{$_SESSION['login-username']}'";
-                        $resultado = mysqli_query($conexao, $sql);
-                        $nGrupos = mysqli_num_rows($resultado); 
-                        
-                    ?>
-                    <article class="cartao-informacao">
-                        <b class="cartao-informacao-titulo">Meus Grupos</b>
-                        <div class="cartao-informacao-desc"><?= $nGrupos; ?></div>
-                        <?php 
-                            if ($nGrupos == 0) { 
-                        ?>                            
-                                <a href="perfil-usuario.php#cartao-grupos-usuario" class="botao botao-pequeno btn btn-default">criar um grupo?</a>
-                        <?php 
-                            } else { 
-                        ?>
-                                <a href="perfil-usuario.php#container-tabela-grupos" class="botao botao-pequeno btn btn-light">visualizar</a>
-                        <?php
-                            }
-                        ?>
-                    </article>
-
-                    <?php
-                        // Recupera o número de compras
-                        $sql = "SELECT * FROM `compras` WHERE `comprador_id` = {$_SESSION['login-id-comprador']}";
-                        $resultado = mysqli_query($conexao, $sql);
-                        $nCompras = mysqli_num_rows($resultado); 
-                        
-                    ?>
-                    <article class="cartao-informacao">
-                        <b class="cartao-informacao-titulo">Minhas Compras</b>
-                        <div class="cartao-informacao-desc"><?= $nCompras; ?></div>
-                        <?php 
-                            if ($nCompras == 0) { 
-                        ?>                            
-                                <a href="formulario-compra.php" class="botao botao-pequeno btn btn-default">adicionar uma compra?</a>
-                        <?php 
-                            } else { 
-                        ?>
-                                <a href="compras.php#tabela-compras" class="botao botao-pequeno btn btn-light">visualizar</a>
-                        <?php
-                            }
-                        ?>
-                    </article>
+                    </div>
                 
                 </section>
 
@@ -188,9 +193,11 @@
             <div class="card mt-5" id="cartao-backups">
                 <div class="card-body p-2">
                     
-                    <div class="card-header elegant-color-dark py-4 white-text text-uppercase">
-                        <div class="card-title" id="titulo-informacoes">Backup de arquivos do banco</div>
-                    </div>
+                    <a role="button" class="btn-backup-toggle">
+                        <div class="card-header elegant-color-dark py-4 white-text text-uppercase">
+                            <div class="card-title" id="titulo-informacoes">Backup de arquivos do banco <i class="fas fa-chevron-down rotate"></i></div>
+                        </div>
+                    </a>
 
                     <div class="elegant-color p-3" id="backups">
 
@@ -285,9 +292,11 @@
             <div class="card mt-5" id="cartao-backup-images">
                 <div class="card-body p-2">
                     
-                    <div class="card-header elegant-color-dark py-4 white-text text-uppercase">
-                        <div class="card-title" id="titulo-informacoes">Backup de imagens</div>
-                    </div>
+                    <a role="button" class="btn-backup-imagens-toggle">
+                        <div class="card-header elegant-color-dark py-4 white-text text-uppercase">
+                            <div class="card-title" id="titulo-informacoes">Backup de imagens <i class="fas fa-chevron-down rotate"></i></div>
+                        </div>
+                    </a>
 
                     <div class="elegant-color p-3" id="backup-imagens">
                         
@@ -390,6 +399,25 @@
 
 
 <script>
+
+    // =======================================================
+    // Toggle dos cartões
+    // =======================================================
+
+    $('.btn-informacoes-toggle').click(function() {
+        $('#informacoes').slideToggle();
+        $('.btn-informacoes-toggle i').toggleClass("down");
+    });
+    $('.btn-backup-toggle').click(function() {
+        $('#backups').slideToggle();
+        $('.btn-backup-toggle i').toggleClass("down");
+    });
+    $('.btn-backup-imagens-toggle').click(function() {
+        $('#backup-imagens').slideToggle();
+        $('.btn-backup-imagens-toggle i').toggleClass("down");
+    });
+
+
 
     $(document).ready(function() {
 
