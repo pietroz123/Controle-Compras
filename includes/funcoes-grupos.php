@@ -2,26 +2,34 @@
 
 // Seleciona todos os ids dos compradores de todos os grupos em que o usuario esta
 function recupera_ids_compradores_grupos($conexao, $username, $email) {
-    $sql = "SELECT DISTINCT cmp.Comprador_ID
-            FROM compras AS cmp
-            JOIN compradores AS cmpd ON cmp.Comprador_ID = cmpd.ID
-            WHERE cmp.Comprador_ID IN (
-                SELECT DISTINCT c.ID AS Comprador_ID
-                FROM grupo_usuarios gu
-                JOIN usuarios u on gu.Username = u.Usuario
-                JOIN compradores c on u.Email = c.Email
-                WHERE gu.ID_Grupo IN (
-                    SELECT gu.ID_Grupo
+    
+    // Recupera os IDs
+    $sql = "SELECT co.ID as Comprador_ID
+            FROM compradores co
+            WHERE co.Email IN (
+                -- Seleciona todos os emails desses usuários
+                SELECT u.Email
+                FROM usuarios u
+                WHERE u.Usuario IN (
+                    -- Recupera todos os usuários que compartilham algum grupo comigo (verificando a autorização deles)
+                    SELECT DISTINCT gu.Username
                     FROM grupo_usuarios gu
-                    JOIN usuarios u on gu.Username = u.Usuario
-                    WHERE u.Usuario = '$username'
+                    WHERE gu.ID_Grupo IN (
+                        -- Recupera todos os IDs de Grupos em que estou e autorizei
+                        SELECT gu.ID_Grupo
+                        FROM grupo_usuarios gu
+                        WHERE gu.Username = '$username'
+                        AND gu.Autorizado = 1
+                    )
+                    AND gu.Autorizado = 1
                 )
-            ) OR cmp.Comprador_ID IN (
+            -- Incluí o próprio usuário
+            ) OR co.ID IN (
                 SELECT compradores.ID
                 FROM usuarios
                 JOIN compradores ON usuarios.Email = compradores.Email
                 WHERE usuarios.Email = '$email'
-            )";
+            );";
 
     $ids_compradores = array();
     $resultado = mysqli_query($conexao, $sql);
