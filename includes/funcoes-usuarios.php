@@ -159,9 +159,14 @@ function compras_permitidas_like($conexao, $username, $email, $palavra_chave, $d
                     WHERE usuarios.Email = '$email'
                 )
             )
-            AND cmp.Observacoes LIKE '%".$palavra_chave."%'
-            AND data >= '{$dataInicio}' AND data <= '{$dataFim}' 
-            ORDER BY year(data), month(data), day(data);";
+            AND cmp.Observacoes LIKE '%".$palavra_chave."%'";
+
+    // Caso tenha sido selecionado um range de datas
+    if (!empty($dataInicio) && !empty($dataFim))
+        $sql .= "AND data >= '{$dataInicio}' AND data <= '{$dataFim}'";
+        
+    // Completa a SQL com ordenação
+    $sql .= "ORDER BY year(data), month(data), day(data) DESC;";
     
     $compras = array();
     $resultado = mysqli_query($conexao, $sql);

@@ -12,9 +12,15 @@
         $palavraChave = $_GET['texto'];
         $datas = $_GET['data-range'];
 
-        $datas = explode(' - ', $datas);
-        $dataInicio = implode('-', array_reverse(explode('/', $datas[0])));
-        $dataFim    = implode('-', array_reverse(explode('/', $datas[1])));
+        if (!empty($datas)) {
+            $datas = explode(' - ', $datas);
+            $dataInicio = implode('-', array_reverse(explode('/', $datas[0])));
+            $dataFim    = implode('-', array_reverse(explode('/', $datas[1])));
+        }
+        else {
+            $dataInicio = '';
+            $dataFim    = '';
+        }
 
         $id_comprador = $_GET['comprador'];
         $soma = 0;
@@ -44,9 +50,15 @@
         <tbody>
         <?php
 
-            if ($id_comprador == 0) {   // Se foi selecionada a opção TODOS
+            // Se foi selecionada a opção TODOS
+            if ($id_comprador == 0) {
                 $compras = compras_permitidas_like($conexao, $_SESSION['login-username'], $_SESSION['login-email'], $palavraChave, $dataInicio, $dataFim);
             }
+            // Caso não tenha sido selecionado um range de datas
+            else if (empty($datas)) {
+                $compras = listar($conexao, "SELECT cmp.*, cmpd.Nome AS Nome_Comprador FROM compras AS cmp JOIN compradores AS cmpd ON cmp.Comprador_ID = cmpd.ID WHERE observacoes LIKE '%{$palavraChave}%' AND Comprador_ID = {$id_comprador} ORDER BY year(data), month(data), day(data) DESC");
+            }
+            // Caso tenha sido selecionado um comprador e um range de datas
             else {
                 $compras = listar($conexao, "SELECT cmp.*, cmpd.Nome AS Nome_Comprador FROM compras AS cmp JOIN compradores AS cmpd ON cmp.Comprador_ID = cmpd.ID WHERE observacoes LIKE '%{$palavraChave}%' AND data >= '{$dataInicio}' AND data <= '{$dataFim}' AND Comprador_ID = {$id_comprador} ORDER BY year(data), month(data), day(data) DESC");
             }
