@@ -4,6 +4,7 @@
     include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes-usuarios.php';
 
     verifica_usuario();
+    mostra_alertas();
 
     // Recebe os dados da pesquisa
 

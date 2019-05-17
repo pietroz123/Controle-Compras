@@ -12,13 +12,13 @@ if (isset($_POST['submit-remover'])) {
     if (remover_compra($conexao, $id)) {
 
         $_SESSION['success'] = "Compra (ID = '{$id}') removida!";
-        header("Location: ../compras.php");
+        header("Location: {$_SERVER['HTTP_REFERER']}");
         die();
 
     } else {
         
         $_SESSION['danger'] = "Erro na remoção da compra (ID = '{$id}')!";
-        header("Location: ../compras.php");
+        header("Location: {$_SERVER['HTTP_REFERER']}");
         die();
 
     }
