@@ -121,3 +121,52 @@
 
         echo json_encode($retorno);
     }
+
+    // Caso o usuário tenha clicado no gráfico de relatórios para ver as compras de determinado dia
+    if (isset($_POST['data_compra'])) {
+
+        include $_SERVER['DOCUMENT_ROOT'].'/database/conexao.php';
+        include $_SERVER['DOCUMENT_ROOT'].'/config/sessao.php';
+
+        $data_compra = $_POST['data_compra'];
+
+        $email = $_SESSION['login-email'];
+        $sql = "SELECT c.Observacoes, c.Valor, c.Desconto, c.Forma_Pagamento, c.Imagem, c.Comprador_ID
+                FROM compras c
+                WHERE c.Data = '$data_compra'
+                AND c.Comprador_ID = (
+                    SELECT co.ID
+                    FROM compradores co
+                    WHERE co.Email = '$email'
+                );";
+
+        $retorno = '';
+        $retorno .= '<table class="table table-hover datatable-compras" id="tabela-compras">
+    
+            <thead class="thead-dark">
+                <tr>
+                    <th class="th-sm">Observacoes</th>
+                    <th class="th-sm">Valor</th>
+                    <th class="th-sm">Pagamento</th>
+                </tr>
+            </thead>
+        
+            <tbody id="compras-datatable">';
+
+            // Preenche com as compras
+            $compras = array();
+            $resultado = mysqli_query($conexao, $sql);
+            while ($compra = mysqli_fetch_assoc($resultado)) {
+                array_push($compras, $compra);
+                $retorno .= '<tr>
+                    <td>'.$compra['Observacoes'].'</td>
+                    <td>'.$compra['Valor'].'</td>
+                    <td>'.$compra['Forma_Pagamento'].'</td>
+                </tr>';
+            }
+
+            $retorno .= '</tbody></table>';
+
+        echo $retorno;
+
+    }

@@ -6,7 +6,7 @@
     verifica_usuario();
 ?>
 
-<form action="resultado-busca.php">
+<form action="busca-resultado.php">
     <div class="card mt-5" id="cartao-busca">
         <div class="card-body p-2 z-depth-2">
             
