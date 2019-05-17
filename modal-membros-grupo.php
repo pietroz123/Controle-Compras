@@ -172,7 +172,7 @@
 
         </div>
         <div class="modal-footer">
-            <button class="btn red darken-4 btn-sair-grupo float-left" id-grupo="<?= $grupo['ID']; ?>" username-usuario="<?= $_POST['username']; ?>">sair do grupo</button>
+            <button class="btn red darken-4 btn-sair-grupo float-left" id-grupo="<?= $grupo['ID']; ?>" username-usuario="<?= $_POST['username']; ?>" data-toggle="confirmation" data-singleton="true">sair do grupo</button>
         </div>
     </div>
 

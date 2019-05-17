@@ -230,33 +230,44 @@ $(document).on('click', '.btn-adicionar-membros', function() {
 ========================================== BOTÃO PARA SAIR DO GRUPO ==========================================
 ============================================================================================================== */
 
-$(document).on('click', '.btn-sair-grupo', function() {
+$(document).on('mouseover', '.btn-sair-grupo', function(){
 
-    var id_grupo = $(this).attr('id-grupo');        
+    var id_grupo = $(this).attr('id-grupo');
     var username = $(this).attr('username-usuario');
+    
 
-    $.ajax({
-        url: "modal-membros-grupo.php",
-        method: "post",
-        dataType: "json",
-        data: {
-            sair: "sim",
-            id_grupo: id_grupo,
-            usuario: username
+    $('[data-toggle=confirmation]').confirmation({
+        rootSelector: '[data-toggle=confirmation]',
+        onConfirm: function() {
+            // Caso o usuário pressione 'Sim'
+            $.ajax({
+                url: "modal-membros-grupo.php",
+                method: "post",
+                dataType: "json",
+                data: {
+                    sair: "sim",
+                    id_grupo: id_grupo,
+                    usuario: username
+                },
+                success: function(retorno) {
+                    if (retorno.quantidade == 0) {
+                        $.post('scripts/remover-grupo.php', {
+                            remover_grupo: "sim",
+                            id: id_grupo
+                        }, function(data, status) {
+                            location.href = "perfil-usuario.php";
+                        });
+                    }
+                    else {
+                        location.href = "perfil-usuario.php";
+                    }
+                }
+            });
         },
-        success: function(retorno) {
-            if (retorno.quantidade == 0) {
-                $.post('scripts/remover-grupo.php', {
-                    remover_grupo: "sim",
-                    id: id_grupo
-                }, function(data, status) {
-                    location.href = "perfil-usuario.php";
-                });
-            }
-            else {
-                location.href = "perfil-usuario.php";
-            }
+        onCancel: function() {
+            // Caso o usuário pressione 'Não'
         }
+        // other options
     });
 
 });
