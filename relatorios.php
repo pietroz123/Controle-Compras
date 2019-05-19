@@ -1,5 +1,7 @@
 <?php 
-    include $_SERVER['DOCUMENT_ROOT'].'/cabecalho.php'; 
+    include $_SERVER['DOCUMENT_ROOT'].'/cabecalho.php';
+
+    verifica_usuario();
 ?>
 
     <!-- Header com o título e o select com os anos -->
