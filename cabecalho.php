@@ -10,6 +10,11 @@
     <head>
         <title>Minhas Compras</title>
         <meta charset="utf-8">
+
+        <!-- Tags -->
+        <meta name="keywords" content="Controle, Compras">
+        <meta name="description" content="O Controle de Compras é um sistema de gerenciamento de compras">
+        <meta name="author" content="Pietro Zuntini Bonfim">
         
         <!-- CSSs -->
         <link type="text/css" href="lib/mdbootstrap/css/bootstrap.css" rel="stylesheet">                                            <!-- Bootstrap -->
