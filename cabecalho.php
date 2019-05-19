@@ -15,6 +15,7 @@
         <meta name="keywords" content="Controle, Compras">
         <meta name="description" content="O Controle de Compras é um sistema de gerenciamento de compras">
         <meta name="author" content="Pietro Zuntini Bonfim">
+        <meta http-equiv="content-language" content="pt-br">
         
         <!-- CSSs -->
         <link type="text/css" href="lib/mdbootstrap/css/bootstrap.css" rel="stylesheet">                                            <!-- Bootstrap -->
