@@ -8,6 +8,10 @@
 ?>
 
         <style>
+            .conteudo-principal {
+                padding-top: 0px;
+                padding-bottom: 0px;
+            }
             #container-principal {
                 display: flex;
                 flex-direction: column;
@@ -349,7 +353,7 @@
                 if (!usuario_esta_logado()) {
             ?>
 
-            <section id="recursos" class="elegant-color white-text p-5">
+            <section id="recursos" class="bg-white black-text p-5">
 
                 <h4 class="mb-5 titulo-recursos">Recursos</h4>
         
