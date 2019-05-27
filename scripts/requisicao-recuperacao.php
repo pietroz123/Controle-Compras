@@ -59,7 +59,7 @@
 
 
         // Seleciona o usuario para exibir informações no email
-        $query = "SELECT * FROM usuarios WHERE email = ?;";
+        $query = "SELECT * FROM compradores WHERE email = ?;";
         if (!mysqli_stmt_prepare($stmt, $query)) {
             $_SESSION['danger'] = "Ocorreu um erro ao buscar as informações do usuário.";
             header("Location: ../recuperacao-senha.php");
@@ -82,7 +82,7 @@
 
         // Envia o e-mail
         $para = $email_usuario;
-        $assunto = "Recupere sua senha para a Loja do Pietro";
+        $assunto = "Recupere sua senha para o Controle de Compras";
         
         $mensagem = "
 
@@ -169,15 +169,12 @@
                     <div class='container'>
                         <h1>Informações para a recuperação da sua senha</h1>
                         <div class='texto-email'>
-                            <p style='margin-bottom: 15px;'>Olá " . $usuario['Primeiro_Nome'] . ", tudo bem?</p>
+                            <p style='margin-bottom: 15px;'>Olá " . explode(' ', $usuario['Nome'])[0] . ", tudo bem?</p>
                             <p>Recebemos uma requisição de recuperação de senha. O link para recuperar sua senha está logo abaixo. Se você não fez essa requisição, ignore este e-email.</p>
-                            <p style='margin-bottom: 15px;'>Aqui está o link de recuperação da senha:<br><a href='" . $url ."'>" . $url ."</a></p>
+                            <p style='margin-bottom: 50px;'>Aqui está o link de recuperação da senha:<br><a href='" . $url ."'>" . $url ."</a></p>
+                            <p style='font-style: italic;'>A equipe do Controle de Compras agradece o seu contato.</p>
                         </div>
                     </div>
-            
-                    <footer>
-                        <p>Pietro Zuntini Bonfim &copy;</p>
-                    </footer>
                 </body>
             </html>
         
