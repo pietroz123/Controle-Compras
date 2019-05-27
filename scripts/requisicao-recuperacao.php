@@ -90,32 +90,45 @@
             <html>
                 <head>
                     <meta charset='utf-8' />
-                    <meta name='viewport' content='width=device-width, initial-scale=1'>      
+                    <meta name='viewport' content='width=device-width, initial-scale=1'>
                     <style>
+                        .container {
+                            margin-top: 100px;
+                            width: 100%;
+                            padding-right: 15px;
+                            padding-left: 15px;
+                            margin-right: auto;
+                            margin-left: auto;
+                        }
+                        @media (min-width: 576px) {
+                            .container {
+                                max-width: 540px;
+                            }
+                        }
+                        @media (min-width: 768px) {
+                            .container {
+                                max-width: 720px;
+                            }
+                        }
+                        @media (min-width: 992px) {
+                            .container {
+                                max-width: 960px;
+                            }
+                        }
+                        @media (min-width: 1200px) {
+                            .container {
+                                max-width: 1140px;
+                            }
+                        }
                         body {
                             background-color: #f2f2f2;
                         }
                         h1 {
-                            font-family: Impact, Charcoal, sans-serif;
                             letter-spacing: 1.2px;
-                            
-                            position: fixed;
-                            left: 0;
-                            top: 0;
-                            width: 99.5%;
-                            text-align: center;
-                            font-size: 20px;
-                            background-color: #990000;
-                            padding: 25px 0;
-                            margin: 0;
-                            color: white;
-                            text-transform: uppercase;
-                            border: 3px solid black;
+                            border-bottom: 3px solid #990000;
                         }
                         .texto-email {
-                            font-family: 'Trebuchet MS', Helvetica, sans-serif;
-            
-                            margin: 120px 30px;
+                            margin-top: 40px;
                             text-align: justify;
                             font-size: 17px;
                         }
@@ -123,9 +136,6 @@
                             margin-bottom: 15px;
                         }
                         footer {
-                            font-family: 'Trebuchet MS', Helvetica, sans-serif;
-                            font-style: italic;
-            
                             position: fixed;
                             left: 0;
                             bottom: 0;
@@ -156,11 +166,13 @@
                 </head>
                 <body>
             
-                    <h1>Informações para a recuperação da sua senha</h1>
-                    <div class='texto-email'>
-                        <p style='margin-bottom: 15px;'>Olá " . $usuario['Primeiro_Nome'] . ", tudo bem?</p>
-                        <p>Recebemos uma requisição de recuperação de senha. O link para recuperar sua senha está logo abaixo. Se você não fez essa requisição, ignore este e-email.</p>
-                        <p style='margin-bottom: 15px;'>Aqui está o link de recuperação da senha:<br><a href='" . $url ."'>" . $url ."</a></p>
+                    <div class='container'>
+                        <h1>Informações para a recuperação da sua senha</h1>
+                        <div class='texto-email'>
+                            <p style='margin-bottom: 15px;'>Olá " . $usuario['Primeiro_Nome'] . ", tudo bem?</p>
+                            <p>Recebemos uma requisição de recuperação de senha. O link para recuperar sua senha está logo abaixo. Se você não fez essa requisição, ignore este e-email.</p>
+                            <p style='margin-bottom: 15px;'>Aqui está o link de recuperação da senha:<br><a href='" . $url ."'>" . $url ."</a></p>
+                        </div>
                     </div>
             
                     <footer>
