@@ -93,7 +93,7 @@
                     <meta name='viewport' content='width=device-width, initial-scale=1'>
                     <style>
                         .container {
-                            margin-top: 100px;
+                            margin-top: 50px;
                             width: 100%;
                             padding-right: 15px;
                             padding-left: 15px;
@@ -170,7 +170,7 @@
                         <h1>Informações para a recuperação da sua senha</h1>
                         <div class='texto-email'>
                             <p style='margin-bottom: 15px;'>Olá " . explode(' ', $usuario['Nome'])[0] . ", tudo bem?</p>
-                            <p>Recebemos uma requisição de recuperação de senha. O link para recuperar sua senha está logo abaixo. Se você não fez essa requisição, ignore este e-email.</p>
+                            <p>Recebemos uma requisição de recuperação de senha. O link para recuperar sua senha está logo abaixo. Se você não fez essa requisição, ignore este e-mail.</p>
                             <p style='margin-bottom: 50px;'>Aqui está o link de recuperação da senha:<br><a href='" . $url ."'>" . $url ."</a></p>
                             <p style='font-style: italic;'>A equipe do Controle de Compras agradece o seu contato.</p>
                         </div>
