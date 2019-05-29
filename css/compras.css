@@ -51,7 +51,6 @@ body {
         "main main main main" auto
         "footer footer footer footer" auto
         / 1fr 5fr 2fr 1fr;
-    min-height: 100vh;
 
 }
 
@@ -281,7 +280,6 @@ body::-webkit-scrollbar-thumb:hover {
 .footer {
     font-family: 'Roboto Slab', serif;
     background-color: #222;
-    border-top: 5px solid black;
 }
 
 .titulo-site-footer {
@@ -1061,4 +1059,17 @@ table.datatable-compras {
 #select-ano {
     margin-left: 20px;
     width: 100px;
+}
+
+
+/* =======================================================
+   PÁGINA 404
+   ======================================================= */
+
+.notfound h1 {
+    font-size: 10rem;
+}
+.notfound p {
+    font-size: 19px;
+    font-weight: bold;
 }
