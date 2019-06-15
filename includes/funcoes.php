@@ -1,12 +1,16 @@
 <?php
 
-function listar($conexao, $query) {
-    $compras = array();
-    $resultado = mysqli_query($conexao, $query);
-    while ($compra = mysqli_fetch_assoc($resultado)) {
-        array_push($compras, $compra);
-    }
-    return $compras;
+// Retorna um vetor do resultado da SQL especificada no parâmetro
+function listar($dbconn, $sql) {
+
+    $stmt = $dbconn->prepare($sql);
+    $stmt->execute();
+
+    $lista = array();
+    while ($item = $stmt->fetch(PDO::FETCH_ASSOC))
+        array_push($lista, $item);
+    return $lista;
+
 }
 
 
@@ -137,13 +141,16 @@ function recuperar_compras($conexao, $id_comprador) {
     return $compras;
 }
 
-function buscar_compra($conexao, $id) {
+// Retorna as informações de uma compra, dado seu ID
+function buscar_compra($dbconn, $id) {
 
-    $id = mysqli_real_escape_string($conexao, $id);
+    $sql = "SELECT * FROM compras WHERE Id = {$id}";
 
-    $query = "SELECT * FROM compras WHERE Id = {$id}";
-    $resultado = mysqli_query($conexao, $query);
-    return mysqli_fetch_assoc($resultado);
+    $stmt = $dbconn->prepare($sql);
+    $stmt->execute();
+
+    $compra = $stmt->fetch();
+    return $compra;
 }
 
 

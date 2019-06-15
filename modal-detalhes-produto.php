@@ -1,12 +1,12 @@
 <?php
-    include $_SERVER['DOCUMENT_ROOT'].'/database/conexao.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/database/dbconnection.php';
     include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes.php';
 ?>
 
 <?php
     if (isset($_POST['id_compra'])) {
         $id = $_POST['id_compra'];
-        $compra = buscar_compra($conexao, $id);
+        $compra = buscar_compra($dbconn, $id);
 ?>
 
 <div class="modal-content">

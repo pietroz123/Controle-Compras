@@ -53,15 +53,15 @@
 
             // Se foi selecionada a opção TODOS
             if ($id_comprador == 0) {
-                $compras = compras_permitidas_like($conexao, $_SESSION['login-username'], $_SESSION['login-email'], $palavraChave, $dataInicio, $dataFim);
+                $compras = compras_permitidas_like($dbconn, $_SESSION['login-username'], $_SESSION['login-email'], $palavraChave, $dataInicio, $dataFim);
             }
             // Caso não tenha sido selecionado um range de datas
             else if (empty($datas)) {
-                $compras = listar($conexao, "SELECT cmp.*, cmpd.Nome AS Nome_Comprador FROM compras AS cmp JOIN compradores AS cmpd ON cmp.Comprador_ID = cmpd.ID WHERE observacoes LIKE '%{$palavraChave}%' AND Comprador_ID = {$id_comprador} ORDER BY year(data), month(data), day(data) DESC");
+                $compras = listar($dbconn, "SELECT cmp.*, cmpd.Nome AS Nome_Comprador FROM compras AS cmp JOIN compradores AS cmpd ON cmp.Comprador_ID = cmpd.ID WHERE observacoes LIKE '%{$palavraChave}%' AND Comprador_ID = {$id_comprador} ORDER BY year(data), month(data), day(data) DESC");
             }
             // Caso tenha sido selecionado um comprador e um range de datas
             else {
-                $compras = listar($conexao, "SELECT cmp.*, cmpd.Nome AS Nome_Comprador FROM compras AS cmp JOIN compradores AS cmpd ON cmp.Comprador_ID = cmpd.ID WHERE observacoes LIKE '%{$palavraChave}%' AND data >= '{$dataInicio}' AND data <= '{$dataFim}' AND Comprador_ID = {$id_comprador} ORDER BY year(data), month(data), day(data) DESC");
+                $compras = listar($dbconn, "SELECT cmp.*, cmpd.Nome AS Nome_Comprador FROM compras AS cmp JOIN compradores AS cmpd ON cmp.Comprador_ID = cmpd.ID WHERE observacoes LIKE '%{$palavraChave}%' AND data >= '{$dataInicio}' AND data <= '{$dataFim}' AND Comprador_ID = {$id_comprador} ORDER BY year(data), month(data), day(data) DESC");
             }
 
             foreach ($compras as $compra) :

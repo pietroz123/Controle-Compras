@@ -10,7 +10,7 @@
 <?php
 
     $id_compra = $_POST['id'];
-    $compra = buscar_compra($conexao, $id_compra);
+    $compra = buscar_compra($dbconn, $id_compra);
 
 ?>
 
@@ -57,7 +57,7 @@
                         <select class="custom-select" name="comprador-id" id="comprador-id">
                             <option class="text-muted">Selecione uma Opção</option>
                             <?php 
-                                $compradores = listar($conexao, "SELECT * FROM compradores");
+                                $compradores = listar($dbconn, "SELECT * FROM compradores");
                                 foreach ($compradores as $comprador) :
                                     $comprador_selecionado = $compra['Comprador_ID'] == $comprador['ID'];
                                     $selecionado = $comprador_selecionado ? "selected='selected'" : "";

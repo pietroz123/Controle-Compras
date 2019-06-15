@@ -132,8 +132,8 @@ function compras_permitidas($conexao, $username, $email) {
     return $compras;
 }
 
-function compras_permitidas_like($conexao, $username, $email, $palavra_chave, $dataInicio, $dataFim) {
-    $palavra_chave = mysqli_real_escape_string($conexao, $palavra_chave);
+function compras_permitidas_like($dbconn, $username, $email, $palavra_chave, $dataInicio, $dataFim) {
+
     $sql = "SELECT cmp.*, cmpd.Nome AS Nome_Comprador
             FROM compras AS cmp
             JOIN compradores AS cmpd ON cmp.Comprador_ID = cmpd.ID
@@ -167,10 +167,12 @@ function compras_permitidas_like($conexao, $username, $email, $palavra_chave, $d
         
     // Completa a SQL com ordenação
     $sql .= "ORDER BY year(data), month(data), day(data) DESC;";
+
+    $stmt = $dbconn->prepare($sql);
+    $stmt->execute();
     
     $compras = array();
-    $resultado = mysqli_query($conexao, $sql);
-    while ($compra = mysqli_fetch_assoc($resultado)) {
+    while ($compra = $stmt->fetch(PDO::FETCH_ASSOC)) {
         array_push($compras, $compra);
     }
     return $compras;
