@@ -1,13 +1,13 @@
 <?php
 
-include $_SERVER['DOCUMENT_ROOT'].'/database/conexao.php';
+include $_SERVER['DOCUMENT_ROOT'].'/database/dbconnection.php';
 include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes-categorias.php';
 
 if (isset($_POST['categoria'])) {
 
     $cat =  $_POST['categoria'];
 
-    $subcat = recuperar_subcategorias($conexao, $cat);
+    $subcat = recuperar_subcategorias($dbconn, $cat);
 
     $retorno = '';
     foreach ($subcat as $subcategoria) {

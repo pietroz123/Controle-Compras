@@ -146,13 +146,18 @@ function buscar_compra($conexao, $id) {
     return mysqli_fetch_assoc($resultado);
 }
 
-function buscar_comprador($conexao, $id_comprador) {
 
-    $id_comprador = mysqli_real_escape_string($conexao, $id_comprador);
+// Recupera as informações do comprador, dado seu ID
+function buscar_comprador($dbconn, $id_comprador) {
 
-    $query = "SELECT * FROM compradores WHERE Id = {$id_comprador}";
-    $resultado = mysqli_query($conexao, $query);
-    return mysqli_fetch_assoc($resultado);
+    $sql = "SELECT * FROM compradores WHERE Id = {$id_comprador}";
+
+    $stmt = $dbconn->prepare($sql);
+    $stmt->execute();
+
+    $comprador = $stmt->fetch();
+    return $comprador;
+
 }
 
 

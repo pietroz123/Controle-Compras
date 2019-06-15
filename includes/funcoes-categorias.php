@@ -1,23 +1,35 @@
 <?php
 
-function recuperar_categorias($conexao) {
-    $categorias = array();
+// Recupera todas as categorias
+function recuperar_categorias($dbconn) {
+
     $sql = "SELECT * FROM categorias";
-    $resultado = mysqli_query($conexao, $sql);
-    if (mysqli_num_rows($resultado) > 0) {
-        while ($categoria = mysqli_fetch_assoc($resultado))
+    $categorias = array();
+
+    $stmt = $dbconn->prepare($sql);
+    $stmt->execute();
+
+    if ($stmt->rowCount() > 0) {
+        while ($categoria = $stmt->fetch(PDO::FETCH_ASSOC))
             array_push($categorias, $categoria);
     }
     return $categorias;
+
 }
 
-function recuperar_subcategorias($conexao, $id_categoria) {
-    $subcategorias = array();
+// Recupera todas as subcategorias de uma categoria
+function recuperar_subcategorias($dbconn, $id_categoria) {
+
     $sql = "SELECT * FROM subcategorias WHERE ID_Categoria = $id_categoria";
-    $resultado = mysqli_query($conexao, $sql);
-    if (mysqli_num_rows($resultado) > 0) {
-        while ($categoria = mysqli_fetch_assoc($resultado))
-            array_push($subcategorias, $categoria);
+    $subcategorias = array();
+    
+    $stmt = $dbconn->prepare($sql);
+    $stmt->execute();
+
+    if ($stmt->rowCount() > 0) {
+        while ($subcategoria = $stmt->fetch(PDO::FETCH_ASSOC))
+            array_push($subcategorias, $subcategoria);
     }
     return $subcategorias;
+
 }

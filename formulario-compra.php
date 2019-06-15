@@ -9,7 +9,7 @@
     verifica_usuario();
 
     // Recupera todos os IDs dos compradores em todos os grupos do usuário
-    $ids_compradores = recupera_ids_compradores_grupos($conexao, $_SESSION['login-username'], $_SESSION['login-email']);
+    $ids_compradores = recupera_ids_compradores_grupos($dbconn, $_SESSION['login-username'], $_SESSION['login-email']);
 ?>
 
         <h1 class="titulo-site">Formulário de Adição de Compra</h1>
@@ -37,7 +37,7 @@
                         <select name="categoria" id="select-categorias" class="form-control" style="width: 100%;">
                             <option></option>
                             <?php
-                                foreach ($categorias = recuperar_categorias($conexao) as $categoria)
+                                foreach ($categorias = recuperar_categorias($dbconn) as $categoria)
                                     echo '<option value="'.$categoria['ID_Categoria'].'">'.$categoria['Nome_Categoria'].'</option>';
                             ?>
                         </select>
@@ -143,7 +143,7 @@
                             <option class="text-muted" value="">Selecione uma Opção</option>
                             <?php
                                 foreach ($ids_compradores as $ids_comprador) {
-                                    $comprador = buscar_comprador($conexao, $ids_comprador['Comprador_ID']);
+                                    $comprador = buscar_comprador($dbconn, $ids_comprador['Comprador_ID']);
                             ?>
                                     <option value="<?= $comprador['ID']; ?>"><?= $comprador['Nome']; ?></option>
 

@@ -38,9 +38,9 @@
                                 <option class="text-muted">Selecione uma Opção</option>
                                 <option value="0" selected>Todos</option>
                                 <?php 
-                                    $ids_compradores = recupera_ids_compradores_grupos($conexao, $_SESSION['login-username'], $_SESSION['login-email']);
+                                    $ids_compradores = recupera_ids_compradores_grupos($dbconn, $_SESSION['login-username'], $_SESSION['login-email']);
                                     foreach ($ids_compradores as $id_comprador) :
-                                        $comprador = buscar_comprador($conexao, $id_comprador['Comprador_ID']);
+                                        $comprador = buscar_comprador($dbconn, $id_comprador['Comprador_ID']);
                                 ?>
                                         <option value="<?= $comprador['ID']; ?>"><?= $comprador['Nome']; ?></option>
                                 <?php

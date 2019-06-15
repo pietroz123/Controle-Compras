@@ -1,7 +1,7 @@
 <?php
 
 // Seleciona todos os ids dos compradores de todos os grupos em que o usuario esta
-function recupera_ids_compradores_grupos($conexao, $username, $email) {
+function recupera_ids_compradores_grupos($dbconn, $username, $email) {
     
     // Recupera os IDs
     $sql = "SELECT co.ID as Comprador_ID
@@ -31,12 +31,14 @@ function recupera_ids_compradores_grupos($conexao, $username, $email) {
                 WHERE usuarios.Email = '$email'
             );";
 
-    $ids_compradores = array();
-    $resultado = mysqli_query($conexao, $sql);
-    while ($id_comprador = mysqli_fetch_assoc($resultado)) {
-        array_push($ids_compradores, $id_comprador);
+    $stmt = $dbconn->prepare($sql);
+    $stmt->execute();
+
+    $ids = array();
+    while ($id = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        array_push($ids, $id);
     }
-    return $ids_compradores;
+    return $ids;
 }
 
 // Seleciona todos os ids dos compradores em um determinado grupo que autorizaram

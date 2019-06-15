@@ -42,7 +42,7 @@
             </div>
             <?php
                 // Recupera o comprador
-                $comprador = buscar_comprador($conexao, $compra['Comprador_ID']);
+                $comprador = buscar_comprador($dbconn, $compra['Comprador_ID']);
             ?>
             <div class="row">
                 <div class="col-3">Comprador</div>
