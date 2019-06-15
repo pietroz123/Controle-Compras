@@ -16,8 +16,11 @@
                     FROM compradores co
                     WHERE co.Email = '".$_SESSION['login-email']."'
                 )";
-                $resultado = mysqli_query($conexao, $sql);
-                while ($ano = mysqli_fetch_assoc($resultado))
+
+                $stmt = $dbconn->prepare($sql);
+                $stmt->execute();
+
+                while ($ano = $stmt->fetch(PDO::FETCH_ASSOC))
                     echo '<option value="'.$ano['Ano'].'">'.$ano['Ano'].'</option>';
             ?>
         </select>
