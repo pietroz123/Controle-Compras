@@ -32,7 +32,7 @@ function inserir_compra($dbconn, $valor, $data, $observacoes, $desconto, $forma_
         if (!empty($categoria)) {
 
             // Insere as categorias e subcategorias
-            $id_compra = $stmt->lastInsertId();
+            $id_compra = $dbconn->lastInsertId();
             $sql = "INSERT INTO compra_categorias (ID_Compra, ID_Categoria) VALUES ($id_compra, $categoria);";
             $stmt = $dbconn->prepare($sql);
             if ($stmt->execute()) {

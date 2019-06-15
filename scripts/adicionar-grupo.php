@@ -47,7 +47,7 @@
                         /* Essa query é executada a partir da função buscar_usuarios_id() */
                         
                         
-                        $id_grupo = $stmt->lastInsertId();
+                        $id_grupo = $dbconn->lastInsertId();
 
 
                         // Insere o usuário logado no grupo como Admin do grupo e o autoriza

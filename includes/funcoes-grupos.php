@@ -152,9 +152,9 @@ function remover_membro($dbconn, $id_grupo, $username) {
 }
 
 // Adiciona um membro no grupo, dado o Username do Membro e o ID do Grupo
-function adicionar_membro($dbconn, $id_grupo, $username) {
+function adicionar_membro($dbconn, $id_grupo, $username, $usuario_logado) {
 
-    $sql = "INSERT INTO grupo_usuarios (ID_Grupo, Username) VALUES (?, ?)";
+    $sql = "INSERT INTO grupo_usuarios (ID_Grupo, Username, Convidado_Por) VALUES (?, ?, ?)";
     
     if (!$stmt = $dbconn->prepare($sql)) {
         $_SESSION['danger'] = "Ocorreu um erro ao remover o membro.";
@@ -163,6 +163,7 @@ function adicionar_membro($dbconn, $id_grupo, $username) {
     } else {
         $stmt->bindParam(1, $id_grupo);
         $stmt->bindParam(2, $username);
+        $stmt->bindParam(3, $usuario_logado);
         $stmt->execute();
     }
 }

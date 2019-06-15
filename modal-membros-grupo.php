@@ -26,7 +26,7 @@
             $ids_adicionar = $_POST['ids_adicionar'];
             foreach ($ids_adicionar as $id_adicionar) {
                 $usuario = buscar_usuario_id($dbconn, $id_adicionar);
-                adicionar_membro($dbconn, $id_grupo, $usuario['Usuario']);
+                adicionar_membro($dbconn, $id_grupo, $usuario['Usuario'], $_SESSION['login-username']);
             }
 
         }

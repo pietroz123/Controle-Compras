@@ -3,3 +3,4 @@ config
 /nbproject/private/
 backup/backups
 test
+.vscode
