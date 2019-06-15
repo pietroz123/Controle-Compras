@@ -3,11 +3,12 @@
 if (isset($_POST['username'])) {
     
     
-    include $_SERVER['DOCUMENT_ROOT'].'/database/conexao.php';        
+    include $_SERVER['DOCUMENT_ROOT'].'/database/conexao.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/database/dbconnection.php';
     include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes-grupos.php';
     
 
-    $grupos = recuperar_grupos($conexao, $_POST['username']);
+    $grupos = recuperar_grupos($dbconn, $_POST['username']);
     $retorno = '';
 
 

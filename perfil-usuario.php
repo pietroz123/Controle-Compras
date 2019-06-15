@@ -109,7 +109,7 @@
                 <div class="container" id="container-tabela-grupos">
                     <h6 class="mb-3">Meus Grupos</h6>
                     <?php
-                        $grupos = recuperar_grupos($conexao, $usuario['Usuario']);
+                        $grupos = recuperar_grupos($dbconn, $usuario['Usuario']);
                         if (count($grupos) > 0) {
                     ?>
                         <table class="table table-hover table-grupos" id="tabela-grupos">
