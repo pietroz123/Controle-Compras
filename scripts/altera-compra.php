@@ -6,6 +6,7 @@
     if (isset($_POST['submit-alterar'])) {
         
         include $_SERVER['DOCUMENT_ROOT'].'/database/conexao.php'; 
+        include $_SERVER['DOCUMENT_ROOT'].'/database/dbconnection.php'; 
         include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes.php';
 
         $id                 = $_POST['id'];
@@ -16,7 +17,7 @@
         $forma_pagamento    = $_POST['forma-pagamento'];
         $comprador_id       = $_POST['comprador-id'];
         
-        if (alterar_compra($conexao, $id, $valor, $data, $observacoes, $desconto, $forma_pagamento, $comprador_id)) {
+        if (alterar_compra($dbconn, $id, $valor, $data, $observacoes, $desconto, $forma_pagamento, $comprador_id)) {
     
             $_SESSION['success'] = "Compra (ID = '{$id}') alterada!";
             header("Location: ../compras.php");
@@ -24,11 +25,10 @@
     
         } else {
     
-            $_SESSION['danger'] = "Erro na alteração da compra (ID = '{$id}')!" . mysql_error($conexao);
+            $_SESSION['danger'] = "Erro na alteração da compra (ID = '{$id}')!" . $dbconn->errorInfo();
             header("Location: ../compras.php");
             die();
     
         }
-        mysqli_close($conexao);
 
     }

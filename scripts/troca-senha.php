@@ -1,5 +1,6 @@
 <?php
     include $_SERVER['DOCUMENT_ROOT'].'/database/conexao.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/database/dbconnection.php';
 
     // Inicia a sessao
     include $_SERVER['DOCUMENT_ROOT'].'/config/sessao.php';
@@ -39,18 +40,17 @@
         $data_atual = date("U");
 
 
-        $query = "SELECT * FROM recuperacao_senha WHERE seletor = ? AND expira >= ?;";
-        $stmt = mysqli_stmt_init($conexao);
-        if (!mysqli_stmt_prepare($stmt, $query)) {
+        $sql = "SELECT * FROM recuperacao_senha WHERE seletor = ? AND expira >= ?;";
+        if (!$stmt = $dbconn->prepare($sql)) {
             $_SESSION['danger'] = "Ocorreu um erro ao verificar os tokens.";
             header("Location: recuperacao-senha.php");
             die();
         } else {
-            mysqli_stmt_bind_param($stmt, "ss", $seletor, $data_atual);
-            mysqli_stmt_execute($stmt);
+            $stmt->bindParam(1, $seletor);
+            $stmt->bindParam(2, $data_atual);
+            $stmt->execute();
 
-            $resultado = mysqli_stmt_get_result($stmt);
-            $entrada = mysqli_fetch_assoc($resultado);
+            $entrada = $stmt->fetch();
             if ($entrada == null) {
                 $_SESSION['danger'] = "Não existem entradas para essa requisição. Favor requisitar novamente.";
                 header("Location: recuperacao-senha.php");
@@ -69,18 +69,16 @@
 
                     $token_email = $entrada['Email'];
                     
-                    $query = "SELECT * FROM usuarios WHERE email = ?;";
-                    $stmt = mysqli_stmt_init($conexao);
-                    if (!mysqli_stmt_prepare($stmt, $query)) {
+                    $sql = "SELECT * FROM usuarios WHERE email = ?;";
+                    if (!$stmt = $dbconn->prepare($sql)) {
                         $_SESSION['danger'] = "Erro ao preparar a busca pelo usuário.";
                         header("Location: recuperacao-senha.php");
                         die();
                     } else {
-                        mysqli_stmt_bind_param($stmt, "s", $token_email);
-                        mysqli_stmt_execute($stmt);
+                        $stmt->bindParam(1, $token_email);
+                        $stmt->execute();
 
-                        $resultado = mysqli_stmt_get_result($stmt);
-                        $entrada = mysqli_fetch_assoc($resultado);
+                        $entrada = $stmt->fetch();
                         if ($entrada == null) {
                             $_SESSION['danger'] = "Não existem entradas com este e-mail.";
                             header("Location: recuperacao-senha.php");
@@ -88,27 +86,26 @@
                         } else {
 
                             // Atualiza a senha do usuario
-                            $query = "UPDATE usuarios SET senha = ? WHERE email = ?;";
-                            $stmt = mysqli_stmt_init($conexao);
-                            if (!mysqli_stmt_prepare($stmt, $query)) {
+                            $sql = "UPDATE usuarios SET senha = ? WHERE email = ?;";
+                            if (!$stmt = $dbconn->prepare($sql)) {
                                 $_SESSION['danger'] = "Ocorreu um erro ao trocar a senha.";
                                 header("Location: recuperacao-senha.php");
                                 die();
                             } else {
                                 $hash_nova_senha = password_hash($nova_senha, PASSWORD_DEFAULT);
-                                mysqli_stmt_bind_param($stmt, "ss", $hash_nova_senha, $token_email);
-                                mysqli_stmt_execute($stmt);
+                                $stmt->bindParam(1, $hash_nova_senha);
+                                $stmt->bindParam(2, $token_email);
+                                $stmt->execute();
 
                                 // Deleta todos os possiveis tokens ainda existentes e relacionados ao e-mail do usuario
-                                $query = "DELETE FROM recuperacao_senha WHERE email = ?;";
-                                $stmt = mysqli_stmt_init($conexao);
-                                if (!mysqli_stmt_prepare($stmt, $query)) {
+                                $sql = "DELETE FROM recuperacao_senha WHERE email = ?;";
+                                if (!$stmt = $dbconn->prepare($sql)) {
                                     $_SESSION['danger'] = "Ocorreu um erro ao deletar os tokens pre-existentes após a atualização da senha.";
                                     header("Location: ../index.php");
                                     die();
                                 } else {
-                                    mysqli_stmt_bind_param($stmt, "s", $token_email);
-                                    mysqli_stmt_execute($stmt);
+                                    $stmt->bindParam(1, $token_email);
+                                    $stmt->execute();
 
                                     $_SESSION['success'] = "Sua senha foi atualizada com sucesso e requisições pre-existentes foram removidas.";
                                     header("Location: ../index.php");

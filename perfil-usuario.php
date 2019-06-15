@@ -9,7 +9,7 @@
     verifica_usuario();
     mostra_alertas();
 
-    $usuario = join_usuario_comprador($conexao, $_SESSION['login-email']);
+    $usuario = join_usuario_comprador($dbconn, $_SESSION['login-email']);
 ?>
 
 
@@ -151,7 +151,7 @@
                     <!-- Seção de convites -->
                     <section id="convites">
                         <?php
-                        $retorno = recuperar_notificacoes($conexao);
+                        $retorno = recuperar_notificacoes($dbconn);
                         echo $retorno['html'];
                         ?>
                     </section>
@@ -173,7 +173,7 @@
                 <div class="container">
                     <?php
                     
-                        $usuarios_temp = recuperar_usuarios_temp($conexao);
+                        $usuarios_temp = recuperar_usuarios_temp($dbconn);
                 
                         if (count($usuarios_temp) > 0) {
                     ?>

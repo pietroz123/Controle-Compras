@@ -81,7 +81,7 @@
 <!-- Abre conexão e verifica possível erro -->
 <?php 
 
-    if (inserir_compra($conexao, $valor, $data, $observacoes, $desconto, $forma_pagamento, $comprador_id, $novo_nome, $categoria, $subcategorias)) {        
+    if (inserir_compra($dbconn, $valor, $data, $observacoes, $desconto, $forma_pagamento, $comprador_id, $novo_nome, $categoria, $subcategorias)) {        
 
 ?>
 
@@ -99,7 +99,7 @@
 <!-- Else -->
 <?php 
     } else {
-        $mensagem_erro = mysqli_error($conexao);
+        $mensagem_erro = $dbconn->errorInfo();
 ?>
 
         <!-- Alerta de erro -->

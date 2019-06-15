@@ -1,6 +1,7 @@
 <?php
 
     include $_SERVER['DOCUMENT_ROOT'].'/database/conexao.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/database/dbconnection.php';
     include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes-usuarios.php';
 
     date_default_timezone_set('America/Sao_Paulo');    
@@ -28,16 +29,15 @@
                         // ======== INSERÇÃO DO GRUPO =========
                         
                         $sql = "INSERT INTO grupos (nome) VALUES (?)";
-                        $stmt = mysqli_stmt_init($conexao);
                         
-                        if (!mysqli_stmt_prepare($stmt, $sql)) {
+                        if (!$stmt = $dbconn->prepare($sql)) {
                             $_SESSION['danger'] = "Ocorreu um erro na inserção do grupo.";
                             header("Location: ../perfil-usuario.php");
                             die();
                         
                         } else {
-                            mysqli_stmt_bind_param($stmt, "s", $nome_grupo);
-                            mysqli_stmt_execute($stmt);
+                            $stmt->bindParam(1, $nome_grupo);
+                            $stmt->execute();
                             // Sucesso
                         }
 
@@ -47,22 +47,24 @@
                         /* Essa query é executada a partir da função buscar_usuarios_id() */
                         
                         
-                        $id_grupo = mysqli_stmt_insert_id($stmt);
+                        $id_grupo = $stmt->lastInsertId();
 
 
                         // Insere o usuário logado no grupo como Admin do grupo e o autoriza
                         
                         $sql = "INSERT INTO grupo_usuarios (id_grupo, username, admin, autorizado, membro_desde, convidado_por) VALUES (?, ?, 1, 1, ?, ?)";
-                        $stmt = mysqli_stmt_init($conexao);
                         
-                        if (!mysqli_stmt_prepare($stmt, $sql)) {
+                        if (!$stmt = $dbconn->prepare($sql)) {
                             $_SESSION['danger'] = "Ocorreu um erro na inserção do usuário logado no grupo.";
                             header("Location: ../perfil-usuario.php");
                             die();
                         
                         } else {
-                            mysqli_stmt_bind_param($stmt, "isss", $id_grupo, $_SESSION['login-username'], date("Y-m-d H:i:s"), $_SESSION['login-username']);
-                            mysqli_stmt_execute($stmt);
+                            $stmt->bindParam(1, $id_grupo);
+                            $stmt->bindParam(2, $_SESSION['login-username']);
+                            $stmt->bindParam(3, date("Y-m-d H:i:s"));
+                            $stmt->bindParam(4, $_SESSION['login-username']);
+                            $stmt->execute();
                             // Sucesso
                         }
 
@@ -70,19 +72,20 @@
                         // Para cada usuário, inserimos no grupo
 
                         foreach ($ids_usuarios as $id_usuario) {
-                            $usuario = buscar_usuario_id($conexao, $id_usuario);
+                            $usuario = buscar_usuario_id($dbconn, $id_usuario);
 
                             $sql = "INSERT INTO grupo_usuarios (id_grupo, username, convidado_por) VALUES (?, ?, ?)";
-                            $stmt = mysqli_stmt_init($conexao);
                             
-                            if (!mysqli_stmt_prepare($stmt, $sql)) {
+                            if (!$stmt = $dbconn->prepare($sql)) {
                                 $_SESSION['danger'] = "Ocorreu um erro na inserção dos usuários no grupo.";
                                 header("Location: ../perfil-usuario.php");
                                 die();
                             
                             } else {
-                                mysqli_stmt_bind_param($stmt, "iss", $id_grupo, $usuario['Usuario'], $_SESSION['login-username']);
-                                mysqli_stmt_execute($stmt);
+                                $stmt->bindParam(1, $id_grupo);
+                                $stmt->bindParam(2, $usuario['Usuario']);
+                                $stmt->bindParam(3, $_SESSION['login-username']);
+                                $stmt->execute();
                                 // Sucesso
                             }
                         }

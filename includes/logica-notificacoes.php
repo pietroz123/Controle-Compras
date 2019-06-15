@@ -6,6 +6,7 @@ if (isset($_POST['requisicao'])) {
 
     // Includes
     include $_SERVER['DOCUMENT_ROOT'].'/database/conexao.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/database/dbconnection.php';
     include $_SERVER['DOCUMENT_ROOT'].'/config/sessao.php';
     include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes-notificacoes.php';
     include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes-grupos.php';
@@ -18,7 +19,7 @@ if (isset($_POST['requisicao'])) {
         // Carregar as notificações na aba de notificações
         case 'carregar-notificacoes':
             
-            $retorno = recuperar_notificacoes($conexao);
+            $retorno = recuperar_notificacoes($dbconn);
                 
             echo json_encode($retorno);
             die();
@@ -31,7 +32,7 @@ if (isset($_POST['requisicao'])) {
             // Recupera o id do grupo
             $id_grupo = $_POST['id_grupo'];
 
-            if (aceitar_notificacao($conexao, $id_grupo)) {
+            if (aceitar_notificacao($dbconn, $id_grupo)) {
                 $_SESSION['success'] = "Convite aceito com sucesso!";
                 header("Location: ../perfil-usuario.php#container-tabela-grupos");
             }
@@ -50,7 +51,7 @@ if (isset($_POST['requisicao'])) {
             // Recupera o id do grupo
             $id_grupo = $_POST['id_grupo'];
 
-            if (rejeitar_notificacao($conexao, $id_grupo)) {
+            if (rejeitar_notificacao($dbconn, $id_grupo)) {
                 $_SESSION['success'] = "Convite rejeitado com sucesso!";
                 header("Location: ../perfil-usuario.php");
             }

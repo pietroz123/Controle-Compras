@@ -1,5 +1,6 @@
 <?php
     include $_SERVER['DOCUMENT_ROOT'].'/database/conexao.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/database/dbconnection.php';
     include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes-usuarios.php';
     include $_SERVER['DOCUMENT_ROOT'].'/includes/logica-usuarios.php';
     include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes.php';
@@ -49,7 +50,7 @@
     }
 
     // Cria o usuario
-    if (criar_usuario($conexao, $nome, $username, $email_cadastro, $senha_cadastro, $nome_icone)) {
+    if (criar_usuario($dbconn, $nome, $username, $email_cadastro, $senha_cadastro, $nome_icone)) {
         $_SESSION['success'] = "Cadastrado com sucesso. Favor esperar a confirmação do cadastro.";
         header("Location: ../index.php");
         die();

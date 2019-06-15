@@ -32,7 +32,7 @@ if (isset($_POST['username'])) {
             $retorno .= '
                 <tr>
                     <td>'.$grupo['Nome'].'</td>
-                    <td>'.date("d/m/Y h:m", strtotime($grupo['Data_Criacao'])).'</td>
+                    <td>'.date("d/m/Y H:i", strtotime($grupo['Data_Criacao'])).'</td>
                     <td>'.$grupo['Numero_Membros'].'</td>
                     <td>
                         <button class="btn btn-info botao-pequeno btn-membros" id="'.$grupo['ID'].'" username="'.$_POST['username'].'">Membros</button>

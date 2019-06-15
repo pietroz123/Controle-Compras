@@ -98,7 +98,8 @@ function recuperar_grupos($dbconn, $usuario) {
 }
 
 // Recupera todos os membros de um grupo com determinado ID
-function recuperar_membros($conexao, $id_grupo) {
+function recuperar_membros($dbconn, $id_grupo) {
+
     $sql = "SELECT c.Nome, u.ID AS ID_Usuario, u.Usuario, gu.Membro_Desde, gu.Admin, gu.Autorizado
             FROM usuarios AS u
             JOIN grupo_usuarios AS gu
@@ -107,70 +108,80 @@ function recuperar_membros($conexao, $id_grupo) {
             ON u.Email = c.Email
             WHERE gu.ID_Grupo = $id_grupo";
 
+    $stmt = $dbconn->prepare($sql);
+    $stmt->execute();
+
     $membros = array();
-    $resultado = mysqli_query($conexao, $sql);
-    while ($membro = mysqli_fetch_assoc($resultado)) {
+    while ($membro = $stmt->fetch(PDO::FETCH_ASSOC)) {
         array_push($membros, $membro);
     }
     return $membros;
 }
 
 // Remove um grupo, dado seu ID
-function remover_grupo($conexao, $id_grupo) {
+function remover_grupo($dbconn, $id_grupo) {
+
     $sql = "DELETE FROM grupos WHERE ID = ?";
-    $stmt = mysqli_stmt_init($conexao);
-    if (!mysqli_stmt_prepare($stmt, $sql)) {
+    
+    $stmt = $dbconn->prepare($sql);
+
+    if (!$stmt = $dbconn->prepare($sql)) {
         $_SESSION['danger'] = "Ocorreu um erro ao remover o grupo.";
         header("Location: ../perfil-usuario.php");
         die();
     } else {
-        mysqli_stmt_bind_param($stmt, "i", $id_grupo);
-        mysqli_stmt_execute($stmt);
+        $stmt->bindParam(1, $id_grupo);
+        $stmt->execute();
     }
 }
 
 // Remove um membro do grupo, dado o Username do Membro e o ID do Grupo
-function remover_membro($conexao, $id_grupo, $username) {
+function remover_membro($dbconn, $id_grupo, $username) {
+
     $sql = "DELETE FROM grupo_usuarios WHERE ID_Grupo = ? AND Username = ?";
-    $stmt = mysqli_stmt_init($conexao);
-    if (!mysqli_stmt_prepare($stmt, $sql)) {
+    
+    if (!$stmt = $dbconn->prepare($sql)) {
         $_SESSION['danger'] = "Ocorreu um erro ao remover o membro.";
         header("Location: ../perfil-usuario.php");
         die();
     } else {
-        mysqli_stmt_bind_param($stmt, "is", $id_grupo, $username);
-        mysqli_stmt_execute($stmt);
+        $stmt->bindParam(1, $id_grupo);
+        $stmt->bindParam(2, $username);
+        $stmt->execute();
     }
 }
 
 // Adiciona um membro no grupo, dado o Username do Membro e o ID do Grupo
-function adicionar_membro($conexao, $id_grupo, $username) {
+function adicionar_membro($dbconn, $id_grupo, $username) {
+
     $sql = "INSERT INTO grupo_usuarios (ID_Grupo, Username) VALUES (?, ?)";
-    $stmt = mysqli_stmt_init($conexao);
-    if (!mysqli_stmt_prepare($stmt, $sql)) {
+    
+    if (!$stmt = $dbconn->prepare($sql)) {
         $_SESSION['danger'] = "Ocorreu um erro ao remover o membro.";
         header("Location: ../perfil-usuario.php");
         die();
     } else {
-        mysqli_stmt_bind_param($stmt, "is", $id_grupo, $username);
-        mysqli_stmt_execute($stmt);
+        $stmt->bindParam(1, $id_grupo);
+        $stmt->bindParam(2, $username);
+        $stmt->execute();
     }
 }
 
 // Verifica se dado usuário é ou não Admin do grupo, dado o ID do Grupo e o Nome do Usuário
-function isAdmin($conexao, $id_grupo, $username) {
+function isAdmin($dbconn, $id_grupo, $username) {
+    
     $sql = "SELECT Admin FROM grupo_usuarios WHERE ID_Grupo = ? AND Username = ?";
-    $stmt = mysqli_stmt_init($conexao);
-    if (!mysqli_stmt_prepare($stmt, $sql)) {
+    
+    if (!$stmt = $dbconn->prepare($sql)) {
         $_SESSION['danger'] = "Ocorreu um erro ao verificar admin.";
         header("Location: ../perfil-usuario.php");
         die();
     } else {
-        mysqli_stmt_bind_param($stmt, "is", $id_grupo, $username);
-        mysqli_stmt_execute($stmt);
+        $stmt->bindParam(1, $id_grupo);
+        $stmt->bindParam(2, $username);
+        $stmt->execute();
 
-        $resultado = mysqli_stmt_get_result($stmt);
-        $admin = mysqli_fetch_assoc($resultado);
+        $admin = $stmt->fetch();
 
         if ($admin['Admin'] == 1)
             return true;
@@ -181,15 +192,18 @@ function isAdmin($conexao, $id_grupo, $username) {
 
 
 
-function admins($conexao, $id_grupo) {
+function admins($dbconn, $id_grupo) {
+    
     $sql = "SELECT *
             FROM grupo_usuarios gu
             WHERE gu.ID_Grupo = $id_grupo
             AND gu.Admin = 1";
-    $resultado = mysqli_query($conexao, $sql);
-
+    
+    $stmt = $dbconn->prepare($sql);
+    $stmt->execute();
+    
     $admins = array();
-    while ($admin = mysqli_fetch_assoc($resultado)) {
+    while ($admin = $stmt->fetch(PDO::FETCH_ASSOC)) {
         array_push($admins, $admin);
     }
     return $admins;
@@ -197,26 +211,31 @@ function admins($conexao, $id_grupo) {
 
 // Promove outro ADMIN
 // Critério: Membro mais antigo do grupo
-function promove_admin($conexao, $id_grupo) {
+function promove_admin($dbconn, $id_grupo) {
 
     // Verifica se o número atual de Admins é zero
-    if ( count(admins($conexao, $id_grupo)) == 1 ) {
+    if ( count(admins($dbconn, $id_grupo)) == 1 ) {
 
         // Procura membro mais antigo que não é admin
-        $procura = "SELECT gu.Username
+        $sql = "SELECT gu.Username
                     FROM grupo_usuarios gu
                     WHERE gu.ID_Grupo = $id_grupo AND gu.Admin = 0
                     ORDER BY gu.Membro_Desde ASC
                     LIMIT 1";
-        $resultado = mysqli_query($conexao, $procura);
-        $membro = mysqli_fetch_assoc($resultado);
+        
+        $stmt = $dbconn->prepare($sql);
+        $stmt->execute();
+
+        $membro = $stmt->fetch();
         $membro_username = $membro['Username'];
 
         // Promove o membro para admin
-        $promove = "UPDATE grupo_usuarios gu
+        $sql = "UPDATE grupo_usuarios gu
                     SET gu.Admin = 1
                     WHERE gu.Username = '$membro_username'";
-        return mysqli_query($conexao, $promove);
+                    
+        $stmt = $dbconn->prepare($sql);
+        return $stmt->execute();
 
     }
 

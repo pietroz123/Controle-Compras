@@ -231,10 +231,11 @@
                                                 <label class="custom-control-label" for="chk_tb_todas">Todas</label>
                                             </div>
                                             <?php
-                                                $show = "SHOW TABLES";
-                                                $resultado = mysqli_query($conexao, $show);
+                                                $sql = "SHOW TABLES";
+                                                $stmt = $dbconn->prepare($sql);
+                                                $stmt->execute();
                                                 $tables = array();
-                                                while ($table = mysqli_fetch_assoc($resultado)) {
+                                                while ($table = $stmt->fetch(PDO::FETCH_ASSOC)) {
                                             ?>
                                                     <div class="custom-control custom-checkbox chk-tabelas opcao-backup">
                                                         <input type="checkbox" class="custom-control-input" name="chk_tb" id="chk-<?= $table['Tables_in_'.$banco] ?>" value="<?= $table['Tables_in_'.$banco] ?>">

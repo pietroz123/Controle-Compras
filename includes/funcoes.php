@@ -20,35 +20,30 @@ function listar($dbconn, $sql) {
 // ========================= INSERT =================================
 // ==================================================================
 
-function inserir_compra($conexao, $valor, $data, $observacoes, $desconto, $forma_pagamento, $comprador_id, $imagem, $categoria, $subcategorias) {
+function inserir_compra($dbconn, $valor, $data, $observacoes, $desconto, $forma_pagamento, $comprador_id, $imagem, $categoria, $subcategorias) {
     
-    $valor = mysqli_real_escape_string($conexao, $valor);
-    $data = mysqli_real_escape_string($conexao, $data);
-    $observacoes = mysqli_real_escape_string($conexao, $observacoes);
-    $desconto = mysqli_real_escape_string($conexao, $desconto);
-    $forma_pagamento = mysqli_real_escape_string($conexao, $forma_pagamento);
-    $comprador_id = mysqli_real_escape_string($conexao, $comprador_id);
-    $imagem = mysqli_real_escape_string($conexao, $imagem);
-
     // Insere a compra
-    $query = "INSERT INTO compras (valor, data, observacoes, desconto, forma_pagamento, comprador_id, imagem) VALUES ({$valor}, '{$data}', '{$observacoes}', {$desconto}, '{$forma_pagamento}', {$comprador_id}, '{$imagem}');";
-    $resultado = mysqli_query($conexao, $query);
-    if ($resultado) {
+    $sql = "INSERT INTO compras (valor, data, observacoes, desconto, forma_pagamento, comprador_id, imagem) VALUES ({$valor}, '{$data}', '{$observacoes}', {$desconto}, '{$forma_pagamento}', {$comprador_id}, '{$imagem}');";
+    $stmt = $dbconn->prepare($sql);
+
+    if ($stmt->execute()) {
 
         // Se existir uma categoria
         if (!empty($categoria)) {
 
             // Insere as categorias e subcategorias
-            $id_compra = mysqli_insert_id($conexao);
+            $id_compra = $stmt->lastInsertId();
             $sql = "INSERT INTO compra_categorias (ID_Compra, ID_Categoria) VALUES ($id_compra, $categoria);";
-            if (mysqli_query($conexao, $sql)) {
+            $stmt = $dbconn->prepare($sql);
+            if ($stmt->execute()) {
 
                 // Se existirem subcategorias
                 if (!empty($subcategorias)) {
 
                     foreach ($subcategorias as $subcategoria) {
                         $sql = "INSERT INTO compra_cat_subcat (ID_Compra, ID_Categoria, ID_Subcategoria) VALUES ($id_compra, $categoria, $subcategoria);";
-                        $resultado = mysqli_query($conexao, $sql);
+                        $stmt = $dbconn->prepare($sql);
+                        $resultado = $stmt->execute();
                         if ($resultado)
                             continue;   
                         else
@@ -91,12 +86,12 @@ function comprimir($fonte, $destino, $qualidade) {
 // ========================= DELETE =================================
 // ==================================================================
 
-function remover_compra($conexao, $id) {
+function remover_compra($dbconn, $id) {
 
-    $id = mysqli_real_escape_string($conexao, $id);
     
-    $query = "DELETE FROM compras WHERE Id = {$id}";
-    $resultado = mysqli_query($conexao, $query);
+    $sql = "DELETE FROM compras WHERE Id = {$id}";
+    $stmt = $dbconn->prepare($sql);
+    $resultado = $stmt->execute();
     return $resultado;
 }
 
@@ -105,18 +100,12 @@ function remover_compra($conexao, $id) {
 // ========================= UPDATE =================================
 // ==================================================================
 
-function alterar_compra($conexao, $id, $valor, $data, $observacoes, $desconto, $forma_pagamento, $comprador_id) {
+function alterar_compra($dbconn, $id, $valor, $data, $observacoes, $desconto, $forma_pagamento, $comprador_id) {
 
-    $id = mysqli_real_escape_string($conexao, $id);
-    $valor = mysqli_real_escape_string($conexao, $valor);
-    $data = mysqli_real_escape_string($conexao, $data);
-    $observacoes = mysqli_real_escape_string($conexao, $observacoes);
-    $desconto = mysqli_real_escape_string($conexao, $desconto);
-    $forma_pagamento = mysqli_real_escape_string($conexao, $forma_pagamento);
-    $comprador_id = mysqli_real_escape_string($conexao, $comprador_id);
 
-    $query = "UPDATE compras SET Valor = {$valor}, Data = '{$data}', Observacoes = '{$observacoes}', Desconto = {$desconto}, Forma_Pagamento = '{$forma_pagamento}', Comprador_ID = {$comprador_id} WHERE Id = {$id}";
-    $resultado = mysqli_query($conexao, $query);
+    $sql = "UPDATE compras SET Valor = {$valor}, Data = '{$data}', Observacoes = '{$observacoes}', Desconto = {$desconto}, Forma_Pagamento = '{$forma_pagamento}', Comprador_ID = {$comprador_id} WHERE Id = {$id}";
+    $stmt = $dbconn->prepare($sql);
+    $resultado = $stmt->execute();
     return $resultado;
 }
 
@@ -125,14 +114,14 @@ function alterar_compra($conexao, $id, $valor, $data, $observacoes, $desconto, $
 // ========================= SELECT =================================
 // ==================================================================
 
-function recuperar_compras($conexao, $id_comprador) {
+function recuperar_compras($dbconn, $id_comprador) {
     $sql = "SELECT cmp.*, cmpd.Nome AS Nome_Comprador
             FROM compras cmp
             JOIN compradores cmpd ON cmp.Comprador_ID = cmpd.ID
             WHERE cmpd.ID = $id_comprador
             ORDER BY year(data), month(data), day(data)";
     
-    $stmt = $conexao->prepare($sql);
+    $stmt = $dbconn->prepare($sql);
     $stmt->execute();
 
     $compras = array();
@@ -171,11 +160,9 @@ function buscar_comprador($dbconn, $id_comprador) {
 
 /*********************** Funções dos compradores ***********************/
 
-function inserir_comprador($conexao, $nome, $email) {
+function inserir_comprador($dbconn, $nome, $email) {
 
-    $nome = mysqli_real_escape_string($conexao, $nome);
-    $email = mysqli_real_escape_string($conexao, $email);
-
-    $query = "INSERT INTO compradores (nome, email) VALUES ('{$nome}', '{$email}');";
-    return mysqli_query($conexao, $query);
+    $sql = "INSERT INTO compradores (nome, email) VALUES ('{$nome}', '{$email}');";
+    $stmt = $dbconn->prepare($sql);
+    return $stmt->execute();
 }

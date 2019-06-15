@@ -3,6 +3,7 @@
 
 
         include $_SERVER['DOCUMENT_ROOT'].'/database/conexao.php';
+        include $_SERVER['DOCUMENT_ROOT'].'/database/dbconnection.php';
         include $_SERVER['DOCUMENT_ROOT'].'/config/sessao.php';        
         include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes-grupos.php';
         include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes-usuarios.php';
@@ -15,7 +16,7 @@
 
             $username = $_POST['usuario'];
 
-            remover_membro($conexao, $id_grupo, $username);
+            remover_membro($dbconn, $id_grupo, $username);
 
         }
 
@@ -24,8 +25,8 @@
 
             $ids_adicionar = $_POST['ids_adicionar'];
             foreach ($ids_adicionar as $id_adicionar) {
-                $usuario = buscar_usuario_id($conexao, $id_adicionar);
-                adicionar_membro($conexao, $id_grupo, $usuario['Usuario']);
+                $usuario = buscar_usuario_id($dbconn, $id_adicionar);
+                adicionar_membro($dbconn, $id_grupo, $usuario['Usuario']);
             }
 
         }
@@ -40,16 +41,16 @@
             // Critério: Membro mais antigo do grupo
             // =======================================================
 
-            if (isAdmin($conexao, $id_grupo, $username)) {
-                if (promove_admin($conexao, $id_grupo)) {
+            if (isAdmin($dbconn, $id_grupo, $username)) {
+                if (promove_admin($dbconn, $id_grupo)) {
                     // Saiu do grupo com sucesso
                 }
             }
 
             // Sai do grupo
-            remover_membro($conexao, $id_grupo, $username);
+            remover_membro($dbconn, $id_grupo, $username);
 
-            $membros = recuperar_membros($conexao, $id_grupo);
+            $membros = recuperar_membros($dbconn, $id_grupo);
             $retorno['quantidade'] = count($membros);
             echo json_encode($retorno);
             die();            
@@ -57,8 +58,8 @@
         }
 
 
-        $grupo = recuperar_grupo($conexao, $id_grupo);
-        $membros = recuperar_membros($conexao, $id_grupo);
+        $grupo = recuperar_grupo($dbconn, $id_grupo);
+        $membros = recuperar_membros($dbconn, $id_grupo);
 ?>
 
     <div class="modal-content">
@@ -107,7 +108,7 @@
                             <?php
 
                                 // Caso o usuário atual seja um admin, coloca um badge de ADMIN
-                                if (isAdmin($conexao, $grupo['ID'], $membro['Usuario'])) {
+                                if (isAdmin($dbconn, $grupo['ID'], $membro['Usuario'])) {
                                     echo '<span class="badge badge-pill badge-light float-right">ADMIN</span>';
                                 }
                                 ?>
@@ -125,7 +126,7 @@
                             </td>
                     <?php
                         // Caso o usuário logado seja o Admin do grupo, permite a remoção dos membros
-                        if (isAdmin($conexao, $grupo['ID'], $_POST['username']) && $membro['Usuario'] != $_POST['username']) {
+                        if (isAdmin($dbconn, $grupo['ID'], $_POST['username']) && $membro['Usuario'] != $_POST['username']) {
                     ?>
                             <td class="text-right"><button class="btn black botao-pequeno btn-remover-membro" id-grupo="<?= $grupo['ID']; ?>" username-usuario="<?= $_POST['username']; ?>" username-membro="<?= $membro['Usuario']; ?>" data-toggle="confirmation" data-singleton="true"><i class="fas fa-times"></i></button></td>
                     <?php
@@ -148,7 +149,7 @@
 
             <?php
                 // Permite a adição de novos membros apenas caso o usuário logado seja o Admin do grupo
-                if (isAdmin($conexao, $grupo['ID'], $_POST['username'])) {
+                if (isAdmin($dbconn, $grupo['ID'], $_POST['username'])) {
             ?>
                 <hr>
                 <div class="container mt-3 mb-3">

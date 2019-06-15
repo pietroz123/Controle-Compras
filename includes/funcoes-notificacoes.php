@@ -3,39 +3,37 @@
 date_default_timezone_set('America/Sao_Paulo');
 
 // Recupera as notificações do usuário logado
-function recuperar_notificacoes($conexao) {
+function recuperar_notificacoes($dbconn) {
     // Recupera as notificações
     $sql = "SELECT * FROM grupo_usuarios WHERE Autorizado = 0 AND username = ?";
-    $stmt = mysqli_stmt_init($conexao);
 
     $retorno = array();
     $retorno['html'] = '';
     $retorno['qtd'] = 0;
     
-    if (!mysqli_stmt_prepare($stmt, $sql)) {
+    if (!$stmt = $dbconn->prepare($sql)) {
         $retorno['html'] .= '<div class="alert alert-danger">Ocorreu um erro ao recuperar as notificações de grupos.</div>';
         echo json_encode($retorno);
         die();
     } else {
-        mysqli_stmt_bind_param($stmt, "s", $_SESSION['login-username']);
-        mysqli_stmt_execute($stmt);
+        $stmt->bindParam(1, $_SESSION['login-username']);
+        $stmt->execute();
         
-        $resultado = mysqli_stmt_get_result($stmt);
         $notificacoes = array();
 
-        while ($notificacao = mysqli_fetch_assoc($resultado)) {
+        while ($notificacao = $stmt->fetch(PDO::FETCH_ASSOC)) {
 
             // Incrementa o número de notificações
             $retorno['qtd']++;
             
             // Quem convidou
-            $convidado_por = join_usuario_comprador_username($conexao, $notificacao['Convidado_Por']);
+            $convidado_por = join_usuario_comprador_username($dbconn, $notificacao['Convidado_Por']);
             $convidado_por_nome = $convidado_por['Nome'];
             $convidado_por_nome = explode(' ', $convidado_por_nome)[0];
             $convidado_por_username = $convidado_por['Usuario'];
 
             // Para qual grupo
-            $grupo = recuperar_grupo($conexao, $notificacao['ID_Grupo']);
+            $grupo = recuperar_grupo($dbconn, $notificacao['ID_Grupo']);
             $nome_grupo = $grupo['Nome'];
 
             // Quando
@@ -77,18 +75,20 @@ function recuperar_notificacoes($conexao) {
 
 
 // Para aceitar um convite
-function aceitar_notificacao($conexao, $id_grupo) {
+function aceitar_notificacao($dbconn, $id_grupo) {
 
     $sql = "UPDATE grupo_usuarios SET Autorizado = 1, Membro_Desde = '".date("Y-m-d H:i:s")."' WHERE ID_Grupo = {$id_grupo} AND Username = '{$_SESSION['login-username']}'";
-    return mysqli_query($conexao, $sql);
+    $stmt = $dbconn->prepare($sql);
+    return $stmt->execute();
 
 }
 
 
 // Para rejeitar um convite
-function rejeitar_notificacao($conexao, $id_grupo) {
+function rejeitar_notificacao($dbconn, $id_grupo) {
  
     $sql = "DELETE FROM grupo_usuarios WHERE ID_Grupo = {$id_grupo} AND Username = '{$_SESSION['login-username']}'";
-    return mysqli_query($conexao, $sql);
+    $stmt = $dbconn->prepare($sql);
+    return $stmt->execute();
     
 }

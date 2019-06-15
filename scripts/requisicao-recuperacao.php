@@ -1,5 +1,6 @@
 <?php
     include $_SERVER['DOCUMENT_ROOT'].'/database/conexao.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/database/dbconnection.php';
 
     // Inicia a sessao
     include $_SERVER['DOCUMENT_ROOT'].'/config/sessao.php';
@@ -33,51 +34,50 @@
 
 
         // Deleta todos os possiveis tokens ainda existentes e relacionados ao e-mail do usuario
-        $query = "DELETE FROM recuperacao_senha WHERE email = ?;";
-        $stmt = mysqli_stmt_init($conexao);
-        if (!mysqli_stmt_prepare($stmt, $query)) {
+        $sql = "DELETE FROM recuperacao_senha WHERE email = ?;";
+        if (!$stmt = $dbconn->prepare($sql)) {
             $_SESSION['danger'] = "Ocorreu um erro ao deletar os tokens pre-existentes.";
             header("Location: ../recuperacao-senha.php");
             die();
         } else {
-            mysqli_stmt_bind_param($stmt, "s", $email_usuario);
-            mysqli_stmt_execute($stmt);
+            $stmt->bindParam(1, $email_usuario);
+            $stmt->execute();
         }
 
 
         // Insere o novo token no banco de dados
-        $query = "INSERT INTO recuperacao_senha (email, seletor, token, expira) VALUES (?, ?, ?, ?);";
-        if (!mysqli_stmt_prepare($stmt, $query)) {
+        $sql = "INSERT INTO recuperacao_senha (email, seletor, token, expira) VALUES (?, ?, ?, ?);";
+        if (!$stmt = $dbconn->prepare($sql)) {
             $_SESSION['danger'] = "Ocorreu um erro na inserção da requisição da senha.";
             header("Location: ../recuperacao-senha.php");
             die();
         } else {
             $hash_token = password_hash($token, PASSWORD_DEFAULT);
-            mysqli_stmt_bind_param($stmt, "ssss", $email_usuario, $seletor, $hash_token, $expira);
-            mysqli_stmt_execute($stmt);
+            $stmt->bindParam(1, $email_usuario);
+            $stmt->bindParam(2, $seletor);
+            $stmt->bindParam(3, $hash_token);
+            $stmt->bindParam(4, $expira);
+            $stmt->execute();
         }
 
 
         // Seleciona o usuario para exibir informações no email
-        $query = "SELECT * FROM compradores WHERE email = ?;";
-        if (!mysqli_stmt_prepare($stmt, $query)) {
+        $sql = "SELECT * FROM compradores WHERE email = ?;";
+        if (!$stmt = $dbconn->prepare($sql)) {
             $_SESSION['danger'] = "Ocorreu um erro ao buscar as informações do usuário.";
             header("Location: ../recuperacao-senha.php");
             die();
         } else {
-            mysqli_stmt_bind_param($stmt, "s", $email_usuario);
-            mysqli_stmt_execute($stmt);
+            $stmt->bindParam(1, $email_usuario);
+            $stmt->execute();
 
-            $resultado = mysqli_stmt_get_result($stmt);
-            $usuario = mysqli_fetch_assoc($resultado);
+            $usuario = $stmt->fetch();
             if ($usuario == null) {
                 $_SESSION['danger'] = "Usuário inexistente.";
                 header("Location: ../recuperacao-senha.php");
                 die();
             }
         }
-        
-        mysqli_stmt_close($stmt);
 
 
         // Envia o e-mail

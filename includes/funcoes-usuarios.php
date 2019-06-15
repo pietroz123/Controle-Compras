@@ -3,64 +3,57 @@
 /******************************* Funcoes usuarios definitivos *******************************/
 
 // Busca pelo email ou username
-function buscar_usuario($conexao, $email_username) {
+function buscar_usuario($dbconn, $email_username) {
 
-    $email_username = mysqli_real_escape_string($conexao, $email_username);
+    $sql = "SELECT * FROM usuarios WHERE usuario = '{$email_username}' OR email = '{$email_username}';";
+    $stmt = $dbconn->prepare($sql);
+    $stmt->execute();
 
-    $query = "SELECT * FROM usuarios WHERE usuario = '{$email_username}' OR email = '{$email_username}';";
-    $resultado = mysqli_query($conexao, $query);
-    $usuario = mysqli_fetch_assoc($resultado);
+    $usuario = $stmt->fetch();
     return $usuario;
 }
 
 // Busca pelo ID
-function buscar_usuario_id($conexao, $id_usuario) {
+function buscar_usuario_id($dbconn, $id_usuario) {
 
-    $id_usuario = mysqli_real_escape_string($conexao, $id_usuario);
-
-    $query = "SELECT * FROM usuarios WHERE id = {$id_usuario};";
-    $resultado = mysqli_query($conexao, $query);
-    $usuario = mysqli_fetch_assoc($resultado);
+    $sql = "SELECT * FROM usuarios WHERE id = {$id_usuario};";
+    $stmt = $dbconn->prepare($sql);
+    $stmt->execute();
+    $usuario = $stmt->fetch();
     return $usuario;
 }
 
-function criar_usuario($conexao, $nome, $username, $email, $senha, $nome_icone) {
+function criar_usuario($dbconn, $nome, $username, $email, $senha, $nome_icone) {
 
-    $nome = mysqli_real_escape_string($conexao, $nome);
 
     // Insere o comprador
-    if (!inserir_comprador($conexao, $nome, $email)) {
-        $_SESSION['danger'] = "Erro ao inserir comprador" . mysqli_error($conexao);
+    if (!inserir_comprador($dbconn, $nome, $email)) {
+        $_SESSION['danger'] = "Erro ao inserir comprador" . $dbconn->errorInfo();
         header("Location: ../index.php");
         die();
     }
 
-    $username = mysqli_real_escape_string($conexao, $username);
-    $email = mysqli_real_escape_string($conexao, $email);
-    $senha = mysqli_real_escape_string($conexao, $senha);
-    $nome_icone = mysqli_real_escape_string($conexao, $nome_icone);
 
     // Insere o usuario
     $hash_senha = password_hash($senha, PASSWORD_DEFAULT);
-    $query = "INSERT INTO usuarios (usuario, email, senha, icone) VALUES ('$username', '$email', '$hash_senha', '$nome_icone');";
-    $resultado = mysqli_query($conexao, $query);
-    return $resultado;
+    $sql = "INSERT INTO usuarios (usuario, email, senha, icone) VALUES ('$username', '$email', '$hash_senha', '$nome_icone');";
+    $stmt = $dbconn->prepare($sql);
+    return $stmt->execute();
 }
 
 // Selecionar tanto as informações da tabela Comprador quanto da tabela Usuário
-function join_usuario_comprador($conexao, $email) {
+function join_usuario_comprador($dbconn, $email) {
     $sql = "SELECT * FROM usuarios JOIN compradores ON usuarios.Email = compradores.Email WHERE usuarios.Email = ?";
-    $stmt = mysqli_stmt_init($conexao);
-    if (!mysqli_stmt_prepare($stmt, $sql)) {
+    
+    if (!$stmt = $dbconn->prepare($sql)) {
         $_SESSION['danger'] = "Ocorreu um erro ao buscar as informações do usuário.";
         header("Location: ../index.php");
         die();
     } else {
-        mysqli_stmt_bind_param($stmt, "s", $email);
-        mysqli_stmt_execute($stmt);
+        $stmt->bindParam(1, $email);
+        $stmt->execute();
 
-        $resultado = mysqli_stmt_get_result($stmt);
-        $usuario = mysqli_fetch_assoc($resultado);
+        $usuario = $stmt->fetch();
         if ($usuario == null) {
             $_SESSION['danger'] = "Usuário inexistente.";
             header("Location: ../index.php");
@@ -71,19 +64,18 @@ function join_usuario_comprador($conexao, $email) {
         }
     }
 }
-function join_usuario_comprador_username($conexao, $username) {
+function join_usuario_comprador_username($dbconn, $username) {
     $sql = "SELECT * FROM usuarios JOIN compradores ON usuarios.Email = compradores.Email WHERE usuarios.Usuario = ?";
-    $stmt = mysqli_stmt_init($conexao);
-    if (!mysqli_stmt_prepare($stmt, $sql)) {
+    
+    if (!$stmt = $dbconn->prepare($sql)) {
         $_SESSION['danger'] = "Ocorreu um erro ao buscar as informações do usuário.";
         header("Location: ../index.php");
         die();
     } else {
-        mysqli_stmt_bind_param($stmt, "s", $username);
-        mysqli_stmt_execute($stmt);
+        $stmt->bindParam(1, $username);
+        $stmt->execute();
 
-        $resultado = mysqli_stmt_get_result($stmt);
-        $usuario = mysqli_fetch_assoc($resultado);
+        $usuario = $stmt->fetch();
         if ($usuario == null) {
             $_SESSION['danger'] = "Usuário inexistente.";
             header("Location: ../index.php");
@@ -96,7 +88,7 @@ function join_usuario_comprador_username($conexao, $username) {
 }
 
 // Seleciona todas as compras dos usuarios que tem os IDs permitidos ORDENADO por Data
-function compras_permitidas($conexao, $username, $email) {
+function compras_permitidas($dbconn, $username, $email) {
     $sql = "SELECT cmp.*, cmpd.Nome AS Nome_Comprador
             FROM compras AS cmp
             JOIN compradores AS cmpd ON cmp.Comprador_ID = cmpd.ID
@@ -125,8 +117,7 @@ function compras_permitidas($conexao, $username, $email) {
             ORDER BY year(data), month(data), day(data);";
     
     $compras = array();
-    $resultado = mysqli_query($conexao, $sql);
-    while ($compra = mysqli_fetch_assoc($resultado)) {
+    while ($compra = $stmt->fetch(PDO::FETCH_ASSOC)) {
         array_push($compras, $compra);
     }
     return $compras;
@@ -181,7 +172,7 @@ function compras_permitidas_like($dbconn, $username, $email, $palavra_chave, $da
 
 /******************************* Funcoes usuarios temporarios *******************************/
 
-function recuperar_usuarios_temp($conexao) {
+function recuperar_usuarios_temp($dbconn) {
 
     $sql = "SELECT u.ID AS ID_Usuario, c.Nome, u.Usuario, u.Email, u.Criado_Em
             FROM usuarios AS u
@@ -189,41 +180,38 @@ function recuperar_usuarios_temp($conexao) {
             ON u.Email = c.Email
             WHERE u.autenticado = 0;";
 
+    $stmt = $dbconn->prepare($sql);
+    $stmt->execute();
+
     $usuarios_temp = array();
-    $resultado = mysqli_query($conexao, $sql);
-    while ($usuario = mysqli_fetch_assoc($resultado)) {
+    while ($usuario = $stmt->fetch(PDO::FETCH_ASSOC)) {
         array_push($usuarios_temp, $usuario);
     }
     return $usuarios_temp;
 
 }
 
-function buscar_usuario_temp($conexao, $id) {
+function buscar_usuario_temp($dbconn, $id) {
 
-    $id = mysqli_real_escape_string($conexao, $id);
-
-    $query = "SELECT * FROM usuarios WHERE id = {$id};";
-    $resultado = mysqli_query($conexao, $query);
-    $usuario = mysqli_fetch_assoc($resultado);
+    $sql = "SELECT * FROM usuarios WHERE id = {$id};";
+    $stmt = $dbconn->prepare($sql);
+    $stmt->execute();
+    $usuario = $stmt->fetch();
     return $usuario;
 }
 
-function adicionar_usuario_definitivo($conexao, $id) {
+function adicionar_usuario_definitivo($dbconn, $id) {
 
-    $id = mysqli_real_escape_string($conexao, $id);
-
-    $query = "UPDATE usuarios SET Autenticado = 1 WHERE id = {$id}";
-    $resultado = mysqli_query($conexao, $query);
-    return $resultado;
+    $sql = "UPDATE usuarios SET Autenticado = 1 WHERE id = {$id}";
+    $stmt = $dbconn->prepare($sql);
+    return $stmt->execute();
 }
 
-function remover_usuario_temp($conexao, $email) {
+function remover_usuario_temp($dbconn, $email) {
 
-    $email = mysqli_real_escape_string($conexao, $email);
-    
     // Remove o usuario (Obs: ON DELETE CASCADE remove na tabela `usuarios` também)
-    $query = "DELETE FROM compradores WHERE Email = '{$email}'";
-    $resultado = mysqli_query($conexao, $query);
-    return $resultado;
+    $sql = "DELETE FROM compradores WHERE Email = '{$email}'";
+    $stmt = $dbconn->prepare($sql);
+    return $stmt->execute();
 
 }

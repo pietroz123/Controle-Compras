@@ -1,6 +1,7 @@
 <?php
     include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes-usuarios.php';
     include $_SERVER['DOCUMENT_ROOT'].'/database/conexao.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/database/dbconnection.php';
     include $_SERVER['DOCUMENT_ROOT'].'/includes/logica-usuarios.php';
 
     verifica_usuario();
@@ -12,7 +13,7 @@
 
         // Recebe o Email da requisicao POST
         $email_usuario_temp = $_POST['email'];
-        if (remover_usuario_temp($conexao, $email_usuario_temp)) {
+        if (remover_usuario_temp($dbconn, $email_usuario_temp)) {
             
             $_SESSION['success'] = "Requisição removida com sucesso.";
             header("Location: ../perfil-usuario.php");

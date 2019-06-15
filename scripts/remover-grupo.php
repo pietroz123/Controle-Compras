@@ -1,10 +1,11 @@
 <?php
 
     include $_SERVER['DOCUMENT_ROOT'].'/database/conexao.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/database/dbconnection.php';
     include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes-grupos.php';
 
     if (isset($_POST['remover_grupo']) && $_POST['remover_grupo'] == "sim") {
-        remover_grupo($conexao, $_POST['id']);
+        remover_grupo($dbconn, $_POST['id']);
         die();
     }
 
@@ -24,7 +25,7 @@
     // Inicia a SESSAO
     include $_SERVER['DOCUMENT_ROOT'].'/config/sessao.php';
 
-    remover_grupo($conexao, $_POST['id']);
+    remover_grupo($dbconn, $_POST['id']);
 
     $_SESSION['success'] = "Grupo removido com sucesso";
     header("Location: ../perfil-usuario.php");

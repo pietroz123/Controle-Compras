@@ -1,6 +1,7 @@
 <?php
     include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes-usuarios.php';
     include $_SERVER['DOCUMENT_ROOT'].'/database/conexao.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/database/dbconnection.php';
     include $_SERVER['DOCUMENT_ROOT'].'/includes/logica-usuarios.php';
 
     verifica_usuario();
@@ -12,7 +13,7 @@
 
         // Recebe o ID da requisicao POST
         $id_usuario_temp = $_POST['id'];
-        if (adicionar_usuario_definitivo($conexao, $id_usuario_temp)) {
+        if (adicionar_usuario_definitivo($dbconn, $id_usuario_temp)) {
             
             $_SESSION['success'] = "Usuário adicionado com sucesso.";
             header("Location: ../perfil-usuario.php");

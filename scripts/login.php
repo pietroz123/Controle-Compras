@@ -3,6 +3,7 @@
     if (isset($_POST['submit-login'])) {
 
         include $_SERVER['DOCUMENT_ROOT'].'/database/conexao.php';
+        include $_SERVER['DOCUMENT_ROOT'].'/database/dbconnection.php';
         include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes-usuarios.php';
         include $_SERVER['DOCUMENT_ROOT'].'/includes/logica-usuarios.php';
         include $_SERVER['DOCUMENT_ROOT'].'/config/sessao.php';
@@ -10,7 +11,7 @@
         $email_nome_usuario = $_POST['autenticacao'];
         $senha_usuario = $_POST['senha'];
     
-        $usuario = buscar_usuario($conexao, $email_nome_usuario);
+        $usuario = buscar_usuario($dbconn, $email_nome_usuario);
         
         if ($usuario == null) {
             $_SESSION['danger'] = "Usuário nao encontrado.";
@@ -27,7 +28,7 @@
                 header("Location: ../index.php");
                 die();
             }
-            $comprador = join_usuario_comprador($conexao, $usuario['Email']);
+            $comprador = join_usuario_comprador($dbconn, $usuario['Email']);
             login($usuario['Email'], $usuario['Usuario'], $comprador['Nome'], $comprador['ID']);
             $_SESSION['success'] = "Logado com sucesso.";
             header("Location: ../index.php");
