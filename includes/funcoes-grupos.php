@@ -40,7 +40,8 @@ function recupera_ids_compradores_grupos($conexao, $username, $email) {
 }
 
 // Seleciona todos os ids dos compradores em um determinado grupo que autorizaram
-function recuperar_compradores($conexao, $id_grupo) {
+function recuperar_compradores($dbconn, $id_grupo) {
+    
     $sql = "SELECT c.ID, c.Nome
             FROM compradores c
             WHERE c.Email IN (
@@ -53,25 +54,31 @@ function recuperar_compradores($conexao, $id_grupo) {
                     AND gu.Autorizado = 1           -- Apenas os que autorizaram
                 )
             )";
+    
+    $stmt = $dbconn->prepare($sql);
+    $stmt->execute();
 
-    $ids_compradores = array();
-    $resultado = mysqli_query($conexao, $sql);
-    while ($id_comprador = mysqli_fetch_assoc($resultado)) {
-        array_push($ids_compradores, $id_comprador);
-    }
-    return $ids_compradores;
+    $ids = array();
+    while ($id = $stmt->fetch(PDO::FETCH_ASSOC))
+        array_push($ids, $id);
+    return $ids;
+
 }
 
 // Recupera o grupo com determinado ID
-function recuperar_grupo($conexao, $id) {
+function recuperar_grupo($dbconn, $id) {
     $sql = "SELECT * FROM grupos WHERE ID = $id";
-    $resultado = mysqli_query($conexao, $sql);
-    $grupo = mysqli_fetch_assoc($resultado);
+    
+    $stmt = $dbconn->prepare($sql);
+    $stmt->execute();
+
+    $grupo = $stmt->fetch();
     return $grupo;
 }
 
 // Recupera todos os grupos aos quais um determinado usuário pertence e autorizou
-function recuperar_grupos($conexao, $usuario) {
+function recuperar_grupos($dbconn, $usuario) {
+
     $sql = "SELECT g.*
             FROM grupos g
             JOIN grupo_usuarios gu
@@ -79,11 +86,12 @@ function recuperar_grupos($conexao, $usuario) {
             WHERE gu.Username = '$usuario'
             AND gu.Autorizado = 1";
     
+    $stmt = $dbconn->prepare($sql);
+    $stmt->execute();
+
     $grupos = array();
-    $resultado = mysqli_query($conexao, $sql);
-    while ($grupo = mysqli_fetch_assoc($resultado)) {
+    while ($grupo = $stmt->fetch(PDO::FETCH_ASSOC))
         array_push($grupos, $grupo);
-    }
     return $grupos;
 }
 

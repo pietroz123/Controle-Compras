@@ -8,19 +8,10 @@
 <?php
     verifica_usuario();
     mostra_alertas();
-
-    // // Recupera todas as informações do usuário
-    // $comprador_usuario = join_usuario_comprador($conexao, $_SESSION['login-email']);
     
     // Recupera todos os grupos do usuário
-    $grupos = recuperar_grupos($conexao, $_SESSION['login-username']);
+    $grupos = recuperar_grupos($dbconn, $_SESSION['login-username']);
     
-    // // Recupera todos os IDs dos compradores em todos os grupos do usuário
-    // $ids_compradores = recupera_ids_compradores_grupos($conexao, $_SESSION['login-username'], $_SESSION['login-email']);
-
-    // // Recupera as compras que o usuário pode visualizar
-    // $compras_permitidas = compras_permitidas($conexao, $_SESSION['login-username'], $_SESSION['login-email']);
-
 ?>
 
 <h1 style="text-align: left;" class="titulo-site">Grupos</h1>

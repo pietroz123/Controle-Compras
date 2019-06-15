@@ -127,11 +127,13 @@ function recuperar_compras($conexao, $id_comprador) {
             JOIN compradores cmpd ON cmp.Comprador_ID = cmpd.ID
             WHERE cmpd.ID = $id_comprador
             ORDER BY year(data), month(data), day(data)";
-    $resultado = mysqli_query($conexao, $sql);
+    
+    $stmt = $conexao->prepare($sql);
+    $stmt->execute();
+
     $compras = array();
-    while ($compra = mysqli_fetch_assoc($resultado)) {
+    while ($compra = $stmt->fetch(PDO::FETCH_ASSOC))
         array_push($compras, $compra);
-    }
     return $compras;
 }
 

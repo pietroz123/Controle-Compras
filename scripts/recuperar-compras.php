@@ -1,15 +1,20 @@
 <?php
+    include $_SERVER['DOCUMENT_ROOT'].'/database/dbconnection.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes-grupos.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/config/sessao.php';
 
+
+    // =======================================================
     // Caso o usuário deseje visualizar suas próprias compras
+    // =======================================================
+    
     if (isset($_POST['id_comprador'])) {
 
-        include $_SERVER['DOCUMENT_ROOT'].'/database/conexao.php';
-        include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes.php';
-        
         $id_comprador = $_POST['id_comprador'];
 
         // Recupera as compras
-        $compras = recuperar_compras($conexao, $id_comprador);
+        $compras = recuperar_compras($dbconn, $id_comprador);
 
         $retorno = '';
         foreach ($compras as $compra) {
@@ -48,17 +53,18 @@
 
     }
     
+    
+    // =======================================================
     // Caso o usuário deseje visualizar as compras de algum grupo
+    // =======================================================
+    
     if (isset($_POST['id_grupo'])) {
 
-        include $_SERVER['DOCUMENT_ROOT'].'/database/conexao.php';
-        include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes-grupos.php';
-
         $id_grupo = $_POST['id_grupo'];
-        $grupo = recuperar_grupo($conexao, $id_grupo);
+        $grupo = recuperar_grupo($dbconn, $id_grupo);
 
         // Recupera os IDs dos Compradores que estão naquele grupo
-        $ids_compradores = recuperar_compradores($conexao, $id_grupo);
+        $ids_compradores = recuperar_compradores($dbconn, $id_grupo);
         $qtd_compradores = count($ids_compradores);
 
         // Recupera as compras com os IDs dos Compradores
@@ -77,11 +83,12 @@
         }
         $sql .= "ORDER BY year(data), month(data), day(data)";
 
+        $stmt = $dbconn->prepare($sql);
+        $stmt->execute();
+
         $compras = array();
-        $resultado = mysqli_query($conexao, $sql);
-        while ($compra = mysqli_fetch_assoc($resultado)) {
+        while ($compra = $stmt->fetch(PDO::FETCH_ASSOC))
             array_push($compras, $compra);
-        }
 
         $retorno = array();
         $retorno['titulo'] = $grupo['Nome'];
@@ -125,9 +132,6 @@
     // Caso o usuário tenha clicado no gráfico de relatórios para ver as compras de determinado dia
     if (isset($_POST['data_compra'])) {
 
-        include $_SERVER['DOCUMENT_ROOT'].'/database/conexao.php';
-        include $_SERVER['DOCUMENT_ROOT'].'/config/sessao.php';
-
         $data_compra = $_POST['data_compra'];
 
         $email = $_SESSION['login-email'];
@@ -139,6 +143,9 @@
                     FROM compradores co
                     WHERE co.Email = '$email'
                 );";
+
+        $stmt = $dbconn->prepare($sql);
+        $stmt->execute();
 
         $retorno = '';
         $retorno .= '<table class="table table-hover datatable-compras" id="tabela-compras">
@@ -155,8 +162,7 @@
 
             // Preenche com as compras
             $compras = array();
-            $resultado = mysqli_query($conexao, $sql);
-            while ($compra = mysqli_fetch_assoc($resultado)) {
+            while ($compra = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 array_push($compras, $compra);
                 $retorno .= '<tr>
                     <td>'.$compra['Observacoes'].'</td>
