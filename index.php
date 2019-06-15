@@ -69,8 +69,9 @@
                             <?php
                                 // Recupera o número de usuários
                                 $sql = "SELECT * FROM `usuarios`";
-                                $resultado = mysqli_query($conexao, $sql);
-                                $nUsuarios = mysqli_num_rows($resultado); 
+                                $stmt = $dbconn->prepare($sql);
+                                $stmt->execute();
+                                $nUsuarios = $stmt->rowCount(); 
 
                             ?>
                             <article class="cartao-informacao">
@@ -81,8 +82,9 @@
                             <?php
                                 // Recupera o número de compras
                                 $sql = "SELECT * FROM `compras`";
-                                $resultado = mysqli_query($conexao, $sql);
-                                $nCompras = mysqli_num_rows($resultado); 
+                                $stmt = $dbconn->prepare($sql);
+                                $stmt->execute();
+                                $nCompras = $stmt->rowCount(); 
                                 
                             ?>
                             <article class="cartao-informacao">
@@ -93,8 +95,9 @@
                             <?php
                                 // Recupera o número de grupos
                                 $sql = "SELECT * FROM `grupos`";
-                                $resultado = mysqli_query($conexao, $sql);
-                                $nGrupos = mysqli_num_rows($resultado); 
+                                $stmt = $dbconn->prepare($sql);
+                                $stmt->execute();
+                                $nGrupos = $stmt->rowCount(); 
                                 
                             ?>
                             <article class="cartao-informacao">
@@ -105,8 +108,9 @@
                             <?php
                                 // Recupera o número de usuários não autenticados
                                 $sql = "SELECT * FROM `usuarios` WHERE `Autenticado` = 0";
-                                $resultado = mysqli_query($conexao, $sql);
-                                $nRequisicoes = mysqli_num_rows($resultado); 
+                                $stmt = $dbconn->prepare($sql);
+                                $stmt->execute();
+                                $nRequisicoes = $stmt->rowCount(); 
                                 
                             ?>
                             <article class="cartao-informacao">
@@ -142,8 +146,9 @@
                         <?php
                             // Recupera o número de grupos do usuário
                             $sql = "SELECT * FROM grupo_usuarios gu WHERE gu.Username = '{$_SESSION['login-username']}'";
-                            $resultado = mysqli_query($conexao, $sql);
-                            $nGrupos = mysqli_num_rows($resultado); 
+                            $stmt = $dbconn->prepare($sql);
+                            $stmt->execute();
+                            $nGrupos = $stmt->rowCount(); 
                             
                         ?>
                         <article class="cartao-informacao">
@@ -165,8 +170,9 @@
                         <?php
                             // Recupera o número de compras
                             $sql = "SELECT * FROM `compras` WHERE `comprador_id` = {$_SESSION['login-id-comprador']}";
-                            $resultado = mysqli_query($conexao, $sql);
-                            $nCompras = mysqli_num_rows($resultado); 
+                            $stmt = $dbconn->prepare($sql);
+                            $stmt->execute();
+                            $nCompras = $stmt->rowCount(); 
                             
                         ?>
                         <article class="cartao-informacao">
