@@ -1,3 +1,5 @@
+/// <reference path='../lib/jquery/js/jquery-latest.js' />
+/// <reference path='../lib/mdbootstrap/js/datatables.js' />
 
 // =======================================================
 // Função para reinicializar a DataTable
@@ -6,21 +8,7 @@
 function inicializaDataTable() {
     $('#tabela-compras').DataTable({
         "language": {
-            "lengthMenu": "Mostrar _MENU_ itens por página",
-            "zeroRecords": "Nenhum item encontrado - desculpa",
-            "info": "Mostrando página _PAGE_ de _PAGES_",
-            "infoEmpty": "Nenhum item encontrado",
-            "infoFiltered": "(filtrado a partir de _MAX_ itens)",
-            "search": "Buscar:",
-            "emptyTable":     "Nenhum dado disponível na tabela",
-            "loadingRecords": "Carregando...",
-            "processing":     "Processando...",
-            "paginate": {
-                "first":      "Primeiro",
-                "last":       "Último",
-                "next":       "Próximo",
-                "previous":   "Anterior"
-            }
+            "url": "https://cdn.datatables.net/plug-ins/1.10.19/i18n/Portuguese-Brasil.json"
         },
         "order": [[ 1, "desc" ]]    // Ordena por Data
     });
