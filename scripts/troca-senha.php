@@ -43,7 +43,7 @@
         $sql = "SELECT * FROM recuperacao_senha WHERE seletor = ? AND expira >= ?;";
         if (!$stmt = $dbconn->prepare($sql)) {
             $_SESSION['danger'] = "Ocorreu um erro ao verificar os tokens.";
-            header("Location: recuperacao-senha.php");
+            header("Location: ../recuperacao-senha.php");
             die();
         } else {
             $stmt->bindParam(1, $seletor);
@@ -53,7 +53,7 @@
             $entrada = $stmt->fetch();
             if ($entrada == null) {
                 $_SESSION['danger'] = "Não existem entradas para essa requisição. Favor requisitar novamente.";
-                header("Location: recuperacao-senha.php");
+                header("Location: ../recuperacao-senha.php");
                 die();
             } else {
 
@@ -63,7 +63,7 @@
 
                 if ($token_check === false) {
                     $_SESSION['danger'] = "Não foi possível verificar o token. Favor requisitar novamente.";
-                    header("Location: recuperacao-senha.php");
+                    header("Location: ../recuperacao-senha.php");
                     die();
                 } elseif ($token_check === true) {
 
@@ -72,7 +72,7 @@
                     $sql = "SELECT * FROM usuarios WHERE email = ?;";
                     if (!$stmt = $dbconn->prepare($sql)) {
                         $_SESSION['danger'] = "Erro ao preparar a busca pelo usuário.";
-                        header("Location: recuperacao-senha.php");
+                        header("Location: ../recuperacao-senha.php");
                         die();
                     } else {
                         $stmt->bindParam(1, $token_email);
@@ -81,7 +81,7 @@
                         $entrada = $stmt->fetch();
                         if ($entrada == null) {
                             $_SESSION['danger'] = "Não existem entradas com este e-mail.";
-                            header("Location: recuperacao-senha.php");
+                            header("Location: ../recuperacao-senha.php");
                             die();
                         } else {
 
@@ -89,7 +89,7 @@
                             $sql = "UPDATE usuarios SET senha = ? WHERE email = ?;";
                             if (!$stmt = $dbconn->prepare($sql)) {
                                 $_SESSION['danger'] = "Ocorreu um erro ao trocar a senha.";
-                                header("Location: recuperacao-senha.php");
+                                header("Location: ../recuperacao-senha.php");
                                 die();
                             } else {
                                 $hash_nova_senha = password_hash($nova_senha, PASSWORD_DEFAULT);
