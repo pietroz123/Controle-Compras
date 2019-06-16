@@ -26,13 +26,13 @@
         // Verifica se existe algum campo em branco
         if (empty($nova_senha) || empty($nova_senha_rep)) {
             $_SESSION['danger'] = "Existem campos em branco";
-            header("Location: " . $url);
+            header("Location: ../" . $url);
             die();
         }
         // Verifica se as senhas são iguais
         elseif ($nova_senha != $nova_senha_rep) {
             $_SESSION['danger'] = "As senhas não são iguais";
-            header("Location: " . $url);
+            header("Location: ../" . $url);
             die();
         }
 
