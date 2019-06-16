@@ -1,7 +1,6 @@
 <?php
 
 include $_SERVER['DOCUMENT_ROOT'].'/config/sessao.php';
-include $_SERVER['DOCUMENT_ROOT'].'/database/conexao.php';
 include $_SERVER['DOCUMENT_ROOT'].'/database/dbconnection.php';
 
 

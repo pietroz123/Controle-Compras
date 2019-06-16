@@ -5,7 +5,6 @@
     
     if (isset($_POST['submit-alterar'])) {
         
-        include $_SERVER['DOCUMENT_ROOT'].'/database/conexao.php'; 
         include $_SERVER['DOCUMENT_ROOT'].'/database/dbconnection.php'; 
         include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes.php';
 

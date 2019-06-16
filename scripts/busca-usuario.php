@@ -4,10 +4,12 @@
     if (isset($_POST['busca']) && $_POST['busca'] == 'sim') {
 
         include $_SERVER['DOCUMENT_ROOT'].'/config/sessao.php';
-        include $_SERVER['DOCUMENT_ROOT'].'/database/conexao.php';
         include $_SERVER['DOCUMENT_ROOT'].'/database/dbconnection.php';
 
-        $usuario = strip_tags($_POST['texto']);
+        if (isset($_POST['texto']))
+            $usuario = strip_tags($_POST['texto']);
+        else
+            $usuario = '';
         
         /* Busca os usuários no Banco de Dados (menos o próprio usuário) */
 

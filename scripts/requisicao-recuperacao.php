@@ -1,5 +1,4 @@
 <?php
-    include $_SERVER['DOCUMENT_ROOT'].'/database/conexao.php';
     include $_SERVER['DOCUMENT_ROOT'].'/database/dbconnection.php';
 
     // Inicia a sessao

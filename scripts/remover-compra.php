@@ -2,7 +2,6 @@
 
 if (isset($_POST['submit-remover'])) {
 
-    include $_SERVER['DOCUMENT_ROOT'].'/database/conexao.php'; 
     include $_SERVER['DOCUMENT_ROOT'].'/database/dbconnection.php'; 
     include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes.php';
     include $_SERVER['DOCUMENT_ROOT'].'/includes/logica-usuarios.php';
