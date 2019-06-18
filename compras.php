@@ -15,7 +15,7 @@
 ?>
 
 <h1 style="text-align: left;" class="titulo-site">Grupos</h1>
-<div class="mensagem-alerta">
+<div class="alert alert-info">
     <div>Selecione as compras que deseja visualizar:</div>
 </div>
 
@@ -107,7 +107,7 @@
                 <th class="th-sm t-valor">Valor</th>
                 <th class="th-sm t-desconto">Desconto</th>
                 <th class="th-sm t-pagamento">Pagamento</th>
-                <th class="th-sm t-comprador">Comprador</th>
+                <th class="th-sm t-nome">Comprador</th>
             </tr>
         </thead>
     
