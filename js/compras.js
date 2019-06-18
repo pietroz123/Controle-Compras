@@ -53,6 +53,23 @@ $('.link-cartao-grupo').click(function () {
                 "id_grupo": id_grupo
             }
         },
+        "drawCallback": function ( settings ) { // Cria os agrupamentos por Data
+            
+            var api = this.api();
+            var rows = api.rows( {page:'current'} ).nodes();
+            var last=null;            
+
+            api.column(1, {page:'current'} ).data().each(function ( group, i ) {
+
+                if ( last !== group ) {
+                    $(rows).eq( i ).before(
+                        '<tr class="date-group"><td colspan="6" style="background-color: #dadada">'+group+'</td></tr>'
+                    );
+ 
+                    last = group;
+                }
+            });
+        },
         "columns": [
             {
                 "name": "id",
@@ -120,6 +137,23 @@ $('.link-cartao-minhas-compras').click(function () {
             "data": {
                 "todas": "sim"
             }
+        },
+        "drawCallback": function ( settings ) { // Cria os agrupamentos por Data
+            
+            var api = this.api();
+            var rows = api.rows( {page:'current'} ).nodes();
+            var last=null;            
+
+            api.column(1, {page:'current'} ).data().each(function ( group, i ) {
+
+                if ( last !== group ) {
+                    $(rows).eq( i ).before(
+                        '<tr class="date-group"><td colspan="6" style="background-color: #dadada">'+group+'</td></tr>'
+                    );
+ 
+                    last = group;
+                }
+            });
         },
         "columns": [
             {
