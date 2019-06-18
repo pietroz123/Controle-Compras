@@ -68,7 +68,8 @@
         <script src="lib/mdbootstrap/js/bootstrap.js"></script>                                                     <!-- Boostrap -->
         <script src="lib/mdbootstrap/js/mdb.js"></script>                                                           <!-- MDBootstrap -->
         <script src="lib/mdbootstrap/js/datatables.js"></script>                                                    <!-- MDBootstrap / Datatables -->
-        <script src="lib/select2/js/select2.js"></script>                                                            <!-- Select2 -->
+        <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>         <!-- Datatables Responsive -->
+        <script src="lib/select2/js/select2.js"></script>                                                           <!-- Select2 -->
         <script src="lib/jquery-mask/js/jquery.mask.js"></script>                                                   <!-- JQuery Masks -->
         <script src="lib/bootstrap-confirmation/js/bootstrap-confirmation.js"></script>                             <!-- Boostrap Confirmation -->
         <script src="lib/cropper/js/cropper.js"></script>                                                           <!-- Cropper -->
@@ -79,7 +80,7 @@
         <script src="lib/code-prettify/js/lang/lang-sql.js"></script>                                               <!-- Code Prettify / SQL -->
         <script src="lib/amcharts-v4/core.js"></script>                                                             <!-- AmCharts -->
         <script src="lib/amcharts-v4/charts.js"></script>
-        <script src="lib/amcharts-v4/themes/animated.js"></script>
+        <script src="lib/amcharts-v4/themes/animated.js"></script>                                                  <!-- Main -->
 
         <script src="js/main.js"></script>
 

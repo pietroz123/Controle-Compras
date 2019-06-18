@@ -1,7 +1,7 @@
 
-.t-detalhes {
+/* .t-detalhes {
     display: none;
-}
+} */
 .t-id {
     display: none;
 }
@@ -56,7 +56,7 @@
     .formulario-recuperacao-senha {
         width: 100%;
     }
-    .t-id, .t-valor, .t-desconto, .t-pagamento, .t-comprador, .t-alterar, .t-remover, .t-imagem {
+    /* .t-id, .t-valor, .t-desconto, .t-pagamento, .t-comprador, .t-alterar, .t-remover, .t-imagem {
         display: none;
     }
     .t-detalhes {
@@ -64,7 +64,7 @@
     }
     .t-username-usuario, .t-email-usuario {
         display: none;
-    }
+    } */
     .cartao-usuario {
         width: 100%;
     }
@@ -139,30 +139,30 @@
     #btn-login {
         margin-right: 0px;
     }
-    #tabela-compras {
+    /* #tabela-compras {
         margin-left: -5%;
-    }
+    } */
 }
 
 @media only screen and (max-width: 900px) and (min-width: 768px) {
-    .t-desconto, .t-pagamento {
+    /* .t-desconto, .t-pagamento {
         display: none;
-    }
-    #tabela-compras {
+    } */
+    /* #tabela-compras {
         margin-left: -6%;
-    }
+    } */
 }
 
 @media only screen and (max-width: 1024px) and (min-width: 900px) {
-    #tabela-compras {
+    /* #tabela-compras {
         margin-left: -3%;
-    }
+    } */
 }
 
 @media only screen and (max-width: 1160px) {
-    .t-id {
+    /* .t-id {
         display: none;
-    }
+    } */
 }
 
 
@@ -217,4 +217,50 @@
 	.table-grupos td:nth-of-type(2):before { content: "Data de Criação"; }
 	.table-grupos td:nth-of-type(3):before { content: "Número de Membros"; }
 	.table-grupos td:nth-of-type(4):before { content: "Membros"; }
+}
+
+
+/* =======================================================
+   Responsive DataTables
+   ======================================================= */
+
+li .dtr-title {
+    float: left;
+}
+
+li .dtr-data {
+    float: right;
+}
+
+.dtr-details li {
+    text-align: left;
+    clear: both;
+}
+
+.dtr-details {
+    width: 100%;
+}
+
+table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>td:first-child:before, table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>th:first-child:before {
+    top: 26px;
+    left: 5px;
+    height: 14px;
+    width: 14px;
+    display: block;
+    position: absolute;
+    color: white;
+    border: 2px solid white;
+    border-radius: 14px;
+    box-shadow: 0 0 3px #444;
+    box-sizing: content-box;
+    text-align: center;
+    text-indent: 0 !important;
+    font-family: 'Courier New', Courier, monospace;
+    line-height: 14px;
+    content: '+';
+    background-color: #31b131;
+}
+
+table.dataTable>tbody>tr.child ul.dtr-details>li {
+    border: none;
 }

@@ -18,20 +18,21 @@
         <meta http-equiv="content-language" content="pt-br">
         
         <!-- CSSs -->
-        <link type="text/css" href="lib/mdbootstrap/css/bootstrap.css" rel="stylesheet">                                            <!-- Bootstrap -->
-        <link type="text/css" href="lib/mdbootstrap/css/mdb.css" rel="stylesheet">                                                  <!-- MDBootstrap -->
-        <link type="text/css" href="lib/mdbootstrap/css/datatables.css" rel="stylesheet">                                           <!-- MDBootstrap / Datatables -->
-        <link type="text/css" href="lib/awesomplete/css/awesomplete.css" rel="stylesheet">                                          <!-- Awesomplete -->
-        <link type="text/css" href="lib/select2/css/select2.css" rel="stylesheet">                                                  <!-- Select2 -->
-        <link type="text/css" href="lib/misc/css/bounce-arrow.css" rel="stylesheet">                                                <!-- Bounce-Arrow -->
-        <link type="text/css" href="lib/cropper/css/cropper.css" rel="stylesheet">                                                  <!-- Cropper -->
-        <link type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css" rel="stylesheet">        <!-- Toastr -->
-        <link type="text/css" href="lib/air-datepicker/css/datepicker.css" rel="stylesheet">                                        <!-- Air Datepicker -->
-        <link type="text/css" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet">                        <!-- JQuery UI -->
-        <link type="text/css" href="lib/font-awesome-animation/css/font-awesome-animation.css" rel="stylesheet">                    <!-- Font Awesome Animation -->
+        <link type="text/css" href="lib/mdbootstrap/css/bootstrap.css" rel="stylesheet">                                                <!-- Bootstrap -->
+        <link type="text/css" href="lib/mdbootstrap/css/mdb.css" rel="stylesheet">                                                      <!-- MDBootstrap -->
+        <link type="text/css" href="lib/mdbootstrap/css/datatables.css" rel="stylesheet">                                               <!-- MDBootstrap / Datatables -->
+        <link type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">    <!-- Datatables Responsive -->
+        <link type="text/css" href="lib/awesomplete/css/awesomplete.css" rel="stylesheet">                                              <!-- Awesomplete -->
+        <link type="text/css" href="lib/select2/css/select2.css" rel="stylesheet">                                                      <!-- Select2 -->
+        <link type="text/css" href="lib/misc/css/bounce-arrow.css" rel="stylesheet">                                                    <!-- Bounce-Arrow -->
+        <link type="text/css" href="lib/cropper/css/cropper.css" rel="stylesheet">                                                      <!-- Cropper -->
+        <link type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css" rel="stylesheet">            <!-- Toastr -->
+        <link type="text/css" href="lib/air-datepicker/css/datepicker.css" rel="stylesheet">                                            <!-- Air Datepicker -->
+        <link type="text/css" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet">                            <!-- JQuery UI -->
+        <link type="text/css" href="lib/font-awesome-animation/css/font-awesome-animation.css" rel="stylesheet">                        <!-- Font Awesome Animation -->
         
-        <link type="text/css" href="css/compras.css" rel="stylesheet">                                                              <!-- CSS Site -->
-        <link type="text/css" href="css/design-responsivo.css" rel="stylesheet">                                                    <!-- Design Responsivo Site -->
+        <link type="text/css" href="css/compras.css" rel="stylesheet">                                                                  <!-- CSS Site -->
+        <link type="text/css" href="css/design-responsivo.css" rel="stylesheet">                                                        <!-- Design Responsivo Site -->
         
         <!-- Viewport -->
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">

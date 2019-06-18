@@ -478,14 +478,12 @@ body::-webkit-scrollbar-thumb:hover {
    =================== TABELA DE COMPRAS ====================
    ========================================================== */
 
-#tabela-compras {
-    line-height: 1.2;
+.dataTables_wrapper {
     text-align: left;
 }
 
-.bs-select,
-.dataTables_info {
-    text-align: left;
+table#tabela-compras {
+    width: 100% !important;
 }
 
 

@@ -108,32 +108,12 @@
                 <th class="th-sm t-desconto">Desconto</th>
                 <th class="th-sm t-pagamento">Pagamento</th>
                 <th class="th-sm t-comprador">Comprador</th>
-                <th class="t-imagem">Imagem</th>
-                <th class="th-sm t-alterar">Alterar</th>
-                <th class="th-sm t-remover">Remover</th>
-                <th class="th-sm t-detalhes">Detalhes</th> 
             </tr>
         </thead>
     
         <tbody id="compras-datatable">
             <!-- Preenchido ao clicar nas compras desejadas -->
         </tbody>
-    
-        <tfoot>
-            <tr>
-                <th class="t-id">ID</th>
-                <th class="t-data">Data</th>
-                <th class="t-observacoes">Observacoes</th>
-                <th class="t-valor">Valor</th>
-                <th class="t-desconto">Desconto</th>
-                <th class="t-pagamento">Pagamento</th>
-                <th class="t-comprador">Comprador</th>
-                <th class="t-imagem">Imagem</th>
-                <th class="t-alterar">Alterar</th>
-                <th class="t-remover">Remover</th>
-                <th class="t-detalhes">Detalhes</th>            
-            </tr>
-        </tfoot>
     
     </table>
 <!-- </div> -->
@@ -154,87 +134,4 @@
 
 
 <?php include $_SERVER['DOCUMENT_ROOT'].'/rodape.php'; ?>
-<script src="js/tabela-compras.js"></script>
-
-<script>
-
-
-    // =======================================================
-    // Manipulacao de tabelas em tabela-compras.js
-    // =======================================================
-
-
-    // ======================================================================================================================================
-    // ==================================== AO CLICAR EM UM GRUPO, RECUPERA AS COMPRAS DAQUELE GRUPO ========================================
-    // ======================================================================================================================================
-
-    $('.link-cartao-grupo').click(function () {
-        var id_grupo = $(this).attr('id-grupo');
-
-        $.ajax({
-            url: "scripts/recuperar-compras.php",
-            method: "post",
-            data: {
-                id_grupo: id_grupo
-            },
-            dataType: "json",
-            success: function(retorno) {               
-
-                // Limpa e destrói a tabela
-                $("#tabela-compras").DataTable().clear().destroy();
-
-                // Preenche a tabela com as compras do grupo
-                $('#compras-datatable').html(retorno.html);
-                $('#titulo-compras').text(retorno.titulo);
-                
-                // Reinicializa a datatable
-                inicializaDataTable();
-
-                // Scroll até a tabela de compras
-                $('html, body').animate({
-                    scrollTop: $('#tabela-compras').offset().top - 120
-                }, 1000);
-            }
-        });
-        
-    });
-
-
-    // ======================================================================================================================================
-    // ================================== AO CLICAR EM MINHAS COMPRAS, RECUPERA AS COMPRAS DAQUELE COMPRADOR ================================
-    // ======================================================================================================================================
-
-    $('.link-cartao-minhas-compras').click(function () {
-        var id_comprador = $(this).attr('id-comprador');
-
-        $.ajax({
-            url: "scripts/recuperar-compras.php",
-            method: "post",
-            data: {
-                id_comprador: id_comprador
-            },
-            success: function(retorno) {                
-
-                // Limpa e destrói a tabela
-                $("#tabela-compras").DataTable().clear().destroy();
-
-                // Preenche a tabela com as compras do grupo
-                $('#compras-datatable').html(retorno);
-                $('#titulo-compras').text("Minhas Compras");
-                
-                // Reinicializa a datatable
-                inicializaDataTable();
-
-                // Scroll até a tabela de compras
-                $('html, body').animate({
-                    scrollTop: $('#tabela-compras').offset().top - 120
-                }, 1000);
-            }
-        });
-        
-    });
-
-
-
-
-</script>
+<script src="js/compras.js"></script>
