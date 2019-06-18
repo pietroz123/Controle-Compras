@@ -21,7 +21,7 @@
         <link type="text/css" href="lib/mdbootstrap/css/bootstrap.css" rel="stylesheet">                                                <!-- Bootstrap -->
         <link type="text/css" href="lib/mdbootstrap/css/mdb.css" rel="stylesheet">                                                      <!-- MDBootstrap -->
         <link type="text/css" href="lib/mdbootstrap/css/datatables.css" rel="stylesheet">                                               <!-- MDBootstrap / Datatables -->
-        <link type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">    <!-- Datatables Responsive -->
+        <link type="text/css" href="lib/mdbootstrap/css/datatables-responsive.css" rel="stylesheet">                                    <!-- Datatables Responsive -->
         <link type="text/css" href="lib/awesomplete/css/awesomplete.css" rel="stylesheet">                                              <!-- Awesomplete -->
         <link type="text/css" href="lib/select2/css/select2.css" rel="stylesheet">                                                      <!-- Select2 -->
         <link type="text/css" href="lib/misc/css/bounce-arrow.css" rel="stylesheet">                                                    <!-- Bounce-Arrow -->
