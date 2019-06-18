@@ -64,7 +64,8 @@ $('.link-cartao-grupo').click(function () {
             },
             {
                 "name": "observacoes",                
-                "className": "t-observacoes"
+                "className": "t-observacoes",
+                "width": "50%"
             },
             {
                 "name": "valor",
@@ -131,7 +132,8 @@ $('.link-cartao-minhas-compras').click(function () {
             },
             {
                 "name": "observacoes",                
-                "className": "t-observacoes"
+                "className": "t-observacoes",
+                "width": "50%"
             },
             {
                 "name": "valor",
