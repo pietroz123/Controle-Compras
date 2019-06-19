@@ -73,7 +73,8 @@ $('.link-cartao-grupo').click(function () {
         "columns": [
             {
                 "name": "observacoes",                
-                "className": "t-observacoes"
+                "className": "t-observacoes",
+                "width": "50%"
             },
             {
                 "name": "data",
@@ -157,7 +158,8 @@ $('.link-cartao-minhas-compras').click(function () {
         "columns": [
             {
                 "name": "observacoes",                
-                "className": "t-observacoes"
+                "className": "t-observacoes",
+                "width": "50%"
             },
             {
                 "name": "data",
