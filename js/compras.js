@@ -72,17 +72,16 @@ $('.link-cartao-grupo').click(function () {
         },
         "columns": [
             {
-                "name": "id",
-                "className": "t-id"
+                "name": "observacoes",                
+                "className": "t-observacoes"
             },
             {
                 "name": "data",
                 "className": "t-data"
             },
             {
-                "name": "observacoes",                
-                "className": "t-observacoes",
-                "width": "50%"
+                "name": "id",
+                "className": "t-id"
             },
             {
                 "name": "valor",
@@ -157,17 +156,16 @@ $('.link-cartao-minhas-compras').click(function () {
         },
         "columns": [
             {
-                "name": "id",
-                "className": "t-id"
+                "name": "observacoes",                
+                "className": "t-observacoes"
             },
             {
                 "name": "data",
                 "className": "t-data"
             },
             {
-                "name": "observacoes",                
-                "className": "t-observacoes",
-                "width": "50%"
+                "name": "id",
+                "className": "t-id"
             },
             {
                 "name": "valor",

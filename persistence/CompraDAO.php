@@ -175,9 +175,9 @@ class CompraDAO {
         foreach ($compras as $compra) {
 
             $json .= '[
-                        "'.$compra['Id'].'",
-                        "'.$compra['Data'].'",
                         "'.$compra['Observacoes'].'",
+                        "'.$compra['Data'].'",
+                        "'.$compra['Id'].'",
                         "'.$compra['Valor'].'",
                         "'.$compra['Desconto'].'",
                         "'.$compra['Forma_Pagamento'].'",
@@ -352,9 +352,9 @@ class CompraDAO {
         foreach ($compras as $compra) {
 
             $json .= '[
-                        "'.$compra['Id'].'",
-                        "'.$compra['Data'].'",
                         "'.$compra['Observacoes'].'",
+                        "'.$compra['Data'].'",
+                        "'.$compra['Id'].'",
                         "'.$compra['Valor'].'",
                         "'.$compra['Desconto'].'",
                         "'.$compra['Forma_Pagamento'].'",

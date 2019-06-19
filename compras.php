@@ -101,9 +101,9 @@
     
         <thead class="thead-dark">
             <tr>
-                <th class="th-sm t-id">ID</th>
-                <th class="th-sm t-data">Data</th>
                 <th class="th-sm t-observacoes">Observacoes</th>
+                <th class="th-sm t-data">Data</th>
+                <th class="th-sm t-id">ID</th>
                 <th class="th-sm t-valor">Valor</th>
                 <th class="th-sm t-desconto">Desconto</th>
                 <th class="th-sm t-pagamento">Pagamento</th>

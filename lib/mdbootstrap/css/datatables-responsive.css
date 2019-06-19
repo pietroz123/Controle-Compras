@@ -10,15 +10,15 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>td.dataTables_empty:before {
     display: none !important
 }
 
-table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>td:nth-child(2),
-table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>th:nth-child(2) {
+table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>td:first-child,
+table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>th:first-child {
     position: relative;
     padding-left: 30px;
     cursor: pointer
 }
 
-table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>td:nth-child(2):before,
-table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>th:nth-child(2):before {
+table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>td:first-child:before,
+table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>th:first-child:before {
     top: 20px;
     left: 6px;
     height: 14px;
@@ -38,19 +38,19 @@ table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>th:nth-child(2):before
     background-color: #31b131
 }
 
-table.dataTable.dtr-inline.collapsed>tbody>tr.parent>td:nth-child(2):before,
-table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th:nth-child(2):before {
+table.dataTable.dtr-inline.collapsed>tbody>tr.parent>td:first-child:before,
+table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th:first-child:before {
     content: '-';
     background-color: #d33333
 }
 
-table.dataTable.dtr-inline.collapsed.compact>tbody>tr>td:nth-child(2),
-table.dataTable.dtr-inline.collapsed.compact>tbody>tr>th:nth-child(2) {
+table.dataTable.dtr-inline.collapsed.compact>tbody>tr>td:first-child,
+table.dataTable.dtr-inline.collapsed.compact>tbody>tr>th:first-child {
     padding-left: 27px
 }
 
-table.dataTable.dtr-inline.collapsed.compact>tbody>tr>td:nth-child(2):before,
-table.dataTable.dtr-inline.collapsed.compact>tbody>tr>th:nth-child(2):before {
+table.dataTable.dtr-inline.collapsed.compact>tbody>tr>td:first-child:before,
+table.dataTable.dtr-inline.collapsed.compact>tbody>tr>th:first-child:before {
     top: 5px;
     left: 4px;
     height: 14px;
@@ -115,7 +115,7 @@ table.dataTable>tbody>tr.child ul.dtr-details>li {
     padding: 0.5em 0
 }
 
-table.dataTable>tbody>tr.child ul.dtr-details>li:nth-child(2) {
+table.dataTable>tbody>tr.child ul.dtr-details>li:first-child {
     padding-top: 0
 }
 
