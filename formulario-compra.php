@@ -15,7 +15,7 @@
         <h1 class="titulo-site">Formulário de Adição de Compra</h1>
 
         <!-- Formulario compra -->
-        <form action="adiciona-compra.php" method="post" enctype="multipart/form-data" id="formulario-compra" class="grey lighten-3 p-4 p-sm-5">        
+        <form action="adiciona-compra.php" method="post" enctype="multipart/form-data" id="formulario-compra" class="">        
             
             <div class="grid">
 
