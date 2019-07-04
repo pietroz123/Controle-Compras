@@ -17,6 +17,57 @@ function inicializaDataTable() {
     });
 }
 
+// Criar a DataTable
+function criarDataTable(requisicao) {
+
+    // Limpa e destrói a tabela
+    $("#tabela-compras").DataTable().clear().destroy();
+
+    // Constrói a tabela
+    $('#tabela-compras').DataTable({
+        "language": {
+            "url": "https://cdn.datatables.net/plug-ins/1.10.19/i18n/Portuguese-Brasil.json"
+        },
+        "processing": true,
+        "serverSide": true,
+        "ajax": {
+            "url": 'scripts/recuperar-compras.php',
+            "type": 'POST',
+            "data": {
+                requisicao
+            }
+        },
+        "drawCallback": function ( settings ) { // Cria os agrupamentos por Data
+            
+            var api = this.api();
+            var rows = api.rows( {page:'current'} ).nodes();
+            var last=null;            
+
+            api.column(1, {page:'current'} ).data().each(function ( group, i ) {
+
+                if ( last !== group ) {
+                    $(rows).eq( i ).before(
+                        '<tr class="date-group"><td colspan="6" style="background-color: #dadada">'+group+'</td></tr>'
+                    );
+ 
+                    last = group;
+                }
+            });
+        },
+        "columns": [
+            { "name": "observacoes", "className": "t-observacoes", "width": "50%" },
+            { "name": "data", "className": "t-data" },
+            { "name": "id", "className": "t-id" },
+            { "name": "valor", "className": "t-valor" },
+            { "name": "desconto", "className": "t-desconto" },
+            { "name": "forma_pagamento", "className": "t-forma" },
+            { "name": "nome_comprador", "className": "t-nome" }
+        ],
+        "order": [[ 1, "desc" ]]    // Ordena por Data
+    });
+
+}
+
 
 // =======================================================
 // Inicializa a tabela de dados
@@ -54,75 +105,16 @@ $(document).on('change', '#ordenacao-data', function() {
 // ======================================================================================================================================
 
 $('.link-cartao-grupo').click(function () {
+
+    // Recupera o ID do grupo
     var id_grupo = $(this).attr('id-grupo');
 
-    // Limpa e destrói a tabela
-    $("#tabela-compras").DataTable().clear().destroy();
+    let requisicao = {
+        "id_grupo": id_grupo
+    };
 
-    // Constrói a tabela
-    $('#tabela-compras').DataTable({
-        "language": {
-            "url": "https://cdn.datatables.net/plug-ins/1.10.19/i18n/Portuguese-Brasil.json"
-        },
-        "processing": true,
-        "serverSide": true,
-        "ajax": {
-            "url": 'scripts/recuperar-compras.php',
-            "type": 'POST',
-            "data": {
-                "id_grupo": id_grupo
-            }
-        },
-        "drawCallback": function ( settings ) { // Cria os agrupamentos por Data
-            
-            var api = this.api();
-            var rows = api.rows( {page:'current'} ).nodes();
-            var last=null;            
-
-            api.column(1, {page:'current'} ).data().each(function ( group, i ) {
-
-                if ( last !== group ) {
-                    $(rows).eq( i ).before(
-                        '<tr class="date-group"><td colspan="6" style="background-color: #dadada">'+group+'</td></tr>'
-                    );
- 
-                    last = group;
-                }
-            });
-        },
-        "columns": [
-            {
-                "name": "observacoes",                
-                "className": "t-observacoes",
-                "width": "50%"
-            },
-            {
-                "name": "data",
-                "className": "t-data"
-            },
-            {
-                "name": "id",
-                "className": "t-id"
-            },
-            {
-                "name": "valor",
-                "className": "t-valor"
-            },
-            {
-                "name": "desconto",
-                "className": "t-desconto"
-            },
-            {
-                "name": "forma_pagamento",
-                "className": "t-forma"
-            },
-            {
-                "name": "nome_comprador",
-                "className": "t-nome"
-            }
-        ],
-        "order": [[ 1, "desc" ]]    // Ordena por Data
-    });
+    // Cria a tabela correspondente
+    criarDataTable(requisicao);
 
     // Atualiza na view
     $('#titulo-compras').text($(this).find('.cg-nome').text());
@@ -141,73 +133,12 @@ $('.link-cartao-grupo').click(function () {
 
 $('.link-cartao-minhas-compras').click(function () {
 
-    // Limpa e destrói a tabela
-    $("#tabela-compras").DataTable().clear().destroy();
+    let requisicao = {
+        "todas": "sim"
+    };
 
-    // Constrói a tabela
-    $('#tabela-compras').DataTable({
-        "language": {
-            "url": "https://cdn.datatables.net/plug-ins/1.10.19/i18n/Portuguese-Brasil.json"
-        },
-        "processing": true,
-        "serverSide": true,
-        "ajax": {
-            "url": 'scripts/recuperar-compras.php',
-            "type": 'POST',
-            "data": {
-                "todas": "sim"
-            }
-        },
-        "drawCallback": function ( settings ) { // Cria os agrupamentos por Data
-            
-            var api = this.api();
-            var rows = api.rows( {page:'current'} ).nodes();
-            var last=null;            
-
-            api.column(1, {page:'current'} ).data().each(function ( group, i ) {
-
-                if ( last !== group ) {
-                    $(rows).eq( i ).before(
-                        '<tr class="date-group"><td colspan="6" style="background-color: #dadada">'+group+'</td></tr>'
-                    );
- 
-                    last = group;
-                }
-            });
-        },
-        "columns": [
-            {
-                "name": "observacoes",                
-                "className": "t-observacoes",
-                "width": "50%"
-            },
-            {
-                "name": "data",
-                "className": "t-data"
-            },
-            {
-                "name": "id",
-                "className": "t-id"
-            },
-            {
-                "name": "valor",
-                "className": "t-valor"
-            },
-            {
-                "name": "desconto",
-                "className": "t-desconto"
-            },
-            {
-                "name": "forma_pagamento",
-                "className": "t-forma"
-            },
-            {
-                "name": "nome_comprador",
-                "className": "t-nome"
-            }
-        ],
-        "order": [[ 1, "desc" ]]    // Ordena por Data
-    });
+    // Cria a tabela correspondente
+    criarDataTable(requisicao);
 
     // Atualiza na view
     $('#titulo-compras').text("Minhas Compras");

@@ -12,7 +12,7 @@
     // Recuperar todas as compras do usuário
     // =======================================================
 
-    if ( isset($_POST['todas']) && $_POST['todas'] = 'sim' ) {
+    if ( isset($_POST['requisicao']['todas']) && $_POST['requisicao']['todas'] = 'sim' ) {
 
         $cdao = new CompraDAO();
         $json = $cdao->recuperarComprasUsuarioJSON($dbconn, $_SESSION['login-id-comprador'], $_POST);
@@ -26,9 +26,9 @@
     // Recuperar todas as compras de um grupo
     // =======================================================
 
-    if ( isset($_POST['id_grupo']) ) {
+    if ( isset($_POST['requisicao']['id_grupo']) ) {
 
-        $id_grupo = $_POST['id_grupo'];
+        $id_grupo = $_POST['requisicao']['id_grupo'];
 
         $cdao = new CompraDAO();
         $json = $cdao->recuperarComprasGrupoJSON($dbconn, $id_grupo, $_POST);
