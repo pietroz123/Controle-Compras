@@ -492,6 +492,10 @@ table#tabela-compras {
     cursor: pointer;
 }
 
+#ordenacao-data {
+    width: auto;
+}
+
 
 /* ==========================================================
    ==================== PERFIL USUÁRIO ======================

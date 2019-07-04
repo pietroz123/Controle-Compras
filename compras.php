@@ -110,6 +110,15 @@
                 <th class="th-sm t-nome">Comprador</th>
             </tr>
         </thead>
+
+        <!-- Para ordenação da data -->
+        <label>
+            Data
+            <select name="ordenacao-data" id="ordenacao-data" class="custom-select custom-select-sm form-control form-control-sm">
+                <option>mais recente</option>
+                <option>mais antiga</option>
+            </select>
+        </label>
     
         <tbody id="compras-datatable">
             <!-- Preenchido ao clicar nas compras desejadas -->

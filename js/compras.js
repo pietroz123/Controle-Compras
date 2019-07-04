@@ -28,6 +28,26 @@ $(document).ready(function () {
 });
 
 
+// =======================================================
+// FILTRO DA DATA (compras mais recentes e mais antigas)
+// =======================================================
+
+$(document).on('change', '#ordenacao-data', function() {
+
+    let data = $(this).children("option:selected").text();
+    
+    if (data == "mais recente")
+        $("#tabela-compras").DataTable()
+            .order( [[ 1, 'desc' ]] )
+            .draw();
+    else 
+        // mais antiga
+        $("#tabela-compras").DataTable()
+            .order( [[ 1, 'asc' ]] )
+            .draw();
+    
+});
+
 
 // ======================================================================================================================================
 // ==================================== AO CLICAR EM UM GRUPO, RECUPERA AS COMPRAS DAQUELE GRUPO ========================================
