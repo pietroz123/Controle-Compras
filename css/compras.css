@@ -11,20 +11,19 @@
 @import url('https://fonts.googleapis.com/css?family=Lato');
 @import url('https://fonts.googleapis.com/css?family=Lora');
 @import url('https://fonts.googleapis.com/css?family=Courgette');
-@import url('https://fonts.googleapis.com/css?family=Patua+One');
 @import url('https://fonts.googleapis.com/css?family=Lobster');
 @import url('https://fonts.googleapis.com/css?family=Markazi+Text');
 @import url('https://fonts.googleapis.com/css?family=Bitter');
 @import url('https://fonts.googleapis.com/css?family=Bree+Serif');
 @import url('https://fonts.googleapis.com/css?family=Playfair+Display');
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,600');
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,500');
 
 
 body {
 
-    /* font-family: 'Roboto Slab', serif !important; */
+    /* font-family: 'Open Sans', serif !important; */
     /* font-family: 'Slabo 27px', serif !important; */
     /* font-family: 'Oswald', sans-serif !important; */
     /* font-family: 'Merienda', cursive !important; */
@@ -77,7 +76,7 @@ pre {
    ========================================================== */
 
 body {
-    background-color: #fafafa;
+    background-color: white;
 }
 .conteudo-principal {
     padding-top: 50px;
@@ -104,7 +103,7 @@ body h1 {
 .conteudo-principal {
     grid-area: main;
     text-align: center;
-    font-family: 'Roboto Slab', serif;
+    font-family: 'Open Sans', sans-serif !important;
 }
 #container-principal {
     min-height: 100vh;
@@ -250,7 +249,7 @@ body::-webkit-scrollbar-thumb:hover {
     padding: 15px;
 }
 .ui-autocomplete {
-    font-family: 'Roboto Slab', serif;
+    font-family: 'Open Sans', serif;
     font-size: 90%;
 }
 
@@ -278,7 +277,7 @@ body::-webkit-scrollbar-thumb:hover {
    ========================================================== */
 
 .footer {
-    font-family: 'Roboto Slab', serif;
+    font-family: 'Open Sans', serif;
     background-color: #222;
 }
 
@@ -290,7 +289,7 @@ body::-webkit-scrollbar-thumb:hover {
 
 .footer-nav-item {
     color: white;
-    font-family: 'Roboto Slab', serif;
+    font-family: 'Open Sans', serif;
     font-size: 16px !important;
 }
 .footer-nav-item:hover {
@@ -330,7 +329,7 @@ body::-webkit-scrollbar-thumb:hover {
    ========================================================== */
 
 #barra-navegacao {
-    font-family: 'Roboto Slab', serif;
+    font-family: 'Open Sans', serif;
     min-height: 80px;
 }
 
@@ -414,7 +413,7 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .modal-body, .modal-footer {
-    font-family: 'Roboto Slab', serif;
+    font-family: 'Open Sans', serif;
 }
 
 
@@ -484,6 +483,10 @@ body::-webkit-scrollbar-thumb:hover {
 
 table#tabela-compras {
     width: 100% !important;
+}
+
+table#tabela-compras td, th {
+    font-weight: 600 !important;
 }
 
 #compras-datatable tr:not(.date-group):hover {
@@ -640,6 +643,7 @@ p.texto-dados {
 }
 .cg-nome {
     border-bottom: 3px solid red;
+    font-weight: 600 !important;
 }
 .small-bold {
     font-size: 12px;
