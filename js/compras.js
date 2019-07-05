@@ -54,6 +54,9 @@ function criarDataTable(requisicao) {
                 }
             });
         },
+        createdRow: function (row, data, index) {
+            $(row).addClass('tr-compra');
+        },
         "columns": [
             { "name": "observacoes", "className": "t-observacoes", "width": "50%" },
             { "name": "data", "className": "t-data" },
@@ -61,7 +64,8 @@ function criarDataTable(requisicao) {
             { "name": "valor", "className": "t-valor" },
             { "name": "desconto", "className": "t-desconto" },
             { "name": "forma_pagamento", "className": "t-forma" },
-            { "name": "nome_comprador", "className": "t-nome" }
+            { "name": "nome_comprador", "className": "t-nome" },
+            { "name": "editar", "className": "t-editar" }
         ],
         "order": [[ 1, "desc" ]]    // Ordena por Data
     });
@@ -156,7 +160,7 @@ $('.link-cartao-minhas-compras').click(function () {
 // =======================================================
 
 $(document).on('click', '.btn-detalhes', function() {
-    var id_compra = $(this).attr("id");        
+    var id_compra = $(this).attr("id-compra");        
 
     $.ajax({
         url: "modal-detalhes-produto.php",

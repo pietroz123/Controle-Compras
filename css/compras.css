@@ -126,7 +126,7 @@ input {
 input:hover {
     cursor: pointer;
 }
-button:not(.close):not(.btn-notificacao):not(.navbar-toggler), .botao {
+button:not(.close):not(.btn-notificacao):not(.navbar-toggler):not(.btn-detalhes), .botao {
     font-family: 'Oswald', sans-serif;
     font-weight: bold;
     letter-spacing: 1.2px;
@@ -489,7 +489,7 @@ table#tabela-compras td, th {
     font-weight: 600 !important;
 }
 
-#compras-datatable tr:not(.date-group):hover {
+#compras-datatable .tr-compra:hover {
     background-color: #3f51b5;
     color: white;
     cursor: pointer;
@@ -497,6 +497,27 @@ table#tabela-compras td, th {
 
 #ordenacao-data {
     width: auto;
+}
+
+.btn-detalhes {
+    border: 2px solid lightgrey;
+    border-radius: 15px;
+}
+.btn-detalhes:focus { outline:0; }
+/* Efeito de Float */
+.btn-detalhes {
+    -webkit-transition:all .3s ease-out;
+    -moz-transition:all .3s ease-out;
+    -ms-transition:all .3s ease-out;
+    -o-transition:all .3s ease-out;
+    transition:all .3s ease-out;
+}
+.btn-detalhes:hover {
+    -webkit-transform:translate(0px,-2px);
+    -moz-transform:translate(0px,-2px);
+    -ms-transform:translate(0px,-2px);
+    -o-transform:translate(0px,-2px);
+    transform:translate(0px,-2px);
 }
 
 

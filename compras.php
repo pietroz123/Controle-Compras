@@ -108,6 +108,7 @@
                 <th class="th-sm t-desconto">Desconto</th>
                 <th class="th-sm t-pagamento">Pagamento</th>
                 <th class="th-sm t-nome">Comprador</th>
+                <th class="th-sm t-editar">Editar</th>
             </tr>
         </thead>
 
@@ -129,7 +130,7 @@
 
 <!-- Modal para detalhes da Compra -->
 <div class="modal" id="modal-detalhes-compra">
-    <div class="modal-dialog" id="detalhes-compra">
+    <div class="modal-dialog modal-lg" id="detalhes-compra">
         <!-- Preenchido com AJAX (JS) -->
     </div>
 </div>

@@ -25,7 +25,7 @@
                 <div class="col-9"><input class="form-control" type="date" name="data" id="data-compra" value="<?= $compra['Data'] ?>" readonly></div>
             </div>
             <div class="row">
-                <div class="col-3">Obs.</div>
+                <div class="col-3">Observação</div>
                 <div class="col-9"><input class="form-control" type="text" name="observacoes" id="observacoes-compra" value="<?= $compra['Observacoes'] ?>" readonly></div>
             </div>
             <div class="row">
@@ -61,7 +61,7 @@
         </form>
         <form action="scripts/remover-compra.php" method="post">
             <input type="hidden" name="id" value="<?= $compra['Id'] ?>">
-            <button class="btn btn-danger" style="float: right;"  onclick="return confirm('Deseja prosseguir com a remoção?');">remover</button>
+            <button class="btn btn-danger" style="float: right;" name="submit-remover" onclick="return confirm('Deseja prosseguir com a remoção?');">remover</button>
         </form>
     </div>
 </div>
