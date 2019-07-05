@@ -163,7 +163,7 @@ $(document).on('click', '.btn-detalhes', function() {
     var id_compra = $(this).attr("id-compra");        
 
     $.ajax({
-        url: "modal-detalhes-produto.php",
+        url: "modal-detalhes-compra.php",
         method: "post",
         data: {
             id_compra: id_compra

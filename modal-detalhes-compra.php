@@ -11,7 +11,7 @@
 
 <div class="modal-content">
     <div class="modal-header">
-        <h2>Informações</h2>
+        <h3>Informações</h3>
         <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
     </div>
     <div class="modal-body">

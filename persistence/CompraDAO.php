@@ -355,6 +355,9 @@ class CompraDAO {
         $i = 1;
         foreach ($compras as $compra) {
 
+            // Cria o botão de edição
+            $btnEdit = "<button type='button' id-compra='".$compra['Id']."' class='btn-detalhes'><i class='fas fa-edit'></i></button>";
+
             $json .= '[
                         "'.$compra['Observacoes'].'",
                         "'.$compra['Data'].'",
@@ -362,7 +365,8 @@ class CompraDAO {
                         "'.$compra['Valor'].'",
                         "'.$compra['Desconto'].'",
                         "'.$compra['Forma_Pagamento'].'",
-                        "'.$compra['Nome_Comprador'].'"
+                        "'.$compra['Nome_Comprador'].'",
+                        "'.$btnEdit.'"
                     ]';
             if ($i < $total)
                 $json .= ',';
