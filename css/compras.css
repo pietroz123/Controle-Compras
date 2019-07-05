@@ -419,6 +419,9 @@ body::-webkit-scrollbar-thumb:hover {
 #detalhes-compra, #detalhes-compra input {
     font-size: 14px !important;
 }
+div#detalhes-compra .col-3 {
+    font-weight: 600;
+}
 
 
 /* =======================================================
