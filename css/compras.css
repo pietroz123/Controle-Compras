@@ -16,7 +16,7 @@
 @import url('https://fonts.googleapis.com/css?family=Bitter');
 @import url('https://fonts.googleapis.com/css?family=Bree+Serif');
 @import url('https://fonts.googleapis.com/css?family=Playfair+Display');
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,600');
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,500');
 
@@ -493,13 +493,16 @@ table#tabela-compras {
 }
 
 table#tabela-compras td, th {
-    font-weight: 600 !important;
+    font-weight: 600;
 }
 
 #compras-datatable .tr-compra:hover {
     background-color: #3f51b5;
     color: white;
-    cursor: pointer;
+}
+
+.date-group td {
+    font-weight: 700 !important;
 }
 
 #ordenacao-data {
