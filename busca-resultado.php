@@ -126,12 +126,12 @@
 
 
     <?php include $_SERVER['DOCUMENT_ROOT'].'/rodape.php'; ?>
-    <script src="js/tabela-compras.js"></script>
+    <script src="js/compras.js"></script>
 
     <script>
 
         // =======================================================
-        // Manipulacao de tabelas em tabela-compras.js
+        // Manipulacao de tabelas em compras.js
         // =======================================================
 
     </script>
