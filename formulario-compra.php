@@ -140,6 +140,7 @@
                     <div class="col-lg">
                         <label for="select-comprador" class="font-small font-weight-bold">Comprador</label>
                         <select class="form-control" name="comprador-id" id="select-comprador" required>
+                            <option></option>
                             <?php
                                 foreach ($ids_compradores as $ids_comprador) {
                                     $comprador = buscar_comprador($dbconn, $ids_comprador['Comprador_ID']);
