@@ -180,6 +180,7 @@
         // SELECTS
         // =======================================================
 
+        // Formato da opção de categoria
         function formatCat (cat) {
             if (!cat.id) {
                 return cat.text;
@@ -190,13 +191,18 @@
                 '<span><img src="' + baseUrl + '/' + cat.text.toLowerCase() + '.png" class="img-cat float-right" /> ' + cat.text + '</span>'
             );
             return $cat;
-        };
+        }
 
+        // Inicializações
         $('#select-categorias').select2({
             placeholder: "Categorias",
             templateResult: formatCat
         });
+        $('#select-subcategorias').select2({
+            placeholder: "Selecione uma categoria"
+        });
 
+        // Ao mudar a categoria, preenche as subcategorias
         $('#select-categorias').change(function() {
             var cat = $(this).val();
             console.log(cat);
