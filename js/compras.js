@@ -55,7 +55,29 @@ function criarDataTable(requisicao) {
             });
         },
         createdRow: function (row, data, index) {
+
+            let forma_pagamento = data[5];
+            var span = document.createElement('span');
+            span.className = "badge no-shadow badge-pill badge-light forma_pagamento";
+            
+            switch (forma_pagamento) {
+                case 'cartao':
+                    span.textContent = "cartão";
+                    break;
+                case 'boleto':
+                    span.textContent = "boleto";
+                    break;
+                case 'dinheiro':
+                    span.textContent = "dinheiro";
+                    break;
+            
+                default:
+                    break;
+            }
+
+            $(row).children("td:nth-child(6)").html(span);
             $(row).addClass('tr-compra');
+
         },
         "columns": [
             { "name": "observacoes", "className": "t-observacoes", "width": "50%" },
