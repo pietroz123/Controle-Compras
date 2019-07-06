@@ -93,7 +93,7 @@
                     </form>
                 </td>
                 <td class="t-detalhes">
-                    <button type="button" id="<?= $compra['Id'] ?>" class="btn btn-info botao-pequeno btn-detalhes">detalhes</button>
+                    <button type="button" id="<?= $compra['Id'] ?>" class="btn btn-info botao-pequeno btn-simples">detalhes</button>
                 </td>
             </tr>
 

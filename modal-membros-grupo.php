@@ -127,7 +127,7 @@
                         // Caso o usuário logado seja o Admin do grupo, permite a remoção dos membros
                         if (isAdmin($dbconn, $grupo['ID'], $_POST['username']) && $membro['Usuario'] != $_POST['username']) {
                     ?>
-                            <td class="text-right"><button class="btn black botao-pequeno btn-remover-membro" id-grupo="<?= $grupo['ID']; ?>" username-usuario="<?= $_POST['username']; ?>" username-membro="<?= $membro['Usuario']; ?>" data-toggle="confirmation" data-singleton="true"><i class="fas fa-times"></i></button></td>
+                            <td class="text-right"><button class="btn-simples btn-remover-membro" id-grupo="<?= $grupo['ID']; ?>" username-usuario="<?= $_POST['username']; ?>" username-membro="<?= $membro['Usuario']; ?>" data-toggle="confirmation" data-singleton="true"><i class="fas fa-times"></i></button></td>
                     <?php
                         }
                     ?>
@@ -162,7 +162,7 @@
                     </div>
                     <div class="row">
                         <div class="col-sm">
-                            <button class="btn stylish-color btn-block btn-adicionar-membros" id-grupo="<?= $grupo['ID']; ?>" username-usuario="<?= $_POST['username']; ?>">adicionar</button>
+                            <button class="botao rounded mb-0 p-2 text-uppercase btn-block btn-adicionar-membros" id-grupo="<?= $grupo['ID']; ?>" username-usuario="<?= $_POST['username']; ?>">adicionar</button>
                         </div>
                     </div>
                 </div>

@@ -181,7 +181,7 @@ $('.link-cartao-minhas-compras').click(function () {
 // Preenche o modal-detalhes-compra utilizando AJAX
 // =======================================================
 
-$(document).on('click', '.btn-detalhes', function() {
+$(document).on('click', '.btn-simples', function() {
     var id_compra = $(this).attr("id-compra");        
 
     $.ajax({

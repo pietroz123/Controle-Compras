@@ -126,15 +126,15 @@ input {
 input:hover {
     cursor: pointer;
 }
-button:not(.close):not(.btn-notificacao):not(.navbar-toggler):not(.btn-detalhes), .botao {
+button:not(.close):not(.btn-notificacao):not(.navbar-toggler):not(.btn-simples), .botao {
     font-family: 'Oswald', sans-serif;
     font-weight: bold;
     letter-spacing: 1.2px;
     border: 2px solid lightgrey;
     border-radius: 15px;
 }
-.btn-remover-membro {
-    border-radius: 50% !important;
+.botao:hover {
+    opacity: 0.8;
 }
 input[type="radio"]:checked+label {font-weight:bold;}
 
@@ -156,6 +156,26 @@ input[type="radio"]:checked+label {font-weight:bold;}
     line-height: 1.42857;
 }
 
+.btn-simples {
+    border: 2px solid lightgrey;
+    border-radius: 15px;
+}
+.btn-simples:focus { outline:0; }
+/* Efeito de Float */
+.btn-simples {
+    -webkit-transition:all .3s ease-out;
+    -moz-transition:all .3s ease-out;
+    -ms-transition:all .3s ease-out;
+    -o-transition:all .3s ease-out;
+    transition:all .3s ease-out;
+}
+.btn-simples:hover {
+    -webkit-transform:translate(0px,-2px);
+    -moz-transform:translate(0px,-2px);
+    -ms-transform:translate(0px,-2px);
+    -o-transform:translate(0px,-2px);
+    transform:translate(0px,-2px);
+}
 
 /* Alertas */
 .alert {
@@ -518,27 +538,6 @@ table#tabela-compras td, th {
 }
 
 .t-observacoes:focus { outline:0; }
-
-.btn-detalhes {
-    border: 2px solid lightgrey;
-    border-radius: 15px;
-}
-.btn-detalhes:focus { outline:0; }
-/* Efeito de Float */
-.btn-detalhes {
-    -webkit-transition:all .3s ease-out;
-    -moz-transition:all .3s ease-out;
-    -ms-transition:all .3s ease-out;
-    -o-transition:all .3s ease-out;
-    transition:all .3s ease-out;
-}
-.btn-detalhes:hover {
-    -webkit-transform:translate(0px,-2px);
-    -moz-transform:translate(0px,-2px);
-    -ms-transform:translate(0px,-2px);
-    -o-transform:translate(0px,-2px);
-    transform:translate(0px,-2px);
-}
 
 .forma_pagamento {
     text-transform: uppercase;
