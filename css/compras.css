@@ -121,7 +121,7 @@ body h1 {
 
 /* Inputs e Buttons */
 input {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 input:hover {
     cursor: pointer;
@@ -258,6 +258,9 @@ body::-webkit-scrollbar-thumb:hover {
 .select2-container--default .select2-selection--multiple .select2-selection__rendered {
     margin-top: -2px;
     padding-left: 15px;
+}
+.select2-container {
+    width: 100% !important;
 }
 
 #input-obs {
@@ -460,8 +463,17 @@ div#detalhes-compra .col-3 {
     margin-right: 10px;
 }
 
-#formulario-compra {
-    
+.not-valid {
+    outline: 0 !important;
+    border: 2px solid red !important;
+}
+.valid {
+    outline: 0 !important;
+    border: 2px solid var(--success) !important;
+}
+.erro {
+    color: red;
+    font-family: 'Bitter', serif !important;
 }
 
 

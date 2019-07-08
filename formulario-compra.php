@@ -25,7 +25,7 @@
                 <div class="row">
                     <div class="col-lg">
                         <label for="input-obs" class="font-small font-weight-bold">Observações</label>
-                        <input type="text" list="observacoes" id="input-obs" name="observacoes" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Digite o nome do produto">                        
+                        <input type="text" list="observacoes" id="input-obs" name="observacoes" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Digite o nome do produto">
                     </div>
                 </div>
 
@@ -33,7 +33,7 @@
 
                 <div class="row">
                     <div class="col-lg">
-                        <label for="input-obs" class="font-small font-weight-bold">Categorias</label>
+                        <label for="select-categorias" class="font-small font-weight-bold">Categorias</label>
                         <select name="categoria" id="select-categorias" class="form-control" style="width: 100%;">
                             <option></option>
                             <?php
@@ -43,7 +43,7 @@
                         </select>
                     </div>
                     <div class="col-lg mt-2 mt-md-0">
-                        <label for="input-obs" class="font-small font-weight-bold">Subcategorias</label>
+                        <label for="select-subcategorias" class="font-small font-weight-bold">Subcategorias</label>
                         <select name="subcategorias[]" id="select-subcategorias" class="form-control" style="width: 100%;">
                             
                         </select>
@@ -165,3 +165,4 @@
 
 <?php include $_SERVER['DOCUMENT_ROOT'].'/rodape.php'; ?>
 <script src="js/formulario.js"></script>
+<script src="js/formulario-validacao.js"></script>

@@ -27,7 +27,8 @@ $(document).ready(function() {
     // Inicializações
     $('#select-categorias').select2({
         placeholder: "Categorias",
-        templateResult: formatCat
+        templateResult: formatCat,
+        allowClear: true
     });
     $('#select-subcategorias').select2({
         placeholder: "Selecione uma categoria"
