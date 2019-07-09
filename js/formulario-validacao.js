@@ -95,7 +95,7 @@ $(document).ready(function() {
     });
 
     // =======================================================
-    // Validação do INPUT de Categorias
+    // Validação do INPUT de Categorias e Comprador
     // =======================================================
     
     $('#select-categorias, #select-comprador').change(function() {
@@ -119,10 +119,10 @@ $(document).ready(function() {
     });
 
     // =======================================================
-    // Validação do INPUT de Valor
+    // Validação do INPUT de Valor e Desconto
     // =======================================================
 
-    $('#input-valor').keyup(function() {
+    $('#input-valor, #input-desconto').keyup(function() {
 
         if ($(this).val() != "") {
         

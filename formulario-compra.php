@@ -68,7 +68,7 @@
                     </div>
                     <div class="col-lg">
                         <label for="input-desconto" class="font-small font-weight-bold">Desconto</label>
-                        <input id="input-desconto" class="form-control" type="number" name="desconto" min="0" step="0.01" value="0" required>
+                        <input id="input-desconto" class="form-control" type="tel" name="desconto" min="0" step="0.01" value="0" required>
                     </div>
                 </div>
 
