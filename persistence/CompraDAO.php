@@ -240,44 +240,67 @@ class CompraDAO {
      */
     function recuperarComprasBuscaJSON($dbconn, $palavra_chave, $data_range, $id_comprador, $post) {
 
-        // Separa o intervalo de datas em data de início e fim
+        /**
+         * Separa o intervalo de datas em data de início e fim
+         * 
+         * OBS: As datas utilizam uma flag que indica se o usuário selecionou apenas um dia (1),
+         * ou dois dias, formando assim um intervalo (2), ou nenhuma data (0)
+         */
         $datas = $data_range;
         if (!empty($datas)) {
+
             $datas = explode(' - ', $datas);
-            $data_inicio = implode('-', array_reverse(explode('/', $datas[0])));
-            $data_fim    = implode('-', array_reverse(explode('/', $datas[1])));
+            if (count($datas) == 1) {
+                $data_inicio = implode('-', array_reverse(explode('/', $datas[0])));
+                $data_fim = '';
+                $flag_data = 1;
+            }
+            else {
+                $data_inicio = implode('-', array_reverse(explode('/', $datas[0])));
+                $data_fim    = implode('-', array_reverse(explode('/', $datas[1])));
+                $flag_data = 2;
+            }
+
         }
         else {
             $data_inicio = '';
             $data_fim    = '';
+            $flag_data = 0;
         }
+
 
         /**
          * Variáveis de ajuda
          */
-        $mainSQL = function($palavra_chave, $data_inicio, $data_fim, $id_comprador) {
+        $mainSQL = "SELECT c.*, cmpd.Nome AS Nome_Comprador 
+        FROM compras AS c 
+        JOIN compradores AS cmpd ON c.Comprador_ID = cmpd.ID 
+        WHERE observacoes LIKE '%{$palavra_chave}%' ";
+        
+        // Verifica se tem um intervalo de datas
+        if (!empty($data_range)) {
 
-            $sql = "SELECT c.*, cmpd.Nome AS Nome_Comprador 
-            FROM compras AS c 
-            JOIN compradores AS cmpd ON c.Comprador_ID = cmpd.ID 
-            WHERE observacoes LIKE '%{$palavra_chave}%' ";
-            
-            // Verifica se tem um intervalo de datas
-            if (!empty($data_inicio) && !empty($data_fim))
-                $sql .= "AND data >= '{$data_inicio}' AND data <= '{$data_fim}' ";
+            switch ($flag_data) {
+                case 1:
+                    $mainSQL .= "AND data = '{$data_inicio}'"; 
+                    break;
                 
-            $sql .= "AND Comprador_ID = {$id_comprador} ";
+                case 2:
+                    $mainSQL .= "AND data >= '{$data_inicio}' AND data <= '{$data_fim}' ";
+                    break;
+            }
 
-            return $sql;
-
-        };
+        }
+            
+        // Preenche com o ID do comprador
+        $mainSQL .= "AND Comprador_ID = {$id_comprador} ";
 
 
         /**
          * Sem nenhum filtro (todas as compras)
          */
 
-        $sql = $mainSQL($palavra_chave, $data_inicio, $data_fim, $id_comprador);
+        $sql = $mainSQL;
 
 
         $stmt = $dbconn->prepare($sql);
@@ -293,7 +316,7 @@ class CompraDAO {
          * COM LIMIT
          */
 
-        $sql = $mainSQL($palavra_chave, $data_inicio, $data_fim, $id_comprador);
+        $sql = $mainSQL;
         
 
         // Preenche a SQL de acordo com as variáveis do DataTable Server Side
@@ -310,7 +333,7 @@ class CompraDAO {
          * SEM LIMIT (mas com filtros)
          */
 
-        $sql = $mainSQL($palavra_chave, $data_inicio, $data_fim, $id_comprador);
+        $sql = $mainSQL;
 
 
         // =======================================================
@@ -358,72 +381,75 @@ class CompraDAO {
         include $_SERVER['DOCUMENT_ROOT'].'/config/sessao.php';
         include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes-usuarios.php';
 
-        // Separa o intervalo de datas em data de início e fim
+        /**
+         * Separa o intervalo de datas em data de início e fim
+         * 
+         * OBS: As datas utilizam uma flag que indica se o usuário selecionou apenas um dia (1),
+         * ou dois dias, formando assim um intervalo (2), ou nenhuma data (0)
+         */
         $datas = $data_range;
         if (!empty($datas)) {
+
             $datas = explode(' - ', $datas);
-            $data_inicio = implode('-', array_reverse(explode('/', $datas[0])));
-            $data_fim    = implode('-', array_reverse(explode('/', $datas[1])));
+            if (count($datas) == 1) {
+                $data_inicio = implode('-', array_reverse(explode('/', $datas[0])));
+                $data_fim = '';
+                $flag_data = 1;
+            }
+            else {
+                $data_inicio = implode('-', array_reverse(explode('/', $datas[0])));
+                $data_fim    = implode('-', array_reverse(explode('/', $datas[1])));
+                $flag_data = 2;
+            }
+
         }
         else {
             $data_inicio = '';
             $data_fim    = '';
+            $flag_data = 0;
         }
+
 
         /**
          * Variáveis da Sessão
          */
-        $username   = $_SESSION['login-username'];
-        $email      = $_SESSION['login-email'];
+        $username       = $_SESSION['login-username'];
+        $email          = $_SESSION['login-email'];
+        $id             = $_SESSION['login-id-comprador'];
+        $ids_permitidos = compradores_permitidos($dbconn, $username, $id);
 
 
         /**
          * Variáveis de ajuda
          */
-        $mainSQL = function($username, $email, $palavra_chave, $data_inicio, $data_fim) {
+        // Recupera todas as compras daqueles usuários a partir de seus IDs de comprador
+        $mainSQL = "SELECT c.*, cmpd.Nome as Nome_Comprador
+        FROM compras c
+        
+        -- Precisamos também do nome do comprador
+        JOIN compradores cmpd on c.Comprador_ID = cmpd.ID
+        
+        WHERE c.Comprador_ID IN (";
+        
+        foreach ($ids_permitidos as $id_permitido) {
+            $mainSQL .= $id_permitido['ID'];
+            if ($id_permitido != end($ids_permitidos))
+                $mainSQL .= ',';
+        }
+        
+        $mainSQL .= ")
+        AND c.Observacoes LIKE '%{$palavra_chave}%' ";
 
-            $sql = "SELECT c.*, cmpd.Nome AS Nome_Comprador
-            FROM compras AS c
-            JOIN compradores AS cmpd ON c.Comprador_ID = cmpd.ID
-            WHERE cmpd.ID IN (
-                SELECT DISTINCT c.Comprador_ID
-                FROM compras AS c
-                JOIN compradores AS cmpd ON c.Comprador_ID = cmpd.ID
-                WHERE c.Comprador_ID IN (
-                    SELECT DISTINCT c.ID AS Comprador_ID
-                    FROM grupo_usuarios gu
-                    JOIN usuarios u on gu.Username = u.Usuario
-                    JOIN compradores c on u.Email = c.Email
-                    WHERE gu.ID_Grupo IN (
-                        SELECT gu.ID_Grupo
-                        FROM grupo_usuarios gu
-                        JOIN usuarios u on gu.Username = u.Usuario
-                        WHERE u.Usuario = '$username'
-                    )
-                ) OR c.Comprador_ID IN (
-                    SELECT compradores.ID
-                    FROM usuarios
-                    JOIN compradores ON usuarios.Email = compradores.Email
-                    WHERE usuarios.Email = '$email'
-                )
-            )
-            AND c.Observacoes LIKE '%{$palavra_chave}%'";
-
-            // Caso tenha sido selecionado um range de datas
-            if (!empty($data_inicio) && !empty($data_fim))
-                $sql .= "AND data >= '{$data_inicio}' AND data <= '{$data_fim}'";
-
-            return $sql;
-
-        };
+        // Caso tenha sido selecionado um range de datas
+        if (!empty($data_inicio) && !empty($data_fim))
+            $mainSQL .= "AND data >= '{$data_inicio}' AND data <= '{$data_fim}'";
 
 
         /**
          * Sem nenhum filtro (todas as compras)
          */
 
-        $sql = $mainSQL($username, $email, $palavra_chave, $data_inicio, $data_fim);
-
+        $sql = $mainSQL;
 
         $stmt = $dbconn->prepare($sql);
         $stmt->execute();
@@ -438,7 +464,7 @@ class CompraDAO {
          * COM LIMIT
          */
 
-        $sql = $mainSQL($username, $email, $palavra_chave, $data_inicio, $data_fim);
+        $sql = $mainSQL;
         
 
         // Preenche a SQL de acordo com as variáveis do DataTable Server Side
@@ -455,7 +481,7 @@ class CompraDAO {
          * SEM LIMIT (mas com filtros)
          */
 
-        $sql = $mainSQL($username, $email, $palavra_chave, $data_inicio, $data_fim);
+        $sql = $mainSQL;
 
 
         // =======================================================

@@ -124,7 +124,8 @@
             maxDate: new Date(),
             autoClose: true,
             position: 'bottom center',
-            todayButton: true
+            todayButton: true,
+            clearButton: true
         });
 
 
@@ -229,6 +230,11 @@
                 },
                 "order": [[ 1, "desc" ]]    // Ordena por Data
             });
+
+            // Scroll até a tabela de compras
+            $('html, body').animate({
+                scrollTop: $('#tabela-compras').offset().top - 120
+            }, 1000);
 
         });
 

@@ -123,50 +123,55 @@ function compras_permitidas($dbconn, $username, $email) {
     return $compras;
 }
 
-function compras_permitidas_like($dbconn, $username, $email, $palavra_chave, $dataInicio, $dataFim) {
 
-    $sql = "SELECT cmp.*, cmpd.Nome AS Nome_Comprador
-            FROM compras AS cmp
-            JOIN compradores AS cmpd ON cmp.Comprador_ID = cmpd.ID
-            WHERE cmpd.ID IN (
-                SELECT DISTINCT cmp.Comprador_ID
-                FROM compras AS cmp
-                JOIN compradores AS cmpd ON cmp.Comprador_ID = cmpd.ID
-                WHERE cmp.Comprador_ID IN (
-                    SELECT DISTINCT c.ID AS Comprador_ID
-                    FROM grupo_usuarios gu
-                    JOIN usuarios u on gu.Username = u.Usuario
-                    JOIN compradores c on u.Email = c.Email
-                    WHERE gu.ID_Grupo IN (
-                        SELECT gu.ID_Grupo
-                        FROM grupo_usuarios gu
-                        JOIN usuarios u on gu.Username = u.Usuario
-                        WHERE u.Usuario = '$username'
-                    )
-                ) OR cmp.Comprador_ID IN (
-                    SELECT compradores.ID
-                    FROM usuarios
-                    JOIN compradores ON usuarios.Email = compradores.Email
-                    WHERE usuarios.Email = '$email'
-                )
+/**
+ * Recupera os IDs dos compradores que estão nos mesmos grupos em que o usuário logado está
+ * 
+ * @param PDO       $dbconn: Conexão com o BD
+ * @param string    $usuario: Username do usuário logado
+ * 
+ * @return array    $ids: Vetor de IDS dos compradores
+ */
+function compradores_permitidos($dbconn, $usuario_logado, $id_logado) {
+
+    // Recupera todos os IDs daqueles usuários a partir de seus emails
+    $sql = "SELECT cp.ID
+    FROM compradores cp
+    WHERE cp.Email IN (
+
+        -- Recupera todos os e-mails daqueles usuários a partir de seus usernames
+        SELECT u.Email
+        FROM usuarios u
+        WHERE u.Usuario IN (
+
+            -- Recupera todos os usuários que estão nos grupos em que o usuário logado está E autorizaram
+            SELECT DISTINCT gu.Username
+            FROM grupo_usuarios gu
+            WHERE gu.ID_Grupo IN (
+
+                -- Recupera todos os grupos que um usuário está E autorizou
+                SELECT gu.ID_Grupo
+                FROM grupo_usuarios gu
+                WHERE gu.Username = '$usuario_logado' AND gu.Autorizado = TRUE
+
             )
-            AND cmp.Observacoes LIKE '%".$palavra_chave."%'";
+            AND gu.Username <> '$usuario_logado' AND gu.Autorizado = TRUE
 
-    // Caso tenha sido selecionado um range de datas
-    if (!empty($dataInicio) && !empty($dataFim))
-        $sql .= "AND data >= '{$dataInicio}' AND data <= '{$dataFim}'";
-        
-    // Completa a SQL com ordenação
-    $sql .= "ORDER BY year(data), month(data), day(data) DESC;";
+        )
+
+    )
+    OR cp.ID = $id_logado";
+
 
     $stmt = $dbconn->prepare($sql);
     $stmt->execute();
     
-    $compras = array();
-    while ($compra = $stmt->fetch(PDO::FETCH_ASSOC)) {
-        array_push($compras, $compra);
+    $ids = array();
+    while ($id = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        array_push($ids, $id);
     }
-    return $compras;
+    return $ids;
+    
 }
 
 
