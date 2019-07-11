@@ -37,6 +37,32 @@
         
     }
 
+
+    // =======================================================
+    // Recuperar as compras da página de Busca
+    // =======================================================
+
+    if (isset($_POST['buscar_compras']) && $_POST['buscar_compras'] == "sim") {
+
+        // Recupera os dados da requisição
+        $palavra_chave  = $_POST['palavra_chave'];
+        $data_range     = $_POST['data_range'];
+        $id_comprador   = $_POST['id_comprador'];
+
+        $cdao = new CompraDAO();
+
+        // Verifica se o usuário selecionou 'Todos'
+        if ($id_comprador == 0)
+            $json = $cdao->recuperarComprasPermitidas($dbconn, $palavra_chave, $data_range, $_POST);
+        // Ou um comprador específico
+        else
+            $json = $cdao->recuperarComprasBusca($dbconn, $palavra_chave, $data_range, $id_comprador, $_POST);
+        
+        echo $json;
+
+    }
+
+
     // =======================================================
     // Recuperar as compras de determinado dia
     // =======================================================
