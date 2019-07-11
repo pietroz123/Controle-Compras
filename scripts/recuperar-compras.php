@@ -53,10 +53,10 @@
 
         // Verifica se o usuário selecionou 'Todos'
         if ($id_comprador == 0)
-            $json = $cdao->recuperarComprasPermitidas($dbconn, $palavra_chave, $data_range, $_POST);
+            $json = $cdao->recuperarComprasPermitidasJSON($dbconn, $palavra_chave, $data_range, $_POST);
         // Ou um comprador específico
         else
-            $json = $cdao->recuperarComprasBusca($dbconn, $palavra_chave, $data_range, $id_comprador, $_POST);
+            $json = $cdao->recuperarComprasBuscaJSON($dbconn, $palavra_chave, $data_range, $id_comprador, $_POST);
         
         echo $json;
 

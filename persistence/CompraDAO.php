@@ -238,7 +238,7 @@ class CompraDAO {
      * @param int       $id_comprador   : ID do Comprador da requisição
      * @param array     $post           : Requisição POST com todo o cabeçalho do DataTables ServerSide
      */
-    function recuperarComprasBusca($dbconn, $palavra_chave, $data_range, $id_comprador, $post) {
+    function recuperarComprasBuscaJSON($dbconn, $palavra_chave, $data_range, $id_comprador, $post) {
 
         // Separa o intervalo de datas em data de início e fim
         $datas = $data_range;
@@ -353,7 +353,7 @@ class CompraDAO {
      * @param int       $id_comprador   : ID do Comprador da requisição
      * @param array     $post           : Requisição POST com todo o cabeçalho do DataTables ServerSide
      */
-    function recuperarComprasPermitidas($dbconn, $palavra_chave, $data_range, $post) {
+    function recuperarComprasPermitidasJSON($dbconn, $palavra_chave, $data_range, $post) {
 
         include $_SERVER['DOCUMENT_ROOT'].'/config/sessao.php';
         include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes-usuarios.php';
