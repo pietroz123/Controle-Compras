@@ -52,13 +52,24 @@ class CompraDAO {
     function recuperarComprasUsuarioJSON($dbconn, $id_usuario, $post) {
 
         /**
+         * Variáveis de ajuda
+         */
+        $mainSQL = function($id_usuario) {
+
+            $sql = "SELECT c.*, cmpd.Nome AS Nome_Comprador
+            FROM compras c
+            JOIN compradores cmpd ON c.Comprador_ID = cmpd.ID
+            WHERE cmpd.ID = $id_usuario ";
+
+            return $sql;
+
+        };
+
+        /**
          * Sem nenhum filtro (todas as compras)
          */
 
-        $sql = "SELECT c.*, cmpd.Nome AS Nome_Comprador
-        FROM compras c
-        JOIN compradores cmpd ON c.Comprador_ID = cmpd.ID
-        WHERE cmpd.ID = $id_usuario";
+        $sql = $mainSQL($id_usuario);
 
         $stmt = $dbconn->prepare($sql);
         $stmt->execute();
@@ -72,10 +83,7 @@ class CompraDAO {
          * COM LIMIT
          */
 
-        $sql = "SELECT c.*, cmpd.Nome AS Nome_Comprador
-        FROM compras c
-        JOIN compradores cmpd ON c.Comprador_ID = cmpd.ID
-        WHERE cmpd.ID = $id_usuario ";
+        $sql = $mainSQL($id_usuario);
 
 
         // Preenche a SQL de acordo com as variáveis do DataTable Server Side
@@ -92,10 +100,7 @@ class CompraDAO {
          * SEM LIMIT (mas com filtros)
          */
 
-        $sql = "SELECT c.*, cmpd.Nome AS Nome_Comprador
-        FROM compras c
-        JOIN compradores cmpd ON c.Comprador_ID = cmpd.ID
-        WHERE cmpd.ID = $id_usuario ";
+        $sql = $mainSQL($id_usuario);
 
         // =======================================================
         // Campo de busca
@@ -135,24 +140,34 @@ class CompraDAO {
      */
     function recuperarComprasGrupoJSON($dbconn, $id_grupo, $post) {
 
+        /**
+         * Variáveis de ajuda
+         */
         $ids_compradores = GrupoDAO::recuperarCompradoresGrupo($dbconn, $id_grupo);
+        $mainSQL = function($ids_compradores) {
+
+            $sql = 'SELECT c.*, cmpd.Nome AS Nome_Comprador
+            FROM compras c
+            JOIN compradores cmpd ON c.Comprador_ID = cmpd.ID
+            WHERE cmpd.ID IN (';
+    
+            foreach ($ids_compradores as $id) {
+                $sql .= $id['ID'];
+                if ($id != end($ids_compradores))
+                    $sql .= ',';
+            }
+    
+            $sql .= ')';
+
+            return $sql;
+
+        };
 
         /**
          * Sem nenhum filtro (todas as compras)
          */
 
-        $sql = 'SELECT c.*, cmpd.Nome AS Nome_Comprador
-        FROM compras c
-        JOIN compradores cmpd ON c.Comprador_ID = cmpd.ID
-        WHERE cmpd.ID IN (';
-
-        foreach ($ids_compradores as $id) {
-            $sql .= $id['ID'];
-            if ($id != end($ids_compradores))
-                $sql .= ',';
-        }
-
-        $sql .= ')';
+        $sql = $mainSQL($ids_compradores);
 
         $stmt = $dbconn->prepare($sql);
         $stmt->execute();
@@ -166,18 +181,7 @@ class CompraDAO {
          * COM LIMIT
          */
 
-        $sql = 'SELECT c.*, cmpd.Nome AS Nome_Comprador
-        FROM compras c
-        JOIN compradores cmpd ON c.Comprador_ID = cmpd.ID
-        WHERE cmpd.ID IN (';
-
-        foreach ($ids_compradores as $id) {
-            $sql .= $id['ID'];
-            if ($id != end($ids_compradores))
-                $sql .= ',';
-        }
-
-        $sql .= ')';
+        $sql = $mainSQL($ids_compradores);
 
 
         // Preenche a SQL de acordo com as variáveis do DataTable Server Side
@@ -194,18 +198,7 @@ class CompraDAO {
          * SEM LIMIT (mas com filtros)
          */
 
-        $sql = 'SELECT c.*, cmpd.Nome AS Nome_Comprador
-        FROM compras c
-        JOIN compradores cmpd ON c.Comprador_ID = cmpd.ID
-        WHERE cmpd.ID IN (';
-
-        foreach ($ids_compradores as $id) {
-            $sql .= $id['ID'];
-            if ($id != end($ids_compradores))
-                $sql .= ',';
-        }
-
-        $sql .= ')';
+        $sql = $mainSQL($ids_compradores);
 
         // =======================================================
         // Campo de busca
@@ -259,21 +252,32 @@ class CompraDAO {
             $data_fim    = '';
         }
 
+        /**
+         * Variáveis de ajuda
+         */
+        $mainSQL = function($palavra_chave, $data_inicio, $data_fim, $id_comprador) {
+
+            $sql = "SELECT c.*, cmpd.Nome AS Nome_Comprador 
+            FROM compras AS c 
+            JOIN compradores AS cmpd ON c.Comprador_ID = cmpd.ID 
+            WHERE observacoes LIKE '%{$palavra_chave}%' ";
+            
+            // Verifica se tem um intervalo de datas
+            if (!empty($data_inicio) && !empty($data_fim))
+                $sql .= "AND data >= '{$data_inicio}' AND data <= '{$data_fim}' ";
+                
+            $sql .= "AND Comprador_ID = {$id_comprador} ";
+
+            return $sql;
+
+        };
+
 
         /**
          * Sem nenhum filtro (todas as compras)
          */
 
-        $sql = "SELECT c.*, cmpd.Nome AS Nome_Comprador 
-        FROM compras AS c 
-        JOIN compradores AS cmpd ON c.Comprador_ID = cmpd.ID 
-        WHERE observacoes LIKE '%{$palavra_chave}%' ";
-        
-        // Verifica se tem um intervalo de datas
-        if (!empty($data_inicio) && !empty($data_fim))
-            $sql .= "AND data >= '{$data_inicio}' AND data <= '{$data_fim}' ";
-            
-        $sql .= "AND Comprador_ID = {$id_comprador} ";
+        $sql = $mainSQL($palavra_chave, $data_inicio, $data_fim, $id_comprador);
 
 
         $stmt = $dbconn->prepare($sql);
@@ -289,16 +293,7 @@ class CompraDAO {
          * COM LIMIT
          */
 
-        $sql = "SELECT c.*, cmpd.Nome AS Nome_Comprador 
-        FROM compras AS c 
-        JOIN compradores AS cmpd ON c.Comprador_ID = cmpd.ID 
-        WHERE observacoes LIKE '%{$palavra_chave}%' ";
-        
-        // Verifica se tem um intervalo de datas
-        if (!empty($data_inicio) && !empty($data_fim))
-            $sql .= "AND data >= '{$data_inicio}' AND data <= '{$data_fim}' ";
-            
-        $sql .= "AND Comprador_ID = {$id_comprador} ";
+        $sql = $mainSQL($palavra_chave, $data_inicio, $data_fim, $id_comprador);
         
 
         // Preenche a SQL de acordo com as variáveis do DataTable Server Side
@@ -315,16 +310,7 @@ class CompraDAO {
          * SEM LIMIT (mas com filtros)
          */
 
-        $sql = "SELECT c.*, cmpd.Nome AS Nome_Comprador 
-        FROM compras AS c 
-        JOIN compradores AS cmpd ON c.Comprador_ID = cmpd.ID 
-        WHERE observacoes LIKE '%{$palavra_chave}%' ";
-        
-        // Verifica se tem um intervalo de datas
-        if (!empty($data_inicio) && !empty($data_fim))
-            $sql .= "AND data >= '{$data_inicio}' AND data <= '{$data_fim}' ";
-            
-        $sql .= "AND Comprador_ID = {$id_comprador} ";
+        $sql = $mainSQL($palavra_chave, $data_inicio, $data_fim, $id_comprador);
 
 
         // =======================================================
@@ -392,39 +378,51 @@ class CompraDAO {
 
 
         /**
+         * Variáveis de ajuda
+         */
+        $mainSQL = function($username, $email, $palavra_chave, $data_inicio, $data_fim) {
+
+            $sql = "SELECT c.*, cmpd.Nome AS Nome_Comprador
+            FROM compras AS c
+            JOIN compradores AS cmpd ON c.Comprador_ID = cmpd.ID
+            WHERE cmpd.ID IN (
+                SELECT DISTINCT c.Comprador_ID
+                FROM compras AS c
+                JOIN compradores AS cmpd ON c.Comprador_ID = cmpd.ID
+                WHERE c.Comprador_ID IN (
+                    SELECT DISTINCT c.ID AS Comprador_ID
+                    FROM grupo_usuarios gu
+                    JOIN usuarios u on gu.Username = u.Usuario
+                    JOIN compradores c on u.Email = c.Email
+                    WHERE gu.ID_Grupo IN (
+                        SELECT gu.ID_Grupo
+                        FROM grupo_usuarios gu
+                        JOIN usuarios u on gu.Username = u.Usuario
+                        WHERE u.Usuario = '$username'
+                    )
+                ) OR c.Comprador_ID IN (
+                    SELECT compradores.ID
+                    FROM usuarios
+                    JOIN compradores ON usuarios.Email = compradores.Email
+                    WHERE usuarios.Email = '$email'
+                )
+            )
+            AND c.Observacoes LIKE '%{$palavra_chave}%'";
+
+            // Caso tenha sido selecionado um range de datas
+            if (!empty($data_inicio) && !empty($data_fim))
+                $sql .= "AND data >= '{$data_inicio}' AND data <= '{$data_fim}'";
+
+            return $sql;
+
+        };
+
+
+        /**
          * Sem nenhum filtro (todas as compras)
          */
 
-        $sql = "SELECT c.*, cmpd.Nome AS Nome_Comprador
-        FROM compras AS c
-        JOIN compradores AS cmpd ON c.Comprador_ID = cmpd.ID
-        WHERE cmpd.ID IN (
-            SELECT DISTINCT c.Comprador_ID
-            FROM compras AS c
-            JOIN compradores AS cmpd ON c.Comprador_ID = cmpd.ID
-            WHERE c.Comprador_ID IN (
-                SELECT DISTINCT c.ID AS Comprador_ID
-                FROM grupo_usuarios gu
-                JOIN usuarios u on gu.Username = u.Usuario
-                JOIN compradores c on u.Email = c.Email
-                WHERE gu.ID_Grupo IN (
-                    SELECT gu.ID_Grupo
-                    FROM grupo_usuarios gu
-                    JOIN usuarios u on gu.Username = u.Usuario
-                    WHERE u.Usuario = '$username'
-                )
-            ) OR c.Comprador_ID IN (
-                SELECT compradores.ID
-                FROM usuarios
-                JOIN compradores ON usuarios.Email = compradores.Email
-                WHERE usuarios.Email = '$email'
-            )
-        )
-        AND c.Observacoes LIKE '%{$palavra_chave}%'";
-
-        // Caso tenha sido selecionado um range de datas
-        if (!empty($data_inicio) && !empty($data_fim))
-            $sql .= "AND data >= '{$data_inicio}' AND data <= '{$data_fim}'";
+        $sql = $mainSQL($username, $email, $palavra_chave, $data_inicio, $data_fim);
 
 
         $stmt = $dbconn->prepare($sql);
@@ -440,36 +438,7 @@ class CompraDAO {
          * COM LIMIT
          */
 
-        $sql = "SELECT c.*, cmpd.Nome AS Nome_Comprador
-        FROM compras AS c
-        JOIN compradores AS cmpd ON c.Comprador_ID = cmpd.ID
-        WHERE cmpd.ID IN (
-            SELECT DISTINCT c.Comprador_ID
-            FROM compras AS c
-            JOIN compradores AS cmpd ON c.Comprador_ID = cmpd.ID
-            WHERE c.Comprador_ID IN (
-                SELECT DISTINCT c.ID AS Comprador_ID
-                FROM grupo_usuarios gu
-                JOIN usuarios u on gu.Username = u.Usuario
-                JOIN compradores c on u.Email = c.Email
-                WHERE gu.ID_Grupo IN (
-                    SELECT gu.ID_Grupo
-                    FROM grupo_usuarios gu
-                    JOIN usuarios u on gu.Username = u.Usuario
-                    WHERE u.Usuario = '$username'
-                )
-            ) OR c.Comprador_ID IN (
-                SELECT compradores.ID
-                FROM usuarios
-                JOIN compradores ON usuarios.Email = compradores.Email
-                WHERE usuarios.Email = '$email'
-            )
-        )
-        AND c.Observacoes LIKE '%{$palavra_chave}%'";
-
-        // Caso tenha sido selecionado um range de datas
-        if (!empty($data_inicio) && !empty($data_fim))
-            $sql .= "AND data >= '{$data_inicio}' AND data <= '{$data_fim}'";
+        $sql = $mainSQL($username, $email, $palavra_chave, $data_inicio, $data_fim);
         
 
         // Preenche a SQL de acordo com as variáveis do DataTable Server Side
@@ -486,36 +455,7 @@ class CompraDAO {
          * SEM LIMIT (mas com filtros)
          */
 
-        $sql = "SELECT c.*, cmpd.Nome AS Nome_Comprador
-        FROM compras AS c
-        JOIN compradores AS cmpd ON c.Comprador_ID = cmpd.ID
-        WHERE cmpd.ID IN (
-            SELECT DISTINCT c.Comprador_ID
-            FROM compras AS c
-            JOIN compradores AS cmpd ON c.Comprador_ID = cmpd.ID
-            WHERE c.Comprador_ID IN (
-                SELECT DISTINCT c.ID AS Comprador_ID
-                FROM grupo_usuarios gu
-                JOIN usuarios u on gu.Username = u.Usuario
-                JOIN compradores c on u.Email = c.Email
-                WHERE gu.ID_Grupo IN (
-                    SELECT gu.ID_Grupo
-                    FROM grupo_usuarios gu
-                    JOIN usuarios u on gu.Username = u.Usuario
-                    WHERE u.Usuario = '$username'
-                )
-            ) OR c.Comprador_ID IN (
-                SELECT compradores.ID
-                FROM usuarios
-                JOIN compradores ON usuarios.Email = compradores.Email
-                WHERE usuarios.Email = '$email'
-            )
-        )
-        AND c.Observacoes LIKE '%{$palavra_chave}%'";
-
-        // Caso tenha sido selecionado um range de datas
-        if (!empty($data_inicio) && !empty($data_fim))
-            $sql .= "AND data >= '{$data_inicio}' AND data <= '{$data_fim}'";
+        $sql = $mainSQL($username, $email, $palavra_chave, $data_inicio, $data_fim);
 
 
         // =======================================================
