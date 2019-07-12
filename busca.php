@@ -6,81 +6,77 @@
     verifica_usuario();
 ?>
 
-<!-- <form action="busca-resultado.php"> -->
-    <div class="card mt-5" id="cartao-busca">
-        <div class="card-body p-2 z-depth-2">
-            
-            <div class="card-header elegant-color-dark py-4 white-text text-uppercase">
-                <div class="card-title" id="titulo-informacoes">Buscar</div>
-            </div>
-
-            <div class="elegant-color p-2 p-sm-4 text-left" id="busca">
-
-                <div class="container white-text">
-                    <div class="row">
-                        <div class="col"><h4 class="white-text text-left py-2">Palavra/frase chave</h4></div>
-                        <div class="col-12"><input class="form-control palavra-chave" type="text" name="texto" placeholder="Digite a palavra chave"></div>
-                    </div>
-                    <hr class="white">
-                    <div class="row">
-                        <div class="col"><h4 class="white-text text-left py-2">Data</h4></div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <input type="text" name="data-range" id="data-range" class="form-control" placeholder="Selecione o intervalo de datas" readonly>
-                        </div>
-                    </div>
-                    <hr class="white">
-                    <div class="row">
-                        <div class="col"><h4 class="white-text text-left py-2">Comprador</h4></div>
-                        <div class="col-12">
-                            <select class="custom-select" name="comprador" id="comprador">
-                                <option class="text-muted">Selecione uma Opção</option>
-                                <option value="0" selected>Todos</option>
-                                <?php 
-                                    $ids_compradores = recupera_ids_compradores_grupos($dbconn, $_SESSION['login-username'], $_SESSION['login-email']);
-                                    foreach ($ids_compradores as $id_comprador) :
-                                        $comprador = buscar_comprador($dbconn, $id_comprador['Comprador_ID']);
-                                ?>
-                                        <option value="<?= $comprador['ID']; ?>"><?= $comprador['Nome']; ?></option>
-                                <?php
-                                    endforeach;
-                                ?>
-                            </select>
-                        </div>
-                    </div>
-                    <hr class="white">
-                </div>
-
-                    
-                <div class="d-flex justify-content-center align-content-center">
-                    <button class="btn btn-default" type="submit" name="submit-buscar" value="true" id="btn-busca">realizar busca</button>
-                </div>
-                    
-                
-            </div>
-
+<!-- Cartão de Busca -->
+<div class="card mt-5" id="cartao-busca">
+    <div class="card-body p-2 z-depth-2">
+        
+        <div class="card-header elegant-color-dark py-4 white-text text-uppercase">
+            <div class="card-title" id="titulo-informacoes">Buscar</div>
         </div>
+
+        <div class="elegant-color p-2 p-sm-4 text-left" id="busca">
+
+            <div class="container white-text">
+                <div class="row">
+                    <div class="col"><h4 class="white-text text-left py-2">Palavra/frase chave</h4></div>
+                    <div class="col-12"><input class="form-control palavra-chave" type="text" name="texto" placeholder="Digite a palavra chave"></div>
+                </div>
+                <hr class="white">
+                <div class="row">
+                    <div class="col"><h4 class="white-text text-left py-2">Data</h4></div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <input type="text" name="data-range" id="data-range" class="form-control" placeholder="Selecione o intervalo de datas" readonly>
+                    </div>
+                </div>
+                <hr class="white">
+                <div class="row">
+                    <div class="col"><h4 class="white-text text-left py-2">Comprador</h4></div>
+                    <div class="col-12">
+                        <select class="custom-select" name="comprador" id="comprador">
+                            <option class="text-muted">Selecione uma Opção</option>
+                            <option value="0" selected>Todos</option>
+                            <?php 
+                                $ids_compradores = recupera_ids_compradores_grupos($dbconn, $_SESSION['login-username'], $_SESSION['login-email']);
+                                foreach ($ids_compradores as $id_comprador) :
+                                    $comprador = buscar_comprador($dbconn, $id_comprador['Comprador_ID']);
+                            ?>
+                                    <option value="<?= $comprador['ID']; ?>"><?= $comprador['Nome']; ?></option>
+                            <?php
+                                endforeach;
+                            ?>
+                        </select>
+                    </div>
+                </div>
+                <hr class="white">
+            </div>
+
+                
+            <div class="d-flex justify-content-center align-content-center">
+                <button class="btn btn-default" type="submit" name="submit-buscar" value="true" id="btn-busca">realizar busca</button>
+            </div>
+                
+            
+        </div>
+
     </div>
-<!-- </form> -->
+</div>
+<!-- Fim Cartão de Busca -->
 
-<table class="table table-hover" id="tabela-compras">
+<!-- Resultado da Busca -->
+<div id="resultado-busca" style="display: none;">
 
-    <thead class="thead-dark">
-        <tr>
-            <th class="th-sm t-observacoes">Observacoes</th>
-            <th class="th-sm t-data">Data</th>
-            <th class="th-sm t-id">ID</th>
-            <th class="th-sm t-valor">Valor</th>
-            <th class="th-sm t-desconto">Desconto</th>
-            <th class="th-sm t-pagamento">Pagamento</th>
-            <th class="th-sm t-nome">Comprador</th>
-            <th class="th-sm t-editar">Editar</th>
-        </tr>
-    </thead>
+    <!-- Botão para voltar -->
+    <div id="voltar">
+        <button id="btn-voltar-busca">
+            <i class="fas fa-arrow-left"></i>
+        </button>
+        <label for="btn-voltar-busca">Realizar uma nova busca</label>
+    </div>
 
     <!-- Para ordenação da data -->
-    <label class="mt-5">
+    <label class="mt-5" id="label-data">
         Data
         <select name="ordenacao-data" id="ordenacao-data" class="custom-select custom-select-sm form-control form-control-sm">
             <option>mais recente</option>
@@ -88,13 +84,30 @@
         </select>
     </label>
 
-    <tbody id="compras-datatable">
-        <!-- Preenchido ao clicar nas compras desejadas -->
-    </tbody>
+    <table class="table table-hover" id="tabela-compras">
 
-</table>
+        <thead class="thead-dark">
+            <tr>
+                <th class="th-sm t-observacoes">Observacoes</th>
+                <th class="th-sm t-data">Data</th>
+                <th class="th-sm t-id">ID</th>
+                <th class="th-sm t-valor">Valor</th>
+                <th class="th-sm t-desconto">Desconto</th>
+                <th class="th-sm t-pagamento">Pagamento</th>
+                <th class="th-sm t-nome">Comprador</th>
+                <th class="th-sm t-editar">Editar</th>
+            </tr>
+        </thead>
 
-<div class="box p-3 mb-2 bg-info text-white bold" id="soma"></div>
+        <tbody id="compras-datatable">
+            <!-- Preenchido ao clicar nas compras desejadas -->
+        </tbody>
+
+    </table>
+
+    <div class="box p-3 mb-2 bg-info text-white bold" id="box-soma"></div>
+    
+</div>
 
 
 <!-- Modal para detalhes da Compra -->
@@ -109,6 +122,20 @@
 <script src="js/compras.js"></script>
 
 <script>
+
+    function mostraResultado() {
+
+        $('#cartao-busca').hide();
+        $('#resultado-busca').show();
+
+    }
+
+    function escondeResultado() {
+
+        $('#cartao-busca').show();
+        $('#resultado-busca').hide();
+
+    }
 
     $(document).ready(function() {
 
@@ -129,6 +156,9 @@
         });
 
 
+        // =======================================================
+        // Realização da Busca
+        // =======================================================
 
         $('#btn-busca').click(function() {
             
@@ -225,16 +255,24 @@
                         }, 0 );
 
                     console.log(total);
-                    $('#soma').text("SOMA = " + total);
+                    $('#box-soma').text("SOMA = " + total);
                     
                 },
                 "order": [[ 1, "desc" ]]    // Ordena por Data
             });
 
-            // Scroll até a tabela de compras
-            $('html, body').animate({
-                scrollTop: $('#tabela-compras').offset().top - 120
-            }, 1000);
+            mostraResultado();
+
+        });
+
+
+        // =======================================================
+        // Voltar para as opções de busca
+        // =======================================================
+
+        $('#btn-voltar-busca').click(function() {
+
+            escondeResultado();
 
         });
 

@@ -93,12 +93,24 @@
 </div>
 
 <hr>
-<h1 style="margin-top: 40px;" class="titulo-site" id="titulo-compras">Lista de Compras</h1>
 
-<!-- Tabela com as compras -->
-<!-- <div style="overflow-x: auto;"> -->
+
+<div id="container-compras" style="display: none;">
+
+    <h1 class="titulo-site mt-5" id="titulo-compras">Lista de Compras</h1>
+
+    <!-- Para ordenação da data -->
+    <label>
+        Data
+        <select name="ordenacao-data" id="ordenacao-data" class="custom-select custom-select-sm form-control form-control-sm">
+            <option>mais recente</option>
+            <option>mais antiga</option>
+        </select>
+    </label>
+
+    <!-- Tabela com as compras -->
     <table class="table table-hover" id="tabela-compras">
-    
+
         <thead class="thead-dark">
             <tr>
                 <th class="th-sm t-observacoes">Observacoes</th>
@@ -112,21 +124,14 @@
             </tr>
         </thead>
 
-        <!-- Para ordenação da data -->
-        <label>
-            Data
-            <select name="ordenacao-data" id="ordenacao-data" class="custom-select custom-select-sm form-control form-control-sm">
-                <option>mais recente</option>
-                <option>mais antiga</option>
-            </select>
-        </label>
-    
         <tbody id="compras-datatable">
             <!-- Preenchido ao clicar nas compras desejadas -->
         </tbody>
-    
+
     </table>
-<!-- </div> -->
+
+</div>
+
 
 <!-- Modal para detalhes da Compra -->
 <div class="modal" id="modal-detalhes-compra">

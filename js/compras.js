@@ -17,7 +17,10 @@ function inicializaDataTable() {
     });
 }
 
-// Criar a DataTable
+// =======================================================
+// Inicializa a tabela de dados
+// =======================================================
+
 function criarDataTable(requisicao) {
 
     // Limpa e destrói a tabela
@@ -92,17 +95,9 @@ function criarDataTable(requisicao) {
         "order": [[ 1, "desc" ]]    // Ordena por Data
     });
 
+    $('#container-compras').show();
+
 }
-
-
-// =======================================================
-// Inicializa a tabela de dados
-// =======================================================
-
-$(document).ready(function () {
-
-    inicializaDataTable();
-});
 
 
 // =======================================================
