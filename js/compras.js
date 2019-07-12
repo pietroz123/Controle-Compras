@@ -2,7 +2,7 @@
 /// <reference path='../lib/mdbootstrap/js/datatables.js' />
 
 // =======================================================
-// Função para reinicializar a DataTable
+// Auxiliares
 // =======================================================
 
 $.extend( $.fn.dataTable.defaults, {
@@ -15,6 +15,18 @@ function inicializaDataTable() {
             "url": "https://cdn.datatables.net/plug-ins/1.10.19/i18n/Portuguese-Brasil.json"
         }
     });
+}
+
+function formatarData(string) {
+
+    let data    = string.split("-");
+    let dia     = data[2];
+    let mes     = data[1];
+    let ano     = data[0];
+
+    let dataFormatada = dia + "/" + mes + "/" + ano;
+    return dataFormatada;
+
 }
 
 // =======================================================
@@ -50,7 +62,7 @@ function criarDataTable(requisicao) {
 
                 if ( last !== group ) {
                     $(rows).eq( i ).before(
-                        '<tr class="date-group"><td colspan="6" style="background-color: #dadada">'+group+'</td></tr>'
+                        '<tr class="date-group"><td colspan="6" style="background-color: #dadada">'+formatarData(group)+'</td></tr>'
                     );
  
                     last = group;

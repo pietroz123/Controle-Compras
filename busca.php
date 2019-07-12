@@ -192,7 +192,7 @@
 
                         if ( last !== group ) {
                             $(rows).eq( i ).before(
-                                '<tr class="date-group"><td colspan="6" style="background-color: #dadada">'+group+'</td></tr>'
+                                '<tr class="date-group"><td colspan="6" style="background-color: #dadada">'+formatarData(group)+'</td></tr>'
                             );
         
                             last = group;
