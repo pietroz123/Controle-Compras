@@ -42,12 +42,12 @@
     // Recuperar as compras da página de Busca
     // =======================================================
 
-    if (isset($_POST['buscar_compras']) && $_POST['buscar_compras'] == "sim") {
+    if (isset($_POST['requisicao']['buscar_compras']) && $_POST['requisicao']['buscar_compras'] == "sim") {
 
         // Recupera os dados da requisição
-        $palavra_chave  = $_POST['palavra_chave'];
-        $data_range     = $_POST['data_range'];
-        $id_comprador   = $_POST['id_comprador'];
+        $palavra_chave  = $_POST['requisicao']['palavra_chave'];
+        $data_range     = $_POST['requisicao']['data_range'];
+        $id_comprador   = $_POST['requisicao']['id_comprador'];
 
         $cdao = new CompraDAO();
 
@@ -59,6 +59,30 @@
             $json = $cdao->recuperarComprasBuscaJSON($dbconn, $palavra_chave, $data_range, $id_comprador, $_POST);
         
         echo $json;
+
+    }
+
+    // =======================================================
+    // Recuperas a soma dos valores das compras
+    // =======================================================
+
+    if (isset($_POST['recuperar_soma']) && $_POST['recuperar_soma'] == "sim") {
+
+        // Recupera os dados da requisição
+        $palavra_chave  = $_POST['requisicao']['palavra_chave'];
+        $data_range     = $_POST['requisicao']['data_range'];
+        $id_comprador   = $_POST['requisicao']['id_comprador'];
+
+        $cdao = new CompraDAO();
+
+        // Verifica se o usuário selecionou 'Todos'
+        if ($id_comprador == 0)
+            $soma = $cdao->recuperarComprasPermitidasJSON($dbconn, $palavra_chave, $data_range, $_POST, 1);
+        // Ou um comprador específico
+        else
+            $soma = $cdao->recuperarComprasBuscaJSON($dbconn, $palavra_chave, $data_range, $id_comprador, $_POST, 1);
+        
+        echo $soma;
 
     }
 

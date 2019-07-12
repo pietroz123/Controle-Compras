@@ -237,8 +237,9 @@ class CompraDAO {
      * @param string    $data_range     : Intervalo de data
      * @param int       $id_comprador   : ID do Comprador da requisição
      * @param array     $post           : Requisição POST com todo o cabeçalho do DataTables ServerSide
+     * @param int       $flag_soma      : Se 1, calcula apenas a soma dos valores
      */
-    function recuperarComprasBuscaJSON($dbconn, $palavra_chave, $data_range, $id_comprador, $post) {
+    function recuperarComprasBuscaJSON($dbconn, $palavra_chave, $data_range, $id_comprador, $post, $flag_soma = 0) {
 
         /**
          * Separa o intervalo de datas em data de início e fim
@@ -308,6 +309,20 @@ class CompraDAO {
 
         $rs = $stmt->fetchAll();
 
+        /**
+         * Se for para calcular a soma ($flag_soma == 1), apenas calcula a soma e retorna
+         */
+        if ($flag_soma == 1) {
+
+            $soma = 0;
+            foreach ($rs as $compra) {
+                $soma += $compra['Valor'];
+            }
+
+            return $soma;
+
+        }
+
         
         $qtd_total = count($rs);
 
@@ -375,8 +390,9 @@ class CompraDAO {
      * @param string    $data_range     : Intervalo de data
      * @param int       $id_comprador   : ID do Comprador da requisição
      * @param array     $post           : Requisição POST com todo o cabeçalho do DataTables ServerSide
+     * @param int       $flag_soma      : Se 1, calcula apenas a soma dos valores
      */
-    function recuperarComprasPermitidasJSON($dbconn, $palavra_chave, $data_range, $post) {
+    function recuperarComprasPermitidasJSON($dbconn, $palavra_chave, $data_range, $post, $flag_soma = 0) {
 
         include $_SERVER['DOCUMENT_ROOT'].'/config/sessao.php';
         include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes-usuarios.php';
@@ -466,6 +482,20 @@ class CompraDAO {
         $stmt->execute();
 
         $rs = $stmt->fetchAll();
+
+        /**
+         * Se for para calcular a soma ($flag_soma == 1), apenas calcula a soma e retorna
+         */
+        if ($flag_soma == 1) {
+
+            $soma = 0;
+            foreach ($rs as $compra) {
+                $soma += $compra['Valor'];
+            }
+
+            return $soma;
+
+        }
 
         
         $qtd_total = count($rs);

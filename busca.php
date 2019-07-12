@@ -161,105 +161,34 @@
         // =======================================================
 
         $('#btn-busca').click(function() {
-            
-            // Limpa e destrói a tabela
-            $("#tabela-compras").DataTable().clear().destroy();
 
-            // Constrói a tabela
-            var tabela = $('#tabela-compras').DataTable({
-                "language": {
-                    "url": "https://cdn.datatables.net/plug-ins/1.10.19/i18n/Portuguese-Brasil.json"
+            let requisicao = {
+                "buscar_compras": "sim",
+                "palavra_chave": $('.palavra-chave').val(),
+                "data_range": $('#data-range').val(),
+                "id_comprador": $('#comprador').val()
+            };
+
+            // Cria a tabela correspondente
+            criarDataTable(requisicao);
+
+            // Recupera a soma das compras
+            delete requisicao.buscar_compras;
+            $.ajax({
+                url: 'scripts/recuperar-compras.php',
+                method: 'POST',
+                data: {
+                    recuperar_soma: "sim",
+                    requisicao
                 },
-                "processing": true,
-                "serverSide": true,
-                "ajax": {
-                    "url": 'scripts/recuperar-compras.php',
-                    "type": 'POST',
-                    "data": {
-                        buscar_compras: "sim",
-                        palavra_chave: $('.palavra-chave').val(),
-                        data_range: $('#data-range').val(),
-                        id_comprador: $('#comprador').val()
-                    }
+                success: function(retorno) {
+                    $('#box-soma').text("SOMA: " + retorno);
                 },
-                "drawCallback": function ( settings ) { // Cria os agrupamentos por Data
-                    
-                    var api = this.api();
-                    var rows = api.rows( {page:'current'} ).nodes();
-                    var last=null;            
-
-                    api.column(1, {page:'current'} ).data().each(function ( group, i ) {
-
-                        if ( last !== group ) {
-                            $(rows).eq( i ).before(
-                                '<tr class="date-group"><td colspan="6" style="background-color: #dadada">'+formatarData(group)+'</td></tr>'
-                            );
-        
-                            last = group;
-                        }
-                    });
-                },
-                createdRow: function (row, data, index) {
-
-                    let forma_pagamento = data[5];
-                    var span = document.createElement('span');
-                    span.className = "badge no-shadow badge-pill badge-light forma_pagamento";
-                    
-                    switch (forma_pagamento) {
-                        case 'cartao':
-                            span.textContent = "cartão";
-                            break;
-                        case 'boleto':
-                            span.textContent = "boleto";
-                            break;
-                        case 'dinheiro':
-                            span.textContent = "dinheiro";
-                            break;
-                    
-                        default:
-                            break;
-                    }
-
-                    $(row).children("td:nth-child(6)").html(span);
-                    $(row).addClass('tr-compra');
-
-                },
-                "columns": [
-                    { "name": "observacoes", "className": "t-observacoes", "width": "50%" },
-                    { "name": "data", "className": "t-data" },
-                    { "name": "id", "className": "t-id" },
-                    { "name": "valor", "className": "t-valor" },
-                    { "name": "desconto", "className": "t-desconto" },
-                    { "name": "forma_pagamento", "className": "t-forma" },
-                    { "name": "nome_comprador", "className": "t-nome" },
-                    { "name": "editar", "className": "t-editar" }
-                ],
-                "footerCallback": function ( row, data, start, end, display ) { // Para recuperar a soma total das compras
-
-                    var api = this.api(), data;
-        
-                    // Remove the formatting to get integer data for summation
-                    var intVal = function ( i ) {
-                        return typeof i === 'string' ?
-                            i.replace(/[\$,]/g, '')*1 :
-                            typeof i === 'number' ?
-                                i : 0;
-                    };
-        
-                    // Total over all pages
-                    total = api
-                        .column( 3 )
-                        .data()
-                        .reduce( function (a, b) {
-                            return intVal(a) + intVal(b);
-                        }, 0 );
-
-                    console.log(total);
-                    $('#box-soma').text("SOMA = " + total);
-                    
-                },
-                "order": [[ 1, "desc" ]]    // Ordena por Data
-            });
+                error: function(retorno) {
+                    console.log('Error');
+                    console.log(retorno);
+                }
+            }); 
 
             mostraResultado();
 
