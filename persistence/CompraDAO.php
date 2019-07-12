@@ -440,9 +440,20 @@ class CompraDAO {
         $mainSQL .= ")
         AND c.Observacoes LIKE '%{$palavra_chave}%' ";
 
-        // Caso tenha sido selecionado um range de datas
-        if (!empty($data_inicio) && !empty($data_fim))
-            $mainSQL .= "AND data >= '{$data_inicio}' AND data <= '{$data_fim}'";
+        // Verifica se tem um intervalo de datas
+        if (!empty($data_range)) {
+
+            switch ($flag_data) {
+                case 1:
+                    $mainSQL .= "AND data = '{$data_inicio}'"; 
+                    break;
+                
+                case 2:
+                    $mainSQL .= "AND data >= '{$data_inicio}' AND data <= '{$data_fim}' ";
+                    break;
+            }
+
+        }
 
 
         /**
