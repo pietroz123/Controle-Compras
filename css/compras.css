@@ -482,6 +482,26 @@ div#detalhes-compra .col-3 {
 }
 
 
+/* =======================================================
+   ADIÇÃO DE COMPRA
+   ======================================================= */
+
+#detalhes-compra {
+    text-align: left;
+}
+.label-detalhes-compra {
+    font-weight: 800;
+}
+.row-detalhe {
+    margin-top: 7px;
+    font-size: 15px;
+}
+#detalhes-compra .alert-link {
+    font-size: 16px;
+}
+
+
+
 /* ==========================================================
    ============== FORMULÁRIO RECUPERAÇÃO DE SENHA ===========
    ========================================================== */

@@ -1,6 +1,9 @@
 <?php 
     include $_SERVER['DOCUMENT_ROOT'].'/cabecalho.php';
     include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes.php';
+
+    include $_SERVER['DOCUMENT_ROOT'].'/persistence/CategoriaSubcategoriaDAO.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/persistence/CompradorDAO.php';
 ?>
 
 <?php
@@ -86,14 +89,55 @@
 ?>
 
         <!-- Alerta de sucesso -->
-        <div class="alert alert-success" role="alert">
-            <p>
-                Compra (<?= $valor; ?>, <?= $data; ?>, <?= $observacoes; ?>, <?= $desconto; ?>, <?= $forma_pagamento; ?>, <?= $comprador_id; ?>) adicionada com sucesso!
-            </p>
-            <hr>
-            <p class="mb-0">
-                <a href="formulario-compra.php" class="alert-link">Inserir Outra Compra</a>
-            </p>
+
+        <div class="alert alert-success">
+            <div id="detalhes-compra">
+                <div class="container">
+                    <div class="row">
+                        <div class="col"><h4>Compra Adicionada com Sucesso</h4></div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col"><h5>Detalhes da Compra:</h5></div>
+                    </div>
+                    <div class="row row-detalhe">
+                        <div class="col label-detalhes-compra">Observações:</div>
+                        <div class="col"><?= $observacoes ?></div>
+                    </div>
+                    <div class="row row-detalhe">
+                        <div class="col label-detalhes-compra">Categoria:</div>
+                        <div class="col"><span class="badge badge-pill badge-light"><?= CategoriaSubcategoriaDAO::recuperarCategoria($dbconn, $categoria)['Nome_Categoria'] ?></span></div>
+                    </div>
+                    <div class="row row-detalhe">
+                        <div class="col label-detalhes-compra">Subcategoria:</div>
+                        <div class="col">
+                            <?php foreach ($subcategorias as $subcategoria) { ?>
+                                <span class="badge badge-pill badge-light"><?= CategoriaSubcategoriaDAO::recuperarSubcategoria($dbconn, $subcategoria)['Nome_Subcategoria'] ?></span>
+                            <?php } ?>
+                        </div>
+                    </div>
+                    <div class="row row-detalhe">
+                        <div class="col label-detalhes-compra">Valor:</div>
+                        <div class="col">R$<?= $valor ?></div>
+                    </div>
+                    <div class="row row-detalhe">
+                        <div class="col label-detalhes-compra">Desconto:</div>
+                        <div class="col">R$<?= $desconto ?></div>
+                    </div>
+                    <div class="row row-detalhe">
+                        <div class="col label-detalhes-compra">Forma de Pagamento:</div>
+                        <div class="col"><?= $forma_pagamento ?></div>
+                    </div>
+                    <div class="row row-detalhe">
+                        <div class="col label-detalhes-compra">Comprador:</div>
+                        <div class="col"><?= CompradorDAO::recuperarComprador($dbconn, $comprador_id)['Nome'] ?></div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col d-flex justify-content-center"><a href="formulario-compra.php" class="alert-link">Inserir Outra Compra</a></div>
+                    </div>
+                </div>
+            </div>
         </div>
 
 <!-- Else -->
