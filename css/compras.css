@@ -763,7 +763,8 @@ label[for=input-imagem] span {
 }
 
 #input-imagem + label {
-    width: 220px;
+    width: 100%;
+    text-align: center;
     cursor: pointer;
     font-size: 1.1em;
     color: white;
