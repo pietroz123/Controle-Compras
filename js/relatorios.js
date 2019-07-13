@@ -64,6 +64,8 @@ $(document).ready(function() {
 // ==========================================================
 
 $(document).on('click', '.cartao-ano', function() {
+
+    $('#compras').html('');
     
     var anoSelecionado = $(this).find('span.ano').text();
     recuperaCompras(anoSelecionado);
