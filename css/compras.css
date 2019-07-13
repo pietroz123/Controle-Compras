@@ -1117,15 +1117,30 @@ table.datatable-compras {
     margin-left: 0 !important;
 }
 
-.header-relatorios {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
-}
 #select-ano {
     margin-left: 20px;
     width: 100px;
+}
+
+.anos-disponiveis {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+.cartao-ano {
+    border: 3px solid darkgrey;
+    border-radius: 7px;
+    background: #e0e0e0;
+    width: 49%;
+}
+.cartao-ano .container {
+    padding: 10px;
+}
+.cartao-ano:hover {
+    color: cornflowerblue;
+}
+span.ano {
+    font-weight: 700 !important;
 }
 
 
