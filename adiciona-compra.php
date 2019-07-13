@@ -35,7 +35,7 @@
         $categoria = '';
 
 
-    $data = implode('-', array_reverse(explode('/', $data)));
+    $data_formatada = implode('-', array_reverse(explode('/', $data)));
 
 
     // Variáveis da imagem
@@ -60,7 +60,7 @@
         // Mantem apenas a string da imagem
         $imagem_cortada = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $imagem_cortada));
         
-        $novo_nome = uniqid('') . "-" . $observacoes . "-" . $data . "." . $ext;
+        $novo_nome = uniqid('') . "-" . $observacoes . "-" . $data_formatada . "." . $ext;
         
         // Destino do imagem
         $destino = "../private/uploads/compras/" . $novo_nome;
@@ -84,7 +84,7 @@
 <!-- Abre conexão e verifica possível erro -->
 <?php 
 
-    if (inserir_compra($dbconn, $valor, $data, $observacoes, $desconto, $forma_pagamento, $comprador_id, $novo_nome, $categoria, $subcategorias)) {        
+    if (inserir_compra($dbconn, $valor, $data_formatada, $observacoes, $desconto, $forma_pagamento, $comprador_id, $novo_nome, $categoria, $subcategorias)) {        
 
 ?>
 
@@ -103,6 +103,10 @@
                     <div class="row row-detalhe">
                         <div class="col label-detalhes-compra">Observações:</div>
                         <div class="col"><?= $observacoes ?></div>
+                    </div>
+                    <div class="row row-detalhe">
+                        <div class="col label-detalhes-compra">Data:</div>
+                        <div class="col"><?= $data ?></div>
                     </div>
                     <div class="row row-detalhe">
                         <div class="col label-detalhes-compra">Categoria:</div>
