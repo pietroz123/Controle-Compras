@@ -122,7 +122,7 @@
                             <?php
                                 // Recupera o número de backups
                                 $nBackups = 0;
-                                foreach (glob("backup/backups/*.sql") as $filename) {
+                                foreach (glob("../private/backups/banco/*.sql") as $filename) {
                                     $nBackups++;
                                 }
                                 
