@@ -69,10 +69,10 @@
 
     <!-- Botão para voltar -->
     <div id="voltar">
-        <button id="btn-voltar-busca">
-            <i class="fas fa-arrow-left"></i>
+        <button id="btn-voltar-busca" class="float-effect">
+            <i class="fas fa-arrow-left mr-1"></i>
+            Realizar uma nova busca
         </button>
-        <label for="btn-voltar-busca">Realizar uma nova busca</label>
     </div>
 
     <!-- Para ordenação da data -->

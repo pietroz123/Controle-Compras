@@ -119,6 +119,13 @@ body h1 {
    ========================= MISCS ==========================
    ========================================================== */
 
+table td {
+    font-weight: 600 !important;
+}
+table th {
+    font-weight: 700 !important;
+}
+
 /* Inputs e Buttons */
 input {
     margin-bottom: 5px;
@@ -161,15 +168,16 @@ input[type="radio"]:checked+label {font-weight:bold;}
     border-radius: 15px;
 }
 .btn-simples:focus { outline:0; }
+
 /* Efeito de Float */
-.btn-simples {
+.float-effect {
     -webkit-transition:all .3s ease-out;
     -moz-transition:all .3s ease-out;
     -ms-transition:all .3s ease-out;
     -o-transition:all .3s ease-out;
     transition:all .3s ease-out;
 }
-.btn-simples:hover {
+.float-effect:hover {
     -webkit-transform:translate(0px,-2px);
     -moz-transform:translate(0px,-2px);
     -ms-transform:translate(0px,-2px);

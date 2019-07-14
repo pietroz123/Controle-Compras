@@ -636,7 +636,7 @@ class CompraDAO {
         foreach ($compras as $compra) {
 
             // Cria o botão de edição
-            $btnEdit = "<button type='button' id-compra='".$compra['Id']."' class='btn-simples' id='btn-editar-compra'><i class='fas fa-edit'></i></button>";
+            $btnEdit = "<button type='button' id-compra='".$compra['Id']."' class=' float-effect' id='btn-editar-compra'><i class='fas fa-edit'></i></button>";
 
             $json .= '[
                         "'.$compra['Observacoes'].'",

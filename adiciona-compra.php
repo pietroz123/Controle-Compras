@@ -115,9 +115,15 @@
                     <div class="row row-detalhe">
                         <div class="col label-detalhes-compra">Subcategoria:</div>
                         <div class="col">
-                            <?php foreach ($subcategorias as $subcategoria) { ?>
-                                <span class="badge badge-pill badge-light"><?= CategoriaSubcategoriaDAO::recuperarSubcategoria($dbconn, $subcategoria)['Nome_Subcategoria'] ?></span>
-                            <?php } ?>
+                            <?php 
+                                if (!empty($subcategorias)) {
+                                    foreach ($subcategorias as $subcategoria) { 
+                            ?>
+                                        <span class="badge badge-pill badge-light"><?= CategoriaSubcategoriaDAO::recuperarSubcategoria($dbconn, $subcategoria)['Nome_Subcategoria'] ?></span>
+                            <?php
+                                    }
+                                }
+                            ?>
                         </div>
                     </div>
                     <div class="row row-detalhe">

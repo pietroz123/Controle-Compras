@@ -127,7 +127,7 @@
                         // Caso o usuário logado seja o Admin do grupo, permite a remoção dos membros
                         if (isAdmin($dbconn, $grupo['ID'], $_POST['username']) && $membro['Usuario'] != $_POST['username']) {
                     ?>
-                            <td class="text-right"><button class="btn-simples btn-remover-membro" id-grupo="<?= $grupo['ID']; ?>" username-usuario="<?= $_POST['username']; ?>" username-membro="<?= $membro['Usuario']; ?>" data-toggle="confirmation" data-singleton="true"><i class="fas fa-times"></i></button></td>
+                            <td class="text-right"><button class="btn-simples float-effect btn-remover-membro" id-grupo="<?= $grupo['ID']; ?>" username-usuario="<?= $_POST['username']; ?>" username-membro="<?= $membro['Usuario']; ?>" data-toggle="confirmation" data-singleton="true"><i class="fas fa-times"></i></button></td>
                     <?php
                         }
                     ?>
