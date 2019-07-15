@@ -444,74 +444,34 @@
 
 
     // ============================================================
-    // Verificação das Checkbox - Javascript & JQuery Jon Ducket
+    // Verificação das Checkbox
     // ============================================================
 
-    // Helper function to add an event listener
-    function addEvent (el, event, callback) {
-        if ('addEventListener' in el) {                  // If addEventListener works
-            el.addEventListener(event, callback, false);   // Use it
-        } else {                                         // Otherwise
-            el['e' + event + callback] = callback;         // CreateIE fallback
-            el[event + callback] = function () {
-            el['e' + event + callback](window.event);
-            };
-            el.attachEvent('on' + event, el[event + callback]);
-        }
-    }
+    // Preenche todas as opções de TABELAS
+    $(document).on('click', 'input#chk_tb_todas', function() {
+        if ($(this).prop('checked'))
+            $.each($('input[name="chk_tb"]'), function() {
+                $(this).prop("checked", true);
+            })
+        else
+            $.each($('input[name="chk_tb"]'), function() {
+                $(this).prop("checked", false);
+            })
 
-    // Para o form das Tabelas
+    })
 
-    var formTabelas = document.getElementById('formTabelas');
-    var elementosTabelas = formTabelas.elements;
-    var opcoesTabelas = elementosTabelas.chk_tb;
-    var inputTodasTabelas = document.getElementById('chk_tb_todas');
+    // Preenche todas as opções de INFORMAÇÕES
+    $(document).on('click', 'input#chk_info_todas', function() {
+        if ($(this).prop('checked'))
+            $.each($('input[name="chk_info"]'), function() {
+                $(this).prop("checked", true);
+            })
+        else
+            $.each($('input[name="chk_info"]'), function() {
+                $(this).prop("checked", false);
+            })
 
-    function updateAllTabelas() {
-        for (let i = 0; i < opcoesTabelas.length; i++) {
-            opcoesTabelas[i].checked = inputTodasTabelas.checked;
-        }
-    }
-    addEvent(inputTodasTabelas, 'change', updateAllTabelas);
-
-    function clearAllOptionsTabelas(e) {
-        var target = e.target || e.srcElement;
-        if (!target.checked) {
-            inputTodasTabelas.checked = false;
-        }
-    }
-    for (let i = 0; i < opcoesTabelas.length; i++) {
-        addEvent(opcoesTabelas[i], 'change', clearAllOptionsTabelas);
-        
-    }
-
-
-    // Para o form das Opcoes
-
-    var formOpcoes = document.getElementById('formOpcoes');
-    var elementosOpcoes = formOpcoes.elements;
-    var opcoesOpcoes = elementosOpcoes.chk_info;
-    var inputTodasOpcoes = document.getElementById('chk_info_todas');
-
-    function updateAllOpcoes() {
-        for (let i = 0; i < opcoesOpcoes.length; i++) {
-            opcoesOpcoes[i].checked = inputTodasOpcoes.checked;
-        }
-    }
-    addEvent(inputTodasOpcoes, 'change', updateAllOpcoes);
-
-    function clearAllOptionsOpcoes(e) {
-        var target = e.target || e.srcElement;
-        if (!target.checked) {
-            inputTodasOpcoes.checked = false;
-        }
-    }
-    for (let i = 0; i < opcoesOpcoes.length; i++) {
-        addEvent(opcoesOpcoes[i], 'change', clearAllOptionsOpcoes);
-        
-    }
-
-
+    })
 
 
     // =======================================================

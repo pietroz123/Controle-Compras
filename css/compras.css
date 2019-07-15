@@ -1159,13 +1159,15 @@ table.datatable-compras {
 .anos-disponiveis {
     display: flex;
     flex-flow: row wrap;
-    justify-content: space-between;
+    justify-content: center;
 }
 .cartao-ano {
     border: 3px solid darkgrey;
     border-radius: 7px;
     background: #ececec;
     width: 49%;
+    max-width: 100px;
+    margin-left: 10px;
 }
 .cartao-ano .container {
     padding: 10px;
