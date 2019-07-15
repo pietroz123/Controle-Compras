@@ -22,7 +22,17 @@
     </div>
 
     <!-- Gráfico de compras -->
-    <div id="grafico-compras"></div>
+    <div class="grafico-compras-container">
+        <div id="grafico-compras"></div>
+        <div class="overlayLoading" style="display: none;">
+            <div class="overlayLoading__inner">
+                <div class="overlayLoading__content">
+                    <span class="spinner"></span>
+                    <span class="text">Carregando...</span>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Div onde as compras de determinado dia irão aparecer -->
     <div id="compras"></div>

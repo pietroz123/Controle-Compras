@@ -26,6 +26,9 @@ function recuperarAnosDisponiveis() {
 // Recupera as compras de um dado ano
 function recuperaCompras(ano) {
 
+    $('#grafico-compras').empty();
+    $('.overlayLoading').show();
+
     $.ajax({
         url: 'scripts/recuperar-dados-relatorios.php',
         method: 'POST',
@@ -40,6 +43,8 @@ function recuperaCompras(ano) {
 
             // Cria o gráfico de compras
             criarGraficoCompras(json.compras);
+
+            $('.overlayLoading').hide();
 
         },
         error: function(retorno) {
