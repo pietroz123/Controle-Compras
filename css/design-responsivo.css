@@ -37,6 +37,13 @@
         left: unset;
         right: 94%;
     }
+    #btn-voltar-busca {
+        margin-bottom: 0;
+    }
+    #label-data {
+        position: inherit;
+        transform: none;
+    }
 }
 
 @media only screen and (max-width: 550px) {

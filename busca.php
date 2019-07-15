@@ -69,7 +69,7 @@
 
     <!-- Botão para voltar -->
     <div id="voltar">
-        <button id="btn-voltar-busca" class="float-effect">
+        <button id="btn-voltar-busca" class="btn-simples float-effect">
             <i class="fas fa-arrow-left mr-1"></i>
             Realizar uma nova busca
         </button>
