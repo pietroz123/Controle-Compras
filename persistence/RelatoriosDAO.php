@@ -76,7 +76,7 @@ class RelatoriosDAO {
         $retorno = '';
         while ($ano = $stmt->fetch(PDO::FETCH_ASSOC)) {
         ?>
-            <div class="cartao-ano">
+            <div class="cartao-ano waves-effect">
                 <a role="button">
                     <div class="container">
                         <span class="ano"><?= $ano['Ano'] ?></span>

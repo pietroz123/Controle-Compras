@@ -1164,7 +1164,7 @@ table.datatable-compras {
 .cartao-ano {
     border: 3px solid darkgrey;
     border-radius: 7px;
-    background: #e0e0e0;
+    background: #ececec;
     width: 49%;
 }
 .cartao-ano .container {
@@ -1174,7 +1174,7 @@ table.datatable-compras {
     color: cornflowerblue;
 }
 span.ano {
-    font-weight: 700 !important;
+    font-weight: 600 !important;
 }
 
 
