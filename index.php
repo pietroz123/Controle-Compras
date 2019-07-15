@@ -36,6 +36,7 @@
 
 <?php
     } else {
+        include $_SERVER['DOCUMENT_ROOT'].'/persistence/IndexDAO.php';
 ?>
 
         <h3 class="text-left titulo-site">Bem Vindo de Volta, <?= $_SESSION['login-nome'] ?></h3>
@@ -65,57 +66,29 @@
                             Nível: Administrador
                             =======================================================
                             -->
-
-                            <?php
-                                // Recupera o número de usuários
-                                $sql = "SELECT * FROM `usuarios`";
-                                $stmt = $dbconn->prepare($sql);
-                                $stmt->execute();
-                                $nUsuarios = $stmt->rowCount(); 
-
-                            ?>
+                            
+                            <!-- Número de Usuários Total -->
                             <article class="cartao-informacao">
                                 <b class="cartao-informacao-titulo">Número de Usuários</b>
-                                <div class="cartao-informacao-desc"><?= $nUsuarios; ?></div>
+                                <div class="cartao-informacao-desc"><?= IndexDAO::numeroUsuariosTotal($dbconn); ?></div>
                             </article>
 
-                            <?php
-                                // Recupera o número de compras
-                                $sql = "SELECT * FROM `compras`";
-                                $stmt = $dbconn->prepare($sql);
-                                $stmt->execute();
-                                $nCompras = $stmt->rowCount(); 
-                                
-                            ?>
+                            <!-- Número de Compras Total -->
                             <article class="cartao-informacao">
                                 <b class="cartao-informacao-titulo">Número de Compras</b>
-                                <div class="cartao-informacao-desc"><?= $nCompras; ?></div>
+                                <div class="cartao-informacao-desc"><?= IndexDAO::numeroComprasTotal($dbconn); ?></div>
                             </article>
 
-                            <?php
-                                // Recupera o número de grupos
-                                $sql = "SELECT * FROM `grupos`";
-                                $stmt = $dbconn->prepare($sql);
-                                $stmt->execute();
-                                $nGrupos = $stmt->rowCount(); 
-                                
-                            ?>
+                            <!-- Número de Grupos Total -->
                             <article class="cartao-informacao">
                                 <b class="cartao-informacao-titulo">Número de Grupos</b>
-                                <div class="cartao-informacao-desc"><?= $nGrupos; ?></div>
+                                <div class="cartao-informacao-desc"><?= IndexDAO::numeroGruposTotal($dbconn); ?></div>
                             </article>
 
-                            <?php
-                                // Recupera o número de usuários não autenticados
-                                $sql = "SELECT * FROM `usuarios` WHERE `Autenticado` = 0";
-                                $stmt = $dbconn->prepare($sql);
-                                $stmt->execute();
-                                $nRequisicoes = $stmt->rowCount(); 
-                                
-                            ?>
+                            <!-- Número de Requisições -->
                             <article class="cartao-informacao">
                                 <b class="cartao-informacao-titulo">Número de Requisições</b>
-                                <div class="cartao-informacao-desc"><?= $nRequisicoes; ?></div>
+                                <div class="cartao-informacao-desc"><?= IndexDAO::numeroRequisicoes($dbconn); ?></div>
                                 <a href="perfil-usuario.php#cartao-requisicoes" class="botao botao-pequeno btn btn-light">visualizar</a>
                             </article>
 
@@ -143,20 +116,13 @@
                         =======================================================
                         -->
 
-                        <?php
-                            // Recupera o número de grupos do usuário
-                            $sql = "SELECT * FROM grupo_usuarios gu WHERE gu.Username = '{$_SESSION['login-username']}'";
-                            $stmt = $dbconn->prepare($sql);
-                            $stmt->execute();
-                            $nGrupos = $stmt->rowCount(); 
-                            
-                        ?>
+                        <!-- Número de Grupos Usuário -->
                         <article class="cartao-informacao">
                             <b class="cartao-informacao-titulo">Meus Grupos</b>
-                            <div class="cartao-informacao-desc"><?= $nGrupos; ?></div>
+                            <div class="cartao-informacao-desc"><?= $nGrupos = IndexDAO::numeroGrupos($dbconn, $_SESSION['login-username']); ?></div>
                             <?php 
                                 if ($nGrupos == 0) { 
-                            ?>                            
+                            ?>
                                     <a href="perfil-usuario.php#cartao-grupos-usuario" class="botao botao-pequeno btn btn-default">criar um grupo?</a>
                             <?php 
                                 } else { 
@@ -167,17 +133,10 @@
                             ?>
                         </article>
 
-                        <?php
-                            // Recupera o número de compras
-                            $sql = "SELECT * FROM `compras` WHERE `comprador_id` = {$_SESSION['login-id-comprador']}";
-                            $stmt = $dbconn->prepare($sql);
-                            $stmt->execute();
-                            $nCompras = $stmt->rowCount(); 
-                            
-                        ?>
+                        <!-- Número de Compras Usuário -->
                         <article class="cartao-informacao">
                             <b class="cartao-informacao-titulo">Minhas Compras</b>
-                            <div class="cartao-informacao-desc"><?= $nCompras; ?></div>
+                            <div class="cartao-informacao-desc"><?= $nCompras = IndexDAO::numeroCompras($dbconn, $_SESSION['login-id-comprador']); ?></div>
                             <?php 
                                 if ($nCompras == 0) { 
                             ?>                            
@@ -213,74 +172,67 @@
                     <div class="elegant-color p-3" id="backups">
 
                         <!-- Realizar Backup -->
-                        <!-- <form action="backup/myphp-backup.php"> -->
-                            <button class="btn btn-success botao mb-4 btn-backup">clique aqui para realizar backup</button>
-                            <div id="resultado-backup" class="bg-white mb-3" style="display: none;">
-                                <div class="container p-2">
-                                    <div class="row">
-                                        <div class="col opcao-backup-intro text-uppercase"><p>Realizar Backup de:</p></div>
-                                    </div>
+                        <button class="btn btn-success botao mb-4 btn-backup">clique aqui para realizar backup</button>
+                        <div id="resultado-backup" class="bg-white mb-3" style="display: none;">
+                            <div class="container p-2">
+                                <div class="row">
+                                    <div class="col opcao-backup-intro text-uppercase"><p>Realizar Backup de:</p></div>
+                                </div>
 
-                                    <div class="row" id="tabelas-backup">
+                                <div class="row" id="tabelas-backup">
 
-                                        <!-- Checkboxes das Tabelas -->
-                                        <form class="col d-flex flex-column text-left ml-4" id="formTabelas">
-                                            <div class="opcao-backup-titulo">TABELAS:</div>
-                                            <div class="custom-control custom-checkbox chk-tabelas opcao-backup">
-                                                <input type="checkbox" class="custom-control-input" name="chk_tb" id="chk_tb_todas" value="todas">
-                                                <label class="custom-control-label" for="chk_tb_todas">Todas</label>
-                                            </div>
-                                            <?php
-                                                $sql = "SHOW TABLES";
-                                                $stmt = $dbconn->prepare($sql);
-                                                $stmt->execute();
-                                                $tables = array();
-                                                while ($table = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                                            ?>
-                                                    <div class="custom-control custom-checkbox chk-tabelas opcao-backup">
-                                                        <input type="checkbox" class="custom-control-input" name="chk_tb" id="chk-<?= $table['Tables_in_'.$banco] ?>" value="<?= $table['Tables_in_'.$banco] ?>">
-                                                        <label class="custom-control-label" for="chk-<?= $table['Tables_in_'.$banco] ?>"><?= strtoupper($table['Tables_in_'.$banco]) ?></label>
-                                                    </div>
-                                            <?php
-                                                }
-                                            ?>
-                                        </form>
-                                        <!-- Checkboxes das Tabelas -->
-
-                                        <!-- Checkboxes das Opções -->
-                                        <form class="col d-flex flex-column text-left ml-4" id="formOpcoes">
-                                            <div class="opcao-backup-titulo">INFORMAÇÕES:</div>
-                                            <div class="custom-control custom-checkbox chk-informacoes opcao-backup">
-                                                <input type="checkbox" class="custom-control-input" name="chk_info" id="chk_info_todas" value="todas">
-                                                <label class="custom-control-label" for="chk_info_todas">Todas</label>
-                                            </div>
-                                            <div class="custom-control custom-checkbox chk-informacoes opcao-backup">
-                                                <input type="checkbox" class="custom-control-input" name="chk_info" id="chk-dados" value="dados">
-                                                <label class="custom-control-label" for="chk-dados">Dados</label>
-                                            </div>
-                                            <div class="custom-control custom-checkbox chk-informacoes opcao-backup">
-                                                <input type="checkbox" class="custom-control-input" name="chk_info" id="chk-estrutura" value="estrutura">
-                                                <label class="custom-control-label" for="chk-estrutura">Estrutura</label>
-                                            </div>
-                                        </form>
-                                        <!-- Checkboxes das Opções -->
-
-                                    </div>
-
-                                    <hr>
-
-                                    <!-- Botão de OK -->
-                                    <div class="row">
-                                        <div class="col">
-                                            <button class="btn btn-success float-right" id="btn-ok-backup" type="submit" name="submit-backup">ok</button>
-                                            <button class="btn btn-danger float-right" id="btn-cancelar-backup">cancelar</button>
+                                    <!-- Checkboxes das Tabelas -->
+                                    <form class="col d-flex flex-column text-left ml-4" id="formTabelas">
+                                        <div class="opcao-backup-titulo">TABELAS:</div>
+                                        <div class="custom-control custom-checkbox chk-tabelas opcao-backup">
+                                            <input type="checkbox" class="custom-control-input" name="chk_tb" id="chk_tb_todas" value="todas">
+                                            <label class="custom-control-label" for="chk_tb_todas">Todas</label>
                                         </div>
-                                    </div>
+                                        <?php
+                                            foreach (IndexDAO::recuperarTabelas($dbconn) as $table) {
+                                        ?>
+                                                <div class="custom-control custom-checkbox chk-tabelas opcao-backup">
+                                                    <input type="checkbox" class="custom-control-input" name="chk_tb" id="chk-<?= $table['Tables_in_'.$banco] ?>" value="<?= $table['Tables_in_'.$banco] ?>">
+                                                    <label class="custom-control-label" for="chk-<?= $table['Tables_in_'.$banco] ?>"><?= strtoupper($table['Tables_in_'.$banco]) ?></label>
+                                                </div>
+                                        <?php
+                                            }
+                                        ?>
+                                    </form>
+                                    <!-- Checkboxes das Tabelas -->
+
+                                    <!-- Checkboxes das Opções -->
+                                    <form class="col d-flex flex-column text-left ml-4" id="formOpcoes">
+                                        <div class="opcao-backup-titulo">INFORMAÇÕES:</div>
+                                        <div class="custom-control custom-checkbox chk-informacoes opcao-backup">
+                                            <input type="checkbox" class="custom-control-input" name="chk_info" id="chk_info_todas" value="todas">
+                                            <label class="custom-control-label" for="chk_info_todas">Todas</label>
+                                        </div>
+                                        <div class="custom-control custom-checkbox chk-informacoes opcao-backup">
+                                            <input type="checkbox" class="custom-control-input" name="chk_info" id="chk-dados" value="dados">
+                                            <label class="custom-control-label" for="chk-dados">Dados</label>
+                                        </div>
+                                        <div class="custom-control custom-checkbox chk-informacoes opcao-backup">
+                                            <input type="checkbox" class="custom-control-input" name="chk_info" id="chk-estrutura" value="estrutura">
+                                            <label class="custom-control-label" for="chk-estrutura">Estrutura</label>
+                                        </div>
+                                    </form>
+                                    <!-- Checkboxes das Opções -->
 
                                 </div>
-                            </div>
 
-                        <!-- </form> -->
+                                <hr>
+
+                                <!-- Botão de OK -->
+                                <div class="row">
+                                    <div class="col">
+                                        <button class="btn btn-success float-right" id="btn-ok-backup" type="submit" name="submit-backup">ok</button>
+                                        <button class="btn btn-danger float-right" id="btn-cancelar-backup">cancelar</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
 
 
 
