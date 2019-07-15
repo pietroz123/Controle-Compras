@@ -499,6 +499,7 @@ div#detalhes-compra .col-3 {
 }
 .label-detalhes-compra {
     font-weight: 800;
+    color: black;
 }
 .row-detalhe {
     margin-top: 7px;
