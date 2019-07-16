@@ -471,15 +471,15 @@ div#detalhes-compra .col-3 {
     margin-right: 10px;
 }
 
-.not-valid {
+.not-valid-input {
     outline: 0 !important;
     border: 2px solid red !important;
 }
-.valid {
+.valid-input {
     outline: 0 !important;
     border: 2px solid var(--success) !important;
 }
-.not-valid:focus, .valid:focus { 
+.not-valid-input:focus, .valid-input:focus { 
     outline: none;
     border: none;
     box-shadow: none;
