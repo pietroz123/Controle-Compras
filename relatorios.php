@@ -1,5 +1,6 @@
 <?php 
     include $_SERVER['DOCUMENT_ROOT'].'/cabecalho.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/persistence/CompraDAO.php';
 
     verifica_usuario();
 ?>
@@ -15,11 +16,27 @@
     </div>
 
     <!-- Mensagem de ajuda -->
-    <div class="mensagem-ajuda">
-        <div class="alert alert-primary">
-            <span>Selecione o ano que deseja visualizar.</span>
+    <?php
+        if (CompraDAO::numeroCompras($dbconn, $_SESSION['login-id-comprador']) === 0) {
+    ?>
+        <div class="alert alert-info text-left cartao-info">
+            <div class="alert-heading">
+                <strong>Você não adicionou nenhuma compra ainda.</strong>
+            </div>
+            <a href="formulario-compra.php" class="alert-link">Deseja adicionar uma compra?</a>
         </div>
-    </div>
+    <?php
+        }
+        else {
+    ?>
+        <div class="mensagem-ajuda">
+            <div class="alert alert-primary">
+                <span>Selecione o ano que deseja visualizar.</span>
+            </div>
+        </div>
+    <?php
+        }
+    ?>
 
     <!-- Gráfico de compras -->
     <div class="grafico-compras-container">

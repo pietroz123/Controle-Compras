@@ -41,6 +41,48 @@ class CompraDAO {
 
     }
 
+    /**
+     * Recupera o número total de compras no banco
+     * 
+     * @param PDO       $dbconn: Conexão com o BD
+     * @return int      $nComprasTotal: Número total de compras
+     */
+    public static function numeroComprasTotal($dbconn) {
+
+        // Recupera o número de compras
+        $sql = "SELECT * FROM `compras`";
+        $stmt = $dbconn->prepare($sql);
+        $stmt->execute();
+        $nComprasTotal = $stmt->rowCount();
+
+        return $nComprasTotal;
+
+    }
+
+    /**
+     * Recupera o número total de compras de um usuário,
+     * dado o seu ID de Comprador
+     * 
+     * @param PDO       $dbconn: Conexão com o BD
+     * @param int       $id: ID de Comprador
+     * @return int      $nCompras: Número de compras
+     */
+    public static function numeroCompras($dbconn, $id) {
+
+        // Recupera o número de compras
+        $sql = "SELECT * FROM `compras` WHERE `comprador_id` = $id";
+        $stmt = $dbconn->prepare($sql);
+        $stmt->execute();
+        $nCompras = $stmt->rowCount();
+
+        return $nCompras;
+
+    }
+
+
+    // =======================================================
+    // Recuperação com JSON para DataTables
+    // =======================================================
 
     /**
      * Recupera as compras de um usuário em formato JSON

@@ -3,6 +3,7 @@
     include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes.php';
     include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes-usuarios.php';
     include $_SERVER['DOCUMENT_ROOT'].'/includes/funcoes-grupos.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/persistence/CompraDAO.php';
 ?>
 
 <?php
@@ -45,6 +46,7 @@
 
 <hr>
 
+<!-- Cartões dos Grupos -->
 <div class="cartoes">
 <?php
     $i = 0;
@@ -78,19 +80,37 @@
         </a>
     </div>
 <?php
-    }    
+    }
+?>
+</div>
+<!-- Fim Cartões dos Grupos -->
+
+<!-- Cartões de Informações -->
+<div class="cartoes informacoes d-flex flex-column">
+<?php    
     if ($i == 0) {
 ?>
-        <div class="alert alert-info text-left">
+        <div class="alert alert-info text-left cartao-info">
             <div class="alert-heading">
-                <strong>Você não está em nenhum grupo, logo apenas poderá ver suas compras</strong>
+                <strong>Você não está em nenhum grupo, logo apenas poderá ver suas compras.</strong>
             </div>
             <a href="perfil-usuario.php#cartao-grupos-usuario" class="alert-link">Deseja criar um grupo?</a>
         </div>
 <?php
     }
+    if (CompraDAO::numeroCompras($dbconn, $_SESSION['login-id-comprador']) === 0) {
+?>
+        <div class="alert alert-info text-left cartao-info">
+            <div class="alert-heading">
+                <strong>Você não adicionou nenhuma compra ainda.</strong>
+            </div>
+            <a href="formulario-compra.php" class="alert-link">Deseja adicionar uma compra?</a>
+        </div>
+<?php
+    }
 ?>
 </div>
+<!-- Fim Cartões de Informações -->
 
 <hr>
 
