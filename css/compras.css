@@ -947,6 +947,7 @@ li.L1,li.L3,li.L5,li.L7,li.L9 { }
     position: absolute;
     top: 155px;
     transform: translate(-50%, -50%);
+    z-index: 4;
 }
 
 
