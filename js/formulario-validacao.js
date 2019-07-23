@@ -10,19 +10,21 @@ $(document).ready(function() {
 
         // Recupera os inputs
         var in_observacoes      = $('#input-obs');              // retorna _ se vazio
-        var in_categorias       = $('#select-categorias');      // retorna _ se vazio
         var in_valor            = $('#input-valor');            // retorna _ se vazio
         var in_desconto         = $('#input-desconto');         // retorna _ se vazio
+        var in_categorias       = $('#select-categorias');      // retorna _ se vazio
         var in_comprador        = $('#select-comprador');       // retorna _ se vazio
+        var in_forma            = $('#select-forma-pagamento'); // retorna _ se vazio
 
 
         // Remove qualquer mensagem de erro para nova verificação
         $('.erro').remove();
         in_observacoes.removeClass('not-valid-input');
-        in_categorias.parent().find('.select2-selection').removeClass('not-valid-input');
         in_valor.removeClass('not-valid-input');
         in_desconto.removeClass('not-valid-input');
+        in_categorias.parent().find('.select2-selection').removeClass('not-valid-input');
         in_comprador.parent().find('.select2-selection').removeClass('not-valid-input');
+        in_forma.parent().find('.select2-selection').removeClass('not-valid-input');
 
 
         // Validações
@@ -30,11 +32,6 @@ $(document).ready(function() {
         if (in_observacoes.val() == "") {
             in_observacoes.addClass('not-valid-input');
             $('<span class="erro font-small">Este campo é obrigatório</span>').insertAfter(in_observacoes);
-        }
-        
-        if (in_categorias.val() == "") {
-            in_categorias.parent().find('.select2-selection').addClass('not-valid-input');
-            $('<span class="erro font-small">Este campo é obrigatório</span>').insertAfter(in_categorias);
         }
 
         if (in_valor.val() == "") {
@@ -46,10 +43,20 @@ $(document).ready(function() {
             in_desconto.addClass('not-valid-input');
             $('<span class="erro font-small">Este campo é obrigatório</span>').insertAfter(in_desconto);
         }
+        
+        if (in_categorias.val() == "") {
+            in_categorias.parent().find('.select2-selection').addClass('not-valid-input');
+            $('<span class="erro font-small">Este campo é obrigatório</span>').insertAfter(in_categorias);
+        }
 
         if (in_comprador.val() == "") {
             in_comprador.parent().find('.select2-selection').addClass('not-valid-input');
             $('<span class="erro font-small">Este campo é obrigatório</span>').insertAfter(in_comprador);
+        }
+
+        if (in_forma.val() == "") {
+            in_forma.parent().find('.select2-selection').addClass('not-valid-input');
+            $('<span class="erro font-small">Este campo é obrigatório</span>').insertAfter(in_forma);
         }
 
 
@@ -98,7 +105,7 @@ $(document).ready(function() {
     // Validação do INPUT de Categorias e Comprador
     // =======================================================
     
-    $('#select-categorias, #select-comprador').change(function() {
+    $('#select-categorias, #select-comprador, #select-forma-pagamento').change(function() {
 
         if ($(this).val() != "") {
 
