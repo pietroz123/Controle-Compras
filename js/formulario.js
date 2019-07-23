@@ -37,6 +37,9 @@ $(document).ready(function() {
     $('#select-comprador').select2({
         placeholder: "Selecione um comprador"
     });
+    $('#select-forma-pagamento').select2({
+        placeholder: "Seleciona a forma de pagamento"
+    });
 
     // Ao mudar a categoria, preenche as subcategorias
     $('#select-categorias').change(function() {

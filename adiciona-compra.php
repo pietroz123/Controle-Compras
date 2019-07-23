@@ -21,7 +21,7 @@
     $data               = $_POST['data'];
     $observacoes        = $_POST['observacoes'];
     $desconto           = $_POST['desconto'];
-    $forma_pagamento    = $_POST['forma-pagamento'];
+    $forma_pagamento    = $_POST['select-forma-pagamento'];
     $comprador_id       = $_POST['comprador-id'];
 
     // Verifica se existem categorias e subcategorias
@@ -136,7 +136,27 @@
                     </div>
                     <div class="row row-detalhe">
                         <div class="col label-detalhes-compra">Forma de Pagamento:</div>
-                        <div class="col"><?= $forma_pagamento ?></div>
+                        <div class="col">
+                        <?php
+                            switch ($forma_pagamento) {
+                                case 'cartao':
+                                    echo 'Cartão';
+                                    break;
+                                case 'boleto':
+                                    echo 'Boleto';
+                                    break;
+                                case 'dinheiro':
+                                    echo 'Dinheiro';
+                                    break;
+                                case 'refeicao':
+                                    echo 'Refeição';
+                                    break;
+                                case 'alimentacao':
+                                    echo 'Alimentação';
+                                    break;
+                            }
+                        ?>
+                        </div>
                     </div>
                     <div class="row row-detalhe">
                         <div class="col label-detalhes-compra">Comprador:</div>

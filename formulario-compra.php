@@ -76,21 +76,15 @@
 
                 <div class="row">
                     <div class="col-lg mb-3 mb-lg-0">
-                        <div class="font-small font-weight-bold mb-2">Forma de Pagamento</div>
-                        <div class="d-flex justify-content-between flex-column">
-                            <div class="opcao-pagamento custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" name="forma-pagamento" id="cartao" value="cartao" checked>
-                                <label class="custom-control-label" for="cartao">Cartão</label>
-                            </div>
-                            <div class="opcao-pagamento custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" name="forma-pagamento" id="boleto" value="boleto">
-                                <label class="custom-control-label" for="boleto">Boleto</label>
-                            </div>                            
-                            <div class="opcao-pagamento custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" name="forma-pagamento" id="dinheiro" value="dinheiro">
-                                <label class="custom-control-label" for="dinheiro">Dinheiro</label>
-                            </div>
-                        </div>
+                        <label for="select-forma-pagamento" class="font-small font-weight-bold">Forma de Pagamento</label>
+                        <select name="select-forma-pagamento" id="select-forma-pagamento">
+                            <option></option>
+                            <option value="cartao">Cartão</option>
+                            <option value="boleto">Boleto</option>
+                            <option value="dinheiro">Dinheiro</option>
+                            <option value="refeicao">Refeição</option>
+                            <option value="alimentacao">Alimentação</option>
+                        </select>
                     </div>
                 </div>
 

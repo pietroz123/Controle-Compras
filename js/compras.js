@@ -85,6 +85,12 @@ function criarDataTable(requisicao) {
                 case 'dinheiro':
                     span.textContent = "dinheiro";
                     break;
+                case 'refeicao':
+                    span.textContent = "refeição";
+                    break;
+                case 'alimentacao':
+                    span.textContent = "alimentação";
+                    break;
             
                 default:
                     break;
