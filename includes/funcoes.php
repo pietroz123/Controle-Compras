@@ -23,41 +23,33 @@ function listar($dbconn, $sql) {
 function inserir_compra($dbconn, $valor, $data, $observacoes, $desconto, $forma_pagamento, $comprador_id, $imagem, $categoria, $subcategorias) {
     
     // Insere a compra
-    $sql = "INSERT INTO compras (valor, data, observacoes, desconto, forma_pagamento, comprador_id, imagem) VALUES ({$valor}, '{$data}', '{$observacoes}', {$desconto}, '{$forma_pagamento}', {$comprador_id}, '{$imagem}');";
+    $sql = "INSERT INTO compras (valor, data, observacoes, desconto, forma_pagamento, comprador_id, imagem, id_categoria) VALUES ({$valor}, '{$data}', '{$observacoes}', {$desconto}, '{$forma_pagamento}', {$comprador_id}, '{$imagem}', $categoria);";
     $stmt = $dbconn->prepare($sql);
 
     if ($stmt->execute()) {
 
-        // Se existir uma categoria
-        if (!empty($categoria)) {
+        // Recupera o id da compra inserida
+        $id_compra = $dbconn->lastInsertId();
 
-            // Insere as categorias e subcategorias
-            $id_compra = $dbconn->lastInsertId();
-            $sql = "INSERT INTO compra_categorias (ID_Compra, ID_Categoria) VALUES ($id_compra, $categoria);";
-            $stmt = $dbconn->prepare($sql);
-            if ($stmt->execute()) {
+        // Se existirem subcategorias, insere
+        if ($subcategorias) {
 
-                // Se existirem subcategorias
-                if (!empty($subcategorias)) {
-
-                    foreach ($subcategorias as $subcategoria) {
-                        $sql = "INSERT INTO compra_cat_subcat (ID_Compra, ID_Categoria, ID_Subcategoria) VALUES ($id_compra, $categoria, $subcategoria);";
-                        $stmt = $dbconn->prepare($sql);
-                        $resultado = $stmt->execute();
-                        if ($resultado)
-                            continue;   
-                        else
-                            return false;
-                    }
-                    if ($resultado)
-                        return true;
-                    else
-                        return false;
-
-                }
+            foreach ($subcategorias as $subcategoria) {
+                $sql = "INSERT INTO compra_cat_subcat (ID_Compra, ID_Categoria, ID_Subcategoria) VALUES ($id_compra, $categoria, $subcategoria);";
+                $stmt = $dbconn->prepare($sql);
+                $resultado = $stmt->execute();
+                if ($resultado)
+                    continue;   
+                else
+                    return false;
             }
+            if ($resultado)
+                return true;
+            else
+                return false;
 
         }
+
         return true;
     }
     else

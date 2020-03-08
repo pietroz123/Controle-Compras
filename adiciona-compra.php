@@ -23,16 +23,8 @@
     $desconto           = $_POST['desconto'];
     $forma_pagamento    = $_POST['select-forma-pagamento'];
     $comprador_id       = $_POST['comprador-id'];
-
-    // Verifica se existem categorias e subcategorias
-    if (isset($_POST['categoria'])) {
-        $categoria = $_POST['categoria'];
-        if (isset($_POST['subcategorias']))
-            $subcategorias = $_POST['subcategorias'];
-        else
-            $subcategorias = '';
-    } else
-        $categoria = '';
+    $categoria          = $_POST['categoria'];
+    $subcategorias      = isset($_POST['subcategorias']) ? $_POST['subcategorias'] : NULL;
 
 
     $data_formatada = implode('-', array_reverse(explode('/', $data)));
